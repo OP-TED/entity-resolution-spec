@@ -1,0 +1,991 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-130-413651_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-130-413651_NoticeIdentifier_K8q5v8TTWyR48h9DKNno8n .
+
+epd:id_2023-S-130-413651_NoticeIdentifier_K8q5v8TTWyR48h9DKNno8n a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 130-413651" .
+
+epd:id_2023-S-210-663529_Buyer_LTC4ztdQQn6ue8NBpQv4rF a epo:Buyer;
+  epo:hasBuyerProfile "https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&idBp=Rs4EFuSeMgI%3D"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-663529_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
+  epo:playedBy epd:id_2023-S-210-663529_Organisation_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-663529_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoint;
+  epo:hasContactName "Director Gerente de FREMAP"@es;
+  epo:hasInternetAddress "http://www.fremap.es"^^xsd:anyURI;
+  cccev:email "licitaciones@fremap.es" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_3Hk7of8wRB7ZjQMkPk4MiQ a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L2" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_4PcfJ3cwHwqF3PZHQDYtk4 a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L8" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_5syAsdWQLMJDypha3R3Bkm a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L11" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_6LDcWy8boMVAdZnLMmKemk a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L5" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_BhC5wXEtGJxSVvxRZjjH8K a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L1" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_KVtB8DmafxnFZe7k2nQvK2 a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L6" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_Qn26KdnwXRRGqkqRpKcPDF a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L12" .
+
+epd:id_2023-S-210-663529_ContractIdentifier_W68fA4b23EqpWG3dgeZCE2 a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210/L9" .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_78HC87ZpkN6xfeFJJnpwkR a locn:Address;
+  locn:fullAddress ". Bilbao. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
+  locn:fullAddress ". España. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_DidTk6xWEcuNno54z8b7Cx a locn:Address;
+  locn:fullAddress ". Arona. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_FT8JUwb3iQhSXNbZ6rMXmF a locn:Address;
+  locn:fullAddress ". Zaragoza. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_JAM8nQtYbXnFWkMot27LfV a locn:Address;
+  locn:fullAddress ". A Coruña. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_QHRS3wY75zxL3xATmYWDQz a locn:Address;
+  locn:fullAddress ". Vizcaya. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_RGPwnVV6UP6kCGWYPpAhzW a locn:Address;
+  locn:fullAddress ". Santa Cruz de Tenerife. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_UdDUu4MDCKQjfm86QzomXu a locn:Address;
+  locn:fullAddress ". Palma. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_bq3weCt4LdKaEoSgxuGhv7 a locn:Address;
+  locn:fullAddress ". Álava. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_fLxrNWB2HdPTWwVwRRne8d a locn:Address;
+  locn:fullAddress ". Las Palmas de Gran Canaria. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_fZYzhCqjDwjirNdidcfc8y a locn:Address;
+  locn:fullAddress ". Palma. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocationAddress_j2SJ96cVTr8dYTsApekBFt a locn:Address;
+  locn:fullAddress ". Palma. "@es .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_78HC87ZpkN6xfeFJJnpwkR a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_78HC87ZpkN6xfeFJJnpwkR .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_DidTk6xWEcuNno54z8b7Cx a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_DidTk6xWEcuNno54z8b7Cx .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_FT8JUwb3iQhSXNbZ6rMXmF a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_FT8JUwb3iQhSXNbZ6rMXmF .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_JAM8nQtYbXnFWkMot27LfV a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_JAM8nQtYbXnFWkMot27LfV .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_QHRS3wY75zxL3xATmYWDQz a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_QHRS3wY75zxL3xATmYWDQz .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_RGPwnVV6UP6kCGWYPpAhzW a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_RGPwnVV6UP6kCGWYPpAhzW .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_UdDUu4MDCKQjfm86QzomXu a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_UdDUu4MDCKQjfm86QzomXu .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_bq3weCt4LdKaEoSgxuGhv7 a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_bq3weCt4LdKaEoSgxuGhv7 .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_fLxrNWB2HdPTWwVwRRne8d a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_fLxrNWB2HdPTWwVwRRne8d .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_fZYzhCqjDwjirNdidcfc8y a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_fZYzhCqjDwjirNdidcfc8y .
+
+epd:id_2023-S-210-663529_ContractTermLotLocation_j2SJ96cVTr8dYTsApekBFt a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:address epd:id_2023-S-210-663529_ContractTermLotLocationAddress_j2SJ96cVTr8dYTsApekBFt .
+
+epd:id_2023-S-210-663529_ContractTermLot_78HC87ZpkN6xfeFJJnpwkR a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_78HC87ZpkN6xfeFJJnpwkR .
+
+epd:id_2023-S-210-663529_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-663529_ContractTermLot_DidTk6xWEcuNno54z8b7Cx a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_DidTk6xWEcuNno54z8b7Cx .
+
+epd:id_2023-S-210-663529_ContractTermLot_FT8JUwb3iQhSXNbZ6rMXmF a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_FT8JUwb3iQhSXNbZ6rMXmF .
+
+epd:id_2023-S-210-663529_ContractTermLot_JAM8nQtYbXnFWkMot27LfV a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_JAM8nQtYbXnFWkMot27LfV .
+
+epd:id_2023-S-210-663529_ContractTermLot_QHRS3wY75zxL3xATmYWDQz a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_QHRS3wY75zxL3xATmYWDQz .
+
+epd:id_2023-S-210-663529_ContractTermLot_RGPwnVV6UP6kCGWYPpAhzW a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_RGPwnVV6UP6kCGWYPpAhzW .
+
+epd:id_2023-S-210-663529_ContractTermLot_UdDUu4MDCKQjfm86QzomXu a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_UdDUu4MDCKQjfm86QzomXu .
+
+epd:id_2023-S-210-663529_ContractTermLot_bq3weCt4LdKaEoSgxuGhv7 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_bq3weCt4LdKaEoSgxuGhv7 .
+
+epd:id_2023-S-210-663529_ContractTermLot_fLxrNWB2HdPTWwVwRRne8d a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_fLxrNWB2HdPTWwVwRRne8d .
+
+epd:id_2023-S-210-663529_ContractTermLot_fZYzhCqjDwjirNdidcfc8y a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_fZYzhCqjDwjirNdidcfc8y .
+
+epd:id_2023-S-210-663529_ContractTermLot_j2SJ96cVTr8dYTsApekBFt a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663529_ContractTermLotLocation_j2SJ96cVTr8dYTsApekBFt .
+
+epd:id_2023-S-210-663529_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+epd:id_2023-S-210-663529_Contract_8MrSBasBg6PCWswrGTY98R a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-24"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_4PcfJ3cwHwqF3PZHQDYtk4;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Oftalmología en Palma."@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_j2SJ96cVTr8dYTsApekBFt;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_8MrSBasBg6PCWswrGTY98R .
+
+epd:id_2023-S-210-663529_Contract_9WY8XodCFoBg7yvS7uvaM9 a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_W68fA4b23EqpWG3dgeZCE2;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Odontología/Estomatología en Palma."@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_UdDUu4MDCKQjfm86QzomXu;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_9WY8XodCFoBg7yvS7uvaM9 .
+
+epd:id_2023-S-210-663529_Contract_9ctEUXnALobQ7VPVQJxSDG a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-24"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_Qn26KdnwXRRGqkqRpKcPDF;
+  epo:hasTitle "Contratación del servicio sanitario de valoración biomecánica en Bilbao."@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_78HC87ZpkN6xfeFJJnpwkR;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_9ctEUXnALobQ7VPVQJxSDG .
+
+epd:id_2023-S-210-663529_Contract_DetMpoCnSgP6aKMi9sbbBY a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_5syAsdWQLMJDypha3R3Bkm;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en Odontología/Estomatología en Álava"@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_bq3weCt4LdKaEoSgxuGhv7;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_DetMpoCnSgP6aKMi9sbbBY .
+
+epd:id_2023-S-210-663529_Contract_GbXB43iNR8iw2hTgggmJvh a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-24"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_3Hk7of8wRB7ZjQMkPk4MiQ;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en Traumatología y Cirugía Ortopédica en Zaragoza"@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_FT8JUwb3iQhSXNbZ6rMXmF;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_GbXB43iNR8iw2hTgggmJvh .
+
+epd:id_2023-S-210-663529_Contract_LvgukoMCPwmGzMjz7RFuwt a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-24"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_BhC5wXEtGJxSVvxRZjjH8K;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en Neurofisiología en Zaragoza"@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_LvgukoMCPwmGzMjz7RFuwt .
+
+epd:id_2023-S-210-663529_Contract_MCy57MpL2YJjPCg2VnLbFb a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_KVtB8DmafxnFZe7k2nQvK2;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Rehabilitación en Las Palmas de Gran Canaria."@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_fLxrNWB2HdPTWwVwRRne8d;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_MCy57MpL2YJjPCg2VnLbFb .
+
+epd:id_2023-S-210-663529_Contract_MsV6uwff9iPfXsPw5jGrLu a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_ContractIdentifier_6LDcWy8boMVAdZnLMmKemk;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Rehabilitación en Santa Cruz de Tenerife."@es;
+  epo:includesLot epd:id_2023-S-210-663529_Lot_RGPwnVV6UP6kCGWYPpAhzW;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_MsV6uwff9iPfXsPw5jGrLu .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_7QpwkMV9WZ7EXwkCnxuWUb a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES211>;
+  locn:postCode "01004";
+  locn:postName "Vitoria-Gasteiz";
+  locn:thoroughfare "LOS HERRAN 7" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_FFhgSAVwxFHqdxzamiprBD a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES709>;
+  locn:postCode "38005";
+  locn:postName "Santa Cruz de Tenerife";
+  locn:thoroughfare "Calle Leoncio Rodríguez, 56" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_Jyo2qMb8bzLKuG4JkTu8Ge a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:postCode "28002";
+  locn:postName "Madrid";
+  locn:thoroughfare "Luis Cabrera 43" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_QyMRW3fd83ATQeN9QWhTHf a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:postCode "28010";
+  locn:postName "Madrid";
+  locn:thoroughfare "Zurbarán, 28" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_StL6e6sPDdUgHDYkFGr3SV a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES243>;
+  locn:postCode "50012";
+  locn:postName "Zaragoza";
+  locn:thoroughfare "VIA HISPANIDAD 37" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_YF4vVFMnwSKrCx9NatBgNN a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES243>;
+  locn:postCode "50006";
+  locn:postName "Zaragoza";
+  locn:thoroughfare "Paseo Ruiseñores 22, casa 3" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_bjGxkcQmFjCsXHxAd5LD6i a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES705>;
+  locn:postCode "35006";
+  locn:postName "Palmas de Gran Canaria, Las";
+  locn:thoroughfare "PRESIDENTE ALVEAR, 10" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationAddress_oGxnL83FA3LcXWdketPzfK a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES532>;
+  locn:postCode "07013";
+  locn:postName "Palma";
+  locn:thoroughfare "CAMINO DE SON RAPINYA, 1" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_7QpwkMV9WZ7EXwkCnxuWUb a
+    epo:Identifier;
+  epo:hasIdentifierValue "B01342187" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_FFhgSAVwxFHqdxzamiprBD a
+    epo:Identifier;
+  epo:hasIdentifierValue "B38941555" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_Jyo2qMb8bzLKuG4JkTu8Ge a
+    epo:Identifier;
+  epo:hasIdentifierValue "B85858736" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_QyMRW3fd83ATQeN9QWhTHf a
+    epo:Identifier;
+  epo:hasIdentifierValue "B87324844" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_StL6e6sPDdUgHDYkFGr3SV a
+    epo:Identifier;
+  epo:hasIdentifierValue "A50523554" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_YF4vVFMnwSKrCx9NatBgNN a
+    epo:Identifier;
+  epo:hasIdentifierValue "B50982891" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_bjGxkcQmFjCsXHxAd5LD6i a
+    epo:Identifier;
+  epo:hasIdentifierValue "B35230168" .
+
+epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_oGxnL83FA3LcXWdketPzfK a
+    epo:Identifier;
+  epo:hasIdentifierValue "B07831662" .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_7QpwkMV9WZ7EXwkCnxuWUb a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_7QpwkMV9WZ7EXwkCnxuWUb;
+  epo:hasLegalName "CLINICA DENTAL DONNAY"@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_7QpwkMV9WZ7EXwkCnxuWUb .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_FFhgSAVwxFHqdxzamiprBD a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_FFhgSAVwxFHqdxzamiprBD;
+  epo:hasLegalName "ICOT TENERIFE, S.L."@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_FFhgSAVwxFHqdxzamiprBD .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_Jyo2qMb8bzLKuG4JkTu8Ge a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_Jyo2qMb8bzLKuG4JkTu8Ge;
+  epo:hasLegalName "INVALCOR MADRID SLU"@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_Jyo2qMb8bzLKuG4JkTu8Ge .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_QyMRW3fd83ATQeN9QWhTHf a org:Organization;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_QyMRW3fd83ATQeN9QWhTHf;
+  epo:hasLegalName "IDCQ HOSPITALES Y SANIDAD, S.L."@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_QyMRW3fd83ATQeN9QWhTHf .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_StL6e6sPDdUgHDYkFGr3SV;
+  epo:hasLegalName "CLINICA MONTPELLIER GRUPO HLA, S.A.U."@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_StL6e6sPDdUgHDYkFGr3SV .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_YF4vVFMnwSKrCx9NatBgNN a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_YF4vVFMnwSKrCx9NatBgNN;
+  epo:hasLegalName "Trayner Aragon 2008 SLNE"@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_YF4vVFMnwSKrCx9NatBgNN .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_bjGxkcQmFjCsXHxAd5LD6i a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_bjGxkcQmFjCsXHxAd5LD6i;
+  epo:hasLegalName "ICOT SERVICIOS INTEGRALES, S.L.U."@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_bjGxkcQmFjCsXHxAd5LD6i .
+
+epd:id_2023-S-210-663529_ContractorOrganisation_oGxnL83FA3LcXWdketPzfK a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-663529_ContractorOrganisationIdentifier_oGxnL83FA3LcXWdketPzfK;
+  epo:hasLegalName "OFTALMEDIC SALVA"@es;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ContractorOrganisationAddress_oGxnL83FA3LcXWdketPzfK .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_8MrSBasBg6PCWswrGTY98R
+  a epo:MonetaryValue;
+  epo:hasAmountValue 58749.17;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_9WY8XodCFoBg7yvS7uvaM9
+  a epo:MonetaryValue;
+  epo:hasAmountValue 17729.5;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_9ctEUXnALobQ7VPVQJxSDG
+  a epo:MonetaryValue;
+  epo:hasAmountValue 104379.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_DetMpoCnSgP6aKMi9sbbBY
+  a epo:MonetaryValue;
+  epo:hasAmountValue 41129.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_GbXB43iNR8iw2hTgggmJvh
+  a epo:MonetaryValue;
+  epo:hasAmountValue 478062.94;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_LvgukoMCPwmGzMjz7RFuwt
+  a epo:MonetaryValue;
+  epo:hasAmountValue 47100.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_MCy57MpL2YJjPCg2VnLbFb
+  a epo:MonetaryValue;
+  epo:hasAmountValue 85210.4;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_MsV6uwff9iPfXsPw5jGrLu
+  a epo:MonetaryValue;
+  epo:hasAmountValue 108856.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_8MrSBasBg6PCWswrGTY98R a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_4AdnjnKkZ7tPfUJne4532R;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_j2SJ96cVTr8dYTsApekBFt;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_8MrSBasBg6PCWswrGTY98R .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_9WY8XodCFoBg7yvS7uvaM9 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_gqj99ttAxcXkepTxzBMmSV;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_UdDUu4MDCKQjfm86QzomXu;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_9WY8XodCFoBg7yvS7uvaM9 .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_9ctEUXnALobQ7VPVQJxSDG a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_dZQRrH4FUeVAcfNZY6dMYe;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_78HC87ZpkN6xfeFJJnpwkR;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_9ctEUXnALobQ7VPVQJxSDG .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_DetMpoCnSgP6aKMi9sbbBY a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_KtP43sekT8G3hfzUmyimpd;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_bq3weCt4LdKaEoSgxuGhv7;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_DetMpoCnSgP6aKMi9sbbBY .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_GbXB43iNR8iw2hTgggmJvh a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_VqS7EDwKWmbqCTyfhoujPJ;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_FT8JUwb3iQhSXNbZ6rMXmF;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_GbXB43iNR8iw2hTgggmJvh .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_LvgukoMCPwmGzMjz7RFuwt a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_LvgukoMCPwmGzMjz7RFuwt .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_MCy57MpL2YJjPCg2VnLbFb a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_5xoB9vA8ePdLGXGST56XRA;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_fLxrNWB2HdPTWwVwRRne8d;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_MCy57MpL2YJjPCg2VnLbFb .
+
+epd:id_2023-S-210-663529_LotAwardOutcome_MsV6uwff9iPfXsPw5jGrLu a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663529_TenderAwardOutcome_PHxKeGyGCR5huRNcP7qwrn;
+  epo:describesLot epd:id_2023-S-210-663529_Lot_RGPwnVV6UP6kCGWYPpAhzW;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663529_LotAwardOutcomeAwardedMonetaryValue_MsV6uwff9iPfXsPw5jGrLu .
+
+epd:id_2023-S-210-663529_LotIdentifier_78HC87ZpkN6xfeFJJnpwkR a epo:Identifier;
+  epo:hasIdentifierValue "12" .
+
+epd:id_2023-S-210-663529_LotIdentifier_9kJZhTgye29otV72ZHovp4 a epo:Identifier;
+  epo:hasIdentifierValue "1" .
+
+epd:id_2023-S-210-663529_LotIdentifier_DidTk6xWEcuNno54z8b7Cx a epo:Identifier;
+  epo:hasIdentifierValue "4" .
+
+epd:id_2023-S-210-663529_LotIdentifier_FT8JUwb3iQhSXNbZ6rMXmF a epo:Identifier;
+  epo:hasIdentifierValue "2" .
+
+epd:id_2023-S-210-663529_LotIdentifier_JAM8nQtYbXnFWkMot27LfV a epo:Identifier;
+  epo:hasIdentifierValue "10" .
+
+epd:id_2023-S-210-663529_LotIdentifier_QHRS3wY75zxL3xATmYWDQz a epo:Identifier;
+  epo:hasIdentifierValue "3" .
+
+epd:id_2023-S-210-663529_LotIdentifier_RGPwnVV6UP6kCGWYPpAhzW a epo:Identifier;
+  epo:hasIdentifierValue "5" .
+
+epd:id_2023-S-210-663529_LotIdentifier_UdDUu4MDCKQjfm86QzomXu a epo:Identifier;
+  epo:hasIdentifierValue "9" .
+
+epd:id_2023-S-210-663529_LotIdentifier_bq3weCt4LdKaEoSgxuGhv7 a epo:Identifier;
+  epo:hasIdentifierValue "11" .
+
+epd:id_2023-S-210-663529_LotIdentifier_fLxrNWB2HdPTWwVwRRne8d a epo:Identifier;
+  epo:hasIdentifierValue "6" .
+
+epd:id_2023-S-210-663529_LotIdentifier_fZYzhCqjDwjirNdidcfc8y a epo:Identifier;
+  epo:hasIdentifierValue "7" .
+
+epd:id_2023-S-210-663529_LotIdentifier_j2SJ96cVTr8dYTsApekBFt a epo:Identifier;
+  epo:hasIdentifierValue "8" .
+
+epd:id_2023-S-210-663529_LotPurpose_78HC87ZpkN6xfeFJJnpwkR a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_9kJZhTgye29otV72ZHovp4 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_DidTk6xWEcuNno54z8b7Cx a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_FT8JUwb3iQhSXNbZ6rMXmF a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_JAM8nQtYbXnFWkMot27LfV a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_QHRS3wY75zxL3xATmYWDQz a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_RGPwnVV6UP6kCGWYPpAhzW a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_UdDUu4MDCKQjfm86QzomXu a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_bq3weCt4LdKaEoSgxuGhv7 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_fLxrNWB2HdPTWwVwRRne8d a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_fZYzhCqjDwjirNdidcfc8y a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_LotPurpose_j2SJ96cVTr8dYTsApekBFt a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_Lot_78HC87ZpkN6xfeFJJnpwkR a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_78HC87ZpkN6xfeFJJnpwkR;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_78HC87ZpkN6xfeFJJnpwkR;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_78HC87ZpkN6xfeFJJnpwkR;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_78HC87ZpkN6xfeFJJnpwkR;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_dZQRrH4FUeVAcfNZY6dMYe;
+  epo:hasTitle "Contratación del servicio sanitario de valoración biomecánica en Bilbao."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_9kJZhTgye29otV72ZHovp4;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_9kJZhTgye29otV72ZHovp4;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_9kJZhTgye29otV72ZHovp4;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en Neurofisiología en Zaragoza"@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_DidTk6xWEcuNno54z8b7Cx a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_DidTk6xWEcuNno54z8b7Cx;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_DidTk6xWEcuNno54z8b7Cx;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_DidTk6xWEcuNno54z8b7Cx;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_DidTk6xWEcuNno54z8b7Cx;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Odontología/Estomatología en Arona."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_FT8JUwb3iQhSXNbZ6rMXmF a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_FT8JUwb3iQhSXNbZ6rMXmF;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_FT8JUwb3iQhSXNbZ6rMXmF;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_FT8JUwb3iQhSXNbZ6rMXmF;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_FT8JUwb3iQhSXNbZ6rMXmF;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_VqS7EDwKWmbqCTyfhoujPJ;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en Traumatología y Cirugía Ortopédica en Zaragoza"@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_JAM8nQtYbXnFWkMot27LfV a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_JAM8nQtYbXnFWkMot27LfV;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_JAM8nQtYbXnFWkMot27LfV;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_JAM8nQtYbXnFWkMot27LfV;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_JAM8nQtYbXnFWkMot27LfV;
+  epo:hasTitle "Contratación del servicio sanitario de Cirugía Maxilofacial en A Coruña"@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_QHRS3wY75zxL3xATmYWDQz a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_QHRS3wY75zxL3xATmYWDQz;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_QHRS3wY75zxL3xATmYWDQz;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_QHRS3wY75zxL3xATmYWDQz;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_QHRS3wY75zxL3xATmYWDQz;
+  epo:hasTitle "Contratación del Servicio de Asistencia Sanitaria Especializada en Neurofisiología en Vizcaya"@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_RGPwnVV6UP6kCGWYPpAhzW a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_RGPwnVV6UP6kCGWYPpAhzW;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_RGPwnVV6UP6kCGWYPpAhzW;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_RGPwnVV6UP6kCGWYPpAhzW;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_RGPwnVV6UP6kCGWYPpAhzW;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_PHxKeGyGCR5huRNcP7qwrn;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Rehabilitación en Santa Cruz de Tenerife."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_UdDUu4MDCKQjfm86QzomXu a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_UdDUu4MDCKQjfm86QzomXu;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_UdDUu4MDCKQjfm86QzomXu;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_UdDUu4MDCKQjfm86QzomXu;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_UdDUu4MDCKQjfm86QzomXu;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_gqj99ttAxcXkepTxzBMmSV;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Odontología/Estomatología en Palma."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_bq3weCt4LdKaEoSgxuGhv7 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_bq3weCt4LdKaEoSgxuGhv7;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_bq3weCt4LdKaEoSgxuGhv7;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_bq3weCt4LdKaEoSgxuGhv7;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_bq3weCt4LdKaEoSgxuGhv7;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_KtP43sekT8G3hfzUmyimpd;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en Odontología/Estomatología en Álava"@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_fLxrNWB2HdPTWwVwRRne8d a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_fLxrNWB2HdPTWwVwRRne8d;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_fLxrNWB2HdPTWwVwRRne8d;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_fLxrNWB2HdPTWwVwRRne8d;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_fLxrNWB2HdPTWwVwRRne8d;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_5xoB9vA8ePdLGXGST56XRA;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Rehabilitación en Las Palmas de Gran Canaria."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_fZYzhCqjDwjirNdidcfc8y a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_fZYzhCqjDwjirNdidcfc8y;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_fZYzhCqjDwjirNdidcfc8y;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_fZYzhCqjDwjirNdidcfc8y;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_fZYzhCqjDwjirNdidcfc8y;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Psiquiatría en Palma."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_Lot_j2SJ96cVTr8dYTsApekBFt a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermLot_j2SJ96cVTr8dYTsApekBFt;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este lote se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el resto de documentos del expediente."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-663529_MainMonetaryValueLot_j2SJ96cVTr8dYTsApekBFt;
+  epo:hasID epd:id_2023-S-210-663529_LotIdentifier_j2SJ96cVTr8dYTsApekBFt;
+  epo:hasPurpose epd:id_2023-S-210-663529_LotPurpose_j2SJ96cVTr8dYTsApekBFt;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663529_MonetaryValueLot_4AdnjnKkZ7tPfUJne4532R;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada de Oftalmología en Palma."@es;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_78HC87ZpkN6xfeFJJnpwkR a epo:MonetaryValue;
+  epo:hasAmountValue 229633.8;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4 a epo:MonetaryValue;
+  epo:hasAmountValue 108900.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_DidTk6xWEcuNno54z8b7Cx a epo:MonetaryValue;
+  epo:hasAmountValue 68195.6;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_FT8JUwb3iQhSXNbZ6rMXmF a epo:MonetaryValue;
+  epo:hasAmountValue 1054416.75;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_JAM8nQtYbXnFWkMot27LfV a epo:MonetaryValue;
+  epo:hasAmountValue 90169.2;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_QHRS3wY75zxL3xATmYWDQz a epo:MonetaryValue;
+  epo:hasAmountValue 100188.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_RGPwnVV6UP6kCGWYPpAhzW a epo:MonetaryValue;
+  epo:hasAmountValue 239483.2;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_UdDUu4MDCKQjfm86QzomXu a epo:MonetaryValue;
+  epo:hasAmountValue 42289.5;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_bq3weCt4LdKaEoSgxuGhv7 a epo:MonetaryValue;
+  epo:hasAmountValue 90483.8;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_fLxrNWB2HdPTWwVwRRne8d a epo:MonetaryValue;
+  epo:hasAmountValue 187462.88;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_fZYzhCqjDwjirNdidcfc8y a epo:MonetaryValue;
+  epo:hasAmountValue 96800.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MainMonetaryValueLot_j2SJ96cVTr8dYTsApekBFt a epo:MonetaryValue;
+  epo:hasAmountValue 141059.02;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_4AdnjnKkZ7tPfUJne4532R a epo:MonetaryValue;
+  epo:hasAmountValue 64117.74;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_5xoB9vA8ePdLGXGST56XRA a epo:MonetaryValue;
+  epo:hasAmountValue 85210.4;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_EpbdEkZb9pTmNCJJtMiXLm a epo:MonetaryValue;
+  epo:hasAmountValue 49500.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_KtP43sekT8G3hfzUmyimpd a epo:MonetaryValue;
+  epo:hasAmountValue 41129.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_PHxKeGyGCR5huRNcP7qwrn a epo:MonetaryValue;
+  epo:hasAmountValue 108856.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_VqS7EDwKWmbqCTyfhoujPJ a epo:MonetaryValue;
+  epo:hasAmountValue 479280.34;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_dZQRrH4FUeVAcfNZY6dMYe a epo:MonetaryValue;
+  epo:hasAmountValue 104379.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_MonetaryValueLot_gqj99ttAxcXkepTxzBMmSV a epo:MonetaryValue;
+  epo:hasAmountValue 19222.5;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-210-663529_Contract_8MrSBasBg6PCWswrGTY98R, epd:id_2023-S-210-663529_Contract_9WY8XodCFoBg7yvS7uvaM9,
+    epd:id_2023-S-210-663529_Contract_9ctEUXnALobQ7VPVQJxSDG, epd:id_2023-S-210-663529_Contract_DetMpoCnSgP6aKMi9sbbBY,
+    epd:id_2023-S-210-663529_Contract_GbXB43iNR8iw2hTgggmJvh, epd:id_2023-S-210-663529_Contract_LvgukoMCPwmGzMjz7RFuwt,
+    epd:id_2023-S-210-663529_Contract_MCy57MpL2YJjPCg2VnLbFb, epd:id_2023-S-210-663529_Contract_MsV6uwff9iPfXsPw5jGrLu;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-210-663529_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ;
+  epo:announcesRole epd:id_2023-S-210-663529_Buyer_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2023-S-210-663529_Reviewer_cbWuhNnCxDFGewidLQWHhz,
+    epd:id_2023-S-210-663529_Winner_7QpwkMV9WZ7EXwkCnxuWUb, epd:id_2023-S-210-663529_Winner_FFhgSAVwxFHqdxzamiprBD,
+    epd:id_2023-S-210-663529_Winner_Jyo2qMb8bzLKuG4JkTu8Ge, epd:id_2023-S-210-663529_Winner_QyMRW3fd83ATQeN9QWhTHf,
+    epd:id_2023-S-210-663529_Winner_StL6e6sPDdUgHDYkFGr3SV, epd:id_2023-S-210-663529_Winner_YF4vVFMnwSKrCx9NatBgNN,
+    epd:id_2023-S-210-663529_Winner_bjGxkcQmFjCsXHxAd5LD6i, epd:id_2023-S-210-663529_Winner_oGxnL83FA3LcXWdketPzfK;
+  epo:announcesTender epd:id_2023-S-210-663529_Tender_4AdnjnKkZ7tPfUJne4532R, epd:id_2023-S-210-663529_Tender_5xoB9vA8ePdLGXGST56XRA,
+    epd:id_2023-S-210-663529_Tender_EpbdEkZb9pTmNCJJtMiXLm, epd:id_2023-S-210-663529_Tender_KtP43sekT8G3hfzUmyimpd,
+    epd:id_2023-S-210-663529_Tender_PHxKeGyGCR5huRNcP7qwrn, epd:id_2023-S-210-663529_Tender_VqS7EDwKWmbqCTyfhoujPJ,
+    epd:id_2023-S-210-663529_Tender_dZQRrH4FUeVAcfNZY6dMYe, epd:id_2023-S-210-663529_Tender_gqj99ttAxcXkepTxzBMmSV;
+  epo:hasDispatchDate "2023-10-27"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663529_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-663529_Lot_78HC87ZpkN6xfeFJJnpwkR, epd:id_2023-S-210-663529_Lot_9kJZhTgye29otV72ZHovp4,
+    epd:id_2023-S-210-663529_Lot_DidTk6xWEcuNno54z8b7Cx, epd:id_2023-S-210-663529_Lot_FT8JUwb3iQhSXNbZ6rMXmF,
+    epd:id_2023-S-210-663529_Lot_JAM8nQtYbXnFWkMot27LfV, epd:id_2023-S-210-663529_Lot_QHRS3wY75zxL3xATmYWDQz,
+    epd:id_2023-S-210-663529_Lot_RGPwnVV6UP6kCGWYPpAhzW, epd:id_2023-S-210-663529_Lot_UdDUu4MDCKQjfm86QzomXu,
+    epd:id_2023-S-210-663529_Lot_bq3weCt4LdKaEoSgxuGhv7, epd:id_2023-S-210-663529_Lot_fLxrNWB2HdPTWwVwRRne8d,
+    epd:id_2023-S-210-663529_Lot_fZYzhCqjDwjirNdidcfc8y, epd:id_2023-S-210-663529_Lot_j2SJ96cVTr8dYTsApekBFt;
+  epo:refersToPrevious epd:id_2023-S-130-413651_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-663529_Procedure_aCmfT72mHtfxPh7XQjZApJ .
+
+epd:id_2023-S-210-663529_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2023-S-210-663529_ProcurementMonetaryValue_aCmfT72mHtfxPh7XQjZApJ .
+
+epd:id_2023-S-210-663529_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-663529" .
+
+epd:id_2023-S-210-663529_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:postCode "28222";
+  locn:postName "Majadahonda (Madrid)";
+  locn:thoroughfare "Ctra. de Pozuelo, 61 - Edificio de la Sede Social" .
+
+epd:id_2023-S-210-663529_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8 a epo:Identifier;
+  epo:hasIdentifierValue "G28207017" .
+
+epd:id_2023-S-210-663529_Organisation_7D5VmvEvVafBz7JQr2uuS8 a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/def-cont>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/grp-p-aut>, <http://publications.europa.eu/resource/authority/buyer-legal-type/int-org>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/la>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-cga>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/spec-rights-entity>;
+  epo:hasBuyerLegalTypeDescription "Otras Entidades del Sector Público";
+  epo:hasID epd:id_2023-S-210-663529_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8;
+  epo:hasLegalName "Director Gerente de FREMAP"@es;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/soc-pro>;
+  cccev:registeredAddress epd:id_2023-S-210-663529_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-663529_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "LICT/99/139/2022/0210" .
+
+epd:id_2023-S-210-663529_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85100000> .
+
+epd:id_2023-S-210-663529_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663529_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n;
+  epo:hasDescription "Las necesidades que deben satisfacerse mediante este procedimiento se especifican, describen en detalle y justifican en la Memoria de Necesidades que se publica con el mismo."@es;
+  epo:hasID epd:id_2023-S-210-663529_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-663529_Lot_78HC87ZpkN6xfeFJJnpwkR,
+    epd:id_2023-S-210-663529_Lot_9kJZhTgye29otV72ZHovp4, epd:id_2023-S-210-663529_Lot_DidTk6xWEcuNno54z8b7Cx,
+    epd:id_2023-S-210-663529_Lot_FT8JUwb3iQhSXNbZ6rMXmF, epd:id_2023-S-210-663529_Lot_JAM8nQtYbXnFWkMot27LfV,
+    epd:id_2023-S-210-663529_Lot_QHRS3wY75zxL3xATmYWDQz, epd:id_2023-S-210-663529_Lot_RGPwnVV6UP6kCGWYPpAhzW,
+    epd:id_2023-S-210-663529_Lot_UdDUu4MDCKQjfm86QzomXu, epd:id_2023-S-210-663529_Lot_bq3weCt4LdKaEoSgxuGhv7,
+    epd:id_2023-S-210-663529_Lot_fLxrNWB2HdPTWwVwRRne8d, epd:id_2023-S-210-663529_Lot_fZYzhCqjDwjirNdidcfc8y,
+    epd:id_2023-S-210-663529_Lot_j2SJ96cVTr8dYTsApekBFt;
+  epo:hasPurpose epd:id_2023-S-210-663529_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasTitle "Contratación del servicio de Asistencia Sanitaria Especializada en las Comunidades Autónomas de Aragón, País Vasco, Galicia, Islas Canarias e Islas Baleares para FREMAP, Mutua Colaboradora con la Seguridad Social nº 61"@es .
+
+epd:id_2023-S-210-663529_ProcurementMonetaryValue_aCmfT72mHtfxPh7XQjZApJ a epo:MonetaryValue;
+  epo:hasAmountValue 941216.01;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663529_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz a cccev:ContactPoint;
+  epo:hasFax "+34 913491441";
+  cccev:email "tribunal_recursos.contratos@hacienda.gob.es";
+  cccev:telephone "+34 913491319" .
+
+epd:id_2023-S-210-663529_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  locn:postCode "28020";
+  locn:postName "Madrid";
+  locn:thoroughfare "Avenida General Perón, 38, planta 8" .
+
+epd:id_2023-S-210-663529_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organization;
+  epo:hasLegalName "Tribunal Administrativo Central de Recursos Contractuales"@es;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663529_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz;
+  cccev:registeredAddress epd:id_2023-S-210-663529_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-663529_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-663529_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_4AdnjnKkZ7tPfUJne4532R a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_8MrSBasBg6PCWswrGTY98R .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_5xoB9vA8ePdLGXGST56XRA a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_MCy57MpL2YJjPCg2VnLbFb .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_EpbdEkZb9pTmNCJJtMiXLm a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_LvgukoMCPwmGzMjz7RFuwt .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_KtP43sekT8G3hfzUmyimpd a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_DetMpoCnSgP6aKMi9sbbBY .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_PHxKeGyGCR5huRNcP7qwrn a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_MsV6uwff9iPfXsPw5jGrLu .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_VqS7EDwKWmbqCTyfhoujPJ a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 2;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_GbXB43iNR8iw2hTgggmJvh .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_dZQRrH4FUeVAcfNZY6dMYe a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_9ctEUXnALobQ7VPVQJxSDG .
+
+epd:id_2023-S-210-663529_SubmissionStatisticalInformation_gqj99ttAxcXkepTxzBMmSV a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedSMETenders 0;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663529_LotAwardOutcome_9WY8XodCFoBg7yvS7uvaM9 .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_4AdnjnKkZ7tPfUJne4532R a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_4AdnjnKkZ7tPfUJne4532R;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_oGxnL83FA3LcXWdketPzfK .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_5xoB9vA8ePdLGXGST56XRA a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_5xoB9vA8ePdLGXGST56XRA;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_bjGxkcQmFjCsXHxAd5LD6i .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_EpbdEkZb9pTmNCJJtMiXLm a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_StL6e6sPDdUgHDYkFGr3SV .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_KtP43sekT8G3hfzUmyimpd a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_KtP43sekT8G3hfzUmyimpd;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_7QpwkMV9WZ7EXwkCnxuWUb .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_PHxKeGyGCR5huRNcP7qwrn a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_PHxKeGyGCR5huRNcP7qwrn;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_FFhgSAVwxFHqdxzamiprBD .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_VqS7EDwKWmbqCTyfhoujPJ a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_VqS7EDwKWmbqCTyfhoujPJ;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_YF4vVFMnwSKrCx9NatBgNN .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_dZQRrH4FUeVAcfNZY6dMYe a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_dZQRrH4FUeVAcfNZY6dMYe;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_Jyo2qMb8bzLKuG4JkTu8Ge .
+
+epd:id_2023-S-210-663529_TenderAwardOutcome_gqj99ttAxcXkepTxzBMmSV a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663529_Tender_gqj99ttAxcXkepTxzBMmSV;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663529_Winner_QyMRW3fd83ATQeN9QWhTHf .
+
+epd:id_2023-S-210-663529_Tender_4AdnjnKkZ7tPfUJne4532R a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_FT8JUwb3iQhSXNbZ6rMXmF .
+
+epd:id_2023-S-210-663529_Tender_5xoB9vA8ePdLGXGST56XRA a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_78HC87ZpkN6xfeFJJnpwkR .
+
+epd:id_2023-S-210-663529_Tender_EpbdEkZb9pTmNCJJtMiXLm a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-663529_Tender_KtP43sekT8G3hfzUmyimpd a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_DidTk6xWEcuNno54z8b7Cx .
+
+epd:id_2023-S-210-663529_Tender_PHxKeGyGCR5huRNcP7qwrn a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_bq3weCt4LdKaEoSgxuGhv7 .
+
+epd:id_2023-S-210-663529_Tender_VqS7EDwKWmbqCTyfhoujPJ a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_JAM8nQtYbXnFWkMot27LfV .
+
+epd:id_2023-S-210-663529_Tender_dZQRrH4FUeVAcfNZY6dMYe a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_RGPwnVV6UP6kCGWYPpAhzW .
+
+epd:id_2023-S-210-663529_Tender_gqj99ttAxcXkepTxzBMmSV a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663529_Lot_QHRS3wY75zxL3xATmYWDQz .
+
+epd:id_2023-S-210-663529_Winner_7QpwkMV9WZ7EXwkCnxuWUb a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_7QpwkMV9WZ7EXwkCnxuWUb .
+
+epd:id_2023-S-210-663529_Winner_FFhgSAVwxFHqdxzamiprBD a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_FFhgSAVwxFHqdxzamiprBD .
+
+epd:id_2023-S-210-663529_Winner_Jyo2qMb8bzLKuG4JkTu8Ge a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_Jyo2qMb8bzLKuG4JkTu8Ge .
+
+epd:id_2023-S-210-663529_Winner_QyMRW3fd83ATQeN9QWhTHf a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_QyMRW3fd83ATQeN9QWhTHf .
+
+epd:id_2023-S-210-663529_Winner_StL6e6sPDdUgHDYkFGr3SV a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV .
+
+epd:id_2023-S-210-663529_Winner_YF4vVFMnwSKrCx9NatBgNN a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_YF4vVFMnwSKrCx9NatBgNN .
+
+epd:id_2023-S-210-663529_Winner_bjGxkcQmFjCsXHxAd5LD6i a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_bjGxkcQmFjCsXHxAd5LD6i .
+
+epd:id_2023-S-210-663529_Winner_oGxnL83FA3LcXWdketPzfK a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663529_ContractorOrganisation_oGxnL83FA3LcXWdketPzfK .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_7QpwkMV9WZ7EXwkCnxuWUb> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_7QpwkMV9WZ7EXwkCnxuWUb> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_Organisation_7D5VmvEvVafBz7JQr2uuS8> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_Organisation_7D5VmvEvVafBz7JQr2uuS8> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_FFhgSAVwxFHqdxzamiprBD> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_FFhgSAVwxFHqdxzamiprBD> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2023-S-028-080162/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-138-439460_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-082951/bdZjimbzCaRXbeYeBmF94j> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_YF4vVFMnwSKrCx9NatBgNN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_YF4vVFMnwSKrCx9NatBgNN> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_QyMRW3fd83ATQeN9QWhTHf> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_QyMRW3fd83ATQeN9QWhTHf> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_Jyo2qMb8bzLKuG4JkTu8Ge> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_Jyo2qMb8bzLKuG4JkTu8Ge> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_bjGxkcQmFjCsXHxAd5LD6i> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_bjGxkcQmFjCsXHxAd5LD6i> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_oGxnL83FA3LcXWdketPzfK> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663529_ContractorOrganisation_oGxnL83FA3LcXWdketPzfK> .

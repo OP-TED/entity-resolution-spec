@@ -1,0 +1,172 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-072-220333_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-072-220333_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-072-220333_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 072-220333" .
+
+epd:id_2023-S-210-661197_AwardCriterionCost_DebEgs9FY45WxqkUVE6CyN a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/cost>;
+  cccev:name "coût"@fr;
+  cccev:weight "30"@fr .
+
+epd:id_2023-S-210-661197_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "expérience"@fr;
+  cccev:weight "45"@fr .
+
+epd:id_2023-S-210-661197_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasBuyerProfile "https://www.fondsdereserve.fr/fr"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-661197_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2023-S-210-661197_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-661197_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasInternetAddress "https://www.fondsdereserve.fr/fr"^^xsd:anyURI;
+  cccev:email "ld-frr-dcj@caissedesdepots.fr" .
+
+epd:id_2023-S-210-661197_ContractIdentifier_CS5FLPRMexziiyPDHq8FC6 a epo:Identifier;
+  epo:hasIdentifierValue "2023FRR01" .
+
+epd:id_2023-S-210-661197_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR> .
+
+epd:id_2023-S-210-661197_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-661197_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-661197_Contract_KaeDJ6cSC7UaS6sXtDUnvf a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-16"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-661197_ContractIdentifier_CS5FLPRMexziiyPDHq8FC6;
+  epo:hasTitle "marche no2023frr01 - prestation de mesure et D'Analyse DE L'Empreinte environnementale et climat du portefeuille du frr"@fr;
+  epo:includesLot epd:id_2023-S-210-661197_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-661197_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-661197_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/USA>;
+  locn:postName "New York" .
+
+epd:id_2023-S-210-661197_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo a org:Organization;
+  epo:hasLegalName "s&P Global Market Intelligence LLC"@fr;
+  cccev:registeredAddress epd:id_2023-S-210-661197_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-210-661197_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf
+  a epo:MonetaryValue;
+  epo:hasAmountValue 305000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-661197_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-661197_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v;
+  epo:describesLot epd:id_2023-S-210-661197_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-661197_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-661197_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/66523000> .
+
+epd:id_2023-S-210-661197_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-661197_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasDescription "mesure et analyse environnementale"@fr;
+  epo:hasPurpose epd:id_2023-S-210-661197_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-661197_AwardCriterionCost_DebEgs9FY45WxqkUVE6CyN,
+    epd:id_2023-S-210-661197_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP .
+
+epd:id_2023-S-210-661197_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-210-661197_Contract_KaeDJ6cSC7UaS6sXtDUnvf;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-210-661197_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:announcesRole epd:id_2023-S-210-661197_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2023-S-210-661197_Reviewer_bdZjimbzCaRXbeYeBmF94j,
+    epd:id_2023-S-210-661197_Winner_WFzZGbdirSo5EBhCMeQqCo;
+  epo:announcesTender epd:id_2023-S-210-661197_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-661197_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-661197_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:refersToPrevious epd:id_2023-S-072-220333_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-661197_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-661197_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2023-S-210-661197_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-661197_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-661197" .
+
+epd:id_2023-S-210-661197_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postName "Paris" .
+
+epd:id_2023-S-210-661197_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasLegalName "fonds de réserve pour les retraites"@fr;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/econ-aff>;
+  cccev:registeredAddress epd:id_2023-S-210-661197_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-661197_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023FRR01" .
+
+epd:id_2023-S-210-661197_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/66523000> .
+
+epd:id_2023-S-210-661197_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasDescription "le présent Marché porte sur la sélection d'un prestataire externe capable de mesurer, d'analyser, et de suivre l'empreinte environnementale et climat du Portefeuille d'actifs financiers du Frr.L'Empreinte environnementale et climat doit notamment permettre au FRR d'identifier les actifs à forte empreinte carbone (émissions et réserves de GES, charbon...), ceux générateurs de risques physiques et de transition, le tout dans le respect de l'objectif international de limitation du réchauffement climatique"@fr;
+  epo:hasID epd:id_2023-S-210-661197_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-661197_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2023-S-210-661197_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle "marche 2023frr01 - prestation de mesure et D'Analyse DE L'Empreinte environnementale et climat du portefeuille du frr "@fr;
+  epo:isCoveredByGPA true .
+
+epd:id_2023-S-210-661197_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 a epo:MonetaryValue;
+  epo:hasAmountValue 305000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-661197_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  locn:postName "Paris" .
+
+epd:id_2023-S-210-661197_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "tribunal administratif de Paris"@fr;
+  cccev:registeredAddress epd:id_2023-S-210-661197_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-661197_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-661197_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-661197_SubmissionStatisticalInformation_SM6UbUtHRXNqgrskZtVN8v a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedTenders 3;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-661197_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-661197_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-661197_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-661197_Winner_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-210-661197_Tender_SM6UbUtHRXNqgrskZtVN8v a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-661197_Lot_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-210-661197_Winner_WFzZGbdirSo5EBhCMeQqCo a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-661197_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661197_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661197_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661197_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661197_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661197_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2023-S-036-105505/eP5uWDhd4iYABCZbaj8dzQ> .

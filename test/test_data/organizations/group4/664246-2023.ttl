@@ -1,0 +1,21 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+epd:id_2023-S-210-664246_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organization ;
+    epo:hasLegalName "Consiliul National de Solutionare a Contestatiilor "@ro ;
+    epo:hasPrimaryContactPoint epd:id_2023-S-210-664246_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz ;
+    cccev:registeredAddress epd:id_2023-S-210-664246_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz ;
+    owl:sameAs epd:id_2023-S-210-664246_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-664246_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz a cccev:ContactPoint;
+  cccev:telephone "+40 213104641" .
+
+epd:id_2023-S-210-664246_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  locn:postCode "030084";
+  locn:postName "Bucuresti";
+  locn:thoroughfare "Str. Stavropoleos nr. 6, sector 3" .

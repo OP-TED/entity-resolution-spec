@@ -45,32 +45,6 @@ specifications only and does not have runnable unit tests.
 
 ### Deduplicated notices
 
-This repository contains manual deduplication for organizations and procedures from RDF tender notices. 
-The duplication was done using fuzzy string matching with manual checking of the results.
+This repository contains manual deduplication for organizations and procedures from RDF tender notices. The duplication was done using fuzzy string matching with manual checking of the results.
 
-### Structure with entity title
-
-```
-test
-└── test_data
-    └── notices
-        ├── deduplicated_organizations
-        │   ├── group1/  # Комисия за защита на конкуренцията
-        │   ├── group2/  # Tribunal administratif de Paris
-        │   ├── group3/  # Tribunal Administrativo Central de Recursos Contractuales
-        │   ├── group4/  # UAB "Labochema LT"
-        │   └── group5/  # Consiliul National de Solutionare a Contestatiilor
-        │
-        └── deduplicated_procedures
-            ├── group1/  # Servicii de exploatare forestieră
-            ├── group2/  # Zadavateli není známo, zda se jedná o malý či střední podnik
-            ├── group3/  # S21, PA 1.7; Bahntechnik Oberbau Los A, (19FEI37404) 20FEI44393
-            └── group4/  # Prestação de cuidados de enfermagem...
-```
-
-### Sample data deduplication notes
-
-- Organization matching normalizes company suffixes (Ltd, Corp, etc.)
-- Procedure matching normalizes whitespace and removes common words like "procedure"
-- Similarity threshold was set to 90%
-- The title of entities in each group may differ
+[Details here](./test/test_data/README.md)

@@ -1,0 +1,290 @@
+{
+  "$defs": {
+    "CanonicalEntity": {
+      "additionalProperties": false,
+      "description": "A canonical entity is an entity that the ERE has created during the resolution process\nof ERS entities.\n\nTODO: we don't support lineage for the moment, see the ERE contract document.",
+      "properties": {
+        "entityData": {
+          "description": "A code string representing the entity details (eg, RDF description).\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entityDataFormat": {
+          "description": "A string about the MIME format of `entityData` (e.g. text/turtle, application/ld+json)\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "description": "The (canonical) URI of the canonical entity. This restricts the parent range to URIs only.\n\nContrary to `Entity.id`, this is always known/required for canonical entities.\n",
+          "type": "string"
+        },
+        "type": {
+          "description": "A string representing the entity type URI (based on CET).\n\nNote that we don't use the `designates_type` thing here, since entities or canonical entities \nare always used in clearly distinct contexts.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "title": "CanonicalEntity",
+      "type": "object"
+    },
+    "Entity": {
+      "additionalProperties": false,
+      "description": "An entity is a representation of a real-world entity, as provided by the ERS.\nIt contains the entity data (e.g. RDF description) along with metadata about\nthe entity, such as its type and the data format used to represent it.",
+      "properties": {
+        "entityData": {
+          "description": "A code string representing the entity details (eg, RDF description).\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entityDataFormat": {
+          "description": "A string about the MIME format of `entityData` (e.g. text/turtle, application/ld+json)\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "description": "A string containing the entity ID or URI (set by the ERS or, for canonical entities, by the ERE).\n\nNote that the ID isn't mandatory when an entity is submitted for resolution, since the initial input\nmight be something like unstructured text, where the entity and its ID is to be recognised.        \n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "description": "A string representing the entity type URI (based on CET).\n\nNote that we don't use the `designates_type` thing here, since entities or canonical entities \nare always used in clearly distinct contexts.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Entity",
+      "type": "object"
+    },
+    "EntityResolutionRequest": {
+      "additionalProperties": false,
+      "description": "An entity resolution request sent to the ERE, containing the entity to be resolved.",
+      "properties": {
+        "entity": {
+          "$ref": "#/$defs/Entity",
+          "description": "The data about the entity to be resolved.\n"
+        },
+        "metadata": {
+          "description": "An optional arbitrary dictionary of further request metadata.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "originator": {
+          "description": "The ID or URI of the request originator.\n",
+          "type": "string"
+        },
+        "requestId": {
+          "description": "A string representing the unique ID of this request.\n",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "EntityResolutionRequest"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity",
+        "requestId",
+        "originator",
+        "type"
+      ],
+      "title": "EntityResolutionRequest",
+      "type": "object"
+    },
+    "EntityResolutionResponse": {
+      "additionalProperties": false,
+      "description": "An entity resolution response sent by the ERE.\n\nThis contains a reference to the canonical entity that the ERE has associated to the original \nentity in the request. It also reports a confidence score for the established association.",
+      "properties": {
+        "canonicalEntity": {
+          "$ref": "#/$defs/CanonicalEntity",
+          "description": "The canonical entity that the ERE has associated to the original entity.\nThis includes the canonical entity URI and its type.\n"
+        },
+        "confidenceLevel": {
+          "description": "A 0-1 value of how confident the ERE is about associating the original entity\nwith the canonical entity's cluster.\n",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "metadata": {
+          "description": "An optional arbitrary dictionary of further request metadata.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requestId": {
+          "description": "A string representing the unique ID of the request this response is about.\n",
+          "type": "string"
+        },
+        "sourceEntityId": {
+          "description": "The ID or URI of the original entity that has been resolved.\n",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "EntityResolutionResponse"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonicalEntity",
+        "sourceEntityId",
+        "requestId",
+        "type"
+      ],
+      "title": "EntityResolutionResponse",
+      "type": "object"
+    },
+    "ErrorResponse": {
+      "additionalProperties": false,
+      "description": "Response sent by the ERE when some error/exception occurs while processing a request.\nFor instance, this may happen if the request is malformed or some internal error happens.\n\nThe attributes of this class are based on [RFC-9457](https://datatracker.ietf.org/doc/html/rfc9457).",
+      "properties": {
+        "errorDetail": {
+          "description": "A human readable detailed message about the error that occurred.\n\nThis corresponds to RFC-9457's `detail`.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "errorTitle": {
+          "description": "A human readable brief message about the error that occurred.\n\nThis corresponds to RFC-9457's `title`.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "errorTrace": {
+          "description": "A string representing a (stack) trace of the error that occurred.\n\nThis is optional and typically used for debugging purposes only, since\nexposing this kind of server-side information is a security risk.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "errorType": {
+          "description": "A string representing the error type, eg, the FQN of the raised exception.\n\nThis corresponds to RFC-9457's `type`.\n",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "An optional arbitrary dictionary of further request metadata.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requestId": {
+          "description": "A string representing the unique ID of the request this response is about.\n",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "ErrorResponse"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "errorType",
+        "requestId",
+        "type"
+      ],
+      "title": "ErrorResponse",
+      "type": "object"
+    },
+    "RebuildRequest": {
+      "additionalProperties": false,
+      "description": "A request to reset all the resolutions computed so far and rebuild them as \nrequests about old entities arrive again (and build new entities from scratch).\n\nIt is expected that the ERE client re-sends all the entities to be resolved again,\nusing `EntityResolutionRequest` messages exactly as the first time the resolutions \nwere built. This implies the a client like the ERS logs/persists the entities it receives\nto resolve and also saves manual overriding of ERE results.",
+      "properties": {
+        "metadata": {
+          "description": "An optional arbitrary dictionary of further request metadata.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "originator": {
+          "description": "The ID or URI of the request originator.\n",
+          "type": "string"
+        },
+        "requestId": {
+          "description": "A string representing the unique ID of this request.\n",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "RebuildRequest"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "requestId",
+        "originator",
+        "type"
+      ],
+      "title": "RebuildRequest",
+      "type": "object"
+    },
+    "RebuildResponse": {
+      "additionalProperties": false,
+      "description": "A response to a `RebuildRequest`, confirming that the rebuild process has started.\n\nThis should carry the `requestId` attribute.",
+      "properties": {
+        "metadata": {
+          "description": "An optional arbitrary dictionary of further request metadata.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requestId": {
+          "description": "A string representing the unique ID of the request this response is about.\n",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "RebuildResponse"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "requestId",
+        "type"
+      ],
+      "title": "RebuildResponse",
+      "type": "object"
+    }
+  },
+  "$id": "https://data.europa.eu/ers/schema",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": true,
+  "metamodel_version": "1.7.0",
+  "title": "ersServiceDataSchema",
+  "type": "object",
+  "version": "1.0-SNAPSHOT"
+}
+
