@@ -1,0 +1,474 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2020-S-135-333368_Notice a epo:Notice;
+  epo:hasID epd:id_2020-S-135-333368_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ .
+
+epd:id_2020-S-135-333368_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ a epo:Identifier;
+  epo:hasIdentifierValue "2020/S 135-333368" .
+
+epd:id_2023-S-210-663534_Buyer_EDZAnT7HXvHuLqeZYHEzVQ a epo:Buyer;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasBuyerProfile "http://www.deutschebahn.com/bieterportal"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-663534_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:playedBy epd:id_2023-S-210-663534_Organisation_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-663534_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN a cccev:ContactPoint;
+  epo:hasContactName "Deutsche Bahn AG - Beschaffung Großprojekt Stuttgart - Ulm (FE.EI-SW-G)"@de;
+  epo:hasFax "+49 69-265-21939";
+  epo:hasInternetAddress "www.deutschebahn.com"^^xsd:anyURI;
+  cccev:email "einkauf-s21nbs@deutschebahn.com" .
+
+epd:id_2023-S-210-663534_ContractIdentifier_aVPKu2ujb6TZjPQNPCvUBb a epo:Identifier;
+  epo:hasIdentifierValue " 19FEI37404, 20FEI44393" .
+
+epd:id_2023-S-210-663534_ContractModification_NUqDzwkVVVUgZ2MjF797AY a epo:ContractModification;
+  epo:describesNotice epd:id_2023-S-210-663534_Notice;
+  epo:hasElementModification epd:id_2023-S-210-663534_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY .
+
+epd:id_2023-S-210-663534_ContractTermLotLocationAddressModification_AKLYjQuv54nZUBKnyu7AP7
+  a locn:Address;
+  locn:fullAddress "Stuttgart"@de .
+
+epd:id_2023-S-210-663534_ContractTermLotLocationAddress_mtBaW8k5EC8G5zB7LwJPww a locn:Address;
+  locn:fullAddress "Stuttgart"@de .
+
+epd:id_2023-S-210-663534_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE11>;
+  locn:address epd:id_2023-S-210-663534_ContractTermLotLocationAddressModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-663534_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE11>;
+  locn:address epd:id_2023-S-210-663534_ContractTermLotLocationAddress_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-663534_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:ContractTerm;
+  epo:definesContractPeriod epd:id_2023-S-210-663534_PeriodModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663534_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-663534_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:ContractTerm;
+  epo:definesContractPeriod epd:id_2023-S-210-663534_Period_mtBaW8k5EC8G5zB7LwJPww;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663534_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-663534_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+
+epd:id_2023-S-210-663534_Contract_csNjfsBkdGQvJWHAcwuHPA a epo:Contract;
+  epo:hasContractConclusionDate "2020-07-01"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663534_ContractIdentifier_aVPKu2ujb6TZjPQNPCvUBb;
+  epo:hasTitle "S21, PA 1.7; Bahntechnik Oberbau Los A , (19FEI37404), 20FEI44393"@de;
+  epo:includesLot epd:id_2023-S-210-663534_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663534_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_4jxq5KuyAaGTzG5CNj9Ycp
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA55>;
+  locn:postCode "44652";
+  locn:postName "Herne";
+  locn:thoroughfare "Landgrafenstr. 29" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_NKwkES7rhfjZebphvkjj93
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEB3B>;
+  locn:postCode "55232";
+  locn:postName "Alzey";
+  locn:thoroughfare "Galgenwiesenweg 23" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE94E>;
+  locn:postCode "49134";
+  locn:postName "Wallenhorst";
+  locn:thoroughfare "Hansastr. 83" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_jJkR6qh26YxC8X3YEqvd4D
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA34>;
+  locn:postCode "46325";
+  locn:postName "Borken";
+  locn:thoroughfare "Neumühlenallee 32" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddress_7mqnvemdYjunHRRFSwrW97 a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEB3B>;
+  locn:postCode "55232";
+  locn:postName "Alzey";
+  locn:thoroughfare "Galgenwiesenweg 23" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE94D>;
+  locn:postCode "49134";
+  locn:postName "Wallenhorst";
+  locn:thoroughfare "Hansastraße 83" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddress_KoxN6kkynnWenCXubDp4jC a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA55>;
+  locn:postCode "44652";
+  locn:postName "Herne";
+  locn:thoroughfare "Landgrafenstr. 29" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationAddress_nVctERDS8oxz6W3uETx4tv a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA34>;
+  locn:postCode "46325";
+  locn:postName "Borken";
+  locn:thoroughfare "Neumühlenalle 32" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk
+  a epo:Identifier;
+  epo:hasIdentifierValue "DE" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP a
+    epo:Identifier;
+  epo:hasIdentifierValue "DE" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationIdentifier_nVctERDS8oxz6W3uETx4tv a
+    epo:Identifier;
+  epo:hasIdentifierValue "de" .
+
+epd:id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp
+  a org:Organization;
+  epo:hasLegalName "Eiffage Rail NL der Eiffage Infra-Bau Se"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_4jxq5KuyAaGTzG5CNj9Ycp .
+
+epd:id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93
+  a org:Organization;
+  epo:hasLegalName "Faber Bau GmbH"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_NKwkES7rhfjZebphvkjj93 .
+
+epd:id_2023-S-210-663534_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk
+  a org:Organization;
+  epo:hasID epd:id_2023-S-210-663534_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk;
+  epo:hasLegalName "Wittfeld GmbH"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D
+  a org:Organization;
+  epo:hasLegalName "Heinrich Walter Bau GmbH"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddressModification_jJkR6qh26YxC8X3YEqvd4D .
+
+epd:id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97 a org:Organization;
+  epo:hasLegalName "Faber Bau GmbH"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddress_7mqnvemdYjunHRRFSwrW97 .
+
+epd:id_2023-S-210-663534_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP a org:Organization;
+  epo:hasID epd:id_2023-S-210-663534_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP;
+  epo:hasLegalName "Wittfed GmbH"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC a org:Organization;
+  epo:hasLegalName "Eiffage Rail NL der Eiffage Infra-Bau SE"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddress_KoxN6kkynnWenCXubDp4jC .
+
+epd:id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv a org:Organization;
+  epo:hasID epd:id_2023-S-210-663534_ContractorOrganisationIdentifier_nVctERDS8oxz6W3uETx4tv;
+  epo:hasLegalName "Heinrich Walter Bau GmbH"@de;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ContractorOrganisationAddress_nVctERDS8oxz6W3uETx4tv .
+
+epd:id_2023-S-210-663534_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY a epo:ElementModificationDescription;
+  epo:hasModificationDescription "AvL0119 Anpassung der Beschriftung auf den Kabelmarken."@de;
+  epo:hasModificationJustification <http://publications.europa.eu/resource/authority/modification-justification/add-wss>;
+  epo:hasModificationReasonDescription "Aufgrund technischer Anpassungen und zur besseren Lesbarkeit müssen auch die Kabelmarken angepasst werden."@de .
+
+epd:id_2023-S-210-663534_Fund_mtBaW8k5EC8G5zB7LwJPww a epo:Fund;
+  epo:hasDescription "Teil des EU-Projektes Nr. 17 im Programm der \"Transeuropäischen Netze (TEN) \"Paris-Straßburg-Stuttgart-Wien-Bratislava\", hier: Abschnitt Stuttgart-Wendlingen"@de .
+
+epd:id_2023-S-210-663534_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663534_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA
+  a epo:MonetaryValue;
+  epo:hasAmountValue 45663620.52;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663534_LotAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663534_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:describesLot epd:id_2023-S-210-663534_LotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasAwardedValue epd:id_2023-S-210-663534_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL .
+
+epd:id_2023-S-210-663534_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663534_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G;
+  epo:describesLot epd:id_2023-S-210-663534_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663534_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-663534_LotIdentifier_mtBaW8k5EC8G5zB7LwJPww a epo:Identifier;
+  epo:hasIdentifierValue "Los A" .
+
+epd:id_2023-S-210-663534_LotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Lot;
+  epo:containsModificationsOf epd:id_2023-S-210-663534_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663534_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasDescription "Kennzeichnung der verlegten Kabel mit Kabelmarken"@de .
+
+epd:id_2023-S-210-663534_Lot_mtBaW8k5EC8G5zB7LwJPww a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663534_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasDescription "Kabelkennzeichungen"@de;
+  epo:hasID epd:id_2023-S-210-663534_LotIdentifier_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasTitle "S21, PA 1.7; Bahntechnik Oberbau Los A , (19FEI37404), 20FEI44393"@de;
+  epo:isFundedBy epd:id_2023-S-210-663534_Fund_mtBaW8k5EC8G5zB7LwJPww;
+  epo:isUsingEUFunds true .
+
+epd:id_2023-S-210-663534_MediatorContactPoint_biGKhDwKykdkcXE93irzYV a cccev:ContactPoint;
+  epo:hasFax "+49 2289499400";
+  epo:hasInternetAddress "http://www.bundeskartellamt.de/"^^xsd:anyURI;
+  cccev:email "info@bundeskartellamt.de";
+  cccev:telephone "+49 22894990" .
+
+epd:id_2023-S-210-663534_MediatorOrganisationAddress_biGKhDwKykdkcXE93irzYV a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  locn:postCode "52123";
+  locn:postName "Bonn";
+  locn:thoroughfare "Villemombler Straße 76" .
+
+epd:id_2023-S-210-663534_MediatorOrganisation_biGKhDwKykdkcXE93irzYV a org:Organization;
+  epo:hasLegalName "Vergabekammer des Bundes beim Bundeskartellamt"@de;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663534_MediatorContactPoint_biGKhDwKykdkcXE93irzYV;
+  cccev:registeredAddress epd:id_2023-S-210-663534_MediatorOrganisationAddress_biGKhDwKykdkcXE93irzYV .
+
+epd:id_2023-S-210-663534_Mediator_biGKhDwKykdkcXE93irzYV a epo:Mediator;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_MediatorOrganisation_biGKhDwKykdkcXE93irzYV .
+
+epd:id_2023-S-210-663534_Notice a epo:ContractModificationNotice, epo:Notice;
+  epo:hasDispatchDate "2023-10-27"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663534_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToContractToBeModified epd:id_2023-S-210-663534_Contract_csNjfsBkdGQvJWHAcwuHPA;
+  epo:refersToPrevious epd:id_2020-S-135-333368_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT .
+
+epd:id_2023-S-210-663534_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-663534" .
+
+epd:id_2023-S-210-663534_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE11>;
+  locn:postCode "70191";
+  locn:postName "Stuttgart";
+  locn:thoroughfare "Räpplenstraße 17" .
+
+epd:id_2023-S-210-663534_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN a epo:Identifier;
+  epo:hasIdentifierValue "DE11" .
+
+epd:id_2023-S-210-663534_Organisation_iGF7ZaAiz9oMT8YWwHDjxN a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/def-cont>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/grp-p-aut>, <http://publications.europa.eu/resource/authority/buyer-legal-type/int-org>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/la>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-cga>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/spec-rights-entity>;
+  epo:hasID epd:id_2023-S-210-663534_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:hasLegalName "Deutsche Bahn AG"@de;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>;
+  cccev:registeredAddress epd:id_2023-S-210-663534_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-663534_PeriodModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Period;
+  epo:hasBeginning "2022-10-12"^^xsd:date .
+
+epd:id_2023-S-210-663534_Period_mtBaW8k5EC8G5zB7LwJPww a epo:Period;
+  epo:hasBeginning "2020-05-01"^^xsd:date .
+
+epd:id_2023-S-210-663534_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "2019/S 039-088890" .
+
+epd:id_2023-S-210-663534_ProcedureModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Procedure;
+  epo:containsModificationsOf epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasPurpose epd:id_2023-S-210-663534_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-663534_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45236000> .
+
+epd:id_2023-S-210-663534_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45236000> .
+
+epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663534_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ;
+  epo:hasID epd:id_2023-S-210-663534_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-663534_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasPurpose epd:id_2023-S-210-663534_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasTitle "S21, PA 1.7; Bahntechnik Oberbau Los A , (19FEI37404) 20FEI44393"@de;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-210-663534_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4 .
+
+epd:id_2023-S-210-663534_ReviewProcedureInformationProviderAddress_ZnF5jqqFzMTi9WKPqMm8gu
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  locn:postCode "52123";
+  locn:postName "Bonn";
+  locn:thoroughfare "Villemombler Straße 76" .
+
+epd:id_2023-S-210-663534_ReviewProcedureInformationProviderContactPoint_ZnF5jqqFzMTi9WKPqMm8gu
+  a cccev:ContactPoint;
+  epo:hasFax "+49 2289499400";
+  epo:hasInternetAddress "http://www.bundeskartellamt.de/"^^xsd:anyURI;
+  cccev:email "info@bundeskartellamt.de";
+  cccev:telephone "+49 22894990" .
+
+epd:id_2023-S-210-663534_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu
+  a org:Organization;
+  epo:hasLegalName "Vergabekammer des Bundes beim Bundeskartellamt"@de;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663534_ReviewProcedureInformationProviderContactPoint_ZnF5jqqFzMTi9WKPqMm8gu;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ReviewProcedureInformationProviderAddress_ZnF5jqqFzMTi9WKPqMm8gu .
+
+epd:id_2023-S-210-663534_ReviewProcedureInformationProvider_ZnF5jqqFzMTi9WKPqMm8gu
+  a epo:ReviewProcedureInformationProvider;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu .
+
+epd:id_2023-S-210-663534_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4 a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "Ein Nachprüfungsantrag ist unzulässig, soweit mehr als 15 Kalendertage nach Eingang der Mitteilung des Auftraggebers, einer Rüge nicht abhelfen zu wollen, vergangen sind (§ 160 Abs. 3 S. 1 Nr. 4 GWB). Ein Nachprüfungsantrag ist zudem unzulässig, soweit der Antrag erst nach Zuschlagserteilung zugestellt wird (vgl. § 168 Abs. 2 Satz 1 GWB). Die Zuschlagserteilung ist möglich 10 Tage nach Absendung der Bekanntgabe der Vergabeentscheidung per Fax oder per Email bzw. 15 Tage nach Absendung der Bekanntgabe der Vergabeentscheidung per Post (§ 134 Abs. 2 GWB). Die Zulässigkeit eines Nachprüfungsantrags setzt ferner voraus, dass die geltend gemachten Vergabeverstöße innerhalb von 10 Kalendertagen nach Kenntnis bzw. – soweit die Vergabeverstöße aus der Bekanntmachung oder den Vergabeunterlagen erkennbar sind – bis zum Ablauf der Teilnahme- bzw. Angebotsfrist gerügt wurden (§ 160 Abs. 3 S. 1 Nr. 1 – 3 GWB). Des Weiteren wird auf die in 135 Abs. 2 GWB genannten Fristen verwiesen" .
+
+epd:id_2023-S-210-663534_ReviewerContactPoint_LLhJHMi9mby8ixbkfyGoWj a cccev:ContactPoint;
+  epo:hasFax "+49 2289499400";
+  epo:hasInternetAddress "http://www.bundeskartellamt.de/"^^xsd:anyURI;
+  cccev:email "info@bundeskartellamt.de";
+  cccev:telephone "+49 22894990" .
+
+epd:id_2023-S-210-663534_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  locn:postCode "52123";
+  locn:postName "Bonn";
+  locn:thoroughfare "Villemombler Straße 76" .
+
+epd:id_2023-S-210-663534_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj a org:Organization;
+  epo:hasLegalName "Vergabekammer des Bundes beim Bundeskartellamt"@de;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663534_ReviewerContactPoint_LLhJHMi9mby8ixbkfyGoWj;
+  cccev:registeredAddress epd:id_2023-S-210-663534_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-663534_Reviewer_LLhJHMi9mby8ixbkfyGoWj a epo:Reviewer;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-663534_SubmissionStatisticalInformation_NBeHHAEunZ8nwh2wSSps9G a
+    epo:SubmissionStatisticalInformation;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663534_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-663534_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:TenderAwardOutcome;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663534_WinnerModification_4jxq5KuyAaGTzG5CNj9Ycp,
+    epd:id_2023-S-210-663534_WinnerModification_NKwkES7rhfjZebphvkjj93, epd:id_2023-S-210-663534_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk,
+    epd:id_2023-S-210-663534_WinnerModification_jJkR6qh26YxC8X3YEqvd4D .
+
+epd:id_2023-S-210-663534_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663534_Tender_NBeHHAEunZ8nwh2wSSps9G;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663534_Winner_7mqnvemdYjunHRRFSwrW97,
+    epd:id_2023-S-210-663534_Winner_HZWpWHpbXutoMwFeMp6nUP, epd:id_2023-S-210-663534_Winner_KoxN6kkynnWenCXubDp4jC,
+    epd:id_2023-S-210-663534_Winner_nVctERDS8oxz6W3uETx4tv .
+
+epd:id_2023-S-210-663534_Tender_NBeHHAEunZ8nwh2wSSps9G a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663534_Lot_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-663534_WinnerModification_4jxq5KuyAaGTzG5CNj9Ycp a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp .
+
+epd:id_2023-S-210-663534_WinnerModification_NKwkES7rhfjZebphvkjj93 a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93 .
+
+epd:id_2023-S-210-663534_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-663534_WinnerModification_jJkR6qh26YxC8X3YEqvd4D a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D .
+
+epd:id_2023-S-210-663534_Winner_7mqnvemdYjunHRRFSwrW97 a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97 .
+
+epd:id_2023-S-210-663534_Winner_HZWpWHpbXutoMwFeMp6nUP a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-663534_Winner_KoxN6kkynnWenCXubDp4jC a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC .
+
+epd:id_2023-S-210-663534_Winner_nVctERDS8oxz6W3uETx4tv a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-663534_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_MediatorOrganisation_biGKhDwKykdkcXE93irzYV> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-051149/de2507f9-ae25-37c8-809c-0109efe10669> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-051149/de2507f9-ae25-37c8-809c-0109efe10669> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_NKwkES7rhfjZebphvkjj93> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_7mqnvemdYjunHRRFSwrW97> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-051149/de2507f9-ae25-37c8-809c-0109efe10669> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661907_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663534_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661039_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .

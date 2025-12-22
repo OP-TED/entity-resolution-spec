@@ -1,0 +1,50 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization ;
+    epo:hasLegalName "Consiliul National de Solutionare a Contestatiilor"@ro ;
+    epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j ;
+    cccev:registeredAddress epd:id_2023-S-210-662459_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j ;
+    owl:sameAs <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-050503/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051489/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051497/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051503/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051506/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051507/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051510/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051517/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051527/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051545/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051549/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051574/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051593/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051594/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051612/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051629/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051631/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051632/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051633/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051635/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051645/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051650/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051651/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051652/de2507f9-ae25-37c8-809c-0109efe10669>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051654/de2507f9-ae25-37c8-809c-0109efe10669>,
+        epd:id_2023-S-104-326088_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-662459_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j a cccev:ContactPoint;
+  epo:hasFax "+40 213104642 / +40 218900745";
+  epo:hasInternetAddress "http://www.cnsc.ro"^^xsd:anyURI;
+  cccev:email "office@cnsc.ro";
+  cccev:telephone "+40 213104641" .
+
+epd:id_2023-S-210-662459_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  locn:postCode "030084";
+  locn:postName "Bucuresti";
+  locn:thoroughfare "Str. Stavropoleos nr. 6, sector 3" .
