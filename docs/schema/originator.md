@@ -25,8 +25,8 @@ Alias: originator
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Request](Request.md) | Root class to represent all the requests sent to the ERE |  no  |
-| [RebuildRequest](RebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
 | [EntityResolutionRequest](EntityResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
+| [RebuildRequest](RebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
 
 
 
