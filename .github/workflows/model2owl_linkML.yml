@@ -6,6 +6,7 @@ env:
   OUTPUT_DIR_LINKML: models/implementation/linkML
   MODEL2OWL_CONFIG_DIR: models/implementation/model2owl-config
   MODEL2OWL_DEFAULT_CONFIG: test/ePO-default-config
+  MODEL2OWL_BRANCH: feature/linkml
 
 on:
   push:
@@ -24,7 +25,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch feature/linkml  https://github.com/meaningfy-ws/model2owl.git
+          git clone --branch ${{ env.MODEL2OWL_BRANCH }} https://github.com/meaningfy-ws/model2owl.git
           pwd
 
       - name: get-saxon
