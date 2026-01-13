@@ -1,7 +1,7 @@
 name: transform UML model
 
 env:
-  CM_FILE_NAME: input.xmi
+  CM_FILE_NAME: mwb_CM.xml
   XMI_SOURCE_DIR: resources/transformation/xmi_conceptual_model
   OUTPUT_DIR_LINKML: resources/transformation/linkML
   MODEL2OWL_CONFIG_DIR: resources/transformation/model2owl-config
