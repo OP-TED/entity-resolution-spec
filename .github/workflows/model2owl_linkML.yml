@@ -7,6 +7,7 @@ env:
   MODEL2OWL_CONFIG_DIR: resources/transformation/model2owl-config
   MODEL2OWL_DEFAULT_CONFIG: test/ePO-default-config
   MODEL2OWL_BRANCH: feature/linkml
+  SAXON_URL: https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/10.6/Saxon-HE-10.6.jar
 
 on:
   workflow_dispatch:
@@ -31,7 +32,10 @@ jobs:
           pwd
 
       - name: get-saxon
-        run: pwd && cd model2owl && make get-saxon
+        run: |
+          mkdir -p model2owl/saxon
+          curl -L -o model2owl/saxon/saxon.jar "${{ env.SAXON_URL }}"
+          echo "Saxon downloaded from Maven Central"
 
       - name: linkML transform step
         run: |
