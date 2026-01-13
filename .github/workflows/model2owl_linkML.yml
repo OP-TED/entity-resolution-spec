@@ -1,10 +1,10 @@
 name: transform UML model
 
 env:
-  CM_FILE_NAME: mwb_CM.xml
-  XMI_SOURCE_DIR: models/implementation/xmi_conceptual_model
-  OUTPUT_DIR_LINKML: models/implementation/linkML
-  MODEL2OWL_CONFIG_DIR: models/implementation/model2owl-config
+  CM_FILE_NAME: input.xmi
+  XMI_SOURCE_DIR: resources/transformation/xmi_conceptual_model
+  OUTPUT_DIR_LINKML: resources/transformation/linkML
+  MODEL2OWL_CONFIG_DIR: resources/transformation/model2owl-config
   MODEL2OWL_DEFAULT_CONFIG: test/ePO-default-config
   MODEL2OWL_BRANCH: feature/linkml
 
@@ -14,7 +14,8 @@ on:
     branches:
       - "**"
     paths:
-      - "models/implementation/xmi_conceptual_model/mwb_CM.xml"
+      - "resources/transformation/xmi_conceptual_model/**"
+      - "resources/transformation/model2owl-config/**"
 
 jobs:
   linkML:
