@@ -74,7 +74,7 @@ jobs:
           if [ -z "$(git status --porcelain)" ]; then
           echo "push=false" >> $GITHUB_OUTPUT
           else
-          git commit -m "[CI] Add UML->LinkML model2owl export"
+          git commit -m "[CI] UML->LinkML model2owl export #${{ github.run_number }}"
           echo "push=true" >> $GITHUB_OUTPUT
           fi
         shell: bash
