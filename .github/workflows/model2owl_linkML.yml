@@ -14,9 +14,9 @@ on:
   push:
     branches:
       - "**"
-    paths:
-      - "resources/transformation/xmi_conceptual_model/**"
-      - "resources/transformation/model2owl-config/**"
+    # paths:
+    #   - "resources/transformation/xmi_conceptual_model/**"
+    #   - "resources/transformation/model2owl-config/**"
 
 jobs:
   linkML:
