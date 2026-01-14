@@ -12,9 +12,10 @@ default_range: string
 
 classes:
 
-  RequestOrResponseMixin:
+  ERECommunicationArtefact:
     description: |
-      Root mixin to represent attributes common to both requests and results.
+      Root abstraction to represent attributes common to both requests and results.
+      This is modelled as a mixin in LinkML (so that it can't be instantiated directly).
     mixin: true
     abstract: true # should be implied by mixin, but just in case
     attributes:
@@ -26,7 +27,7 @@ classes:
           slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
           In other words, a particular request will have `type` set with values like 
-          `EntityResolutionRequest` or `EntityResolutionResult`
+          `EntityMentionResolutionRequest` or `EntityResolutionResult`
         designates_type: true
         required: true
       metadata:
@@ -39,12 +40,12 @@ classes:
         # make room for any of JSON, XML, RDF, etc, like entityData?
 
 
-  Request:
+  ERERequest:
     description: |
       Root class to represent all the requests sent to the ERE.
     abstract: true
     mixins:
-      - RequestOrResponseMixin
+      - ERECommunicationArtefact
     attributes:
       requestId:
         description: |
@@ -54,18 +55,21 @@ classes:
         description: |
           The ID or URI of the request originator.
         required: true
+      creationTime:
+        range: datetime
+        description: |
+          The timestamp when the request was created.
 
 
 
-  Response:
+  EREResponse:
     description: |
       Root class to represent all the responses sent by the ERE.
     abstract: true
     mixins:
-      - RequestOrResponseMixin
+      - ERECommunicationArtefact
     attributes:
       # We decided we don't need a responseId for the moment
-      # TODO: Do we need metadata? (Not mentioned in the original spec)
       requestId:
         description: |
           A string representing the unique ID of the request this response is about.
@@ -73,20 +77,33 @@ classes:
 
 
 
-  EntityResolutionRequest:
-    is_a: Request
+  EntityMentionResolutionRequest:
+    is_a: ERERequest
     description: |
       An entity resolution request sent to the ERE, containing the entity to be resolved.
     attributes:
-      entity:
-        range: Entity
+      entityMention:
+        range: EntityMention
         description: |
           The data about the entity to be resolved.
         required: true
+      rejectedCanonicalIdentifiers:
+        description: |
+          When this is present, the request is a refresh request: it is asking that the entity 
+          is resolved again and the clusters/canonical entities that were previously proposed 
+          as resolution are now ignored.
+
+          The exact reaction to this is implementation dependent. In the simplest case, the ERE
+          might just create a singleton cluster with this entity as member. In a more advanced 
+          case, it might recompute the similarity with more advanced algorithms or use updated
+          data.
+        range: uri
+        multivalued: true
     examples:
+      # TODO: to be redone
       - value: |
           {
-            "type": "EntityResolutionRequest",            
+            "type": "EntityMentionResolutionRequest",            
             "entity": 
             { 
               "type": "http://www.w3.org/ns/org#Organization",
@@ -104,33 +121,29 @@ classes:
 
 
 
-  EntityResolutionResponse:
-    is_a: Response
+  EntityMentionResolutionResponse:
+    is_a: EREResponse
     description: |
       An entity resolution response sent by the ERE.
       
-      This contains a reference to the canonical entity that the ERE has associated to the original 
-      entity in the request. It also reports a confidence score for the established association.
+      This links an `AlignmentLinkSet`, to represent possible resolutions (see the attribute definition).
     attributes:
-      canonicalEntity:
-        range: CanonicalEntity
+      alignmentLinkSet:
+        range: AlignmentLinkSet
         description: |
-          The canonical entity that the ERE has associated to the original entity.
-          This includes the canonical entity URI and its type.
+          The set of alignment links representing the candidate canonical entities/clusters
+          that the entity mention in the original request could align to (be equivalent to).
+
+          **Note**: for the moment, this is not multi-valued, since we don't support batch requests (yet?),
+          thus there is only one set in a response, that resolves for the single entity mention in the
+          original request (with multiple alignment candidates). If, in the future, we support batch requests,
+          then we might need to return one alignment link set per entity mention in a request.
         required: true
-      sourceEntityId:
-        description: |
-          The ID or URI of the original entity that has been resolved.
-        required: true
-      confidenceLevel:
-        range: float
-        description: |
-          A 0-1 value of how confident the ERE is about associating the original entity
-          with the canonical entity's cluster.
     examples:
+      # TODO: to be redone
       - value: |
           {
-            "type": "EntityResolutionResponse",
+            "type": "EntityMentionResolutionResponse",
             "sourceEntityId": "http://data.europa.eu/ers/id/324fs3r345vx-q11rea",
             "confidenceLevel": 0.91,
             "requestId": "324fs3r345vx"
@@ -143,7 +156,7 @@ classes:
             }
           }
   ErrorResponse:
-    is_a: Response
+    is_a: EREResponse
     description: |
       Response sent by the ERE when some error/exception occurs while processing a request.
       For instance, this may happen if the request is malformed or some internal error happens.
@@ -180,29 +193,30 @@ classes:
             "requestId": "324fs3r345vx",
             "errorType": "ere.exceptions.MalformedRequestError",
             "errorTitle": "The entity data is missing in the request",
-            "errorDetail": "The 'entity' attribute is required in EntityResolutionRequest message",
+            "errorDetail": "The 'entity' attribute is required in EntityMentionResolutionRequest message",
             // Optional and not recommended for production use
             "errorTrace": "Traceback (most recent call last):\n  File \"/app/ere/service.py\", line 45, in process_request\n..."
           }
 
 
-  Entity:
+  EntityMention:
     description: |
-      An entity is a representation of a real-world entity, as provided by the ERS.
-      It contains the entity data (e.g. RDF description) along with metadata about
-      the entity, such as its type and the data format used to represent it.
+      An entity mention is a representation of a real-world entity in the ERS. It must have 
+      a data content and a data format, so that components like the ERE can use them for resolution.
+      
+      Moreover, an entity mention must have a computed identifier (see below).
     attributes:
-      id:
-        # TODO: Can't make it more precise, it should be string or URI, 
-        # see https://github.com/linkml/linkml/issues/2992
-        # It applies to sourceEntityId in EntityResolutionResponse too
-        range: string
+      identifier:
+        # TODO: we don't know how to specify it's a computed property in LinkML.
+        range: uri
         description: |
-          A string containing the entity ID or URI (set by the ERS or, for canonical entities, by the ERE).
+          An URI identifying the entity.
           
-          Note that the ID isn't mandatory when an entity is submitted for resolution, since the initial input
-          might be something like unstructured text, where the entity and its ID is to be recognised.        
-        required: false
+          While mandatory, this can be computed, using same function that depends on the entity payload.
+          In that case, **there must be** a single function in the whole ERS (including the ERE) that
+          computes the same identifier for the same payload, eg, a hash, an RDF URI extractor. This is
+          needed for the resolution results to refer to the correct request entities.        
+        required: true
       type:
         description: |
           A string representing the entity type URI (based on CET).
@@ -210,50 +224,93 @@ classes:
           Note that we don't use the `designates_type` thing here, since entities or canonical entities 
           are always used in clearly distinct contexts.
         required: true
-      entityDataFormat:
+      datFormat:
         description: |
-          A string about the MIME format of `entityData` (e.g. text/turtle, application/ld+json)
-      entityData:
+          A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)
+      payload:
         description: |
           A code string representing the entity details (eg, RDF description).
-
-
-
-  CanonicalEntity:
-    is_a: Entity  
-    description: |
-      A canonical entity is an entity that the ERE has created during the resolution process
-      of ERS entities.
-
-      TODO: we don't support lineage for the moment, see the ERE contract document.
-    attributes:
-      id:
-        range: uri
+      jsonRepresentation:
         description: |
-          The (canonical) URI of the canonical entity. This restricts the parent range to URIs only.
-          
-          Contrary to `Entity.id`, this is always known/required for canonical entities.
-        required: true
-
+          An optional JSON representation of the entity, which is usually achieved from the payload.
+          This is mainly useful for the curation app.
   
 
-  RebuildRequest:
-    is_a: Request
+  AlignmentLinkSet:
+    description: |
+      A set of alignment links to a referred entity.
+
+      Each link in the set represents an entity that might be equivalent to the referred entity,
+      together with a confidence score.
+    attributes:
+      subjectEntityMentionIdentifier: 
+        range: uri
+        description: |
+          The identifier of the entity mention that is the subject of these alignment links.
+          This must match the `identifier` attribute of an `EntityMention` that a resolution response
+          refers to.
+        required: true
+      alignmentOptions:
+        description: |
+          TODO
+        range: AlignmentLink
+        multivalued: true
+        required: true
+        list_elements_ordered: true
+
+
+  AlignmentLink:
+    description: |
+      An alignment link representing a possible equivalence between two entities,
+      together with a confidence score.
+
+      Combined with AlignmentLinkSet, this class allows for representing:
+      
+      ```
+      {entity(subjectEntityMentionIdentifier), entity(mentionIdentifier)} 
+        subsetOf set(canonicalIdentifier), with score = confidenceScore
+      
+      canonicalEntity(set(canonicalIdentifier)).identifier = canonicalIdentifier
+      ```
+    attributes:
+      canonicalIdentifier:
+        range: uri
+        description: |
+          The identifier of the cluster where `mentionIdentifier` has been resolved to. This is usually
+          the same as the canonical entity identifier.
+        required: true
+      mentionIdentifier:
+        range: uri
+        description: |
+          The identifier of the entity mention that is the subject of this alignment link.
+          This must match the `identifier` attribute of an `EntityMention` that a resolution response
+          refers to.
+        required: true
+      confidenceScore:
+        range: float
+        description: |
+          A 0-1 value of how confident the ERE is about the equivalence between the subject entity mention
+          and the target canonical entity.
+        required: true
+
+
+  FullRebuildRequest:
+    is_a: ERERequest
     description: |
       A request to reset all the resolutions computed so far and rebuild them as 
       requests about old entities arrive again (and build new entities from scratch).
       
       It is expected that the ERE client re-sends all the entities to be resolved again,
-      using `EntityResolutionRequest` messages exactly as the first time the resolutions 
+      using `EntityMentionResolutionRequest` messages exactly as the first time the resolutions 
       were built. This implies the a client like the ERS logs/persists the entities it receives
       to resolve and also saves manual overriding of ERE results.
 
 
 
-  RebuildResponse:
-    is_a: Response
+  FullRebuildResponse:
+    is_a: EREResponse
     description: |
-      A response to a `RebuildRequest`, confirming that the rebuild process has started.
+      A response to a `FullRebuildRequest`, confirming that the rebuild process has started.
 
       This should carry the `requestId` attribute.
 
