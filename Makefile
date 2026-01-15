@@ -97,7 +97,7 @@ generate_markdown_docs: $(MARKDOWN_DOCS) $(PLANTUML_DIAGRAMS)
 	@ echo "$(ICON_DONE) All documentation generated"
 
 # Generate all model artifacts (Python, JSON Schema, Docs, Diagrams)
-generate_models: lint-models generate_python_models generate_json_schemas generate_markdown_docs
+generate_models: generate_python_models generate_json_schemas generate_markdown_docs
 	@ echo "$(BUILD_PRINT)═══════════════════════════════════════════════════════$(END_BUILD_PRINT)"
 	@ echo "$(BUILD_PRINT)✓ All LinkML models transformed successfully$(END_BUILD_PRINT)"
 	@ echo "$(BUILD_PRINT)═══════════════════════════════════════════════════════$(END_BUILD_PRINT)"

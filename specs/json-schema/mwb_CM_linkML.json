@@ -1,0 +1,307 @@
+{
+  "$defs": {
+    "AlignmentLink": {
+      "additionalProperties": false,
+      "description": "Represents either manual or automatic alignment. It can be also used to represent uncertain automatic alignments. Note:Uncertain automatic alignments will be used in the web curation app to show alternative alignments, but they'll never be used as a \"primary\" link provided for link curation.",
+      "properties": {
+        "canonicalIdentifier": {
+          "type": "string"
+        },
+        "confidenceScore": {
+          "description": "This indicates a confidence of belonging to a cluster:0 - 1 :automatically computed -1 :rejected by a person",
+          "type": "number"
+        },
+        "mentionIdentifier": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mentionIdentifier",
+        "canonicalIdentifier",
+        "confidenceScore"
+      ],
+      "title": "AlignmentLink",
+      "type": "object"
+    },
+    "AlignmentLinkSet": {
+      "additionalProperties": false,
+      "description": "The alignment link set is a collection of alignment links that form a set of possible alignments for the same entity. Usually the link set serves as a decision context defined by the alternative alignment links automatically derived. Then it is called a DecisionContext. In addition, to make a decission in the UI, it is necessary to access the entity representation, and the canonical entities representations. Note:There is no distinction between the main (canonical) and alternative (potential) alignments. This is determined by the confidence score (link with the highest score links to the canonical entity). Optionally, the list can be sorted by score in descending order.",
+      "properties": {
+        "alignmentOption": {
+          "items": {
+            "$ref": "#/$defs/AlignmentLink"
+          },
+          "type": "array"
+        },
+        "defaultAlignment": {
+          "$ref": "#/$defs/AlignmentLink"
+        },
+        "subjectMentionIdentifier": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "subjectMentionIdentifier",
+        "alignmentOption",
+        "defaultAlignment"
+      ],
+      "title": "AlignmentLinkSet",
+      "type": "object"
+    },
+    "CanonicalEntity": {
+      "additionalProperties": false,
+      "description": "No two links can exist for the same entity mention within the entire store. The alignment links MUST be to distinct entity mentions.",
+      "properties": {
+        "created": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "mentionLink": {
+          "items": {
+            "$ref": "#/$defs/AlignmentLink"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "identifier",
+        "created",
+        "mentionLink"
+      ],
+      "title": "CanonicalEntity",
+      "type": "object"
+    },
+    "CanonicalEntityRegistry": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "canonicalEntity": {
+          "items": {
+            "$ref": "#/$defs/CanonicalEntity"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "title": "CanonicalEntityRegistry",
+      "type": "object"
+    },
+    "CommunicationArtefact": {
+      "additionalProperties": false,
+      "description": "",
+      "title": "CommunicationArtefact",
+      "type": "object"
+    },
+    "DecisionAction": {
+      "description": "",
+      "enum": [
+        "ers:acceptTop",
+        "ers:acceptAlternative",
+        "ers:rejectAll"
+      ],
+      "title": "DecisionAction",
+      "type": "string"
+    },
+    "Decission": {
+      "additionalProperties": false,
+      "description": "The decision object captures what (integration) action shall be taken given a DeciusionContex. Integration needed in 2 context when a response comes from ERE , we need to (step 1) store the alternatives + (step 2) automatically accept the top alternative if it is above and (step 3) upsert it into the canonical entity registry For automated actions ... For user actions ... The decision-making integration logic is as follows:1) Accepting the automatic alignment confidenceScore of the proposed alignment is left as is. 2) Reassigning the mention to another proposed entity confidenceScore of the chosen alignment is set to 1.0 confidenceScore of the proposed alignment is set to -1.0 other alternative alignments are note affected 2) Rejecting the automatic alignment confidenceScore of both proposed alignment and alternative alignments is set to -1.0",
+      "properties": {
+        "acceptedAlignment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AlignmentLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acceptedLink": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AlignmentLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chosenAlternativeLink": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AlignmentLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "createdAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "decisionAction": {
+          "$ref": "#/$defs/DecisionAction"
+        },
+        "decisionContext": {
+          "$ref": "#/$defs/AlignmentLinkSet"
+        },
+        "decisionStatus": {
+          "$ref": "#/$defs/DecissionStatus"
+        },
+        "indetifier": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indetifier",
+        "createdAt",
+        "updatedAt",
+        "decisionContext",
+        "decisionStatus",
+        "decisionAction"
+      ],
+      "title": "Decission",
+      "type": "object"
+    },
+    "DecissionStatus": {
+      "description": "",
+      "enum": [
+        "ers:automaticConfident",
+        "ers:pendingManualReview",
+        "ers:manuallyReviewed"
+      ],
+      "title": "DecissionStatus",
+      "type": "string"
+    },
+    "DecissionsStore": {
+      "additionalProperties": false,
+      "description": "Working store Stores data for knowing the choice context training machine learning models",
+      "properties": {
+        "decision": {
+          "items": {
+            "$ref": "#/$defs/Decission"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "title": "DecissionsStore",
+      "type": "object"
+    },
+    "EntityMention": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "identifier": {
+          "description": "Derived by a direct transformation/computing of available fields. Derived from the payload, i.e. getting the URI of the entityMention RDF payload. The ID is minted by the system, based on directly deriving it from the request ID + originator ID.",
+          "type": "string"
+        },
+        "parsedDataRepresentation": {
+          "description": "data are parsed/computed before storage in the ERS. Note:this could be lazy parsing because it is only for LinkCuration.",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/EntityType"
+        }
+      },
+      "required": [
+        "identifier",
+        "parsedDataRepresentation",
+        "type"
+      ],
+      "title": "EntityMention",
+      "type": "object"
+    },
+    "EntityType": {
+      "description": "",
+      "enum": [
+        "ers:organisation",
+        "ers:procedure"
+      ],
+      "title": "EntityType",
+      "type": "string"
+    },
+    "RequestRecord": {
+      "additionalProperties": false,
+      "description": "This is stored in the system of records.",
+      "properties": {
+        "created": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dataFormat": {
+          "type": "string"
+        },
+        "entityMention": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EntityMention"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "originatorIdentifier": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "requestIdentifier": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/EntityType"
+        }
+      },
+      "required": [
+        "requestIdentifier",
+        "originatorIdentifier",
+        "created",
+        "dataFormat",
+        "payload",
+        "type"
+      ],
+      "title": "RequestRecord",
+      "type": "object"
+    },
+    "SystemOfRequestRecords": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "record": {
+          "items": {
+            "$ref": "#/$defs/RequestRecord"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "title": "SystemOfRequestRecords",
+      "type": "object"
+    }
+  },
+  "$id": "http://publications.europa.eu/ontology/ers",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": true,
+  "metamodel_version": "1.7.0",
+  "title": "ERS",
+  "type": "object",
+  "version": null
+}
+
