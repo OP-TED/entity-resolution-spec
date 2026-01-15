@@ -29,7 +29,7 @@
     <!-- Ontology base URI, configure as necessary. Do not use a trailing local delimiter
         like in the namespace definition-->
     <!--<xsl:variable name="base-uri" select="'http://publications.europa.eu/ontology/ePO'"/>-->
-    <xsl:variable name="base-ontology-uri" select="'http://meaningfy.ws/mbw/'"/>
+    <xsl:variable name="base-ontology-uri" select="'http://publications.europa.eu/ontology/ers'"/>
     <xsl:variable name="base-shape-uri" select="'http://data.europa.eu/a4g/data-shape'"/>
     <xsl:variable name="base-restriction-uri" select="$base-ontology-uri"/>
     <!--    Shapes Module URI-->
@@ -47,7 +47,7 @@
 
     <!-- types of elements and names for attribute types that are acceptable to produce object properties -->
     <xsl:variable name="acceptableTypesForObjectProperties"
-        select="('epo:Identifier', 'rdfs:Literal')"/>
+        select="('ers:Identifier', 'rdfs:Literal')"/>
     <!--    the type of attributes which takes values from a controlled list-->
     <xsl:variable name="controlledListType" select="'epo:Code'"/>
     <!-- Acceptable stereotypes -->
@@ -69,7 +69,7 @@
     <xsl:variable name="moduleReference" select="'core'"/>
 
     <!--    dct:title-->
-    <xsl:variable name="ontologyTitleCore" select="'MWB'"/>
+    <xsl:variable name="ontologyTitleCore" select="'ERS'"/>
 
         <!--    dct:description-->
     <xsl:variable name="ontologyDescriptionCore"
