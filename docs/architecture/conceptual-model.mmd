@@ -1,0 +1,146 @@
+classDiagram
+direction TB
+
+%% =========================
+%% Core referent vs artefacts
+%% =========================
+
+class RealWorldEntity {
+  <<referent>>
+}
+
+class EntityType {
+  <<ontological category>>
+  +typeId: URI
+  +label: String
+}
+
+RealWorldEntity "0..*" --> "1" EntityType : classifiedAs
+
+%% =========================
+%% Mentions and representations
+%% =========================
+
+class EntityMention {
+  <<information artifact>>
+  +mentionId: URI
+  +originatorId: String
+  +createdAt: DateTime
+}
+
+class EntityRepresentation {
+  <<representation>>
+  +representationId: URI
+  +payloadRef: String
+  +dataFormat: String
+}
+
+EntityMention "1" *-- "1..*" EntityRepresentation : hasRepresentation
+EntityMention ..> RealWorldEntity : intendsToReferTo
+EntityMention "0..*" --> "0..1" EntityType : declaredType
+
+class MentionIdentifier {
+  <<sign>>
+  +value: URI
+}
+
+MentionIdentifier "1" --> "1" EntityMention : identifies
+
+%% =========================
+%% Clusters, canonical identity, canonical identifier
+%% =========================
+
+class Cluster {
+  <<identity artifact>>
+  +clusterId: URI
+}
+
+class CanonicalEntity {
+  <<logical identity>>
+  +canonicalId: URI
+}
+
+class CanonicalIdentifier {
+  <<sign>>
+  +value: URI
+}
+
+Cluster "1" *-- "1" CanonicalEntity : scaffolds
+CanonicalIdentifier "1" --> "1" Cluster : identifies
+CanonicalIdentifier "1" --> "1" CanonicalEntity : identifies
+Cluster ..> RealWorldEntity : proxyReferenceTo
+
+%% =========================
+%% Canonical representations
+%% =========================
+
+class CanonicalEntityRepresentation {
+  <<representation>>
+  +representationId: URI
+  +payloadRef: String
+  +dataFormat: String
+}
+
+CanonicalEntity "0..1" o-- "0..*" CanonicalEntityRepresentation : mayHave
+CanonicalEntityRepresentation ..> RealWorldEntity : describesReferent
+
+%% =========================
+%% Alignments (assertions)
+%% =========================
+
+class Alignment {
+  <<assertion>>
+  +alignmentId: URI
+  +confidenceScore: float
+  +createdAt: DateTime
+}
+
+class AlignmentPolarity {
+  <<enumeration>>
+  equivalent
+  notEquivalent
+}
+
+Alignment "1" --> "1" AlignmentPolarity : polarity
+Alignment "1" --> "1" EntityMention : aboutMention
+Alignment "1" --> "1" Cluster : assignsTo
+
+%% =========================
+%% Lineage / evolution
+%% =========================
+
+class LineageMetadata {
+  <<traceability>>
+  +lineageId: URI
+  +eventType: String
+  +eventAt: DateTime
+}
+
+LineageMetadata "0..*" --> "1" Cluster : concerns
+LineageMetadata "0..*" --> "0..1" Cluster : supersedes
+
+%% =========================
+%% Authoritative vs operational stores (conceptual)
+%% =========================
+
+class SystemOfRecords {
+  <<authoritative store>>
+}
+
+class CanonicalEntityRegistry {
+  <<registry>>
+}
+
+SystemOfRecords "1" o-- "0..*" EntityMention : storesMentions
+SystemOfRecords "1" o-- "0..*" Alignment : storesDecisions
+CanonicalEntityRegistry "1" o-- "0..*" Cluster : storesClusters
+CanonicalEntityRegistry "1" o-- "0..*" CanonicalIdentifier : storesIdentifiers
+
+%% =========================
+%% Notes (semantic guardrails)
+%% =========================
+
+note for CanonicalIdentifier "Identifies a cluster state (sign).\nNot a definitive identifier of a real-world entity."
+note for Cluster "Primary identity-bearing construct.\nEvidence-based hypothesis; may evolve (merge/split/rebuild)."
+note for EntityMention "Representation of a referent; not an identity construct.\nMay be incomplete, inconsistent, or incorrect."
+note for Alignment "Assertion, not fact.\nMay be revised through curation/reclustering."
