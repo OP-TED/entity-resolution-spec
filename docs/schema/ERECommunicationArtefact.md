@@ -1,9 +1,11 @@
 
 
-# Class: RequestOrResponseMixin 
+# Class: ERECommunicationArtefact 
 
 
-_Root mixin to represent attributes common to both requests and results._
+_Root abstraction to represent attributes common to both requests and results._
+
+_This is modelled as a mixin in LinkML (so that it can't be instantiated directly)._
 
 __
 
@@ -13,7 +15,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:RequestOrResponseMixin](https://data.europa.eu/ers/schema/RequestOrResponseMixin)
+URI: [ers:ERECommunicationArtefact](https://data.europa.eu/ers/schema/ERECommunicationArtefact)
 
 
 
@@ -21,16 +23,16 @@ URI: [ers:RequestOrResponseMixin](https://data.europa.eu/ers/schema/RequestOrRes
 
 ```mermaid
  classDiagram
-    class RequestOrResponseMixin
-    click RequestOrResponseMixin href "../RequestOrResponseMixin/"
-      RequestOrResponseMixin <|-- Request
-        click Request href "../Request/"
-      RequestOrResponseMixin <|-- Response
-        click Response href "../Response/"
+    class ERECommunicationArtefact
+    click ERECommunicationArtefact href "../ERECommunicationArtefact/"
+      ERECommunicationArtefact <|-- ERERequest
+        click ERERequest href "../ERERequest/"
+      ERECommunicationArtefact <|-- EREResponse
+        click EREResponse href "../EREResponse/"
       
-      RequestOrResponseMixin : metadata
+      ERECommunicationArtefact : metadata
         
-      RequestOrResponseMixin : type
+      ERECommunicationArtefact : type
         
       
 ```
@@ -54,8 +56,8 @@ URI: [ers:RequestOrResponseMixin](https://data.europa.eu/ers/schema/RequestOrRes
 
 | mixed into | description |
 | --- | --- |
-| [Request](Request.md) | Root class to represent all the requests sent to the ERE |
-| [Response](Response.md) | Root class to represent all the responses sent by the ERE |
+| [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
+| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
 
 
 
@@ -84,8 +86,8 @@ URI: [ers:RequestOrResponseMixin](https://data.europa.eu/ers/schema/RequestOrRes
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:RequestOrResponseMixin |
-| native | ers:RequestOrResponseMixin |
+| self | ers:ERECommunicationArtefact |
+| native | ers:ERECommunicationArtefact |
 
 
 
@@ -100,8 +102,11 @@ URI: [ers:RequestOrResponseMixin](https://data.europa.eu/ers/schema/RequestOrRes
 
 <details>
 ```yaml
-name: RequestOrResponseMixin
-description: 'Root mixin to represent attributes common to both requests and results.
+name: ERECommunicationArtefact
+description: 'Root abstraction to represent attributes common to both requests and
+  results.
+
+  This is modelled as a mixin in LinkML (so that it can''t be instantiated directly).
 
   '
 from_schema: https://data.europa.eu/ers/schema
@@ -114,13 +119,13 @@ attributes:
       \ `designates_type` is used here in order to allow for this\nslot to tell the\
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
-      `EntityResolutionRequest` or `EntityResolutionResult`\n"
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     designates_type: true
     domain_of:
-    - RequestOrResponseMixin
-    - Entity
+    - ERECommunicationArtefact
+    - EntityMention
     required: true
   metadata:
     name: metadata
@@ -130,7 +135,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - RequestOrResponseMixin
+    - ERECommunicationArtefact
 
 ```
 </details>
@@ -139,8 +144,11 @@ attributes:
 
 <details>
 ```yaml
-name: RequestOrResponseMixin
-description: 'Root mixin to represent attributes common to both requests and results.
+name: ERECommunicationArtefact
+description: 'Root abstraction to represent attributes common to both requests and
+  results.
+
+  This is modelled as a mixin in LinkML (so that it can''t be instantiated directly).
 
   '
 from_schema: https://data.europa.eu/ers/schema
@@ -153,15 +161,15 @@ attributes:
       \ `designates_type` is used here in order to allow for this\nslot to tell the\
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
-      `EntityResolutionRequest` or `EntityResolutionResult`\n"
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     designates_type: true
     alias: type
-    owner: RequestOrResponseMixin
+    owner: ERECommunicationArtefact
     domain_of:
-    - RequestOrResponseMixin
-    - Entity
+    - ERECommunicationArtefact
+    - EntityMention
     range: string
     required: true
   metadata:
@@ -172,9 +180,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: metadata
-    owner: RequestOrResponseMixin
+    owner: ERECommunicationArtefact
     domain_of:
-    - RequestOrResponseMixin
+    - ERECommunicationArtefact
     range: string
 
 ```

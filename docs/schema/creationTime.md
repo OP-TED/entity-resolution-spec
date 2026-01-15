@@ -1,9 +1,9 @@
 
 
-# Slot: originator 
+# Slot: creationTime 
 
 
-_The ID or URI of the request originator._
+_The timestamp when the request was created._
 
 __
 
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:originator](https://data.europa.eu/ers/schema/originator)
-Alias: originator
+URI: [ers:creationTime](https://data.europa.eu/ers/schema/creationTime)
+Alias: creationTime
 
 <!-- no inheritance hierarchy -->
 
@@ -35,9 +35,7 @@ Alias: originator
 
 ## Properties
 
-* Range: [String](String.md)
-
-* Required: True
+* Range: [Datetime](Datetime.md)
 
 
 
@@ -61,8 +59,8 @@ Alias: originator
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:originator |
-| native | ers:originator |
+| self | ers:creationTime |
+| native | ers:creationTime |
 
 
 
@@ -71,18 +69,17 @@ Alias: originator
 
 <details>
 ```yaml
-name: originator
-description: 'The ID or URI of the request originator.
+name: creationTime
+description: 'The timestamp when the request was created.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: originator
+alias: creationTime
 owner: ERERequest
 domain_of:
 - ERERequest
-range: string
-required: true
+range: datetime
 
 ```
 </details>

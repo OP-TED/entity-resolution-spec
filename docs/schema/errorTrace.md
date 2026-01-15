@@ -30,7 +30,7 @@ Alias: errorTrace
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ErrorResponse](ErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
 
 
 
@@ -85,9 +85,9 @@ description: 'A string representing a (stack) trace of the error that occurred.
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: errorTrace
-owner: ErrorResponse
+owner: EREErrorResponse
 domain_of:
-- ErrorResponse
+- EREErrorResponse
 range: string
 
 ```

@@ -100,23 +100,54 @@ classes:
         range: uri
         multivalued: true
     examples:
-      # TODO: to be redone
-      - value: |
+      - description: a regular request
+        value: | 
           {
             "type": "EntityMentionResolutionRequest",            
-            "entity": 
+            "entityMention": 
             { 
               "type": "http://www.w3.org/ns/org#Organization",
-              "id": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
-              "entityData": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
-              "entityDataFormat": "text/turtle"
+              // As said above, there is always a way to compute this
+              "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
+              "payload": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+              "dataFormat": "text/turtle",
+              // As Said above, this is optional and JSON-LD is just an example of what it could rendered.
+              "jsonRepresentation": {
+                "@context": {
+                  "org": "http://www.w3.org/ns/org#",
+                  "cccev": "https://data.europa.eu/cc/cefact/code/"
+                },
+                "@id": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
+                "@type": "org:Organization",
+                "cccev:telephone": "+44 1924306780"
+              }
             },
             "requestId": "324fs3r345vx",
             "originator": "TED SWS pipeline",
+            "creationTime": "2026-01-14T12:34:56Z",
             "metadata": {
               "originator system": "VocBench editor",
               "originator timestamp": "23748737643"
             }
+          }
+      - description: a refresh request (ie, carrying a rejection list)
+        value: |
+          {
+            "type": "EntityMentionResolutionRequest",            
+            "entityMention": 
+            { 
+              "type": "http://www.w3.org/ns/org#Organization",
+              "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
+              "payload": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+              "dataFormat": "text/turtle"
+            },
+            "rejectedCanonicalIdentifiers": [
+              "http://data.europa.eu/ers/id/324fs3r345vx-bb45we",
+              "http://data.europa.eu/ers/id/324fs3r345vx-cc67ui"
+            ],
+            "requestId": "324fs3r345vx01",
+            "originator": "TED SWS pipeline",
+            "creationTime": "2026-01-14T12:40:56Z"
           }
 
 
@@ -140,22 +171,28 @@ classes:
           then we might need to return one alignment link set per entity mention in a request.
         required: true
     examples:
-      # TODO: to be redone
       - value: |
           {
             "type": "EntityMentionResolutionResponse",
-            "sourceEntityId": "http://data.europa.eu/ers/id/324fs3r345vx-q11rea",
-            "confidenceLevel": 0.91,
-            "requestId": "324fs3r345vx"
-            "canonicalEntity": 
-            { 
-              "type": "http://www.w3.org/ns/org#Organization",
-              "id": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
-              "entityData": "epd:ent001 a org:Organization; ...   cccev:telephone \"+441924306780\" .",
-              "entityDataFormat": "text/turtle"
+            "requestId": "324fs3r345vx",
+            "alignmentLinkSet": {
+              "subjectEntityMentionIdentifier": "http://data.europa.eu/ers/id/324fs3r345vx-q11rea",
+              "alignmentOptions": [
+                { 
+                  "canonicalIdentifier": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
+                  "confidenceScore": 0.91
+                },
+                { 
+                  "canonicalIdentifier": "http://data.europa.eu/ers/id/324fs3r345vx-bb45we",
+                  "confidenceScore": 0.65
+                }
+              ]
             }
           }
-  ErrorResponse:
+              
+
+
+  EREErrorResponse:
     is_a: EREResponse
     description: |
       Response sent by the ERE when some error/exception occurs while processing a request.
@@ -189,7 +226,7 @@ classes:
     examples:
       - value: |
           {
-            "type": "ErrorResponse",
+            "type": "EREErrorResponse",
             "requestId": "324fs3r345vx",
             "errorType": "ere.exceptions.MalformedRequestError",
             "errorTitle": "The entity data is missing in the request",
@@ -241,7 +278,7 @@ classes:
       A set of alignment links to a referred entity.
 
       Each link in the set represents an entity that might be equivalent to the referred entity,
-      together with a confidence score.
+      see `AlignmentLink` for details.
     attributes:
       subjectEntityMentionIdentifier: 
         range: uri
@@ -252,39 +289,34 @@ classes:
         required: true
       alignmentOptions:
         description: |
-          TODO
+          A list of possible matches (alignment links) between the subject entity mention
+          and candidate canonical entities.
+
+          It is recommended that these are sorted by descending confidence score, although
+          that is not mandatory.
         range: AlignmentLink
         multivalued: true
         required: true
-        list_elements_ordered: true
 
 
   AlignmentLink:
     description: |
-      An alignment link representing a possible equivalence between two entities,
-      together with a confidence score.
+      An alignment link representing a possible equivalence between an entity mention in the
+      `AlignmentLinkSet` the link belongs to, and a canonical entity, together with a confidence score.
 
-      Combined with AlignmentLinkSet, this class allows for representing:
-      
+      A semi-formal representation:
+
       ```
-      {entity(subjectEntityMentionIdentifier), entity(mentionIdentifier)} 
-        subsetOf set(canonicalIdentifier), with score = confidenceScore
-      
-      canonicalEntity(set(canonicalIdentifier)).identifier = canonicalIdentifier
+        for each (canonicalIdentifier, cconfidenceScore) in AlignmentLinkSet.alignmentOptions:
+          entity(subjectEntityMentionIdentifier)  ==  entity(mentionIdentifier) 
+            with score = confidenceScore
       ```
     attributes:
       canonicalIdentifier:
         range: uri
         description: |
-          The identifier of the cluster where `mentionIdentifier` has been resolved to. This is usually
-          the same as the canonical entity identifier.
-        required: true
-      mentionIdentifier:
-        range: uri
-        description: |
-          The identifier of the entity mention that is the subject of this alignment link.
-          This must match the `identifier` attribute of an `EntityMention` that a resolution response
-          refers to.
+          The identifier of the cluster/canonical entity that is considered equivalent to the
+          subject entity mention in the `AlignmentLinkSet` the link belongs to.
         required: true
       confidenceScore:
         range: float

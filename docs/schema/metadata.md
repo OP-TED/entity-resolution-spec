@@ -24,14 +24,14 @@ Alias: metadata
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Request](Request.md) | Root class to represent all the requests sent to the ERE |  no  |
-| [RequestOrResponseMixin](RequestOrResponseMixin.md) | Root mixin to represent attributes common to both requests and results |  no  |
-| [Response](Response.md) | Root class to represent all the responses sent by the ERE |  no  |
-| [EntityResolutionRequest](EntityResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
-| [RebuildRequest](RebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
-| [RebuildResponse](RebuildResponse.md) | A response to a `RebuildRequest`, confirming that the rebuild process has sta... |  no  |
-| [EntityResolutionResponse](EntityResolutionResponse.md) | An entity resolution response sent by the ERE |  no  |
-| [ErrorResponse](ErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
+| [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
+| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response sent by the ERE |  no  |
+| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
+| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
+| [ERECommunicationArtefact](ERECommunicationArtefact.md) | Root abstraction to represent attributes common to both requests and results |  no  |
 
 
 
@@ -81,9 +81,9 @@ description: 'An optional arbitrary dictionary of further request metadata.
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: metadata
-owner: RequestOrResponseMixin
+owner: ERECommunicationArtefact
 domain_of:
-- RequestOrResponseMixin
+- ERECommunicationArtefact
 range: string
 
 ```
