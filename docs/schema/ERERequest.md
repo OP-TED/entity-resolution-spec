@@ -1,6 +1,6 @@
 
 
-# Class: Request 
+# Class: ERERequest 
 
 
 _Root class to represent all the requests sent to the ERE._
@@ -13,7 +13,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:Request](https://data.europa.eu/ers/schema/Request)
+URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
 
 
 
@@ -21,25 +21,27 @@ URI: [ers:Request](https://data.europa.eu/ers/schema/Request)
 
 ```mermaid
  classDiagram
-    class Request
-    click Request href "../Request/"
-      RequestOrResponseMixin <|-- Request
-        click RequestOrResponseMixin href "../RequestOrResponseMixin/"
+    class ERERequest
+    click ERERequest href "../ERERequest/"
+      ERECommunicationArtefact <|-- ERERequest
+        click ERECommunicationArtefact href "../ERECommunicationArtefact/"
       
 
-      Request <|-- EntityResolutionRequest
-        click EntityResolutionRequest href "../EntityResolutionRequest/"
-      Request <|-- RebuildRequest
-        click RebuildRequest href "../RebuildRequest/"
+      ERERequest <|-- EntityMentionResolutionRequest
+        click EntityMentionResolutionRequest href "../EntityMentionResolutionRequest/"
+      ERERequest <|-- FullRebuildRequest
+        click FullRebuildRequest href "../FullRebuildRequest/"
       
 
-      Request : metadata
+      ERERequest : creationTime
         
-      Request : originator
+      ERERequest : metadata
         
-      Request : requestId
+      ERERequest : originator
         
-      Request : type
+      ERERequest : requestId
+        
+      ERERequest : type
         
       
 ```
@@ -49,9 +51,9 @@ URI: [ers:Request](https://data.europa.eu/ers/schema/Request)
 
 
 ## Inheritance
-* **Request** [ [RequestOrResponseMixin](RequestOrResponseMixin.md)]
-    * [EntityResolutionRequest](EntityResolutionRequest.md)
-    * [RebuildRequest](RebuildRequest.md)
+* **ERERequest** [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
+    * [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md)
+    * [FullRebuildRequest](FullRebuildRequest.md)
 
 
 
@@ -61,8 +63,9 @@ URI: [ers:Request](https://data.europa.eu/ers/schema/Request)
 | ---  | --- | --- | --- |
 | [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of this request | direct |
 | [originator](originator.md) | 1 <br/> [String](String.md) | The ID or URI of the request originator | direct |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
+| [creationTime](creationTime.md) | 0..1 <br/> [Datetime](Datetime.md) | The timestamp when the request was created | direct |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
 
 
 
@@ -92,8 +95,8 @@ URI: [ers:Request](https://data.europa.eu/ers/schema/Request)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:Request |
-| native | ers:Request |
+| self | ers:ERERequest |
+| native | ers:ERERequest |
 
 
 
@@ -108,14 +111,14 @@ URI: [ers:Request](https://data.europa.eu/ers/schema/Request)
 
 <details>
 ```yaml
-name: Request
+name: ERERequest
 description: 'Root class to represent all the requests sent to the ERE.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 abstract: true
 mixins:
-- RequestOrResponseMixin
+- ERECommunicationArtefact
 attributes:
   requestId:
     name: requestId
@@ -125,8 +128,8 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - Request
-    - Response
+    - ERERequest
+    - EREResponse
     required: true
   originator:
     name: originator
@@ -136,8 +139,18 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - Request
+    - ERERequest
     required: true
+  creationTime:
+    name: creationTime
+    description: 'The timestamp when the request was created.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    domain_of:
+    - ERERequest
+    range: datetime
 
 ```
 </details>
@@ -146,14 +159,14 @@ attributes:
 
 <details>
 ```yaml
-name: Request
+name: ERERequest
 description: 'Root class to represent all the requests sent to the ERE.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 abstract: true
 mixins:
-- RequestOrResponseMixin
+- ERECommunicationArtefact
 attributes:
   requestId:
     name: requestId
@@ -163,10 +176,10 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: requestId
-    owner: Request
+    owner: ERERequest
     domain_of:
-    - Request
-    - Response
+    - ERERequest
+    - EREResponse
     range: string
     required: true
   originator:
@@ -177,26 +190,38 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: originator
-    owner: Request
+    owner: ERERequest
     domain_of:
-    - Request
+    - ERERequest
     range: string
     required: true
+  creationTime:
+    name: creationTime
+    description: 'The timestamp when the request was created.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: creationTime
+    owner: ERERequest
+    domain_of:
+    - ERERequest
+    range: datetime
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\
       \ `designates_type` is used here in order to allow for this\nslot to tell the\
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
-      `EntityResolutionRequest` or `EntityResolutionResult`\n"
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     designates_type: true
     alias: type
-    owner: Request
+    owner: ERERequest
     domain_of:
-    - RequestOrResponseMixin
-    - Entity
+    - ERECommunicationArtefact
+    - EntityMention
     range: string
     required: true
   metadata:
@@ -207,9 +232,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: metadata
-    owner: Request
+    owner: ERERequest
     domain_of:
-    - RequestOrResponseMixin
+    - ERECommunicationArtefact
     range: string
 
 ```
