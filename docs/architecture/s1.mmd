@@ -1,0 +1,39 @@
+sequenceDiagram
+  autonumber
+  participant TED as TED-SWS Entity Resolution task (Originator)
+  participant ERS as Entity Resolution Service (App Service)
+  participant ORCH as ERS Orchestrator (App Component)
+  participant SOR as Request Registry / System of Records (App Component)
+  participant REG as Canonical Entity Registry (App Component)
+  participant MQ as Messaging Middleware (Broker/Transport)
+  participant ERE as Entity Resolution Engine (App Component)
+
+  TED->>ERS: ResolveEntity(requestId, originId, entityType, entityRepresentation)
+  ERS->>ORCH: forward request (service invocation)
+
+  ORCH->>SOR: record ResolutionRequest (persist mention + metadata)
+  ORCH->>REG: lookup existing canonicalId? (by originId+requestId) [optional]
+
+  alt already resolved / cached
+    REG-->>ORCH: canonicalId
+    ORCH->>SOR: record ResolutionDecision(status="reused")
+    ORCH-->>ERS: canonicalId (+warnings)
+    ERS-->>TED: 200 canonicalId (+warnings)
+  else needs resolution by ERE
+    ORCH->>MQ: publish ResolutionRequest (C4) [async]
+    MQ-->>ERE: deliver ResolutionRequest (C4)
+
+    ERE->>MQ: publish ResolutionResult (C5) [async]
+    MQ-->>ORCH: deliver ResolutionResult (C5)
+
+    ORCH->>REG: upsert membership (mention -> cluster/canonicalId)
+    ORCH->>SOR: record ResolutionDecision(confidence, similarity, evidenceRef)
+
+    ORCH-->>ERS: canonicalId (+warnings)
+    ERS-->>TED: 200 canonicalId (+warnings)
+  end
+
+  opt ERE unavailable / timeout
+    ORCH-->>ERS: error 503 (service_unavailable)
+    ERS-->>TED: 503 + error_code/message
+  end

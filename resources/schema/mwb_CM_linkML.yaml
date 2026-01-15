@@ -1,0 +1,683 @@
+id: http://publications.europa.eu/ontology/ers
+name: ERS
+description: Mapping Workbench project v2
+prefixes: 
+  mwb: http://meaningfy.ws/mbw/
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+default_range: string
+
+classes:
+  AlignmentLink:
+    class_uri: ers:AlignmentLink
+    description: Represents either manual or automatic alignment. It can be also used to represent uncertain automatic alignments. Note:Uncertain automatic alignments will be used in the web curation app to show alternative alignments, but they'll never be used as a "primary" link provided for link curation.
+    attributes:
+      mentionIdentifier:
+        slot_uri: ers:mentionIdentifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      canonicalIdentifier:
+        slot_uri: ers:canonicalIdentifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      confidenceScore:
+        slot_uri: ers:confidenceScore
+        description: This indicates a confidence of belonging to a cluster:0 - 1 :automatically computed -1 :rejected by a person
+        range: double
+        required: true
+        multivalued: false
+
+  AlignmentLinkSet:
+    class_uri: ers:AlignmentLinkSet
+    description: The alignment link set is a collection of alignment links that form a set of possible alignments for the same entity. Usually the link set serves as a decision context defined by the alternative alignment links automatically derived. Then it is called a DecisionContext. In addition, to make a decission in the UI, it is necessary to access the entity representation, and the canonical entities representations. Note:There is no distinction between the main (canonical) and alternative (potential) alignments. This is determined by the confidence score (link with the highest score links to the canonical entity). Optionally, the list can be sorted by score in descending order.
+    attributes:
+      subjectMentionIdentifier:
+        slot_uri: ers:subjectMentionIdentifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      alignmentOption:
+        slot_uri: ers:alignmentOption
+        range: AlignmentLink
+        required: true
+        multivalued: true
+      defaultAlignment:
+        slot_uri: ers:defaultAlignment
+        range: AlignmentLink
+        required: true
+        multivalued: false
+
+  CanonicalEntity:
+    class_uri: ers:CanonicalEntity
+    description: No two links can exist for the same entity mention within the entire store. The alignment links MUST be to distinct entity mentions.
+    attributes:
+      identifier:
+        slot_uri: ers:identifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      created:
+        slot_uri: ers:created
+        description: 
+        range: datetime
+        required: true
+        multivalued: false
+      mentionLink:
+        slot_uri: ers:mentionLink
+        range: AlignmentLink
+        required: true
+        multivalued: true
+
+  CanonicalEntityRegistry:
+    class_uri: ers:CanonicalEntityRegistry
+    description: 
+    attributes:
+      canonicalEntity:
+        slot_uri: ers:canonicalEntity
+        range: CanonicalEntity
+        required: false
+        multivalued: true
+
+  CommunicationArtefact:
+    class_uri: ers:CommunicationArtefact
+    description: 
+
+  Decission:
+    class_uri: ers:Decission
+    description: The decision object captures what (integration) action shall be taken given a DeciusionContex. Integration needed in 2 context when a response comes from ERE , we need to (step 1) store the alternatives + (step 2) automatically accept the top alternative if it is above and (step 3) upsert it into the canonical entity registry For automated actions ... For user actions ... The decision-making integration logic is as follows:1) Accepting the automatic alignment confidenceScore of the proposed alignment is left as is. 2) Reassigning the mention to another proposed entity confidenceScore of the chosen alignment is set to 1.0 confidenceScore of the proposed alignment is set to -1.0 other alternative alignments are note affected 2) Rejecting the automatic alignment confidenceScore of both proposed alignment and alternative alignments is set to -1.0
+    attributes:
+      indetifier:
+        slot_uri: ers:indetifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      createdAt:
+        slot_uri: ers:createdAt
+        description: 
+        range: datetime
+        required: true
+        multivalued: false
+      updatedAt:
+        slot_uri: ers:updatedAt
+        description: 
+        range: datetime
+        required: true
+        multivalued: false
+      acceptedAlignment:
+        slot_uri: acceptedAlignment
+        range: AlignmentLink
+        required: false
+        multivalued: false
+      acceptedLink:
+        slot_uri: ers:acceptedLink
+        range: AlignmentLink
+        required: false
+        multivalued: false
+      chosenAlternativeLink:
+        slot_uri: chosenAlternativeLink
+        range: AlignmentLink
+        required: false
+        multivalued: false
+      decisionContext:
+        slot_uri: ers:decisionContext
+        range: AlignmentLinkSet
+        required: true
+        multivalued: false
+      decisionStatus:
+        slot_uri: ers:decisionStatus
+        range: DecissionStatus
+        required: true
+        multivalued: false
+      decisionAction:
+        slot_uri: ers:decisionAction
+        range: DecisionAction
+        required: true
+        multivalued: false
+
+  DecissionsStore:
+    class_uri: ers:DecissionsStore
+    description: Working store Stores data for knowing the choice context training machine learning models
+    attributes:
+      decision:
+        slot_uri: ers:decision
+        range: Decission
+        required: false
+        multivalued: true
+
+  EntityMention:
+    class_uri: ers:EntityMention
+    description: 
+    attributes:
+      identifier:
+        slot_uri: ers:identifier
+        description: Derived by a direct transformation/computing of available fields. Derived from the payload, i.e. getting the URI of the entityMention RDF payload. The ID is minted by the system, based on directly deriving it from the request ID + originator ID.
+        range: uri
+        required: true
+        multivalued: false
+      parsedDataRepresentation:
+        slot_uri: ers:parsedDataRepresentation
+        description: data are parsed/computed before storage in the ERS. Note:this could be lazy parsing because it is only for LinkCuration.
+        range: string
+        required: true
+        multivalued: false
+      type:
+        slot_uri: ers:type
+        range: EntityType
+        required: true
+        multivalued: false
+
+  ErrorResponse:
+    class_uri: ers:ErrorResponse
+    is_a: Response
+    description: 
+    attributes:
+      errorTitle:
+        slot_uri: ers:errorTitle
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      errorDetail:
+        slot_uri: ers:errorDetail
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      errorTrace:
+        slot_uri: ers:errorTrace
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  RequestRecord:
+    class_uri: ers:RequestRecord
+    description: This is stored in the system of records.
+    attributes:
+      requestIdentifier:
+        slot_uri: ers:requestIdentifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      originatorIdentifier:
+        slot_uri: ers:originatorIdentifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      created:
+        slot_uri: ers:created
+        description: 
+        range: datetime
+        required: true
+        multivalued: false
+      dataFormat:
+        slot_uri: ers:dataFormat
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      payload:
+        slot_uri: ers:payload
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      entityMention:
+        slot_uri: ers:entityMention
+        range: EntityMention
+        required: false
+        multivalued: false
+
+  Request:
+    class_uri: ers:Request
+    is_a: CommunicationArtefact
+    description: 
+
+  Response:
+    class_uri: ers:Response
+    is_a: CommunicationArtefact
+    description: 
+    attributes:
+      httpCode:
+        slot_uri: ers:httpCode
+        description: 
+        range: integer
+        required: true
+        multivalued: false
+
+  SystemOfRequestRecords:
+    class_uri: ers:SystemOfRequestRecords
+    description: 
+    attributes:
+      record:
+        slot_uri: ers:record
+        range: RequestRecord
+        required: false
+        multivalued: true
+
+  PostResolveRequest:
+    class_uri: ers:PostResolveRequest
+    is_a: Request
+    description: 
+    attributes:
+      requestRecords:
+        slot_uri: ers:requestRecords
+        range: RequestRecord
+        required: true
+        multivalued: true
+
+  PostResolveResponse:
+    class_uri: ers:PostResolveResponse
+    is_a: Response
+    description: 
+    attributes:
+      canonicalIdentifier:
+        slot_uri: ers:canonicalIdentifier
+        description: 
+        range: uri
+        required: true
+        multivalued: false
+      alignmentLinks:
+        slot_uri: ers:alignmentLinks
+        range: AlignmentLink
+        required: true
+        multivalued: true
+
+  :
+    class_uri: EntityMentionResolutionRequest
+    is_a: Request
+    description: We shall always have one record per resolution request. Do not make the mistake of including multiple records into one request. Use bulk for that. Future optimisation.
+    attributes:
+      draftCanonicalIdentifier:
+        slot_uri: ers:draftCanonicalIdentifier
+        description: This is a way to ensure that the governance of Canonical URIs stays with the ERS.
+        range: uri
+        required: true
+        multivalued: false
+      requestRecords:
+        slot_uri: ers:requestRecords
+        range: RequestRecord
+        required: true
+        multivalued: true
+
+  EntityMentionResolutionResponse:
+    class_uri: ers:EntityMentionResolutionResponse
+    is_a: Response
+    description: Supports one entity resolution or bulk resolution response. One response with multiple possible assignments. WE shall use this option (not multiple responses for one request) because:- the ERE will always produce all the possible assignments at the same time, - it facilitates easier integration, on the ERS side, into the canonical registry.
+    attributes:
+      alignmentLinks:
+        slot_uri: ers:alignmentLinks
+        range: AlignmentLinkSet
+        required: true
+        multivalued: true
+
+  FullRebuildRequest:
+    class_uri: ers:FullRebuildRequest
+    is_a: Request
+    description: This is a request to re-create the clusters within the ERE, given the current (cached) data. It shall re-use the available cluster/canonical URIs, but the memberships may differ. Or possibly will provide new canonical URIs, which then will have to be accomodated by the ERS.
+
+  GetLatestSeenDecisionTimestamp:
+    class_uri: ers:GetLatestSeenDecisionTimestamp
+    is_a: Request
+    description: 
+
+  GetLatestSeenMentionRecordTimestampResponse:
+    class_uri: ers:GetLatestSeenMentionRecordTimestampResponse
+    is_a: Response
+    description: 
+    attributes:
+      latestTimestamp:
+        slot_uri: ers:latestTimestamp
+        description: 
+        range: datetime
+        required: true
+        multivalued: false
+
+  GetLatestSeenRecordTimestamp:
+    class_uri: ers:GetLatestSeenRecordTimestamp
+    is_a: Request
+    description: ERS requests fro the latest/newest entity mention known by the ERE. This is determining the scope of data.
+
+  LatestSeenCurationTimestampResponse:
+    class_uri: ers:LatestSeenCurationTimestampResponse
+    is_a: Response
+    description: 
+    attributes:
+      latestTimestamp:
+        slot_uri: ers:latestTimestamp
+        description: 
+        range: datetime
+        required: true
+        multivalued: false
+
+  PostCurationDecisions:
+    class_uri: ers:PostCurationDecisions
+    is_a: Response
+    description: 
+    attributes:
+      curationDecisions:
+        slot_uri: ers:curationDecisions
+        range: Decission
+        required: true
+        multivalued: true
+
+  PostEntityMentionRecords:
+    class_uri: ers:PostEntityMentionRecords
+    is_a: Request
+    description: Initiated by the ERS, sending over the entity mention records, without expecting any resolutions in response.
+    attributes:
+      records:
+        slot_uri: ers:records
+        range: RequestRecord
+        required: true
+        multivalued: true
+
+  :
+    class_uri: CanonicalEntityPreview
+    is_a: CanonicalEntity
+    description: A Canonical Entity representation containing Alignment links with TOP N=3 entity mention preview (not only their URIs)
+
+  :
+    class_uri: CurationStatistics
+    is_a: 
+    description: 
+    attributes:
+      pendingDecisions:
+        slot_uri: pendingDecisions
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      reviewedDecisions:
+        slot_uri: reviewedDecisions
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      automaticDecissions:
+        slot_uri: automaticDecissions
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  :
+    class_uri: Error
+    description: 
+    attributes:
+      message:
+        slot_uri: message
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      code:
+        slot_uri: code
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      details:
+        slot_uri: details
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  FilteringMetadata:
+    class_uri: ers:FilteringMetadata
+    description: I am not sure such metadata shall be sent to the REST API, or be entirely handled by the UI.
+    attributes:
+      minConfidence:
+        slot_uri: ers:minConfidence
+        description: 
+        range: double
+        required: true
+        multivalued: false
+      maxConfidence:
+        slot_uri: maxConfidence
+        description: 
+        range: double
+        required: true
+        multivalued: false
+      fulltextSearchQuery:
+        slot_uri: fulltextSearchQuery
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      sortBy:
+        slot_uri: sortBy
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      sortOrderAsc:
+        slot_uri: sortOrderAsc
+        description: 
+        range: boolean
+        required: true
+        multivalued: false
+      entityType:
+        slot_uri: ers:entityType
+        range: EntityType
+        required: true
+        multivalued: false
+
+  GetDecisions:
+    class_uri: ers:GetDecisions
+    is_a: Request
+    description: 
+
+  GetDecisionsResponse:
+    class_uri: ers:GetDecisionsResponse
+    is_a: Response
+    description: 
+    attributes:
+      decisions:
+        slot_uri: ers:decisions
+        range: Decission
+        required: true
+        multivalued: true
+      pagination:
+        slot_uri: ers:pagination
+        range: PaginationMetadata
+        required: false
+        multivalued: false
+
+  PaginationMetadata:
+    class_uri: ers:PaginationMetadata
+    description: 
+    attributes:
+      currentPage:
+        slot_uri: ers:currentPage
+        description: 
+        range: integer
+        required: true
+        multivalued: false
+      pageSize:
+        slot_uri: ers:pageSize
+        description: 
+        range: integer
+        required: true
+        multivalued: false
+      totalItems:
+        slot_uri: ers:totalItems
+        description: 
+        range: integer
+        required: true
+        multivalued: false
+
+  :
+    class_uri: ExecutionAcknowledgement
+    description: 
+    attributes:
+      decisionIdentifier:
+        slot_uri: decisionIdentifier
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      executedSuccesfully:
+        slot_uri: executedSuccesfully
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      reportedAt:
+        slot_uri: reportedAt
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  :
+    class_uri: GetCanonicalEntityPreviews
+    is_a: Request
+    description: 
+    attributes:
+      identifiers:
+        slot_uri: identifiers
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  :
+    class_uri: GetCanonicalEntityPreviewsResponse
+    is_a: Response
+    description: 
+
+  :
+    class_uri: GetEntityMentionRepresentations
+    is_a: Request
+    description: 
+    attributes:
+      identifiers:
+        slot_uri: identifiers
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  :
+    class_uri: GetEntityMentionRepresentationsResponse
+    is_a: Response
+    description: 
+
+  :
+    class_uri: GetStatistics
+    is_a: Request
+    description: 
+
+  :
+    class_uri: GetStatisticsResponse
+    is_a: Response
+    description: 
+
+  :
+    class_uri: PostDecissionResponse
+    is_a: Response
+    description: 
+
+  :
+    class_uri: PostDecissions
+    is_a: Request
+    description: 
+
+  :
+    class_uri: RegistryStatistics
+    is_a: 
+    description: 
+    attributes:
+      canonicalEntities:
+        slot_uri: canonicalEntities
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      averageMentionsPerEntity:
+        slot_uri: averageMentionsPerEntity
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      entityMentions:
+        slot_uri: entityMentions
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      resolutionRequests:
+        slot_uri: resolutionRequests
+        description: 
+        range: string
+        required: true
+        multivalued: false
+
+  :
+    class_uri: Statistics
+    description: 
+    attributes:
+      entityType:
+        slot_uri: entityType
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      timeframeStart:
+        slot_uri: timeframeStart
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      timeframeEnd:
+        slot_uri: timeframeEnd
+        description: 
+        range: string
+        required: true
+        multivalued: false
+      entityType:
+        slot_uri: entityType
+        range: EntityType
+        required: true
+        multivalued: true
+
+
+enums:
+  DecisionAction:
+    description: 
+    permissible_values:
+      ers:acceptTop:
+        description: 
+      ers:acceptAlternative:
+        description: 
+      ers:rejectAll:
+        description: This could mean just reverting back to default Cluster, or it could mean also sending a new request to resolve the same entity (this time with negative cluster examples) ... TBD
+  DecissionStatus:
+    description: 
+    permissible_values:
+      ers:automaticConfident:
+        description: 
+      ers:pendingManualReview:
+        description: 
+      ers:manuallyReviewed:
+        description: 
+  EntityType:
+    description: 
+    permissible_values:
+      ers:organisation:
+        description: 
+      ers:procedure:
+        description: 

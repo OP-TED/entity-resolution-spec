@@ -1,0 +1,70 @@
+graph TD
+    Start((Start))
+
+    %% Curator swimlane
+    ReviewResolution["Review resolution<br/>decision"]
+    SelectCuration["Select curation<br/>action"]
+    DisplayDecision["Display decision and<br/>entity context"]
+
+    %% Resolution application swimlane
+    SubmitCuration["Submit curation<br/>action"]
+    RequestNext["Request next<br/>decision"]
+
+    %% Business systems swimlane
+    CurationDecision{Curation<br/>action type}
+    AcceptDecision["Accept decision"]
+    RejectDecision["Reject decision"]
+    AssignDifferent["Assign to different<br/>canonical entity"]
+    UpdateCanonical["Update the canonical<br/>entity state"]
+    TriggerRe["Trigger re-resolution"]
+    ProvideResolution["Provide resolution<br/>decision"]
+
+    %% External entities/outputs
+    EntityMention["Entity Mention<br/>Representation"]
+    CanonicalEntity["Canonical Entity"]
+
+    End((End))
+
+    %% Flow
+    Start --> ReviewResolution
+    ReviewResolution --> GatewayOR{OR}
+    GatewayOR -->|select| SelectCuration
+    SelectCuration --> SubmitCuration
+    SubmitCuration --> CurationDecision
+
+    CurationDecision -->|accept| AcceptDecision
+    CurationDecision -->|reject| RejectDecision
+    CurationDecision -->|assign| AssignDifferent
+
+    AcceptDecision --> ProvideResolution
+    RejectDecision --> UpdateCanonical
+    AssignDifferent --> UpdateCanonical
+
+    UpdateCanonical --> ProvideResolution
+    UpdateCanonical -.-> CanonicalEntity
+
+    ProvideResolution --> RequestNext
+    RequestNext --> DisplayDecision
+    DisplayDecision --> EntityMention
+    DisplayDecision --> End
+
+    TriggerRe -->|re-resolved| SubmitCuration
+    RejectDecision -.-> TriggerRe
+
+    style Start fill:#FFB3B3
+    style End fill:#FFB3B3
+    style ReviewResolution fill:#FFFFCC
+    style SelectCuration fill:#FFFFCC
+    style SubmitCuration fill:#FFFFCC
+    style AcceptDecision fill:#FFFFCC
+    style RejectDecision fill:#FFFFCC
+    style AssignDifferent fill:#FFFFCC
+    style UpdateCanonical fill:#FFFFCC
+    style TriggerRe fill:#FFFFCC
+    style RequestNext fill:#FFFFCC
+    style ProvideResolution fill:#FFFFCC
+    style DisplayDecision fill:#FFFFCC
+    style GatewayOR fill:#FFFFDD
+    style CurationDecision fill:#FFFFDD
+    style EntityMention fill:#E8F4F8
+    style CanonicalEntity fill:#E8F4F8

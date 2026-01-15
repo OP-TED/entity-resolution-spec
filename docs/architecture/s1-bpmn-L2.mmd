@@ -1,0 +1,142 @@
+graph TD
+  %% ====================================================
+  %% ORIGINATOR POOL
+  %% ====================================================
+  subgraph ORIGINATOR["🔵 ORIGINATOR (External System)"]
+    O1(["Submit Entity Mention"])
+    O2(["Receive Canonical Identifier"])
+    O3(["Process Resolution Response"])
+    O1 --> O2 --> O3
+  end
+
+  %% ====================================================
+  %% ENTITY RESOLUTION SERVICE (ERS) POOL
+  %% ====================================================
+  subgraph ERS["🟢 ENTITY RESOLUTION SERVICE (ERS) - Authoritative"]
+
+    subgraph ORCH_LANE["Resolution Orchestration (ERS Component)"]
+      direction TB
+      E1(["Receive Mention<br/>Submission"])
+      E2["Orchestrate<br/>Resolution"]
+
+      E1 --> E2
+    end
+
+    subgraph SOR_LANE["System of Records (ERS Component - Immutable)"]
+      direction TB
+      E3["Persist Entity Mention<br/>(mentionId, representation,<br/>entityType, metadata)"]
+      E7["Persist Automatic<br/>Alignment Record<br/>(confidence, similarity)"]
+      E12["Persist Manual<br/>Curation Decision<br/>(curator, polarity,<br/>timestamp)"]
+
+      E3 --> E7 --> E12
+    end
+
+    subgraph CER_LANE["Canonical Entity Registry (ERS Component - Source of Truth)"]
+      direction TB
+      E4{"Lookup Cached<br/>Alignment?"}
+      E9["Upsert/Record<br/>Cluster Membership<br/>(mention → cluster,<br/>canonicalId,<br/>confidence)"]
+      E10["Update Alignment<br/>Status<br/>(PENDING_CURATION,<br/>AUTO_ACCEPTED,<br/>MANUAL_CONFIRMED,<br/>MANUAL_REJECTED)"]
+
+      E4 --> E9 --> E10
+    end
+
+    %% Connect orchestration to other components
+    E2 --> E3
+    E2 --> E4
+    E4 -->|Found| E9
+    E4 -->|Not Found| E5
+    E5 --> E7
+    E7 --> E8{{"Evaluate<br/>Confidence<br/>Threshold"}}
+    E8 -->|≥ Threshold| E9
+    E8 -->|< Threshold| E10
+    E10 --> E6
+  end
+
+  %% ====================================================
+  %% MESSAGING MIDDLEWARE (ASYNC TRANSPORT)
+  %% ====================================================
+  subgraph TRANSPORT["📤 MESSAGING MIDDLEWARE (Async Transport Layer)"]
+    M1["ResolutionRequest<br/>Queue"]
+    M2["AutomaticAlignment<br/>Result Queue"]
+
+    M1 --> M2
+  end
+
+  %% ====================================================
+  %% ENTITY RESOLUTION ENGINE (ERE) POOL
+  %% ====================================================
+  subgraph ERE["🟠 ENTITY RESOLUTION ENGINE (ERE) - Pluggable"]
+    direction TB
+    R1(["Receive<br/>ResolutionRequest"])
+    R2["Execute Resolution<br/>Logic"]
+    R2a["(Pairwise Matching)<br/>(Clustering)<br/>(Identity Assignment)"]
+    R3(["Publish<br/>AutomaticAlignment<br/>Result"])
+
+    R1 --> R2
+    R2 --> R2a
+    R2a --> R3
+
+    style R2a fill:#ffffcc,stroke:#999
+  end
+
+  %% ====================================================
+  %% LINK CURATION WEB APPLICATION (CURATOR POOL)
+  %% ====================================================
+  subgraph CURATION["👤 CURATOR (Human - via Link Curation Web Application)"]
+    direction TB
+    C1(["Review Pending<br/>Alignment<br/>(low confidence)"])
+    C2{"Make<br/>Curation<br/>Decision"}
+    C3(["Submit<br/>Polarity Decision<br/>(EQUIVALENT or<br/>NON_EQUIVALENT)"])
+
+    C1 --> C2
+    C2 --> C3
+  end
+
+  %% ====================================================
+  %% MESSAGE FLOWS & INTERACTIONS
+  %% ====================================================
+
+  %% Originator → ERS
+  O1 -->|submitEntityMention| E1
+
+  %% ERS → Originator (responses at different stages)
+  E6 -->|ResolutionResponse<br/>canonicalId| O2
+  O2 --> O3
+
+  %% ERS → Messaging Middleware (async)
+  E2 -->|Publish<br/>ResolutionRequest| M1
+
+  %% Messaging Middleware ← → ERE
+  M1 -->|Deliver<br/>ResolutionRequest| R1
+  R3 -->|Publish<br/>AutomaticAlignmentResult| M2
+
+  %% Messaging Middleware → ERS
+  M2 -->|Deliver<br/>AutomaticAlignmentResult| E5
+
+  %% Curator ← → ERS (out-of-band interaction)
+  E10 -->|Signal to Curator<br/>pendingAlignments| C1
+  C3 -->|reviewPendingAlignment<br/>processCurationDecision| E2
+  E10 -->|Confirm/Reject<br/>Cluster Membership| C1
+
+  %% ====================================================
+  %% STYLE & LEGEND
+  %% ====================================================
+  style ORIGINATOR fill:#e3f2fd
+  style ERS fill:#e8f5e9
+  style TRANSPORT fill:#fff3e0
+  style ERE fill:#ffe0b2
+  style CURATION fill:#f3e5f5
+
+  style E1 fill:#fff
+  style E2 fill:#fff
+  style E3 fill:#fff
+  style E4 fill:#fff
+  style E5 fill:#fff
+  style E6 fill:#fff
+  style E7 fill:#fff
+  style E8 fill:#fff
+  style E9 fill:#fff
+  style E10 fill:#fff
+  style E12 fill:#fff
+
+  style R2a fill:#ffffcc,stroke:#ff9800,stroke-width:2px
