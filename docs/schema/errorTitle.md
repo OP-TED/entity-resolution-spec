@@ -28,7 +28,7 @@ Alias: errorTitle
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ErrorResponse](ErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
 
 
 
@@ -81,9 +81,9 @@ description: 'A human readable brief message about the error that occurred.
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: errorTitle
-owner: ErrorResponse
+owner: EREErrorResponse
 domain_of:
-- ErrorResponse
+- EREErrorResponse
 range: string
 
 ```

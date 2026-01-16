@@ -1,6 +1,6 @@
 
 
-# Class: RebuildRequest 
+# Class: FullRebuildRequest 
 
 
 _A request to reset all the resolutions computed so far and rebuild them as _
@@ -11,7 +11,7 @@ __
 
 _It is expected that the ERE client re-sends all the entities to be resolved again,_
 
-_using `EntityResolutionRequest` messages exactly as the first time the resolutions _
+_using `EntityMentionResolutionRequest` messages exactly as the first time the resolutions _
 
 _were built. This implies the a client like the ERS logs/persists the entities it receives_
 
@@ -23,7 +23,7 @@ __
 
 
 
-URI: [ers:RebuildRequest](https://data.europa.eu/ers/schema/RebuildRequest)
+URI: [ers:FullRebuildRequest](https://data.europa.eu/ers/schema/FullRebuildRequest)
 
 
 
@@ -31,18 +31,20 @@ URI: [ers:RebuildRequest](https://data.europa.eu/ers/schema/RebuildRequest)
 
 ```mermaid
  classDiagram
-    class RebuildRequest
-    click RebuildRequest href "../RebuildRequest/"
-      Request <|-- RebuildRequest
-        click Request href "../Request/"
+    class FullRebuildRequest
+    click FullRebuildRequest href "../FullRebuildRequest/"
+      ERERequest <|-- FullRebuildRequest
+        click ERERequest href "../ERERequest/"
       
-      RebuildRequest : metadata
+      FullRebuildRequest : creationTime
         
-      RebuildRequest : originator
+      FullRebuildRequest : metadata
         
-      RebuildRequest : requestId
+      FullRebuildRequest : originator
         
-      RebuildRequest : type
+      FullRebuildRequest : requestId
+        
+      FullRebuildRequest : type
         
       
 ```
@@ -52,8 +54,8 @@ URI: [ers:RebuildRequest](https://data.europa.eu/ers/schema/RebuildRequest)
 
 
 ## Inheritance
-* [Request](Request.md) [ [RequestOrResponseMixin](RequestOrResponseMixin.md)]
-    * **RebuildRequest**
+* [ERERequest](ERERequest.md) [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
+    * **FullRebuildRequest**
 
 
 
@@ -61,10 +63,11 @@ URI: [ers:RebuildRequest](https://data.europa.eu/ers/schema/RebuildRequest)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of this request | [Request](Request.md) |
-| [originator](originator.md) | 1 <br/> [String](String.md) | The ID or URI of the request originator | [Request](Request.md) |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
+| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of this request | [ERERequest](ERERequest.md) |
+| [originator](originator.md) | 1 <br/> [String](String.md) | The ID or URI of the request originator | [ERERequest](ERERequest.md) |
+| [creationTime](creationTime.md) | 0..1 <br/> [Datetime](Datetime.md) | The timestamp when the request was created | [ERERequest](ERERequest.md) |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
 
 
 
@@ -94,8 +97,8 @@ URI: [ers:RebuildRequest](https://data.europa.eu/ers/schema/RebuildRequest)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:RebuildRequest |
-| native | ers:RebuildRequest |
+| self | ers:FullRebuildRequest |
+| native | ers:FullRebuildRequest |
 
 
 
@@ -110,15 +113,15 @@ URI: [ers:RebuildRequest](https://data.europa.eu/ers/schema/RebuildRequest)
 
 <details>
 ```yaml
-name: RebuildRequest
+name: FullRebuildRequest
 description: "A request to reset all the resolutions computed so far and rebuild them\
   \ as \nrequests about old entities arrive again (and build new entities from scratch).\n\
   \nIt is expected that the ERE client re-sends all the entities to be resolved again,\n\
-  using `EntityResolutionRequest` messages exactly as the first time the resolutions\
+  using `EntityMentionResolutionRequest` messages exactly as the first time the resolutions\
   \ \nwere built. This implies the a client like the ERS logs/persists the entities\
   \ it receives\nto resolve and also saves manual overriding of ERE results.\n"
 from_schema: https://data.europa.eu/ers/schema
-is_a: Request
+is_a: ERERequest
 
 ```
 </details>
@@ -127,15 +130,15 @@ is_a: Request
 
 <details>
 ```yaml
-name: RebuildRequest
+name: FullRebuildRequest
 description: "A request to reset all the resolutions computed so far and rebuild them\
   \ as \nrequests about old entities arrive again (and build new entities from scratch).\n\
   \nIt is expected that the ERE client re-sends all the entities to be resolved again,\n\
-  using `EntityResolutionRequest` messages exactly as the first time the resolutions\
+  using `EntityMentionResolutionRequest` messages exactly as the first time the resolutions\
   \ \nwere built. This implies the a client like the ERS logs/persists the entities\
   \ it receives\nto resolve and also saves manual overriding of ERE results.\n"
 from_schema: https://data.europa.eu/ers/schema
-is_a: Request
+is_a: ERERequest
 attributes:
   requestId:
     name: requestId
@@ -145,10 +148,10 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: requestId
-    owner: RebuildRequest
+    owner: FullRebuildRequest
     domain_of:
-    - Request
-    - Response
+    - ERERequest
+    - EREResponse
     range: string
     required: true
   originator:
@@ -159,26 +162,38 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: originator
-    owner: RebuildRequest
+    owner: FullRebuildRequest
     domain_of:
-    - Request
+    - ERERequest
     range: string
     required: true
+  creationTime:
+    name: creationTime
+    description: 'The timestamp when the request was created.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: creationTime
+    owner: FullRebuildRequest
+    domain_of:
+    - ERERequest
+    range: datetime
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\
       \ `designates_type` is used here in order to allow for this\nslot to tell the\
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
-      `EntityResolutionRequest` or `EntityResolutionResult`\n"
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     designates_type: true
     alias: type
-    owner: RebuildRequest
+    owner: FullRebuildRequest
     domain_of:
-    - RequestOrResponseMixin
-    - Entity
+    - ERECommunicationArtefact
+    - EntityMention
     range: string
     required: true
   metadata:
@@ -189,9 +204,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: metadata
-    owner: RebuildRequest
+    owner: FullRebuildRequest
     domain_of:
-    - RequestOrResponseMixin
+    - ERECommunicationArtefact
     range: string
 
 ```

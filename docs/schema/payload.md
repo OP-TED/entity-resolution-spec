@@ -1,6 +1,6 @@
 
 
-# Slot: entityData 
+# Slot: payload 
 
 
 _A code string representing the entity details (eg, RDF description)._
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:entityData](https://data.europa.eu/ers/schema/entityData)
-Alias: entityData
+URI: [ers:payload](https://data.europa.eu/ers/schema/payload)
+Alias: payload
 
 <!-- no inheritance hierarchy -->
 
@@ -24,8 +24,7 @@ Alias: entityData
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Entity](Entity.md) | An entity is a representation of a real-world entity, as provided by the ERS |  no  |
-| [CanonicalEntity](CanonicalEntity.md) | A canonical entity is an entity that the ERE has created during the resolutio... |  no  |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity in the ERS |  no  |
 
 
 
@@ -58,8 +57,8 @@ Alias: entityData
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:entityData |
-| native | ers:entityData |
+| self | ers:payload |
+| native | ers:payload |
 
 
 
@@ -68,16 +67,16 @@ Alias: entityData
 
 <details>
 ```yaml
-name: entityData
+name: payload
 description: 'A code string representing the entity details (eg, RDF description).
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: entityData
-owner: Entity
+alias: payload
+owner: EntityMention
 domain_of:
-- Entity
+- EntityMention
 range: string
 
 ```

@@ -28,7 +28,7 @@ Alias: errorType
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ErrorResponse](ErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
 
 
 
@@ -83,9 +83,9 @@ description: 'A string representing the error type, eg, the FQN of the raised ex
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: errorType
-owner: ErrorResponse
+owner: EREErrorResponse
 domain_of:
-- ErrorResponse
+- EREErrorResponse
 range: string
 required: true
 
