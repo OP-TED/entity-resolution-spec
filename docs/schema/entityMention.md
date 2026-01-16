@@ -1,6 +1,6 @@
 
 
-# Slot: entity 
+# Slot: entityMention 
 
 
 _The data about the entity to be resolved._
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:entity](https://data.europa.eu/ers/schema/entity)
-Alias: entity
+URI: [ers:entityMention](https://data.europa.eu/ers/schema/entityMention)
+Alias: entityMention
 
 <!-- no inheritance hierarchy -->
 
@@ -24,7 +24,7 @@ Alias: entity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityResolutionRequest](EntityResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
+| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
 
 
 
@@ -33,7 +33,7 @@ Alias: entity
 
 ## Properties
 
-* Range: [Entity](Entity.md)
+* Range: [EntityMention](EntityMention.md)
 
 * Required: True
 
@@ -59,8 +59,8 @@ Alias: entity
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:entity |
-| native | ers:entity |
+| self | ers:entityMention |
+| native | ers:entityMention |
 
 
 
@@ -69,17 +69,17 @@ Alias: entity
 
 <details>
 ```yaml
-name: entity
+name: entityMention
 description: 'The data about the entity to be resolved.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: entity
-owner: EntityResolutionRequest
+alias: entityMention
+owner: EntityMentionResolutionRequest
 domain_of:
-- EntityResolutionRequest
-range: Entity
+- EntityMentionResolutionRequest
+range: EntityMention
 required: true
 
 ```

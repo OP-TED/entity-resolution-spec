@@ -1,6 +1,6 @@
 
 
-# Class: Response 
+# Class: EREResponse 
 
 
 _Root class to represent all the responses sent by the ERE._
@@ -13,7 +13,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:Response](https://data.europa.eu/ers/schema/Response)
+URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 
 
@@ -21,25 +21,25 @@ URI: [ers:Response](https://data.europa.eu/ers/schema/Response)
 
 ```mermaid
  classDiagram
-    class Response
-    click Response href "../Response/"
-      RequestOrResponseMixin <|-- Response
-        click RequestOrResponseMixin href "../RequestOrResponseMixin/"
+    class EREResponse
+    click EREResponse href "../EREResponse/"
+      ERECommunicationArtefact <|-- EREResponse
+        click ERECommunicationArtefact href "../ERECommunicationArtefact/"
       
 
-      Response <|-- EntityResolutionResponse
-        click EntityResolutionResponse href "../EntityResolutionResponse/"
-      Response <|-- ErrorResponse
-        click ErrorResponse href "../ErrorResponse/"
-      Response <|-- RebuildResponse
-        click RebuildResponse href "../RebuildResponse/"
+      EREResponse <|-- EntityMentionResolutionResponse
+        click EntityMentionResolutionResponse href "../EntityMentionResolutionResponse/"
+      EREResponse <|-- EREErrorResponse
+        click EREErrorResponse href "../EREErrorResponse/"
+      EREResponse <|-- FullRebuildResponse
+        click FullRebuildResponse href "../FullRebuildResponse/"
       
 
-      Response : metadata
+      EREResponse : metadata
         
-      Response : requestId
+      EREResponse : requestId
         
-      Response : type
+      EREResponse : type
         
       
 ```
@@ -49,10 +49,10 @@ URI: [ers:Response](https://data.europa.eu/ers/schema/Response)
 
 
 ## Inheritance
-* **Response** [ [RequestOrResponseMixin](RequestOrResponseMixin.md)]
-    * [EntityResolutionResponse](EntityResolutionResponse.md)
-    * [ErrorResponse](ErrorResponse.md)
-    * [RebuildResponse](RebuildResponse.md)
+* **EREResponse** [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
+    * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md)
+    * [EREErrorResponse](EREErrorResponse.md)
+    * [FullRebuildResponse](FullRebuildResponse.md)
 
 
 
@@ -61,8 +61,8 @@ URI: [ers:Response](https://data.europa.eu/ers/schema/Response)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request this response is about | direct |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
 
 
 
@@ -92,8 +92,8 @@ URI: [ers:Response](https://data.europa.eu/ers/schema/Response)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:Response |
-| native | ers:Response |
+| self | ers:EREResponse |
+| native | ers:EREResponse |
 
 
 
@@ -108,14 +108,14 @@ URI: [ers:Response](https://data.europa.eu/ers/schema/Response)
 
 <details>
 ```yaml
-name: Response
+name: EREResponse
 description: 'Root class to represent all the responses sent by the ERE.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 abstract: true
 mixins:
-- RequestOrResponseMixin
+- ERECommunicationArtefact
 attributes:
   requestId:
     name: requestId
@@ -125,8 +125,8 @@ attributes:
       '
     from_schema: https://data.europa.eu/ers/schema
     domain_of:
-    - Request
-    - Response
+    - ERERequest
+    - EREResponse
     required: true
 
 ```
@@ -136,14 +136,14 @@ attributes:
 
 <details>
 ```yaml
-name: Response
+name: EREResponse
 description: 'Root class to represent all the responses sent by the ERE.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 abstract: true
 mixins:
-- RequestOrResponseMixin
+- ERECommunicationArtefact
 attributes:
   requestId:
     name: requestId
@@ -153,10 +153,10 @@ attributes:
       '
     from_schema: https://data.europa.eu/ers/schema
     alias: requestId
-    owner: Response
+    owner: EREResponse
     domain_of:
-    - Request
-    - Response
+    - ERERequest
+    - EREResponse
     range: string
     required: true
   type:
@@ -165,15 +165,15 @@ attributes:
       \ `designates_type` is used here in order to allow for this\nslot to tell the\
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
-      `EntityResolutionRequest` or `EntityResolutionResult`\n"
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     designates_type: true
     alias: type
-    owner: Response
+    owner: EREResponse
     domain_of:
-    - RequestOrResponseMixin
-    - Entity
+    - ERECommunicationArtefact
+    - EntityMention
     range: string
     required: true
   metadata:
@@ -184,9 +184,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: metadata
-    owner: Response
+    owner: EREResponse
     domain_of:
-    - RequestOrResponseMixin
+    - ERECommunicationArtefact
     range: string
 
 ```

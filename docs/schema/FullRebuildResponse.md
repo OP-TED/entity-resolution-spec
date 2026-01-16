@@ -1,9 +1,9 @@
 
 
-# Class: RebuildResponse 
+# Class: FullRebuildResponse 
 
 
-_A response to a `RebuildRequest`, confirming that the rebuild process has started._
+_A response to a `FullRebuildRequest`, confirming that the rebuild process has started._
 
 __
 
@@ -15,7 +15,7 @@ __
 
 
 
-URI: [ers:RebuildResponse](https://data.europa.eu/ers/schema/RebuildResponse)
+URI: [ers:FullRebuildResponse](https://data.europa.eu/ers/schema/FullRebuildResponse)
 
 
 
@@ -23,16 +23,16 @@ URI: [ers:RebuildResponse](https://data.europa.eu/ers/schema/RebuildResponse)
 
 ```mermaid
  classDiagram
-    class RebuildResponse
-    click RebuildResponse href "../RebuildResponse/"
-      Response <|-- RebuildResponse
-        click Response href "../Response/"
+    class FullRebuildResponse
+    click FullRebuildResponse href "../FullRebuildResponse/"
+      EREResponse <|-- FullRebuildResponse
+        click EREResponse href "../EREResponse/"
       
-      RebuildResponse : metadata
+      FullRebuildResponse : metadata
         
-      RebuildResponse : requestId
+      FullRebuildResponse : requestId
         
-      RebuildResponse : type
+      FullRebuildResponse : type
         
       
 ```
@@ -42,8 +42,8 @@ URI: [ers:RebuildResponse](https://data.europa.eu/ers/schema/RebuildResponse)
 
 
 ## Inheritance
-* [Response](Response.md) [ [RequestOrResponseMixin](RequestOrResponseMixin.md)]
-    * **RebuildResponse**
+* [EREResponse](EREResponse.md) [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
+    * **FullRebuildResponse**
 
 
 
@@ -51,9 +51,9 @@ URI: [ers:RebuildResponse](https://data.europa.eu/ers/schema/RebuildResponse)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request this response is about | [Response](Response.md) |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [RequestOrResponseMixin](RequestOrResponseMixin.md) |
+| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request this response is about | [EREResponse](EREResponse.md) |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
 
 
 
@@ -83,8 +83,8 @@ URI: [ers:RebuildResponse](https://data.europa.eu/ers/schema/RebuildResponse)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:RebuildResponse |
-| native | ers:RebuildResponse |
+| self | ers:FullRebuildResponse |
+| native | ers:FullRebuildResponse |
 
 
 
@@ -99,8 +99,8 @@ URI: [ers:RebuildResponse](https://data.europa.eu/ers/schema/RebuildResponse)
 
 <details>
 ```yaml
-name: RebuildResponse
-description: 'A response to a `RebuildRequest`, confirming that the rebuild process
+name: FullRebuildResponse
+description: 'A response to a `FullRebuildRequest`, confirming that the rebuild process
   has started.
 
 
@@ -108,7 +108,7 @@ description: 'A response to a `RebuildRequest`, confirming that the rebuild proc
 
   '
 from_schema: https://data.europa.eu/ers/schema
-is_a: Response
+is_a: EREResponse
 
 ```
 </details>
@@ -117,8 +117,8 @@ is_a: Response
 
 <details>
 ```yaml
-name: RebuildResponse
-description: 'A response to a `RebuildRequest`, confirming that the rebuild process
+name: FullRebuildResponse
+description: 'A response to a `FullRebuildRequest`, confirming that the rebuild process
   has started.
 
 
@@ -126,7 +126,7 @@ description: 'A response to a `RebuildRequest`, confirming that the rebuild proc
 
   '
 from_schema: https://data.europa.eu/ers/schema
-is_a: Response
+is_a: EREResponse
 attributes:
   requestId:
     name: requestId
@@ -136,10 +136,10 @@ attributes:
       '
     from_schema: https://data.europa.eu/ers/schema
     alias: requestId
-    owner: RebuildResponse
+    owner: FullRebuildResponse
     domain_of:
-    - Request
-    - Response
+    - ERERequest
+    - EREResponse
     range: string
     required: true
   type:
@@ -148,15 +148,15 @@ attributes:
       \ `designates_type` is used here in order to allow for this\nslot to tell the\
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
-      `EntityResolutionRequest` or `EntityResolutionResult`\n"
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     designates_type: true
     alias: type
-    owner: RebuildResponse
+    owner: FullRebuildResponse
     domain_of:
-    - RequestOrResponseMixin
-    - Entity
+    - ERECommunicationArtefact
+    - EntityMention
     range: string
     required: true
   metadata:
@@ -167,9 +167,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: metadata
-    owner: RebuildResponse
+    owner: FullRebuildResponse
     domain_of:
-    - RequestOrResponseMixin
+    - ERECommunicationArtefact
     range: string
 
 ```
