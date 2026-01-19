@@ -9,22 +9,34 @@ Scenario: A known entity returns the canonical entity it's equivalent to
   canonical entity. The canonical entity is returned asynchronously.
 
   Detailed examples: see ere-test-cases.md, examples 1, 2, 4, 5
-	(https://github.com/meaningfy-ws/er-system/blob/feature/ERS1-49/ere-gherkin-tests/test/test_data/analysis/ere-test-cases.md)
-  TODO: fix the link after merging into develop
+	(../test_data/analysis/ere-test-cases.md)
 
 Given 
-  An entity C is already known
+  Entity clusters C1, C2, C3 are already known to the ERE
 When 
   The ERS pushes an entity E into the ERE requests channel
 And 
-  The entity E is equivalent to entity C with a sufficient confidence score
+  The entity E is estimated to be equivalent to the canonical entities of C1, C2, C3,
+  with sufficiently high confidence scores
 Then 
-  The ERE asynchronously pushes an entity resolution object to the responses channel that contains:
+  The ERE asynchronously pushes an EntityMentionResolutionResponse object that contains:
   
-  sourceEntityId: the ID of the entity C
-  canonicalEntity: an RDF representation of C
-  confidenceLevel: a value above the min configured threshold (eg, 0.98)
-	type: "EntityResolution" # JSON object type, matches the LinkML class in the service schema 
+  - Common response properties:
+    - `requestId`: the original request ID
+    - `type`: "EntityMentionResolutionResponse"
+    - Possibly, other response properties (e.g., `metadata`)
+    - These are common to all responses and we won't repeat them in the following
+  
+  - `alignmentLinkSet.subjectMentionIdentifier`: the ID of the entity E
+    This is also common to all resolution responses and we won't repeat it again
+  
+  - `alignmentLinkSet.alignmentOptions`: a list of
+  - `alignmentLink[i] = { canonicalIdentifier: Ci.canonicalId, confidenceScore: score[i]}`
+    for i = 0..3, where score[i] is the confidence score for the equivalence between E and Ci.canonicalEntity
+    
+  Returning the links in score order is not required, though it's recommended.
+  Having 3 items in the result is arbitrary, it depends on how many clusters are found and on the
+  ERE configuration (e.g., top N results, confidence threshold, or both).
 
 
 Scenario: An unknown entity resolves to itself
@@ -32,17 +44,15 @@ Scenario: An unknown entity resolves to itself
   A resolution request is pushed to the ERE with an unknown entity, which has no equivalents already
 	resolved by the ERE
 Given 
-  The ERE does not know the entity E
+  The ERE does not know the entity E (ie, it has no equivalent cluster for it)
 When 
   The ERS pushes the entity E into the requests channel
 Then 
-  The ERE asynchronously pushes an entity resolution object to the responses channel that contains:
+  The ERE asynchronously pushes an entity resolution object to the responses channel that contains
+  an alignment set, as other resolution response cases, the set having only one alignment link,
+  ans the link contains has `canonicalIdentifier` set with the `draftCanonicalIdentifier` in the 
+  original request. 
   
-  sourceEntityId: the ID of the entity E
-  canonicalEntity: an RDF representation of E
-	confidenceLevel: 1.0 (since the new canonical entity is E itself)
-	type: "EntityResolution"
-
 
 Scenario: An unknown entity without a sufficient similarity to known entities resolves to itself
 
@@ -52,21 +62,28 @@ Scenario: An unknown entity without a sufficient similarity to known entities re
 	Detailed examples: see ere-test-cases.md, examples 3, 6 
 	(https://github.com/meaningfy-ws/er-system/blob/feature/ERS1-49/ere-gherkin-tests/test/test_data/analysis/ere-test-cases.md)
 Given 
-  The ERE knows the canonical entity C[]
+  The ERE knows the canonical entities in a set of clusters C[]
 When 
   The ERS pushes the entity E into the requests channel
 And 
   The entity E is computed to be similar to entities in C[], but all the confidence scores are less than
   a configured threshold
 Then 
-  The ERE asynchronously pushes an entity resolution object to the responses channel that contains:
-  
-  sourceEntityId: the ID of the entity E
-  canonicalEntity: an RDF representation of E
-	confidenceLevel: 1.0 (since the new canonical entity is E itself)
-	type: "EntityResolution"
+  The ERE behaves as in the 'unknown entity resolves to itself' scenario, ie, it returns that
+  bins the entity in a new singleton cluster, with the `draftCanonicalIdentifier` as the canonical ID.
 
-  TODO: from the point of view of the ERE client, this case is indistinguishable from the 
-  "An unknown entity resolves to itself" scenario. A similar test is useful to verify an 
-  ERE implementation.
+
+Scenario: A resolution request with rejected canonical IDs returns a new cluster, and this is
+  none of the rejected ones
+
+  TODO
+
+  The case where `draftCanonicalIdentifier` is in one of the `rejectedCanonicalIdentifiers` is an error,
+  see the unhappy path feature file.
+   
+
+Scenario: A resolution request with rejected canonical IDs returns an existing cluster, if
+  this is none of the rejected ones
   
+  TODO
+

@@ -12,3 +12,8 @@ Then
 	requestId: the ID of the malformed request
 	errorMessage: a description of the error
 	type: "ErrorResponse" # JSON object property, matches the LinkML class in the service schema.
+
+Scenario: `draftCanonicalIdentifier` matching one of the `rejectedCanonicalIdentifiers` 
+	in a resolution request returns an error response
+
+	TODO

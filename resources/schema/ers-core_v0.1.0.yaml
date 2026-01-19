@@ -87,6 +87,16 @@ classes:
         description: |
           The data about the entity to be resolved.
         required: true
+      draftCanonicalIdentifier:
+        description: |
+          An optional URI representing a draft canonical identifier for the entity mention
+          in this request.
+
+          The ERS creates this when it still doesn't know anything about an entity resolution, for 
+          the purpose of quickly replying something and postpone a final resolution to when the 
+          ERE has it. The ERE must use this ID when it creates a new (typically singleton) cluster
+          for this entity mention, if it can't associate the entity to any cluster it already knows.
+        range: uri
       rejectedCanonicalIdentifiers:
         description: |
           When this is present, the request is a refresh request: it is asking that the entity 
@@ -254,12 +264,15 @@ classes:
           computes the same identifier for the same payload, eg, a hash, an RDF URI extractor. This is
           needed for the resolution results to refer to the correct request entities.        
         required: true
-      type:
+      entityType:
         description: |
           A string representing the entity type URI (based on CET).
 
-          Note that we don't use the `designates_type` thing here, since entities or canonical entities 
-          are always used in clearly distinct contexts.
+          Note that we don't use the `designates_type` thing here, nor the `type` attribute, since 
+          we don't have entity mention subclasses for now, and the instances of this class don't 
+          need any disambiguation.
+
+          Also note this has nothing to do with the `type` attribute of requests/responses.
         required: true
       datFormat:
         description: |
