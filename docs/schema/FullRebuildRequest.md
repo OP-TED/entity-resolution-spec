@@ -193,7 +193,6 @@ attributes:
     owner: FullRebuildRequest
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     range: string
     required: true
   metadata:

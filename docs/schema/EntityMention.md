@@ -29,13 +29,13 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
     click EntityMention href "../EntityMention/"
       EntityMention : datFormat
         
+      EntityMention : entityType
+        
       EntityMention : identifier
         
       EntityMention : jsonRepresentation
         
       EntityMention : payload
-        
-      EntityMention : type
         
       
 ```
@@ -51,7 +51,7 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [identifier](identifier.md) | 1 <br/> [Uri](Uri.md) | An URI identifying the entity | direct |
-| [type](type.md) | 1 <br/> [String](String.md) | A string representing the entity type URI (based on CET) | direct |
+| [entityType](entityType.md) | 1 <br/> [String](String.md) | A string representing the entity type URI (based on CET) | direct |
 | [datFormat](datFormat.md) | 0..1 <br/> [String](String.md) | A string about the MIME format of `payload` (e | direct |
 | [payload](payload.md) | 0..1 <br/> [String](String.md) | A code string representing the entity details (eg, RDF description) | direct |
 | [jsonRepresentation](jsonRepresentation.md) | 0..1 <br/> [String](String.md) | An optional JSON representation of the entity, which is usually achieved from... | direct |
@@ -128,14 +128,16 @@ attributes:
     - EntityMention
     range: uri
     required: true
-  type:
-    name: type
+  entityType:
+    name: entityType
     description: "A string representing the entity type URI (based on CET).\n\nNote\
-      \ that we don't use the `designates_type` thing here, since entities or canonical\
-      \ entities \nare always used in clearly distinct contexts.\n"
+      \ that we don't use the `designates_type` thing here, nor the `type` attribute,\
+      \ since \nwe don't have entity mention subclasses for now, and the instances\
+      \ of this class don't \nneed any disambiguation.\n\nAlso note this has nothing\
+      \ to do with the `type` attribute of requests/responses.\n"
     from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
     domain_of:
-    - ERECommunicationArtefact
     - EntityMention
     required: true
   datFormat:
@@ -199,16 +201,18 @@ attributes:
     - EntityMention
     range: uri
     required: true
-  type:
-    name: type
+  entityType:
+    name: entityType
     description: "A string representing the entity type URI (based on CET).\n\nNote\
-      \ that we don't use the `designates_type` thing here, since entities or canonical\
-      \ entities \nare always used in clearly distinct contexts.\n"
+      \ that we don't use the `designates_type` thing here, nor the `type` attribute,\
+      \ since \nwe don't have entity mention subclasses for now, and the instances\
+      \ of this class don't \nneed any disambiguation.\n\nAlso note this has nothing\
+      \ to do with the `type` attribute of requests/responses.\n"
     from_schema: https://data.europa.eu/ers/schema
-    alias: type
+    rank: 1000
+    alias: entityType
     owner: EntityMention
     domain_of:
-    - ERECommunicationArtefact
     - EntityMention
     range: string
     required: true

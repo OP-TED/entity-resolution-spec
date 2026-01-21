@@ -125,7 +125,6 @@ attributes:
     designates_type: true
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     required: true
   metadata:
     name: metadata
@@ -169,7 +168,6 @@ attributes:
     owner: ERECommunicationArtefact
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     range: string
     required: true
   metadata:

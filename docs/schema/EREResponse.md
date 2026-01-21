@@ -173,7 +173,6 @@ attributes:
     owner: EREResponse
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     range: string
     required: true
   metadata:

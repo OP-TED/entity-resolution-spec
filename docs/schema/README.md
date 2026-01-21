@@ -36,7 +36,9 @@ Name: ersServiceDataSchema
 | [confidenceScore](confidenceScore.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... |
 | [creationTime](creationTime.md) | The timestamp when the request was created |
 | [datFormat](datFormat.md) | A string about the MIME format of `payload` (e |
+| [draftCanonicalIdentifier](draftCanonicalIdentifier.md) | An optional URI representing a draft canonical identifier for the entity ment... |
 | [entityMention](entityMention.md) | The data about the entity to be resolved |
+| [entityType](entityType.md) | A string representing the entity type URI (based on CET) |
 | [errorDetail](errorDetail.md) | A human readable detailed message about the error that occurred |
 | [errorTitle](errorTitle.md) | A human readable brief message about the error that occurred |
 | [errorTrace](errorTrace.md) | A string representing a (stack) trace of the error that occurred |

@@ -221,7 +221,6 @@ attributes:
     owner: ERERequest
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     range: string
     required: true
   metadata:

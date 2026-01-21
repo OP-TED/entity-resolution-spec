@@ -110,6 +110,10 @@
             "null"
           ]
         },
+        "entityType": {
+          "description": "A string representing the entity type URI (based on CET).\n\nNote that we don't use the `designates_type` thing here, nor the `type` attribute, since \nwe don't have entity mention subclasses for now, and the instances of this class don't \nneed any disambiguation.\n\nAlso note this has nothing to do with the `type` attribute of requests/responses.\n",
+          "type": "string"
+        },
         "identifier": {
           "description": "An URI identifying the entity.\n\nWhile mandatory, this can be computed, using same function that depends on the entity payload.\nIn that case, **there must be** a single function in the whole ERS (including the ERE) that\ncomputes the same identifier for the same payload, eg, a hash, an RDF URI extractor. This is\nneeded for the resolution results to refer to the correct request entities.        \n",
           "type": "string"
@@ -127,15 +131,11 @@
             "string",
             "null"
           ]
-        },
-        "type": {
-          "description": "A string representing the entity type URI (based on CET).\n\nNote that we don't use the `designates_type` thing here, since entities or canonical entities \nare always used in clearly distinct contexts.\n",
-          "type": "string"
         }
       },
       "required": [
         "identifier",
-        "type"
+        "entityType"
       ],
       "title": "EntityMention",
       "type": "object"
@@ -147,6 +147,13 @@
         "creationTime": {
           "description": "The timestamp when the request was created.\n",
           "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "draftCanonicalIdentifier": {
+          "description": "An optional URI representing a draft canonical identifier for the entity mention\nin this request.\n\nThe ERS creates this when it still doesn't know anything about an entity resolution, for \nthe purpose of quickly replying something and postpone a final resolution to when the \nERE has it. The ERE must use this ID when it creates a new (typically singleton) cluster\nfor this entity mention, if it can't associate the entity to any cluster it already knows.\n",
           "type": [
             "string",
             "null"

@@ -26,6 +26,8 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
       
       EntityMentionResolutionRequest : creationTime
         
+      EntityMentionResolutionRequest : draftCanonicalIdentifier
+        
       EntityMentionResolutionRequest : entityMention
         
           
@@ -65,6 +67,7 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [entityMention](entityMention.md) | 1 <br/> [EntityMention](EntityMention.md) | The data about the entity to be resolved | direct |
+| [draftCanonicalIdentifier](draftCanonicalIdentifier.md) | 0..1 <br/> [Uri](Uri.md) | An optional URI representing a draft canonical identifier for the entity ment... | direct |
 | [rejectedCanonicalIdentifiers](rejectedCanonicalIdentifiers.md) | * <br/> [Uri](Uri.md) | When this is present, the request is a refresh request: it is asking that the... | direct |
 | [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of this request | [ERERequest](ERERequest.md) |
 | [originator](originator.md) | 1 <br/> [String](String.md) | The ID or URI of the request originator | [ERERequest](ERERequest.md) |
@@ -213,6 +216,20 @@ attributes:
     - EntityMentionResolutionRequest
     range: EntityMention
     required: true
+  draftCanonicalIdentifier:
+    name: draftCanonicalIdentifier
+    description: "An optional URI representing a draft canonical identifier for the\
+      \ entity mention\nin this request.\n\nThe ERS creates this when it still doesn't\
+      \ know anything about an entity resolution, for \nthe purpose of quickly replying\
+      \ something and postpone a final resolution to when the \nERE has it. The ERE\
+      \ must use this ID when it creates a new (typically singleton) cluster\nfor\
+      \ this entity mention, if it can't associate the entity to any cluster it already\
+      \ knows.\n"
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    domain_of:
+    - EntityMentionResolutionRequest
+    range: uri
   rejectedCanonicalIdentifiers:
     name: rejectedCanonicalIdentifiers
     description: "When this is present, the request is a refresh request: it is asking\
@@ -282,6 +299,22 @@ attributes:
     - EntityMentionResolutionRequest
     range: EntityMention
     required: true
+  draftCanonicalIdentifier:
+    name: draftCanonicalIdentifier
+    description: "An optional URI representing a draft canonical identifier for the\
+      \ entity mention\nin this request.\n\nThe ERS creates this when it still doesn't\
+      \ know anything about an entity resolution, for \nthe purpose of quickly replying\
+      \ something and postpone a final resolution to when the \nERE has it. The ERE\
+      \ must use this ID when it creates a new (typically singleton) cluster\nfor\
+      \ this entity mention, if it can't associate the entity to any cluster it already\
+      \ knows.\n"
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: draftCanonicalIdentifier
+    owner: EntityMentionResolutionRequest
+    domain_of:
+    - EntityMentionResolutionRequest
+    range: uri
   rejectedCanonicalIdentifiers:
     name: rejectedCanonicalIdentifiers
     description: "When this is present, the request is a refresh request: it is asking\
@@ -352,7 +385,6 @@ attributes:
     owner: EntityMentionResolutionRequest
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     range: string
     required: true
   metadata:

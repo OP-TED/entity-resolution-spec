@@ -24,9 +24,9 @@ Alias: creationTime
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
 | [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
 | [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
+| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
 
 
 

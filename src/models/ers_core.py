@@ -108,8 +108,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -136,8 +135,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -160,8 +158,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -235,6 +232,14 @@ class EntityMentionResolutionRequest(ERERequest):
 
     entityMention: EntityMention = Field(default=..., description="""The data about the entity to be resolved.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
+    draftCanonicalIdentifier: Optional[str] = Field(default=None, description="""An optional URI representing a draft canonical identifier for the entity mention
+in this request.
+
+The ERS creates this when it still doesn't know anything about an entity resolution, for 
+the purpose of quickly replying something and postpone a final resolution to when the 
+ERE has it. The ERE must use this ID when it creates a new (typically singleton) cluster
+for this entity mention, if it can't associate the entity to any cluster it already knows.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
     rejectedCanonicalIdentifiers: Optional[list[str]] = Field(default=[], description="""When this is present, the request is a refresh request: it is asking that the entity 
 is resolved again and the clusters/canonical entities that were previously proposed 
 as resolution are now ignored.
@@ -257,8 +262,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -310,8 +314,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -366,8 +369,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -389,11 +391,14 @@ In that case, **there must be** a single function in the whole ERS (including th
 computes the same identifier for the same payload, eg, a hash, an RDF URI extractor. This is
 needed for the resolution results to refer to the correct request entities.        
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
-    type: str = Field(default=..., description="""A string representing the entity type URI (based on CET).
+    entityType: str = Field(default=..., description="""A string representing the entity type URI (based on CET).
 
-Note that we don't use the `designates_type` thing here, since entities or canonical entities 
-are always used in clearly distinct contexts.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+Note that we don't use the `designates_type` thing here, nor the `type` attribute, since 
+we don't have entity mention subclasses for now, and the instances of this class don't 
+need any disambiguation.
+
+Also note this has nothing to do with the `type` attribute of requests/responses.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     datFormat: Optional[str] = Field(default=None, description="""A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     payload: Optional[str] = Field(default=None, description="""A code string representing the entity details (eg, RDF description).
@@ -475,8 +480,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 
@@ -499,8 +503,7 @@ slot to tell the concrete subclass that an instance (such as a JSON object) belo
 
 In other words, a particular request will have `type` set with values like 
 `EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True,
-         'domain_of': ['ERECommunicationArtefact', 'EntityMention']} })
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['ERECommunicationArtefact']} })
     metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ERECommunicationArtefact']} })
 

@@ -268,7 +268,6 @@ attributes:
     owner: EntityMentionResolutionResponse
     domain_of:
     - ERECommunicationArtefact
-    - EntityMention
     range: string
     required: true
   metadata:
