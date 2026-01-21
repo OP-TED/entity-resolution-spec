@@ -1,12 +1,14 @@
 Feature: ERE/ERS interaction for entity resolutions
+
   Note that in all the tests, the exact meaning of "known/unknown entity" depends on the ERE implementation,
   e.g., it has already seen the entity in a previous request, or it is a test ERE, with a pre-loaded 
   set of canonical entities.
 
-Scenario: A known entity returns the canonical entity it's equivalent to
+Scenario: A known entity returns the canonical entities it's deemed to be equivalent to
   
-  A resolution request is pushed to the ERE with an entity that is equivalent to a known 
-  canonical entity. The canonical entity is returned asynchronously.
+  A resolution request is pushed to the ERE with an entity that is known to be equivalent to
+  other canonical entities and with sufficiently high confidence scores. The ERE returns
+  such canonical entities asynchronously.
 
   Detailed examples: see [ere-test-cases.md](../test_data/analysis/ere-test-cases.md), 
   examples 1, 2, 4, 5
@@ -18,7 +20,7 @@ And
   The entity E is estimated to be equivalent to the canonical entities of C1, C2, C3,
   with sufficiently high confidence scores
 Then 
-  The ERE asynchronously pushes an EntityMentionResolutionResponse object that contains:
+  The ERE asynchronously pushes an `EntityMentionResolutionResponse` object that contains:
   
   - Common response properties:
     - `requestId`: the original request ID
@@ -34,7 +36,7 @@ Then
     for i = 0..3, where score[i] is the confidence score for the equivalence between E and Ci.canonicalEntity
     
   Returning the links in score order is not required, though it's recommended.
-  Having 3 items in the result is arbitrary, it depends on how many clusters are found and on the
+  Having 3 items in the result is arbitrary. In general, it depends on how many clusters are found and on the
   ERE configuration (e.g., top N results, confidence threshold, or both).
 
 
@@ -58,8 +60,8 @@ Scenario: An unknown entity without a sufficient similarity to known entities re
   A resolution request is pushed to the ERE with an entity that is deemed similar other known
 	canonical entities, but all having a confidence score below the set threshold.
 
-	Detailed examples: see ere-test-cases.md, examples 3, 6 
-	(https://github.com/meaningfy-ws/er-system/blob/feature/ERS1-49/ere-gherkin-tests/test/test_data/analysis/ere-test-cases.md)
+	Detailed examples: see [ere-test-cases.md](../test_data/analysis/ere-test-cases.md),
+  examples 3, 6 
 Given 
   The ERE knows the canonical entities in a set of clusters C[]
 When 
@@ -90,5 +92,5 @@ And
   The request has a set `R[]` as `rejectedCanonicalIdentifiers`, none of them being the
   `draftCanonicalIdentifier`
 Then
-  The ERE returns a resolution response such that none of `alignmentLink.canonicalIdentifier 
+  The ERE returns a resolution response such that none of `alignmentLink.canonicalIdentifier` 
   is in `R[]`.

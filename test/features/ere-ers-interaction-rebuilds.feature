@@ -13,8 +13,8 @@ When
 Then 
 	The ERE asynchronously pushes a rebuild response to the rebuild responses channel that contains:
 
-  requestId: the ID of the rebuild request
-  type: "RebuildResponse" # JSON object property, matches the LinkML class in the service schema.
+  `requestId`: the ID of the rebuild request
+  `type: "RebuildResponse"`, a JSON object property, matches the LinkML class in the service schema.
 
 
 Scenario: The ERE keeps resolving entities as usually after a rebuild request
@@ -27,12 +27,8 @@ Given
 When 
 	The ERS pushes a resolution request into the ERE requests channel for the entity E
 Then 
-	The ERE asynchronously pushes an entity resolution object to the responses channel that contains
-	either the E entity (if E was unknown) or a canonical entity C with a confidence score above the
-	configured threshold (if E is considered equivalent to a known entity C). Namely, a response like:
-	
-	sourceEntityId: the ID of the entity E
-	canonicalEntity: an RDF representation of E or another entity C
-	confidenceLevel: 1.0 (if canonicalEntity is E) or a value above the min configured threshold
-	type: "EntityResolution" # JSON object type, matches the LinkML class in the service schema.
-
+	The ERE asynchronously pushes an entity resolution object to the responses channel, within the
+	configured system timeout. The response is like 
+	[a regular resolution response](ere-ers-interaction-submissions.feature), possibly with a new
+	alignment set associated to the requested entity (with respect to the alignments returned before 
+	the rebuild).
