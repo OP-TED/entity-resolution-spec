@@ -14,7 +14,7 @@ Then
 	The ERE asynchronously pushes a rebuild response to the rebuild responses channel that contains:
 
   requestId: the ID of the rebuild request
-  type: "RebuildResponse" # JSON object property, matches the LinkML class in the service schema. 
+  type: "RebuildResponse" # JSON object property, matches the LinkML class in the service schema.
 
 
 Scenario: The ERE keeps resolving entities as usually after a rebuild request
@@ -34,5 +34,5 @@ Then
 	sourceEntityId: the ID of the entity E
 	canonicalEntity: an RDF representation of E or another entity C
 	confidenceLevel: 1.0 (if canonicalEntity is E) or a value above the min configured threshold
-	type: "EntityResolution" # JSON object type, matches the LinkML class in the service schema
+	type: "EntityResolution" # JSON object type, matches the LinkML class in the service schema.
 

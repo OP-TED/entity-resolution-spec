@@ -8,9 +8,8 @@ Scenario: A known entity returns the canonical entity it's equivalent to
   A resolution request is pushed to the ERE with an entity that is equivalent to a known 
   canonical entity. The canonical entity is returned asynchronously.
 
-  Detailed examples: see ere-test-cases.md, examples 1, 2, 4, 5
-	(../test_data/analysis/ere-test-cases.md)
-
+  Detailed examples: see [ere-test-cases.md](../test_data/analysis/ere-test-cases.md), 
+  examples 1, 2, 4, 5
 Given 
   Entity clusters C1, C2, C3 are already known to the ERE
 When 
@@ -73,17 +72,23 @@ Then
   bins the entity in a new singleton cluster, with the `draftCanonicalIdentifier` as the canonical ID.
 
 
-Scenario: A resolution request with rejected canonical IDs returns a new cluster, and this is
-  none of the rejected ones
+Scenario: A resolution request with rejected canonical IDs returns a different cluster
 
-  TODO
-
-  The case where `draftCanonicalIdentifier` is in one of the `rejectedCanonicalIdentifiers` is an error,
-  see the unhappy path feature file.
-   
-
-Scenario: A resolution request with rejected canonical IDs returns an existing cluster, if
-  this is none of the rejected ones
+  ERE reacts to rejections of previously suggested canonical entities by returning
+  a different canonical entity in the response.
   
-  TODO
+  Typically, we expect that the ERE creates a new singleton cluster for the entity, but it may also 
+  return an alternative known cluster, eg, after a rebuild-all request or upon internal re-evaluation 
+  decisions (note to developers: different unit tests might be useful for coverage).
+    
+  The case where `draftCanonicalIdentifier` is in one of the `rejectedCanonicalIdentifiers` 
+  is an error, see the unhappy paths feature file.
 
+When 
+  The ERS pushes a resolution request for an entity into the requests channel
+And
+  The request has a set `R[]` as `rejectedCanonicalIdentifiers`, none of them being the
+  `draftCanonicalIdentifier`
+Then
+  The ERE returns a resolution response such that none of `alignmentLink.canonicalIdentifier 
+  is in `R[]`.
