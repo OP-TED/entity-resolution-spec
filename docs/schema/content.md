@@ -1,9 +1,9 @@
 
 
-# Slot: datFormat 
+# Slot: content 
 
 
-_A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)_
+_A code string representing the entity mention details (eg, RDF or XML description)._
 
 __
 
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:datFormat](https://data.europa.eu/ers/schema/datFormat)
-Alias: datFormat
+URI: [ers:content](https://data.europa.eu/ers/schema/content)
+Alias: content
 
 <!-- no inheritance hierarchy -->
 
@@ -24,7 +24,7 @@ Alias: datFormat
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity in the ERS |  no  |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |  no  |
 
 
 
@@ -57,8 +57,8 @@ Alias: datFormat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:datFormat |
-| native | ers:datFormat |
+| self | ers:content |
+| native | ers:content |
 
 
 
@@ -67,13 +67,14 @@ Alias: datFormat
 
 <details>
 ```yaml
-name: datFormat
-description: 'A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)
+name: content
+description: 'A code string representing the entity mention details (eg, RDF or XML
+  description).
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: datFormat
+alias: content
 owner: EntityMention
 domain_of:
 - EntityMention

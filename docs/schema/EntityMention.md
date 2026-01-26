@@ -3,13 +3,9 @@
 # Class: EntityMention 
 
 
-_An entity mention is a representation of a real-world entity in the ERS. It must have _
+_An entity mention is a representation of a real-world entity, as provided by the ERS._
 
-_a data content and a data format, so that components like the ERE can use them for resolution._
-
-__
-
-_Moreover, an entity mention must have a computed identifier (see below)._
+_It contains the entity data, along with metadata like type and format.      _
 
 __
 
@@ -27,15 +23,11 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
  classDiagram
     class EntityMention
     click EntityMention href "../EntityMention/"
-      EntityMention : datFormat
+      EntityMention : content
         
-      EntityMention : identifier
+      EntityMention : contentType
         
-      EntityMention : jsonRepresentation
-        
-      EntityMention : payload
-        
-      EntityMention : type
+      EntityMention : isCanonical
         
       
 ```
@@ -50,11 +42,9 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [identifier](identifier.md) | 1 <br/> [Uri](Uri.md) | An URI identifying the entity | direct |
-| [type](type.md) | 1 <br/> [String](String.md) | A string representing the entity type URI (based on CET) | direct |
-| [datFormat](datFormat.md) | 0..1 <br/> [String](String.md) | A string about the MIME format of `payload` (e | direct |
-| [payload](payload.md) | 0..1 <br/> [String](String.md) | A code string representing the entity details (eg, RDF description) | direct |
-| [jsonRepresentation](jsonRepresentation.md) | 0..1 <br/> [String](String.md) | An optional JSON representation of the entity, which is usually achieved from... | direct |
+| [contentType](contentType.md) | 0..1 <br/> [String](String.md) | A string about the MIME format of `content` (e | direct |
+| [content](content.md) | 0..1 <br/> [String](String.md) | A code string representing the entity mention details (eg, RDF or XML descrip... | direct |
+| [isCanonical](isCanonical.md) | 0..1 <br/> [Boolean](Boolean.md) | A boolean flag indicating whether the entity mention is to be considered a ca... | direct |
 
 
 
@@ -108,66 +98,42 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
 <details>
 ```yaml
 name: EntityMention
-description: "An entity mention is a representation of a real-world entity in the\
-  \ ERS. It must have \na data content and a data format, so that components like\
-  \ the ERE can use them for resolution.\n\nMoreover, an entity mention must have\
-  \ a computed identifier (see below).\n"
+description: "An entity mention is a representation of a real-world entity, as provided\
+  \ by the ERS.\nIt contains the entity data, along with metadata like type and format.\
+  \      \n"
 from_schema: https://data.europa.eu/ers/schema
 attributes:
-  identifier:
-    name: identifier
-    description: "An URI identifying the entity.\n\nWhile mandatory, this can be computed,\
-      \ using same function that depends on the entity payload.\nIn that case, **there\
-      \ must be** a single function in the whole ERS (including the ERE) that\ncomputes\
-      \ the same identifier for the same payload, eg, a hash, an RDF URI extractor.\
-      \ This is\nneeded for the resolution results to refer to the correct request\
-      \ entities.        \n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    domain_of:
-    - EntityMention
-    range: uri
-    required: true
-  type:
-    name: type
-    description: "A string representing the entity type URI (based on CET).\n\nNote\
-      \ that we don't use the `designates_type` thing here, since entities or canonical\
-      \ entities \nare always used in clearly distinct contexts.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    domain_of:
-    - ERECommunicationArtefact
-    - EntityMention
-    required: true
-  datFormat:
-    name: datFormat
-    description: 'A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)
+  contentType:
+    name: contentType
+    description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
     - EntityMention
-  payload:
-    name: payload
-    description: 'A code string representing the entity details (eg, RDF description).
+  content:
+    name: content
+    description: 'A code string representing the entity mention details (eg, RDF or
+      XML description).
 
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
     - EntityMention
-  jsonRepresentation:
-    name: jsonRepresentation
-    description: 'An optional JSON representation of the entity, which is usually
-      achieved from the payload.
-
-      This is mainly useful for the curation app.
-
-      '
+  isCanonical:
+    name: isCanonical
+    description: "A boolean flag indicating whether the entity mention is to be considered\
+      \ a canonical (the source of truth).\n\nThis is used by the ERS to feed the\
+      \ ERE with well known entity mentions (usually for bootstrapping the ERE).\n\
+      The confidence level to assign to the cluster created should be 1.0 in this\
+      \ case and never overridden by other \nmentions during re-clustering.\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
     - EntityMention
+    range: boolean
 
 ```
 </details>
@@ -177,80 +143,50 @@ attributes:
 <details>
 ```yaml
 name: EntityMention
-description: "An entity mention is a representation of a real-world entity in the\
-  \ ERS. It must have \na data content and a data format, so that components like\
-  \ the ERE can use them for resolution.\n\nMoreover, an entity mention must have\
-  \ a computed identifier (see below).\n"
+description: "An entity mention is a representation of a real-world entity, as provided\
+  \ by the ERS.\nIt contains the entity data, along with metadata like type and format.\
+  \      \n"
 from_schema: https://data.europa.eu/ers/schema
 attributes:
-  identifier:
-    name: identifier
-    description: "An URI identifying the entity.\n\nWhile mandatory, this can be computed,\
-      \ using same function that depends on the entity payload.\nIn that case, **there\
-      \ must be** a single function in the whole ERS (including the ERE) that\ncomputes\
-      \ the same identifier for the same payload, eg, a hash, an RDF URI extractor.\
-      \ This is\nneeded for the resolution results to refer to the correct request\
-      \ entities.        \n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: identifier
-    owner: EntityMention
-    domain_of:
-    - EntityMention
-    range: uri
-    required: true
-  type:
-    name: type
-    description: "A string representing the entity type URI (based on CET).\n\nNote\
-      \ that we don't use the `designates_type` thing here, since entities or canonical\
-      \ entities \nare always used in clearly distinct contexts.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    alias: type
-    owner: EntityMention
-    domain_of:
-    - ERECommunicationArtefact
-    - EntityMention
-    range: string
-    required: true
-  datFormat:
-    name: datFormat
-    description: 'A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)
+  contentType:
+    name: contentType
+    description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: datFormat
+    alias: contentType
     owner: EntityMention
     domain_of:
     - EntityMention
     range: string
-  payload:
-    name: payload
-    description: 'A code string representing the entity details (eg, RDF description).
+  content:
+    name: content
+    description: 'A code string representing the entity mention details (eg, RDF or
+      XML description).
 
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: payload
+    alias: content
     owner: EntityMention
     domain_of:
     - EntityMention
     range: string
-  jsonRepresentation:
-    name: jsonRepresentation
-    description: 'An optional JSON representation of the entity, which is usually
-      achieved from the payload.
-
-      This is mainly useful for the curation app.
-
-      '
+  isCanonical:
+    name: isCanonical
+    description: "A boolean flag indicating whether the entity mention is to be considered\
+      \ a canonical (the source of truth).\n\nThis is used by the ERS to feed the\
+      \ ERE with well known entity mentions (usually for bootstrapping the ERE).\n\
+      The confidence level to assign to the cluster created should be 1.0 in this\
+      \ case and never overridden by other \nmentions during re-clustering.\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: jsonRepresentation
+    alias: isCanonical
     owner: EntityMention
     domain_of:
     - EntityMention
-    range: string
+    range: boolean
 
 ```
 </details>

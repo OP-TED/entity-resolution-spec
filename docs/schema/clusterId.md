@@ -1,11 +1,11 @@
 
 
-# Slot: canonicalIdentifier 
+# Slot: clusterId 
 
 
 _The identifier of the cluster/canonical entity that is considered equivalent to the_
 
-_subject entity mention in the `AlignmentLinkSet` the link belongs to._
+_subject entity mention that an `EntityMentionResolutionResponse` refers to._
 
 __
 
@@ -13,8 +13,8 @@ __
 
 
 
-URI: [ers:canonicalIdentifier](https://data.europa.eu/ers/schema/canonicalIdentifier)
-Alias: canonicalIdentifier
+URI: [ers:clusterId](https://data.europa.eu/ers/schema/clusterId)
+Alias: clusterId
 
 <!-- no inheritance hierarchy -->
 
@@ -26,7 +26,7 @@ Alias: canonicalIdentifier
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AlignmentLink](AlignmentLink.md) | An alignment link representing a possible equivalence between an entity menti... |  no  |
+| [ClusterRef](ClusterRef.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |  no  |
 
 
 
@@ -35,7 +35,7 @@ Alias: canonicalIdentifier
 
 ## Properties
 
-* Range: [Uri](Uri.md)
+* Range: [String](String.md)
 
 * Required: True
 
@@ -61,8 +61,8 @@ Alias: canonicalIdentifier
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:canonicalIdentifier |
-| native | ers:canonicalIdentifier |
+| self | ers:clusterId |
+| native | ers:clusterId |
 
 
 
@@ -71,20 +71,20 @@ Alias: canonicalIdentifier
 
 <details>
 ```yaml
-name: canonicalIdentifier
+name: clusterId
 description: 'The identifier of the cluster/canonical entity that is considered equivalent
   to the
 
-  subject entity mention in the `AlignmentLinkSet` the link belongs to.
+  subject entity mention that an `EntityMentionResolutionResponse` refers to.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: canonicalIdentifier
-owner: AlignmentLink
+alias: clusterId
+owner: ClusterRef
 domain_of:
-- AlignmentLink
-range: uri
+- ClusterRef
+range: string
 required: true
 
 ```

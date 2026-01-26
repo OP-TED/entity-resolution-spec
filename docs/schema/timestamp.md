@@ -1,21 +1,9 @@
 
 
-# Slot: type 
+# Slot: timestamp 
 
 
-_The type of the request or result._
-
-__
-
-_As per LinkML specification, `designates_type` is used here in order to allow for this_
-
-_slot to tell the concrete subclass that an instance (such as a JSON object) belongs to._
-
-__
-
-_In other words, a particular request will have `type` set with values like _
-
-_`EntityMentionResolutionRequest` or `EntityResolutionResult`_
+_The time when the message was created. Should be in ISO-8601 format._
 
 __
 
@@ -23,8 +11,8 @@ __
 
 
 
-URI: [ers:type](https://data.europa.eu/ers/schema/type)
-Alias: type
+URI: [ers:timestamp](https://data.europa.eu/ers/schema/timestamp)
+Alias: timestamp
 
 <!-- no inheritance hierarchy -->
 
@@ -52,9 +40,7 @@ Alias: type
 
 ## Properties
 
-* Range: [String](String.md)
-
-* Required: True
+* Range: [Datetime](Datetime.md)
 
 
 
@@ -78,8 +64,8 @@ Alias: type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:type |
-| native | ers:type |
+| self | ers:timestamp |
+| native | ers:timestamp |
 
 
 
@@ -88,21 +74,17 @@ Alias: type
 
 <details>
 ```yaml
-name: type
-description: "The type of the request or result.\n\nAs per LinkML specification, `designates_type`\
-  \ is used here in order to allow for this\nslot to tell the concrete subclass that\
-  \ an instance (such as a JSON object) belongs to.\n\nIn other words, a particular\
-  \ request will have `type` set with values like \n`EntityMentionResolutionRequest`\
-  \ or `EntityResolutionResult`\n"
+name: timestamp
+description: 'The time when the message was created. Should be in ISO-8601 format.
+
+  '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-designates_type: true
-alias: type
+alias: timestamp
 owner: EREMessage
 domain_of:
 - EREMessage
-range: string
-required: true
+range: datetime
 
 ```
 </details>

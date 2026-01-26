@@ -1,4 +1,9 @@
-Made with [Mermaid chart](http://www.mermaidchart.com).
+# Sequence diagrams for ERE interaction use cases.
+
+In the diagrams below, the processing done by the ERE is non-prescriptive for the contract document, it only shows examples of how the ERE may operate.
+
+
+## Regular resolution
 
 ```mermaid
 ---
@@ -10,18 +15,40 @@ config:
     bottomMarginAdj: 0.1
 ---
 sequenceDiagram
-  participant client
-  participant ere_requests as ere_requests channel
-  participant ere_responses as ere_responses channel
-  participant ERE_Impl as ERE Impl
+    participant ERS as ERS (Client)
+    participant Queue as Redis Queue
+    participant ERE as ERE (Service)
+    participant DB as Database
 
-  client -) ere_requests: pub: EntityResolutionRequest
-  ere_requests --) client:
-  ere_requests -) ERE_Impl: sub: EntityResolutionRequest
-  ERE_Impl --) ere_requests:
-  ERE_Impl ->> ERE_Impl: async resolution
-  ERE_Impl -) ere_responses: pub: EntityResolutionResponse
-  ere_responses --) ERE_Impl:
-  ere_responses -) client: sub: EntityResolutionResponse
-  client --) ere_responses:
+    ERS->>Queue: pub EntityMentionResolutionRequest
+
+    Queue->>ERE: consume request
+    activate ERE
+
+    ERE->>ERE: Validate request
+
+    ERE->>DB: Find nearest clusters
+    DB-->>ERE: Top N cluster candidates
+
+    alt Best distance < threshold
+        ERE->>DB: Assign entity to best cluster
+        ERE->>DB: Update cluster centroid
+        Note over ERE: Entity joins existing cluster
+    else Distance >= threshold
+        ERE->>DB: Create new cluster
+        ERE->>DB: Store entity in new cluster
+        Note over ERE: New singleton cluster created
+    end
+
+    ERE->>ERE: Calculate confidence scores
+
+    ERE->>Queue: Publish EntityMentionResolutionResponse
+
+    deactivate ERE
+
+    Queue->>ERS: Consume response
+    ERS->>ERS: Store cluster mappings
 ```
+
+
+*Diagrams made with [Mermaid chart](http://www.mermaidchart.com).*

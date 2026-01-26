@@ -1,19 +1,23 @@
 
 
-# Class: EREResponse 
+# Class: ResetResponse 
 
 
-_Root class to represent all the responses sent by the ERE._
+_A response to a `ResetRequest`, confirming that the rebuild process has started._
+
+__
+
+_As for all the requests, this carries the `ereRequestId`, which matches the reset request being_
+
+_acknowledged._
 
 __
 
 
 
 
-* __NOTE__: this is an abstract class and should not be instantiated directly
 
-
-URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
+URI: [ers:ResetResponse](https://data.europa.eu/ers/schema/ResetResponse)
 
 
 
@@ -21,25 +25,16 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 ```mermaid
  classDiagram
-    class EREResponse
-    click EREResponse href "../EREResponse/"
-      EREMessage <|-- EREResponse
-        click EREMessage href "../EREMessage/"
-      
-
-      EREResponse <|-- EntityMentionResolutionResponse
-        click EntityMentionResolutionResponse href "../EntityMentionResolutionResponse/"
-      EREResponse <|-- EREErrorResponse
-        click EREErrorResponse href "../EREErrorResponse/"
+    class ResetResponse
+    click ResetResponse href "../ResetResponse/"
       EREResponse <|-- ResetResponse
-        click ResetResponse href "../ResetResponse/"
+        click EREResponse href "../EREResponse/"
       
-
-      EREResponse : ereRequestId
+      ResetResponse : ereRequestId
         
-      EREResponse : timestamp
+      ResetResponse : timestamp
         
-      EREResponse : type
+      ResetResponse : type
         
       
 ```
@@ -50,10 +45,8 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 ## Inheritance
 * [EREMessage](EREMessage.md)
-    * **EREResponse**
-        * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) [ [EntityMentionIdentifers](EntityMentionIdentifers.md)]
-        * [EREErrorResponse](EREErrorResponse.md)
-        * [ResetResponse](ResetResponse.md)
+    * [EREResponse](EREResponse.md)
+        * **ResetResponse**
 
 
 
@@ -93,8 +86,8 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EREResponse |
-| native | ers:EREResponse |
+| self | ers:ResetResponse |
+| native | ers:ResetResponse |
 
 
 
@@ -109,13 +102,19 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 <details>
 ```yaml
-name: EREResponse
-description: 'Root class to represent all the responses sent by the ERE.
+name: ResetResponse
+description: 'A response to a `ResetRequest`, confirming that the rebuild process
+  has started.
+
+
+  As for all the requests, this carries the `ereRequestId`, which matches the reset
+  request being
+
+  acknowledged.
 
   '
 from_schema: https://data.europa.eu/ers/schema
-is_a: EREMessage
-abstract: true
+is_a: EREResponse
 
 ```
 </details>
@@ -124,13 +123,19 @@ abstract: true
 
 <details>
 ```yaml
-name: EREResponse
-description: 'Root class to represent all the responses sent by the ERE.
+name: ResetResponse
+description: 'A response to a `ResetRequest`, confirming that the rebuild process
+  has started.
+
+
+  As for all the requests, this carries the `ereRequestId`, which matches the reset
+  request being
+
+  acknowledged.
 
   '
 from_schema: https://data.europa.eu/ers/schema
-is_a: EREMessage
-abstract: true
+is_a: EREResponse
 attributes:
   type:
     name: type
@@ -143,7 +148,7 @@ attributes:
     rank: 1000
     designates_type: true
     alias: type
-    owner: EREResponse
+    owner: ResetResponse
     domain_of:
     - EREMessage
     range: string
@@ -159,7 +164,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: ereRequestId
-    owner: EREResponse
+    owner: ResetResponse
     domain_of:
     - EREMessage
     range: string
@@ -172,7 +177,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: timestamp
-    owner: EREResponse
+    owner: ResetResponse
     domain_of:
     - EREMessage
     range: datetime

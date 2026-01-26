@@ -1,9 +1,9 @@
 
 
-# Slot: payload 
+# Slot: contentType 
 
 
-_A code string representing the entity details (eg, RDF description)._
+_A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)_
 
 __
 
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:payload](https://data.europa.eu/ers/schema/payload)
-Alias: payload
+URI: [ers:contentType](https://data.europa.eu/ers/schema/contentType)
+Alias: contentType
 
 <!-- no inheritance hierarchy -->
 
@@ -24,7 +24,7 @@ Alias: payload
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity in the ERS |  no  |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |  no  |
 
 
 
@@ -57,8 +57,8 @@ Alias: payload
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:payload |
-| native | ers:payload |
+| self | ers:contentType |
+| native | ers:contentType |
 
 
 
@@ -67,13 +67,13 @@ Alias: payload
 
 <details>
 ```yaml
-name: payload
-description: 'A code string representing the entity details (eg, RDF description).
+name: contentType
+description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: payload
+alias: contentType
 owner: EntityMention
 domain_of:
 - EntityMention
