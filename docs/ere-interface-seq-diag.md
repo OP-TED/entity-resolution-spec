@@ -28,7 +28,7 @@ sequenceDiagram
     ERE->>ERE: Validate request
 
     ERE->>DB: Find nearest clusters
-    DB-->>ERE: Top N cluster candidates
+    DB-->>ERE: Top candidates
 
     alt Best distance < threshold
         ERE->>DB: Assign entity to best cluster
