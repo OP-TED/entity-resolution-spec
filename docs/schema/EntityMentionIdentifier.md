@@ -1,6 +1,6 @@
 
 
-# Class: EntityMentionIdentifers 
+# Class: EntityMentionIdentifier 
 
 
 _A container that groups the attributes needed to identify an entity mention in a resolution request_
@@ -22,10 +22,8 @@ __
 
 
 
-* __NOTE__: this is an abstract class and should not be instantiated directly
 
-
-URI: [ers:EntityMentionIdentifers](https://data.europa.eu/ers/schema/EntityMentionIdentifers)
+URI: [ers:EntityMentionIdentifier](https://data.europa.eu/ers/schema/EntityMentionIdentifier)
 
 
 
@@ -33,18 +31,13 @@ URI: [ers:EntityMentionIdentifers](https://data.europa.eu/ers/schema/EntityMenti
 
 ```mermaid
  classDiagram
-    class EntityMentionIdentifers
-    click EntityMentionIdentifers href "../EntityMentionIdentifers/"
-      EntityMentionIdentifers <|-- EntityMentionResolutionRequest
-        click EntityMentionResolutionRequest href "../EntityMentionResolutionRequest/"
-      EntityMentionIdentifers <|-- EntityMentionResolutionResponse
-        click EntityMentionResolutionResponse href "../EntityMentionResolutionResponse/"
-      
-      EntityMentionIdentifers : entityType
+    class EntityMentionIdentifier
+    click EntityMentionIdentifier href "../EntityMentionIdentifier/"
+      EntityMentionIdentifier : entityType
         
-      EntityMentionIdentifers : requestId
+      EntityMentionIdentifier : requestId
         
-      EntityMentionIdentifers : sourceId
+      EntityMentionIdentifier : sourceId
         
       
 ```
@@ -65,14 +58,14 @@ URI: [ers:EntityMentionIdentifers](https://data.europa.eu/ers/schema/EntityMenti
 
 
 
-## Mixin Usage
-
-| mixed into | description |
-| --- | --- |
-| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
-| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |
 
 
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [entityMentionId](entityMentionId.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
+| [EntityMention](EntityMention.md) | [identifier](identifier.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
 
 
 
@@ -99,8 +92,8 @@ URI: [ers:EntityMentionIdentifers](https://data.europa.eu/ers/schema/EntityMenti
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EntityMentionIdentifers |
-| native | ers:EntityMentionIdentifers |
+| self | ers:EntityMentionIdentifier |
+| native | ers:EntityMentionIdentifier |
 
 
 
@@ -115,7 +108,7 @@ URI: [ers:EntityMentionIdentifers](https://data.europa.eu/ers/schema/EntityMenti
 
 <details>
 ```yaml
-name: EntityMentionIdentifers
+name: EntityMentionIdentifier
 description: "A container that groups the attributes needed to identify an entity\
   \ mention in a resolution request\nor response.\n\nAs per ERS architectural decision,\
   \ in the whole ERS and ERE systems, there is always a deterministic\nmethod to build\
@@ -124,8 +117,6 @@ description: "A container that groups the attributes needed to identify an entit
   \ in various places in \nin this hereby ERE service schema) can be built from an\
   \ entity that is initially the only cluster member.\n"
 from_schema: https://data.europa.eu/ers/schema
-abstract: true
-mixin: true
 attributes:
   sourceId:
     name: sourceId
@@ -134,7 +125,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - EntityMentionIdentifers
+    - EntityMentionIdentifier
     required: true
   requestId:
     name: requestId
@@ -146,7 +137,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - EntityMentionIdentifers
+    - EntityMentionIdentifier
     range: string
     required: true
   entityType:
@@ -159,7 +150,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - EntityMentionIdentifers
+    - EntityMentionIdentifier
     required: true
 
 ```
@@ -169,7 +160,7 @@ attributes:
 
 <details>
 ```yaml
-name: EntityMentionIdentifers
+name: EntityMentionIdentifier
 description: "A container that groups the attributes needed to identify an entity\
   \ mention in a resolution request\nor response.\n\nAs per ERS architectural decision,\
   \ in the whole ERS and ERE systems, there is always a deterministic\nmethod to build\
@@ -178,8 +169,6 @@ description: "A container that groups the attributes needed to identify an entit
   \ in various places in \nin this hereby ERE service schema) can be built from an\
   \ entity that is initially the only cluster member.\n"
 from_schema: https://data.europa.eu/ers/schema
-abstract: true
-mixin: true
 attributes:
   sourceId:
     name: sourceId
@@ -188,9 +177,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: sourceId
-    owner: EntityMentionIdentifers
+    owner: EntityMentionIdentifier
     domain_of:
-    - EntityMentionIdentifers
+    - EntityMentionIdentifier
     range: string
     required: true
   requestId:
@@ -203,9 +192,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: requestId
-    owner: EntityMentionIdentifers
+    owner: EntityMentionIdentifier
     domain_of:
-    - EntityMentionIdentifers
+    - EntityMentionIdentifier
     range: string
     required: true
   entityType:
@@ -218,9 +207,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: entityType
-    owner: EntityMentionIdentifers
+    owner: EntityMentionIdentifier
     domain_of:
-    - EntityMentionIdentifers
+    - EntityMentionIdentifier
     range: string
     required: true
 

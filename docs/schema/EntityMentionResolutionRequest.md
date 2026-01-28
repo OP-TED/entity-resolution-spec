@@ -21,8 +21,6 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
  classDiagram
     class EntityMentionResolutionRequest
     click EntityMentionResolutionRequest href "../EntityMentionResolutionRequest/"
-      EntityMentionIdentifers <|-- EntityMentionResolutionRequest
-        click EntityMentionIdentifers href "../EntityMentionIdentifers/"
       ERERequest <|-- EntityMentionResolutionRequest
         click ERERequest href "../ERERequest/"
       
@@ -37,15 +35,9 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
     
 
         
-      EntityMentionResolutionRequest : entityType
-        
       EntityMentionResolutionRequest : ereRequestId
         
       EntityMentionResolutionRequest : excludedClusterIds
-        
-      EntityMentionResolutionRequest : requestId
-        
-      EntityMentionResolutionRequest : sourceId
         
       EntityMentionResolutionRequest : timestamp
         
@@ -61,7 +53,7 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 ## Inheritance
 * [EREMessage](EREMessage.md)
     * [ERERequest](ERERequest.md)
-        * **EntityMentionResolutionRequest** [ [EntityMentionIdentifers](EntityMentionIdentifers.md)]
+        * **EntityMentionResolutionRequest**
 
 
 
@@ -71,9 +63,6 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | ---  | --- | --- | --- |
 | [entityMention](entityMention.md) | 1 <br/> [EntityMention](EntityMention.md) | The data about the entity to be resolved | direct |
 | [excludedClusterIds](excludedClusterIds.md) | * <br/> [String](String.md) | When this is present, the resolution must not bin the entity mention into any... | direct |
-| [sourceId](sourceId.md) | 1 <br/> [String](String.md) | The ID or URI of the ERS client that originated the request | [EntityMentionIdentifers](EntityMentionIdentifers.md) |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request made to the ERS system | [EntityMentionIdentifers](EntityMentionIdentifers.md) |
-| [entityType](entityType.md) | 1 <br/> [String](String.md) | A string representing the entity type (based on CET) | [EntityMentionIdentifers](EntityMentionIdentifers.md) |
 | [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
 | [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
 | [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
@@ -94,11 +83,12 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | --- |
 | {
   "type": "EntityMentionResolutionRequest",
-  "requestId": "324fs3r345vx",
-  "sourceId": "TEDSWS",
-  "entityType": "http://www.w3.org/ns/org#Organization",
-  "entityMention": 
-  { 
+  "entityMention": { 
+    identifier: {
+      "requestId": "324fs3r345vx",
+      "sourceId": "TEDSWS",
+      "entityType": "http://www.w3.org/ns/org#Organization"
+    },
     "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
     "contentType": "text/turtle"
   },
@@ -110,11 +100,12 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
  |
 | {
   "type": "EntityMentionResolutionRequest",
-  "requestId": "324fs3r345vxab",
-  "sourceId": "TEDSWS",
-  "entityType": "http://www.w3.org/ns/org#Organization",
-  "entityMention": 
-  { 
+  "entityMention": { 
+    identifier: {
+      "requestId": "324fs3r345vxab",
+      "sourceId": "TEDSWS",
+      "entityType": "http://www.w3.org/ns/org#Organization",
+    },
     "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
     "contentType": "text/turtle"
   },
@@ -168,27 +159,26 @@ description: 'An entity resolution request sent to the ERE, containing the entit
 
   '
 examples:
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"requestId\": \"\
-    324fs3r345vx\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
-    ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
-    \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5,\
-    \ // to limit the response size\n  // As said, we need this internal ID and it\
-    \ can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
-    \n}\n"
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vx\",\n      \"sourceId\"\
+    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    \n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5, // to limit\
+    \ the response size\n  // As said, we need this internal ID and it can be auto-generated\
+    \ (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n"
   description: a regular request
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"requestId\": \"\
-    324fs3r345vxab\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
-    ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
-    \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vxab\",\n      \"sourceId\"\
+    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    ,\n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
     \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
     \n}\n"
   description: a re-rebuild request (ie, carrying a rejection list)
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
-mixins:
-- EntityMentionIdentifers
 attributes:
   entityMention:
     name: entityMention
@@ -232,27 +222,26 @@ description: 'An entity resolution request sent to the ERE, containing the entit
 
   '
 examples:
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"requestId\": \"\
-    324fs3r345vx\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
-    ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
-    \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5,\
-    \ // to limit the response size\n  // As said, we need this internal ID and it\
-    \ can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
-    \n}\n"
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vx\",\n      \"sourceId\"\
+    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    \n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5, // to limit\
+    \ the response size\n  // As said, we need this internal ID and it can be auto-generated\
+    \ (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n"
   description: a regular request
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"requestId\": \"\
-    324fs3r345vxab\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
-    ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
-    \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vxab\",\n      \"sourceId\"\
+    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    ,\n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
     \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
     \n}\n"
   description: a re-rebuild request (ie, carrying a rejection list)
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
-mixins:
-- EntityMentionIdentifers
 attributes:
   entityMention:
     name: entityMention
@@ -287,48 +276,6 @@ attributes:
     - EntityMentionResolutionRequest
     range: string
     multivalued: true
-  sourceId:
-    name: sourceId
-    description: "The ID or URI of the ERS client that originated the request. This\
-      \ identifies an application or a \nperson accessing the ERS system.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: sourceId
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - EntityMentionIdentifers
-    range: string
-    required: true
-  requestId:
-    name: requestId
-    description: "A string representing the unique ID of the request made to the ERS\
-      \ system. In general, this is unique\nonly within the scope of the source and\
-      \ the entity type, ie, within `sourceId` and `entityType`. \n\nMoreover, this\
-      \ is **not** the same as `ereRequestId`, which instead, is internal to the ERE\
-      \ and is \nused to match responses to requests.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: requestId
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - EntityMentionIdentifers
-    range: string
-    required: true
-  entityType:
-    name: entityType
-    description: "A string representing the entity type (based on CET). This is typically\
-      \ a URI.\n\nNote that this is at this level, and not at `EntityMention`, since,\
-      \ as said above, \nit's needed to identify the entity, even when its content\
-      \ is not present. For the same\nreason, it's used both for `EREResolutionRequest`\
-      \ and `EREResolutionResponse` messages., \n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: entityType
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - EntityMentionIdentifers
-    range: string
-    required: true
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\

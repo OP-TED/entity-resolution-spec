@@ -35,6 +35,8 @@ Alias: content
 
 * Range: [String](String.md)
 
+* Required: True
+
 
 
 
@@ -79,6 +81,7 @@ owner: EntityMention
 domain_of:
 - EntityMention
 range: string
+required: true
 
 ```
 </details>

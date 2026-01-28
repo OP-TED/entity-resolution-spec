@@ -49,7 +49,7 @@ URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
 ## Inheritance
 * [EREMessage](EREMessage.md)
     * **ERERequest**
-        * [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) [ [EntityMentionIdentifers](EntityMentionIdentifers.md)]
+        * [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md)
         * [FullRebuildRequest](FullRebuildRequest.md)
 
 

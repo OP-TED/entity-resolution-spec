@@ -51,7 +51,7 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 ## Inheritance
 * [EREMessage](EREMessage.md)
     * **EREResponse**
-        * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) [ [EntityMentionIdentifers](EntityMentionIdentifers.md)]
+        * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md)
         * [EREErrorResponse](EREErrorResponse.md)
         * [FullRebuildResponse](FullRebuildResponse.md)
 

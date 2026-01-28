@@ -12,9 +12,9 @@ Name: ersServiceDataSchema
 
 | Class | Description |
 | --- | --- |
-| [ClusterRef](ClusterRef.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |
+| [ClusterReference](ClusterReference.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |
 | [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |
-| [EntityMentionIdentifers](EntityMentionIdentifers.md) | A container that groups the attributes needed to identify an entity mention i... |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |
 | [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
@@ -30,12 +30,13 @@ Name: ersServiceDataSchema
 
 | Slot | Description |
 | --- | --- |
+| [candidateClusters](candidateClusters.md) | The set of cluster reference/score pairs representing the candidate clusters |
 | [clusterId](clusterId.md) | The identifier of the cluster/canonical entity that is considered equivalent ... |
-| [clusters](clusters.md) | The set of cluster reference/score pairs representing the candidate clusters |
 | [confidenceScore](confidenceScore.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... |
 | [content](content.md) | A code string representing the entity mention details (eg, RDF or XML descrip... |
 | [contentType](contentType.md) | A string about the MIME format of `content` (e |
 | [entityMention](entityMention.md) | The data about the entity to be resolved |
+| [entityMentionId](entityMentionId.md) | The identifier of the entity mention that has been resolved |
 | [entityType](entityType.md) | A string representing the entity type (based on CET) |
 | [ereRequestId](ereRequestId.md) | A string representing the unique ID of an ERE request, or the ID of the reque... |
 | [errorDetail](errorDetail.md) | A human readable detailed message about the error that occurred |
@@ -43,6 +44,7 @@ Name: ersServiceDataSchema
 | [errorTrace](errorTrace.md) | A string representing a (stack) trace of the error that occurred |
 | [errorType](errorType.md) | A string representing the error type, eg, the FQN of the raised exception |
 | [excludedClusterIds](excludedClusterIds.md) | When this is present, the resolution must not bin the entity mention into any... |
+| [identifier](identifier.md) | The identifier (with the ERS-derived components) of the entity mention |
 | [requestId](requestId.md) | A string representing the unique ID of the request made to the ERS system |
 | [sourceId](sourceId.md) | The ID or URI of the ERS client that originated the request |
 | [timestamp](timestamp.md) | The time when the message was created |

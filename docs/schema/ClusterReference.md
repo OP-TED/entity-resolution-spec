@@ -1,6 +1,6 @@
 
 
-# Class: ClusterRef 
+# Class: ClusterReference 
 
 
 _A reference to a cluster to which an entity is deemed to belong, with an associated confidence score._
@@ -23,7 +23,7 @@ __
 
 
 
-URI: [ers:ClusterRef](https://data.europa.eu/ers/schema/ClusterRef)
+URI: [ers:ClusterReference](https://data.europa.eu/ers/schema/ClusterReference)
 
 
 
@@ -31,11 +31,11 @@ URI: [ers:ClusterRef](https://data.europa.eu/ers/schema/ClusterRef)
 
 ```mermaid
  classDiagram
-    class ClusterRef
-    click ClusterRef href "../ClusterRef/"
-      ClusterRef : clusterId
+    class ClusterReference
+    click ClusterReference href "../ClusterReference/"
+      ClusterReference : clusterId
         
-      ClusterRef : confidenceScore
+      ClusterReference : confidenceScore
         
       
 ```
@@ -61,7 +61,7 @@ URI: [ers:ClusterRef](https://data.europa.eu/ers/schema/ClusterRef)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [clusters](clusters.md) | range | [ClusterRef](ClusterRef.md) |
+| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [candidateClusters](candidateClusters.md) | range | [ClusterReference](ClusterReference.md) |
 
 
 
@@ -88,8 +88,8 @@ URI: [ers:ClusterRef](https://data.europa.eu/ers/schema/ClusterRef)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:ClusterRef |
-| native | ers:ClusterRef |
+| self | ers:ClusterReference |
+| native | ers:ClusterReference |
 
 
 
@@ -104,7 +104,7 @@ URI: [ers:ClusterRef](https://data.europa.eu/ers/schema/ClusterRef)
 
 <details>
 ```yaml
-name: ClusterRef
+name: ClusterReference
 description: "A reference to a cluster to which an entity is deemed to belong, with\
   \ an associated confidence score.\n\nA cluster is a set of entity mentions that\
   \ have been determined to refer to the same real-world entity.\nEach cluster has\
@@ -123,7 +123,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - ClusterRef
+    - ClusterReference
     required: true
   confidenceScore:
     name: confidenceScore
@@ -136,7 +136,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
-    - ClusterRef
+    - ClusterReference
     range: float
     required: true
     minimum_value: 0.0
@@ -149,7 +149,7 @@ attributes:
 
 <details>
 ```yaml
-name: ClusterRef
+name: ClusterReference
 description: "A reference to a cluster to which an entity is deemed to belong, with\
   \ an associated confidence score.\n\nA cluster is a set of entity mentions that\
   \ have been determined to refer to the same real-world entity.\nEach cluster has\
@@ -168,9 +168,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: clusterId
-    owner: ClusterRef
+    owner: ClusterReference
     domain_of:
-    - ClusterRef
+    - ClusterReference
     range: string
     required: true
   confidenceScore:
@@ -184,9 +184,9 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: confidenceScore
-    owner: ClusterRef
+    owner: ClusterReference
     domain_of:
-    - ClusterRef
+    - ClusterReference
     range: float
     required: true
     minimum_value: 0.0

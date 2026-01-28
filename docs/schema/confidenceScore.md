@@ -26,7 +26,7 @@ Alias: confidenceScore
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [ClusterRef](ClusterRef.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |  no  |
+| [ClusterReference](ClusterReference.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |  no  |
 
 
 
@@ -85,9 +85,9 @@ description: 'A 0-1 value of how confident the ERE is about the equivalence betw
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: confidenceScore
-owner: ClusterRef
+owner: ClusterReference
 domain_of:
-- ClusterRef
+- ClusterReference
 range: float
 required: true
 minimum_value: 0.0

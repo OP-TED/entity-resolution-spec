@@ -32,9 +32,7 @@ Alias: requestId
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
-| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
-| [EntityMentionIdentifers](EntityMentionIdentifers.md) | A container that groups the attributes needed to identify an entity mention i... |  no  |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |  no  |
 
 
 
@@ -88,9 +86,9 @@ description: "A string representing the unique ID of the request made to the ERS
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: requestId
-owner: EntityMentionIdentifers
+owner: EntityMentionIdentifier
 domain_of:
-- EntityMentionIdentifers
+- EntityMentionIdentifier
 range: string
 required: true
 

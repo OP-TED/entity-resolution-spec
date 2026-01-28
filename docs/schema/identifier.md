@@ -1,9 +1,9 @@
 
 
-# Slot: contentType 
+# Slot: identifier 
 
 
-_A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)_
+_The identifier (with the ERS-derived components) of the entity mention._
 
 __
 
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:contentType](https://data.europa.eu/ers/schema/contentType)
-Alias: contentType
+URI: [ers:identifier](https://data.europa.eu/ers/schema/identifier)
+Alias: identifier
 
 <!-- no inheritance hierarchy -->
 
@@ -33,7 +33,7 @@ Alias: contentType
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [EntityMentionIdentifier](EntityMentionIdentifier.md)
 
 * Required: True
 
@@ -59,8 +59,8 @@ Alias: contentType
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:contentType |
-| native | ers:contentType |
+| self | ers:identifier |
+| native | ers:identifier |
 
 
 
@@ -69,17 +69,17 @@ Alias: contentType
 
 <details>
 ```yaml
-name: contentType
-description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
+name: identifier
+description: 'The identifier (with the ERS-derived components) of the entity mention.
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: contentType
+alias: identifier
 owner: EntityMention
 domain_of:
 - EntityMention
-range: string
+range: EntityMentionIdentifier
 required: true
 
 ```

@@ -158,39 +158,7 @@ This **is not** the same as `requestId` + `sourceId`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class EntityMentionIdentifers(ConfiguredBaseModel):
-    """
-    A container that groups the attributes needed to identify an entity mention in a resolution request
-    or response.
-
-    As per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic
-    method to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`
-    (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in 
-    in this hereby ERE service schema) can be built from an entity that is initially the only cluster member.
-
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://data.europa.eu/ers/schema',
-         'mixin': True})
-
-    sourceId: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
-person accessing the ERS system.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
-only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
-
-Moreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is 
-used to match responses to requests.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-    entityType: str = Field(default=..., description="""A string representing the entity type (based on CET). This is typically a URI.
-
-Note that this is at this level, and not at `EntityMention`, since, as said above, 
-it's needed to identify the entity, even when its content is not present. For the same
-reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., 
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-
-
-class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
+class EntityMentionResolutionRequest(ERERequest):
     """
     An entity resolution request sent to the ERE, containing the entity to be resolved.
 
@@ -198,12 +166,13 @@ class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'examples': [{'description': 'a regular request',
                        'value': '{\n'
                                 '  "type": "EntityMentionResolutionRequest",\n'
-                                '  "requestId": "324fs3r345vx",\n'
-                                '  "sourceId": "TEDSWS",\n'
-                                '  "entityType": '
-                                '"http://www.w3.org/ns/org#Organization",\n'
-                                '  "entityMention": \n'
-                                '  { \n'
+                                '  "entityMention": { \n'
+                                '    identifier: {\n'
+                                '      "requestId": "324fs3r345vx",\n'
+                                '      "sourceId": "TEDSWS",\n'
+                                '      "entityType": '
+                                '"http://www.w3.org/ns/org#Organization"\n'
+                                '    },\n'
                                 '    "content": "epd:ent005 a org:Organization; ...   '
                                 'cccev:telephone \\"+44 1924306780\\" .",\n'
                                 '    "contentType": "text/turtle"\n'
@@ -219,12 +188,13 @@ class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
                                       'list)',
                        'value': '{\n'
                                 '  "type": "EntityMentionResolutionRequest",\n'
-                                '  "requestId": "324fs3r345vxab",\n'
-                                '  "sourceId": "TEDSWS",\n'
-                                '  "entityType": '
+                                '  "entityMention": { \n'
+                                '    identifier: {\n'
+                                '      "requestId": "324fs3r345vxab",\n'
+                                '      "sourceId": "TEDSWS",\n'
+                                '      "entityType": '
                                 '"http://www.w3.org/ns/org#Organization",\n'
-                                '  "entityMention": \n'
-                                '  { \n'
+                                '    },\n'
                                 '    "content": "epd:ent005 a org:Organization; ...   '
                                 'cccev:telephone \\"+44 1924306780\\" .",\n'
                                 '    "contentType": "text/turtle"\n'
@@ -236,8 +206,7 @@ class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
                                 '  "timestamp": "2026-01-14T12:40:56Z",\n'
                                 '  "ereRequestId": "324fs3r345vxab:01"\n'
                                 '}\n'}],
-         'from_schema': 'https://data.europa.eu/ers/schema',
-         'mixins': ['EntityMentionIdentifers']})
+         'from_schema': 'https://data.europa.eu/ers/schema'})
 
     entityMention: EntityMention = Field(default=..., description="""The data about the entity to be resolved. Note that, at least for the moment, we don't support
 batch requests, so this property is single-valued.
@@ -252,21 +221,6 @@ data.
 
 TODO: Can this be revised? What does it happen if an exclusion was made by mistake?
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
-    sourceId: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
-person accessing the ERS system.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
-only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
-
-Moreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is 
-used to match responses to requests.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-    entityType: str = Field(default=..., description="""A string representing the entity type (based on CET). This is typically a URI.
-
-Note that this is at this level, and not at `EntityMention`, since, as said above, 
-it's needed to identify the entity, even when its content is not present. For the same
-reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., 
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
     type: Literal["EntityMentionResolutionRequest"] = Field(default="EntityMentionResolutionRequest", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
@@ -282,7 +236,7 @@ This **is not** the same as `requestId` + `sourceId`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class EntityMentionResolutionResponse(EntityMentionIdentifers, EREResponse):
+class EntityMentionResolutionResponse(EREResponse):
     """
     An entity resolution response returned by the ERE.
 
@@ -300,7 +254,7 @@ class EntityMentionResolutionResponse(EntityMentionIdentifers, EREResponse):
                                 '  "sourceId": "TEDSWS",\n'
                                 '  "entityType": '
                                 '"http://www.w3.org/ns/org#Organization",\n'
-                                '  "clusters": [\n'
+                                '  "candidateClusters": [\n'
                                 '    { \n'
                                 '      "clusterId": "324fs3r345vx-aa32wa",\n'
                                 '      "confidenceScore": 0.91\n'
@@ -314,27 +268,16 @@ class EntityMentionResolutionResponse(EntityMentionIdentifers, EREResponse):
                                 '  "ereRequestId": "324fs3r345vx:01"\n'
                                 '}\n'
                                 '    \n'}],
-         'from_schema': 'https://data.europa.eu/ers/schema',
-         'mixins': ['EntityMentionIdentifers']})
+         'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    clusters: list[ClusterRef] = Field(default=..., description="""The set of cluster reference/score pairs representing the candidate clusters
+    entityMentionId: EntityMentionIdentifier = Field(default=..., description="""The identifier of the entity mention that has been resolved.
+
+This isn't strictly needed, since the `ereRequestId` already links the response to 
+the request's entity mention. Yet, it's reported for convenience.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
+    candidateClusters: list[ClusterReference] = Field(default=..., description="""The set of cluster reference/score pairs representing the candidate clusters
 that the entity mention in the original request could align to (be equivalent to).
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
-    sourceId: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
-person accessing the ERS system.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
-only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
-
-Moreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is 
-used to match responses to requests.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
-    entityType: str = Field(default=..., description="""A string representing the entity type (based on CET). This is typically a URI.
-
-Note that this is at this level, and not at `EntityMention`, since, as said above, 
-it's needed to identify the entity, even when its content is not present. For the same
-reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., 
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifers']} })
     type: Literal["EntityMentionResolutionResponse"] = Field(default="EntityMentionResolutionResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
@@ -414,13 +357,45 @@ class EntityMention(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    contentType: Optional[str] = Field(default=None, description="""A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
+    identifier: EntityMentionIdentifier = Field(default=..., description="""The identifier (with the ERS-derived components) of the entity mention.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
-    content: Optional[str] = Field(default=None, description="""A code string representing the entity mention details (eg, RDF or XML description).
+    contentType: str = Field(default=..., description="""A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
+    content: str = Field(default=..., description="""A code string representing the entity mention details (eg, RDF or XML description).
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
 
 
-class ClusterRef(ConfiguredBaseModel):
+class EntityMentionIdentifier(ConfiguredBaseModel):
+    """
+    A container that groups the attributes needed to identify an entity mention in a resolution request
+    or response.
+
+    As per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic
+    method to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`
+    (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in 
+    in this hereby ERE service schema) can be built from an entity that is initially the only cluster member.
+
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+
+    sourceId: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
+person accessing the ERS system.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+    requestId: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
+only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
+
+Moreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is 
+used to match responses to requests.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+    entityType: str = Field(default=..., description="""A string representing the entity type (based on CET). This is typically a URI.
+
+Note that this is at this level, and not at `EntityMention`, since, as said above, 
+it's needed to identify the entity, even when its content is not present. For the same
+reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., 
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+
+
+class ClusterReference(ConfiguredBaseModel):
     """
     A reference to a cluster to which an entity is deemed to belong, with an associated confidence score.
 
@@ -435,10 +410,10 @@ class ClusterRef(ConfiguredBaseModel):
 
     clusterId: str = Field(default=..., description="""The identifier of the cluster/canonical entity that is considered equivalent to the
 subject entity mention that an `EntityMentionResolutionResponse` refers to.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterRef']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
     confidenceScore: float = Field(default=..., description="""A 0-1 value of how confident the ERE is about the equivalence between the subject entity mention
 and the target canonical entity.
-""", ge=0.0, le=1.0, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterRef']} })
+""", ge=0.0, le=1.0, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
 
 
 class FullRebuildRequest(ERERequest):
@@ -505,11 +480,11 @@ This **is not** the same as `requestId` + `sourceId`.
 EREMessage.model_rebuild()
 ERERequest.model_rebuild()
 EREResponse.model_rebuild()
-EntityMentionIdentifers.model_rebuild()
 EntityMentionResolutionRequest.model_rebuild()
 EntityMentionResolutionResponse.model_rebuild()
 EREErrorResponse.model_rebuild()
 EntityMention.model_rebuild()
-ClusterRef.model_rebuild()
+EntityMentionIdentifier.model_rebuild()
+ClusterReference.model_rebuild()
 FullRebuildRequest.model_rebuild()
 FullRebuildResponse.model_rebuild()

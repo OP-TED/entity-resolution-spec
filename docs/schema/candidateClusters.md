@@ -1,6 +1,6 @@
 
 
-# Slot: clusters 
+# Slot: candidateClusters 
 
 
 _The set of cluster reference/score pairs representing the candidate clusters_
@@ -13,8 +13,8 @@ __
 
 
 
-URI: [ers:clusters](https://data.europa.eu/ers/schema/clusters)
-Alias: clusters
+URI: [ers:candidateClusters](https://data.europa.eu/ers/schema/candidateClusters)
+Alias: candidateClusters
 
 <!-- no inheritance hierarchy -->
 
@@ -35,7 +35,7 @@ Alias: clusters
 
 ## Properties
 
-* Range: [ClusterRef](ClusterRef.md)
+* Range: [ClusterReference](ClusterReference.md)
 
 * Multivalued: True
 
@@ -63,8 +63,8 @@ Alias: clusters
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:clusters |
-| native | ers:clusters |
+| self | ers:candidateClusters |
+| native | ers:candidateClusters |
 
 
 
@@ -73,7 +73,7 @@ Alias: clusters
 
 <details>
 ```yaml
-name: clusters
+name: candidateClusters
 description: 'The set of cluster reference/score pairs representing the candidate
   clusters
 
@@ -82,11 +82,11 @@ description: 'The set of cluster reference/score pairs representing the candidat
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: clusters
+alias: candidateClusters
 owner: EntityMentionResolutionResponse
 domain_of:
 - EntityMentionResolutionResponse
-range: ClusterRef
+range: ClusterReference
 required: true
 multivalued: true
 
