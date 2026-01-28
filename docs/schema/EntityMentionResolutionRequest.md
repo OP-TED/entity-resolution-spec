@@ -84,7 +84,7 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | {
   "type": "EntityMentionResolutionRequest",
   "entityMention": { 
-    identifier: {
+    "identifier": {
       "requestId": "324fs3r345vx",
       "sourceId": "TEDSWS",
       "entityType": "http://www.w3.org/ns/org#Organization"
@@ -93,7 +93,6 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
     "contentType": "text/turtle"
   },
   "timestamp": "2026-01-14T12:34:56Z",
-  "maxResultClusters": 5, // to limit the response size
   // As said, we need this internal ID and it can be auto-generated (eg, with UUIDs)
   "ereRequestId": "324fs3r345vx:01"
 }
@@ -101,7 +100,7 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | {
   "type": "EntityMentionResolutionRequest",
   "entityMention": { 
-    identifier: {
+    "identifier": {
       "requestId": "324fs3r345vxab",
       "sourceId": "TEDSWS",
       "entityType": "http://www.w3.org/ns/org#Organization",
@@ -160,17 +159,17 @@ description: 'An entity resolution request sent to the ERE, containing the entit
   '
 examples:
 - value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
-    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vx\",\n      \"sourceId\"\
-    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vx\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     \n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
     \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
-    timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5, // to limit\
-    \ the response size\n  // As said, we need this internal ID and it can be auto-generated\
-    \ (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n"
+    timestamp\": \"2026-01-14T12:34:56Z\",\n  // As said, we need this internal ID\
+    \ and it can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
+    \n}\n"
   description: a regular request
 - value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
-    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vxab\",\n      \"sourceId\"\
-    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vxab\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     ,\n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
     \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
     excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
@@ -223,17 +222,17 @@ description: 'An entity resolution request sent to the ERE, containing the entit
   '
 examples:
 - value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
-    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vx\",\n      \"sourceId\"\
-    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vx\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     \n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
     \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
-    timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5, // to limit\
-    \ the response size\n  // As said, we need this internal ID and it can be auto-generated\
-    \ (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n"
+    timestamp\": \"2026-01-14T12:34:56Z\",\n  // As said, we need this internal ID\
+    \ and it can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
+    \n}\n"
   description: a regular request
 - value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
-    : { \n    identifier: {\n      \"requestId\": \"324fs3r345vxab\",\n      \"sourceId\"\
-    : \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vxab\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     ,\n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
     \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
     excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\

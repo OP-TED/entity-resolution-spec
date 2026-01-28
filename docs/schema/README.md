@@ -30,7 +30,7 @@ Name: ersServiceDataSchema
 
 | Slot | Description |
 | --- | --- |
-| [candidateClusters](candidateClusters.md) | The set of cluster reference/score pairs representing the candidate clusters |
+| [candidates](candidates.md) | The set of cluster reference/score pairs representing the candidate clusters |
 | [clusterId](clusterId.md) | The identifier of the cluster/canonical entity that is considered equivalent ... |
 | [confidenceScore](confidenceScore.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... |
 | [content](content.md) | A code string representing the entity mention details (eg, RDF or XML descrip... |

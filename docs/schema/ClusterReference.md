@@ -61,7 +61,7 @@ URI: [ers:ClusterReference](https://data.europa.eu/ers/schema/ClusterReference)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [candidateClusters](candidateClusters.md) | range | [ClusterReference](ClusterReference.md) |
+| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [candidates](candidates.md) | range | [ClusterReference](ClusterReference.md) |
 
 
 

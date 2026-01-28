@@ -179,7 +179,7 @@
       "additionalProperties": false,
       "description": "An entity resolution response returned by the ERE.\n\nThis is basically a list of candidate clusters to which the entity is deemed to be equivalent.\n\nNote that, for the moment, we don't support batch requests. In future, we might support requests\nwith multiple subjects in the `EntityMention` content (eg, RDF with multiple subjects), in which case \nwe might need to return multiple `EntityMentionResolutionResponse` messages, each with additional \nproperties such as `entityIndex` and `totalEntities`.",
       "properties": {
-        "candidateClusters": {
+        "candidates": {
           "description": "The set of cluster reference/score pairs representing the candidate clusters\nthat the entity mention in the original request could align to (be equivalent to).\n",
           "items": {
             "$ref": "#/$defs/ClusterReference"
@@ -212,7 +212,7 @@
       },
       "required": [
         "entityMentionId",
-        "candidateClusters",
+        "candidates",
         "type",
         "ereRequestId"
       ],

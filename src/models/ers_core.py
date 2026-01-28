@@ -167,7 +167,7 @@ class EntityMentionResolutionRequest(ERERequest):
                        'value': '{\n'
                                 '  "type": "EntityMentionResolutionRequest",\n'
                                 '  "entityMention": { \n'
-                                '    identifier: {\n'
+                                '    "identifier": {\n'
                                 '      "requestId": "324fs3r345vx",\n'
                                 '      "sourceId": "TEDSWS",\n'
                                 '      "entityType": '
@@ -178,8 +178,6 @@ class EntityMentionResolutionRequest(ERERequest):
                                 '    "contentType": "text/turtle"\n'
                                 '  },\n'
                                 '  "timestamp": "2026-01-14T12:34:56Z",\n'
-                                '  "maxResultClusters": 5, // to limit the response '
-                                'size\n'
                                 '  // As said, we need this internal ID and it can be '
                                 'auto-generated (eg, with UUIDs)\n'
                                 '  "ereRequestId": "324fs3r345vx:01"\n'
@@ -189,7 +187,7 @@ class EntityMentionResolutionRequest(ERERequest):
                        'value': '{\n'
                                 '  "type": "EntityMentionResolutionRequest",\n'
                                 '  "entityMention": { \n'
-                                '    identifier: {\n'
+                                '    "identifier": {\n'
                                 '      "requestId": "324fs3r345vxab",\n'
                                 '      "sourceId": "TEDSWS",\n'
                                 '      "entityType": '
@@ -250,11 +248,13 @@ class EntityMentionResolutionResponse(EREResponse):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'examples': [{'value': '{\n'
                                 '  "type": "EntityMentionResolutionResponse",\n'
-                                '  "requestId": "324fs3r345vx",\n'
-                                '  "sourceId": "TEDSWS",\n'
-                                '  "entityType": '
-                                '"http://www.w3.org/ns/org#Organization",\n'
-                                '  "candidateClusters": [\n'
+                                '  "entityMentionId": {\n'
+                                '    "requestId": "324fs3r345vx",\n'
+                                '    "sourceId": "TEDSWS",\n'
+                                '    "entityType": '
+                                '"http://www.w3.org/ns/org#Organization"\n'
+                                '  },\n'
+                                '  "candidates": [\n'
                                 '    { \n'
                                 '      "clusterId": "324fs3r345vx-aa32wa",\n'
                                 '      "confidenceScore": 0.91\n'
@@ -275,7 +275,7 @@ class EntityMentionResolutionResponse(EREResponse):
 This isn't strictly needed, since the `ereRequestId` already links the response to 
 the request's entity mention. Yet, it's reported for convenience.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
-    candidateClusters: list[ClusterReference] = Field(default=..., description="""The set of cluster reference/score pairs representing the candidate clusters
+    candidates: list[ClusterReference] = Field(default=..., description="""The set of cluster reference/score pairs representing the candidate clusters
 that the entity mention in the original request could align to (be equivalent to).
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
     type: Literal["EntityMentionResolutionResponse"] = Field(default="EntityMentionResolutionResponse", description="""The type of the request or result.

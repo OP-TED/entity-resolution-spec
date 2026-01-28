@@ -38,13 +38,13 @@ URI: [ers:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/Ent
       EREResponse <|-- EntityMentionResolutionResponse
         click EREResponse href "../EREResponse/"
       
-      EntityMentionResolutionResponse : candidateClusters
+      EntityMentionResolutionResponse : candidates
         
           
     
         
         
-        EntityMentionResolutionResponse --> "1..*" ClusterReference : candidateClusters
+        EntityMentionResolutionResponse --> "1..*" ClusterReference : candidates
         click ClusterReference href "../ClusterReference/"
     
 
@@ -85,7 +85,7 @@ URI: [ers:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/Ent
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [entityMentionId](entityMentionId.md) | 1 <br/> [EntityMentionIdentifier](EntityMentionIdentifier.md) | The identifier of the entity mention that has been resolved | direct |
-| [candidateClusters](candidateClusters.md) | 1..* <br/> [ClusterReference](ClusterReference.md) | The set of cluster reference/score pairs representing the candidate clusters | direct |
+| [candidates](candidates.md) | 1..* <br/> [ClusterReference](ClusterReference.md) | The set of cluster reference/score pairs representing the candidate clusters | direct |
 | [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
 | [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
 | [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
@@ -106,10 +106,12 @@ URI: [ers:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/Ent
 | --- |
 | {
   "type": "EntityMentionResolutionResponse",
-  "requestId": "324fs3r345vx",
-  "sourceId": "TEDSWS",
-  "entityType": "http://www.w3.org/ns/org#Organization",
-  "candidateClusters": [
+  "entityMentionId": {
+    "requestId": "324fs3r345vx",
+    "sourceId": "TEDSWS",
+    "entityType": "http://www.w3.org/ns/org#Organization"
+  },
+  "candidates": [
     { 
       "clusterId": "324fs3r345vx-aa32wa",
       "confidenceScore": 0.91
@@ -168,11 +170,12 @@ description: "An entity resolution response returned by the ERE.\n\nThis is basi
   \ with multiple subjects), in which case \nwe might need to return multiple `EntityMentionResolutionResponse`\
   \ messages, each with additional \nproperties such as `entityIndex` and `totalEntities`.\n"
 examples:
-- value: "{\n  \"type\": \"EntityMentionResolutionResponse\",\n  \"requestId\": \"\
-    324fs3r345vx\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
-    ,\n  \"candidateClusters\": [\n    { \n      \"clusterId\": \"324fs3r345vx-aa32wa\"\
-    ,\n      \"confidenceScore\": 0.91\n    },\n    { \n      \"clusterId\": \"324fs3r345vx-bb45we\"\
-    ,\n      \"confidenceScore\": 0.65\n    }\n  ],\n  \"timestamp\": \"2026-01-14T12:34:59Z\"\
+- value: "{\n  \"type\": \"EntityMentionResolutionResponse\",\n  \"entityMentionId\"\
+    : {\n    \"requestId\": \"324fs3r345vx\",\n    \"sourceId\": \"TEDSWS\",\n   \
+    \ \"entityType\": \"http://www.w3.org/ns/org#Organization\"\n  },\n  \"candidates\"\
+    : [\n    { \n      \"clusterId\": \"324fs3r345vx-aa32wa\",\n      \"confidenceScore\"\
+    : 0.91\n    },\n    { \n      \"clusterId\": \"324fs3r345vx-bb45we\",\n      \"\
+    confidenceScore\": 0.65\n    }\n  ],\n  \"timestamp\": \"2026-01-14T12:34:59Z\"\
     ,\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n    \n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: EREResponse
@@ -188,8 +191,8 @@ attributes:
     - EntityMentionResolutionResponse
     range: EntityMentionIdentifier
     required: true
-  candidateClusters:
-    name: candidateClusters
+  candidates:
+    name: candidates
     description: 'The set of cluster reference/score pairs representing the candidate
       clusters
 
@@ -220,11 +223,12 @@ description: "An entity resolution response returned by the ERE.\n\nThis is basi
   \ with multiple subjects), in which case \nwe might need to return multiple `EntityMentionResolutionResponse`\
   \ messages, each with additional \nproperties such as `entityIndex` and `totalEntities`.\n"
 examples:
-- value: "{\n  \"type\": \"EntityMentionResolutionResponse\",\n  \"requestId\": \"\
-    324fs3r345vx\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
-    ,\n  \"candidateClusters\": [\n    { \n      \"clusterId\": \"324fs3r345vx-aa32wa\"\
-    ,\n      \"confidenceScore\": 0.91\n    },\n    { \n      \"clusterId\": \"324fs3r345vx-bb45we\"\
-    ,\n      \"confidenceScore\": 0.65\n    }\n  ],\n  \"timestamp\": \"2026-01-14T12:34:59Z\"\
+- value: "{\n  \"type\": \"EntityMentionResolutionResponse\",\n  \"entityMentionId\"\
+    : {\n    \"requestId\": \"324fs3r345vx\",\n    \"sourceId\": \"TEDSWS\",\n   \
+    \ \"entityType\": \"http://www.w3.org/ns/org#Organization\"\n  },\n  \"candidates\"\
+    : [\n    { \n      \"clusterId\": \"324fs3r345vx-aa32wa\",\n      \"confidenceScore\"\
+    : 0.91\n    },\n    { \n      \"clusterId\": \"324fs3r345vx-bb45we\",\n      \"\
+    confidenceScore\": 0.65\n    }\n  ],\n  \"timestamp\": \"2026-01-14T12:34:59Z\"\
     ,\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n    \n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: EREResponse
@@ -242,8 +246,8 @@ attributes:
     - EntityMentionResolutionResponse
     range: EntityMentionIdentifier
     required: true
-  candidateClusters:
-    name: candidateClusters
+  candidates:
+    name: candidates
     description: 'The set of cluster reference/score pairs representing the candidate
       clusters
 
@@ -253,7 +257,7 @@ attributes:
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: candidateClusters
+    alias: candidates
     owner: EntityMentionResolutionResponse
     domain_of:
     - EntityMentionResolutionResponse

@@ -84,7 +84,7 @@ classes:
           {
             "type": "EntityMentionResolutionRequest",
             "entityMention": { 
-              identifier: {
+              "identifier": {
                 "requestId": "324fs3r345vx",
                 "sourceId": "TEDSWS",
                 "entityType": "http://www.w3.org/ns/org#Organization"
@@ -93,7 +93,6 @@ classes:
               "contentType": "text/turtle"
             },
             "timestamp": "2026-01-14T12:34:56Z",
-            "maxResultClusters": 5, // to limit the response size
             // As said, we need this internal ID and it can be auto-generated (eg, with UUIDs)
             "ereRequestId": "324fs3r345vx:01"
           }
@@ -102,7 +101,7 @@ classes:
           {
             "type": "EntityMentionResolutionRequest",
             "entityMention": { 
-              identifier: {
+              "identifier": {
                 "requestId": "324fs3r345vxab",
                 "sourceId": "TEDSWS",
                 "entityType": "http://www.w3.org/ns/org#Organization",
@@ -140,7 +139,7 @@ classes:
           This isn't strictly needed, since the `ereRequestId` already links the response to 
           the request's entity mention. Yet, it's reported for convenience.
         required: true
-      candidateClusters:
+      candidates:
         range: ClusterReference
         multivalued: true
         description: |
@@ -151,10 +150,12 @@ classes:
       - value: |
           {
             "type": "EntityMentionResolutionResponse",
-            "requestId": "324fs3r345vx",
-            "sourceId": "TEDSWS",
-            "entityType": "http://www.w3.org/ns/org#Organization",
-            "candidateClusters": [
+            "entityMentionId": {
+              "requestId": "324fs3r345vx",
+              "sourceId": "TEDSWS",
+              "entityType": "http://www.w3.org/ns/org#Organization"
+            },
+            "candidates": [
               { 
                 "clusterId": "324fs3r345vx-aa32wa",
                 "confidenceScore": 0.91
