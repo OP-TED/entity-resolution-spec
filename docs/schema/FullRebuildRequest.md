@@ -1,6 +1,6 @@
 
 
-# Class: ResetRequest 
+# Class: FullRebuildRequest 
 
 
 _A request to reset all the resolutions computed so far and possibly rebuild them as _
@@ -25,7 +25,7 @@ _* The ERE must keep track of past `EntityMention` marked as canonical._
 
 _* The ERE must retain requests with `excludedClusterIds` and apply them again when the _
 
-_  same entity mention is re-sent after the reset. TODO: see notes about this properties,_
+_  same entity mention is re-sent after the full rebuild. TODO: see notes about these properties,_
 
 _  on the possible need of withdrawing exclusions._
 
@@ -35,7 +35,7 @@ __
 
 
 
-URI: [ers:ResetRequest](https://data.europa.eu/ers/schema/ResetRequest)
+URI: [ers:FullRebuildRequest](https://data.europa.eu/ers/schema/FullRebuildRequest)
 
 
 
@@ -43,16 +43,16 @@ URI: [ers:ResetRequest](https://data.europa.eu/ers/schema/ResetRequest)
 
 ```mermaid
  classDiagram
-    class ResetRequest
-    click ResetRequest href "../ResetRequest/"
-      ERERequest <|-- ResetRequest
+    class FullRebuildRequest
+    click FullRebuildRequest href "../FullRebuildRequest/"
+      ERERequest <|-- FullRebuildRequest
         click ERERequest href "../ERERequest/"
       
-      ResetRequest : ereRequestId
+      FullRebuildRequest : ereRequestId
         
-      ResetRequest : timestamp
+      FullRebuildRequest : timestamp
         
-      ResetRequest : type
+      FullRebuildRequest : type
         
       
 ```
@@ -64,7 +64,7 @@ URI: [ers:ResetRequest](https://data.europa.eu/ers/schema/ResetRequest)
 ## Inheritance
 * [EREMessage](EREMessage.md)
     * [ERERequest](ERERequest.md)
-        * **ResetRequest**
+        * **FullRebuildRequest**
 
 
 
@@ -104,8 +104,8 @@ URI: [ers:ResetRequest](https://data.europa.eu/ers/schema/ResetRequest)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:ResetRequest |
-| native | ers:ResetRequest |
+| self | ers:FullRebuildRequest |
+| native | ers:FullRebuildRequest |
 
 
 
@@ -120,7 +120,7 @@ URI: [ers:ResetRequest](https://data.europa.eu/ers/schema/ResetRequest)
 
 <details>
 ```yaml
-name: ResetRequest
+name: FullRebuildRequest
 description: "A request to reset all the resolutions computed so far and possibly\
   \ rebuild them as \nrequests about old entities arrive again (and build new entities\
   \ from scratch as usually).\n\nIt is expected that the ERE client re-sends all the\
@@ -129,8 +129,8 @@ description: "A request to reset all the resolutions computed so far and possibl
   \ like the ERS logs/persists the entities it receives\nto resolve and also saves\
   \ manual overriding of ERE results.\n\nMoreover:\n* The ERE must keep track of past\
   \ `EntityMention` marked as canonical.\n* The ERE must retain requests with `excludedClusterIds`\
-  \ and apply them again when the \n  same entity mention is re-sent after the reset.\
-  \ TODO: see notes about this properties,\n  on the possible need of withdrawing\
+  \ and apply them again when the \n  same entity mention is re-sent after the full\
+  \ rebuild. TODO: see notes about these properties,\n  on the possible need of withdrawing\
   \ exclusions.\n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
@@ -142,7 +142,7 @@ is_a: ERERequest
 
 <details>
 ```yaml
-name: ResetRequest
+name: FullRebuildRequest
 description: "A request to reset all the resolutions computed so far and possibly\
   \ rebuild them as \nrequests about old entities arrive again (and build new entities\
   \ from scratch as usually).\n\nIt is expected that the ERE client re-sends all the\
@@ -151,8 +151,8 @@ description: "A request to reset all the resolutions computed so far and possibl
   \ like the ERS logs/persists the entities it receives\nto resolve and also saves\
   \ manual overriding of ERE results.\n\nMoreover:\n* The ERE must keep track of past\
   \ `EntityMention` marked as canonical.\n* The ERE must retain requests with `excludedClusterIds`\
-  \ and apply them again when the \n  same entity mention is re-sent after the reset.\
-  \ TODO: see notes about this properties,\n  on the possible need of withdrawing\
+  \ and apply them again when the \n  same entity mention is re-sent after the full\
+  \ rebuild. TODO: see notes about these properties,\n  on the possible need of withdrawing\
   \ exclusions.\n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
@@ -168,7 +168,7 @@ attributes:
     rank: 1000
     designates_type: true
     alias: type
-    owner: ResetRequest
+    owner: FullRebuildRequest
     domain_of:
     - EREMessage
     range: string
@@ -184,7 +184,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: ereRequestId
-    owner: ResetRequest
+    owner: FullRebuildRequest
     domain_of:
     - EREMessage
     range: string
@@ -197,7 +197,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: timestamp
-    owner: ResetRequest
+    owner: FullRebuildRequest
     domain_of:
     - EREMessage
     range: datetime

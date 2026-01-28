@@ -1,23 +1,23 @@
 
 
-# Class: ResetResponse 
+# Class: FullRebuildResponse 
 
 
-_A response to a `ResetRequest`, confirming that the rebuild process has started._
-
-__
-
-_As for all the requests, this carries the `ereRequestId`, which matches the reset request being_
-
-_acknowledged._
+_A response to a `FullRebuildRequest`, confirming that the rebuild process has started._
 
 __
 
+_As for all the requests, this carries the `ereRequestId`, which matches the full rebuild _
+
+_request being acknowledged._
+
+__
 
 
 
 
-URI: [ers:ResetResponse](https://data.europa.eu/ers/schema/ResetResponse)
+
+URI: [ers:FullRebuildResponse](https://data.europa.eu/ers/schema/FullRebuildResponse)
 
 
 
@@ -25,16 +25,16 @@ URI: [ers:ResetResponse](https://data.europa.eu/ers/schema/ResetResponse)
 
 ```mermaid
  classDiagram
-    class ResetResponse
-    click ResetResponse href "../ResetResponse/"
-      EREResponse <|-- ResetResponse
+    class FullRebuildResponse
+    click FullRebuildResponse href "../FullRebuildResponse/"
+      EREResponse <|-- FullRebuildResponse
         click EREResponse href "../EREResponse/"
       
-      ResetResponse : ereRequestId
+      FullRebuildResponse : ereRequestId
         
-      ResetResponse : timestamp
+      FullRebuildResponse : timestamp
         
-      ResetResponse : type
+      FullRebuildResponse : type
         
       
 ```
@@ -46,7 +46,7 @@ URI: [ers:ResetResponse](https://data.europa.eu/ers/schema/ResetResponse)
 ## Inheritance
 * [EREMessage](EREMessage.md)
     * [EREResponse](EREResponse.md)
-        * **ResetResponse**
+        * **FullRebuildResponse**
 
 
 
@@ -86,8 +86,8 @@ URI: [ers:ResetResponse](https://data.europa.eu/ers/schema/ResetResponse)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:ResetResponse |
-| native | ers:ResetResponse |
+| self | ers:FullRebuildResponse |
+| native | ers:FullRebuildResponse |
 
 
 
@@ -102,17 +102,10 @@ URI: [ers:ResetResponse](https://data.europa.eu/ers/schema/ResetResponse)
 
 <details>
 ```yaml
-name: ResetResponse
-description: 'A response to a `ResetRequest`, confirming that the rebuild process
-  has started.
-
-
-  As for all the requests, this carries the `ereRequestId`, which matches the reset
-  request being
-
-  acknowledged.
-
-  '
+name: FullRebuildResponse
+description: "A response to a `FullRebuildRequest`, confirming that the rebuild process\
+  \ has started.\n\nAs for all the requests, this carries the `ereRequestId`, which\
+  \ matches the full rebuild \nrequest being acknowledged.\n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: EREResponse
 
@@ -123,17 +116,10 @@ is_a: EREResponse
 
 <details>
 ```yaml
-name: ResetResponse
-description: 'A response to a `ResetRequest`, confirming that the rebuild process
-  has started.
-
-
-  As for all the requests, this carries the `ereRequestId`, which matches the reset
-  request being
-
-  acknowledged.
-
-  '
+name: FullRebuildResponse
+description: "A response to a `FullRebuildRequest`, confirming that the rebuild process\
+  \ has started.\n\nAs for all the requests, this carries the `ereRequestId`, which\
+  \ matches the full rebuild \nrequest being acknowledged.\n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: EREResponse
 attributes:
@@ -148,7 +134,7 @@ attributes:
     rank: 1000
     designates_type: true
     alias: type
-    owner: ResetResponse
+    owner: FullRebuildResponse
     domain_of:
     - EREMessage
     range: string
@@ -164,7 +150,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: ereRequestId
-    owner: ResetResponse
+    owner: FullRebuildResponse
     domain_of:
     - EREMessage
     range: string
@@ -177,7 +163,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     alias: timestamp
-    owner: ResetResponse
+    owner: FullRebuildResponse
     domain_of:
     - EREMessage
     range: datetime

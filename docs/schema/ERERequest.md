@@ -29,8 +29,8 @@ URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
 
       ERERequest <|-- EntityMentionResolutionRequest
         click EntityMentionResolutionRequest href "../EntityMentionResolutionRequest/"
-      ERERequest <|-- ResetRequest
-        click ResetRequest href "../ResetRequest/"
+      ERERequest <|-- FullRebuildRequest
+        click FullRebuildRequest href "../FullRebuildRequest/"
       
 
       ERERequest : ereRequestId
@@ -50,7 +50,7 @@ URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
 * [EREMessage](EREMessage.md)
     * **ERERequest**
         * [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) [ [EntityMentionIdentifers](EntityMentionIdentifers.md)]
-        * [ResetRequest](ResetRequest.md)
+        * [FullRebuildRequest](FullRebuildRequest.md)
 
 
 

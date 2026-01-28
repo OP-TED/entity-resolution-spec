@@ -163,6 +163,11 @@ class EntityMentionIdentifers(ConfiguredBaseModel):
     A container that groups the attributes needed to identify an entity mention in a resolution request
     or response.
 
+    As per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic
+    method to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`
+    (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in 
+    in this hereby ERE service schema) can be built from an entity that is initially the only cluster member.
+
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'from_schema': 'https://data.europa.eu/ers/schema',
@@ -204,16 +209,13 @@ class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
                                 '    "contentType": "text/turtle"\n'
                                 '  },\n'
                                 '  "timestamp": "2026-01-14T12:34:56Z",\n'
-                                '  // as said above, true to tell it is a cluster '
-                                'representative (false is the default)\n'
-                                '  "isCanonical": false,\n'
                                 '  "maxResultClusters": 5, // to limit the response '
                                 'size\n'
                                 '  // As said, we need this internal ID and it can be '
                                 'auto-generated (eg, with UUIDs)\n'
                                 '  "ereRequestId": "324fs3r345vx:01"\n'
                                 '}\n'},
-                      {'description': 'a refresh request (ie, carrying a rejection '
+                      {'description': 'a re-rebuild request (ie, carrying a rejection '
                                       'list)',
                        'value': '{\n'
                                 '  "type": "EntityMentionResolutionRequest",\n'
@@ -227,11 +229,9 @@ class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
                                 'cccev:telephone \\"+44 1924306780\\" .",\n'
                                 '    "contentType": "text/turtle"\n'
                                 '  },\n'
-                                '  "rejectedCanonicalIdentifiers": [\n'
-                                '    '
-                                '"http://data.europa.eu/ers/id/324fs3r345vx-bb45we",\n'
-                                '    '
-                                '"http://data.europa.eu/ers/id/324fs3r345vx-cc67ui"\n'
+                                '  "excludedClusterIds": [\n'
+                                '    "324fs3r345vx-bb45we",\n'
+                                '    "324fs3r345vx-cc67ui"\n'
                                 '  ],\n'
                                 '  "timestamp": "2026-01-14T12:40:56Z",\n'
                                 '  "ereRequestId": "324fs3r345vxab:01"\n'
@@ -242,12 +242,6 @@ class EntityMentionResolutionRequest(EntityMentionIdentifers, ERERequest):
     entityMention: EntityMention = Field(default=..., description="""The data about the entity to be resolved. Note that, at least for the moment, we don't support
 batch requests, so this property is single-valued.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
-    maxResultClusters: Optional[int] = Field(default=None, description="""An optional hint to the ERE about the maximum number of clusters to be returned
-in the response. This can be used to limit the size of the response.
-
-In general, this is a hint for the ERE, it may ignore it and use a configuration
-parameter instead (or use a combination of the two limits).
-""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
     excludedClusterIds: Optional[list[str]] = Field(default=[], description="""When this is present, the resolution must not bin the entity mention into any of the
 listed clusters. This can be used to reject a previous resolution proposed by the ERE.
 
@@ -424,12 +418,6 @@ class EntityMention(ConfiguredBaseModel):
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     content: Optional[str] = Field(default=None, description="""A code string representing the entity mention details (eg, RDF or XML description).
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
-    isCanonical: Optional[bool] = Field(default=None, description="""A boolean flag indicating whether the entity mention is to be considered a canonical (the source of truth).
-
-This is used by the ERS to feed the ERE with well known entity mentions (usually for bootstrapping the ERE).
-The confidence level to assign to the cluster created should be 1.0 in this case and never overridden by other 
-mentions during re-clustering.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
 
 
 class ClusterRef(ConfiguredBaseModel):
@@ -453,7 +441,7 @@ and the target canonical entity.
 """, ge=0.0, le=1.0, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterRef']} })
 
 
-class ResetRequest(ERERequest):
+class FullRebuildRequest(ERERequest):
     """
     A request to reset all the resolutions computed so far and possibly rebuild them as 
     requests about old entities arrive again (and build new entities from scratch as usually).
@@ -466,13 +454,13 @@ class ResetRequest(ERERequest):
     Moreover:
     * The ERE must keep track of past `EntityMention` marked as canonical.
     * The ERE must retain requests with `excludedClusterIds` and apply them again when the 
-      same entity mention is re-sent after the reset. TODO: see notes about this properties,
+      same entity mention is re-sent after the full rebuild. TODO: see notes about these properties,
       on the possible need of withdrawing exclusions.
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    type: Literal["ResetRequest"] = Field(default="ResetRequest", description="""The type of the request or result.
+    type: Literal["FullRebuildRequest"] = Field(default="FullRebuildRequest", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
@@ -487,17 +475,17 @@ This **is not** the same as `requestId` + `sourceId`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class ResetResponse(EREResponse):
+class FullRebuildResponse(EREResponse):
     """
-    A response to a `ResetRequest`, confirming that the rebuild process has started.
+    A response to a `FullRebuildRequest`, confirming that the rebuild process has started.
 
-    As for all the requests, this carries the `ereRequestId`, which matches the reset request being
-    acknowledged.
+    As for all the requests, this carries the `ereRequestId`, which matches the full rebuild 
+    request being acknowledged.
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    type: Literal["ResetResponse"] = Field(default="ResetResponse", description="""The type of the request or result.
+    type: Literal["FullRebuildResponse"] = Field(default="FullRebuildResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
@@ -523,5 +511,5 @@ EntityMentionResolutionResponse.model_rebuild()
 EREErrorResponse.model_rebuild()
 EntityMention.model_rebuild()
 ClusterRef.model_rebuild()
-ResetRequest.model_rebuild()
-ResetResponse.model_rebuild()
+FullRebuildRequest.model_rebuild()
+FullRebuildResponse.model_rebuild()

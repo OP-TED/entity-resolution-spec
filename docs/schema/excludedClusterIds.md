@@ -49,7 +49,7 @@ Alias: excludedClusterIds
 
 ## Properties
 
-* Range: [Uri](Uri.md)
+* Range: [String](String.md)
 
 * Multivalued: True
 
@@ -99,7 +99,7 @@ alias: excludedClusterIds
 owner: EntityMentionResolutionRequest
 domain_of:
 - EntityMentionResolutionRequest
-range: uri
+range: string
 multivalued: true
 
 ```

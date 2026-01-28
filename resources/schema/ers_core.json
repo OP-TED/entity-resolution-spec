@@ -96,13 +96,6 @@
             "string",
             "null"
           ]
-        },
-        "isCanonical": {
-          "description": "A boolean flag indicating whether the entity mention is to be considered a canonical (the source of truth).\n\nThis is used by the ERS to feed the ERE with well known entity mentions (usually for bootstrapping the ERE).\nThe confidence level to assign to the cluster created should be 1.0 in this case and never overridden by other \nmentions during re-clustering.\n",
-          "type": [
-            "boolean",
-            "null"
-          ]
         }
       },
       "title": "EntityMention",
@@ -131,14 +124,6 @@
           },
           "type": [
             "array",
-            "null"
-          ]
-        },
-        "maxResultClusters": {
-          "description": "An optional hint to the ERE about the maximum number of clusters to be returned\nin the response. This can be used to limit the size of the response.\n\nIn general, this is a hint for the ERE, it may ignore it and use a configuration\nparameter instead (or use a combination of the two limits).\n",
-          "minimum": 1,
-          "type": [
-            "integer",
             "null"
           ]
         },
@@ -231,9 +216,9 @@
       "title": "EntityMentionResolutionResponse",
       "type": "object"
     },
-    "ResetRequest": {
+    "FullRebuildRequest": {
       "additionalProperties": false,
-      "description": "A request to reset all the resolutions computed so far and possibly rebuild them as \nrequests about old entities arrive again (and build new entities from scratch as usually).\n\nIt is expected that the ERE client re-sends all the entities to be resolved again,\nusing `EntityMentionResolutionRequest` messages exactly as the first time the resolutions \nwere built. This implies the a client like the ERS logs/persists the entities it receives\nto resolve and also saves manual overriding of ERE results.\n\nMoreover:\n* The ERE must keep track of past `EntityMention` marked as canonical.\n* The ERE must retain requests with `excludedClusterIds` and apply them again when the \n  same entity mention is re-sent after the reset. TODO: see notes about this properties,\n  on the possible need of withdrawing exclusions.",
+      "description": "A request to reset all the resolutions computed so far and possibly rebuild them as \nrequests about old entities arrive again (and build new entities from scratch as usually).\n\nIt is expected that the ERE client re-sends all the entities to be resolved again,\nusing `EntityMentionResolutionRequest` messages exactly as the first time the resolutions \nwere built. This implies the a client like the ERS logs/persists the entities it receives\nto resolve and also saves manual overriding of ERE results.\n\nMoreover:\n* The ERE must keep track of past `EntityMention` marked as canonical.\n* The ERE must retain requests with `excludedClusterIds` and apply them again when the \n  same entity mention is re-sent after the full rebuild. TODO: see notes about these properties,\n  on the possible need of withdrawing exclusions.",
       "properties": {
         "ereRequestId": {
           "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
@@ -250,7 +235,7 @@
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
           "enum": [
-            "ResetRequest"
+            "FullRebuildRequest"
           ],
           "type": "string"
         }
@@ -259,12 +244,12 @@
         "type",
         "ereRequestId"
       ],
-      "title": "ResetRequest",
+      "title": "FullRebuildRequest",
       "type": "object"
     },
-    "ResetResponse": {
+    "FullRebuildResponse": {
       "additionalProperties": false,
-      "description": "A response to a `ResetRequest`, confirming that the rebuild process has started.\n\nAs for all the requests, this carries the `ereRequestId`, which matches the reset request being\nacknowledged.",
+      "description": "A response to a `FullRebuildRequest`, confirming that the rebuild process has started.\n\nAs for all the requests, this carries the `ereRequestId`, which matches the full rebuild \nrequest being acknowledged.",
       "properties": {
         "ereRequestId": {
           "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
@@ -281,7 +266,7 @@
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
           "enum": [
-            "ResetResponse"
+            "FullRebuildResponse"
           ],
           "type": "string"
         }
@@ -290,7 +275,7 @@
         "type",
         "ereRequestId"
       ],
-      "title": "ResetResponse",
+      "title": "FullRebuildResponse",
       "type": "object"
     }
   },

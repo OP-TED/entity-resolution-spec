@@ -9,6 +9,16 @@ _or response._
 
 __
 
+_As per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic_
+
+_method to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`_
+
+_(eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in _
+
+_in this hereby ERE service schema) can be built from an entity that is initially the only cluster member._
+
+__
+
 
 
 
@@ -106,12 +116,13 @@ URI: [ers:EntityMentionIdentifers](https://data.europa.eu/ers/schema/EntityMenti
 <details>
 ```yaml
 name: EntityMentionIdentifers
-description: 'A container that groups the attributes needed to identify an entity
-  mention in a resolution request
-
-  or response.
-
-  '
+description: "A container that groups the attributes needed to identify an entity\
+  \ mention in a resolution request\nor response.\n\nAs per ERS architectural decision,\
+  \ in the whole ERS and ERE systems, there is always a deterministic\nmethod to build\
+  \ a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`\n\
+  (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned\
+  \ in various places in \nin this hereby ERE service schema) can be built from an\
+  \ entity that is initially the only cluster member.\n"
 from_schema: https://data.europa.eu/ers/schema
 abstract: true
 mixin: true
@@ -159,12 +170,13 @@ attributes:
 <details>
 ```yaml
 name: EntityMentionIdentifers
-description: 'A container that groups the attributes needed to identify an entity
-  mention in a resolution request
-
-  or response.
-
-  '
+description: "A container that groups the attributes needed to identify an entity\
+  \ mention in a resolution request\nor response.\n\nAs per ERS architectural decision,\
+  \ in the whole ERS and ERE systems, there is always a deterministic\nmethod to build\
+  \ a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`\n\
+  (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned\
+  \ in various places in \nin this hereby ERE service schema) can be built from an\
+  \ entity that is initially the only cluster member.\n"
 from_schema: https://data.europa.eu/ers/schema
 abstract: true
 mixin: true

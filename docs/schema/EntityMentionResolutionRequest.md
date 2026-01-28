@@ -43,8 +43,6 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
         
       EntityMentionResolutionRequest : excludedClusterIds
         
-      EntityMentionResolutionRequest : maxResultClusters
-        
       EntityMentionResolutionRequest : requestId
         
       EntityMentionResolutionRequest : sourceId
@@ -72,8 +70,7 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [entityMention](entityMention.md) | 1 <br/> [EntityMention](EntityMention.md) | The data about the entity to be resolved | direct |
-| [maxResultClusters](maxResultClusters.md) | 0..1 <br/> [Integer](Integer.md) | An optional hint to the ERE about the maximum number of clusters to be return... | direct |
-| [excludedClusterIds](excludedClusterIds.md) | * <br/> [Uri](Uri.md) | When this is present, the resolution must not bin the entity mention into any... | direct |
+| [excludedClusterIds](excludedClusterIds.md) | * <br/> [String](String.md) | When this is present, the resolution must not bin the entity mention into any... | direct |
 | [sourceId](sourceId.md) | 1 <br/> [String](String.md) | The ID or URI of the ERS client that originated the request | [EntityMentionIdentifers](EntityMentionIdentifers.md) |
 | [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request made to the ERS system | [EntityMentionIdentifers](EntityMentionIdentifers.md) |
 | [entityType](entityType.md) | 1 <br/> [String](String.md) | A string representing the entity type (based on CET) | [EntityMentionIdentifers](EntityMentionIdentifers.md) |
@@ -106,8 +103,6 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
     "contentType": "text/turtle"
   },
   "timestamp": "2026-01-14T12:34:56Z",
-  // as said above, true to tell it is a cluster representative (false is the default)
-  "isCanonical": false,
   "maxResultClusters": 5, // to limit the response size
   // As said, we need this internal ID and it can be auto-generated (eg, with UUIDs)
   "ereRequestId": "324fs3r345vx:01"
@@ -123,9 +118,9 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
     "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
     "contentType": "text/turtle"
   },
-  "rejectedCanonicalIdentifiers": [
-    "http://data.europa.eu/ers/id/324fs3r345vx-bb45we",
-    "http://data.europa.eu/ers/id/324fs3r345vx-cc67ui"
+  "excludedClusterIds": [
+    "324fs3r345vx-bb45we",
+    "324fs3r345vx-cc67ui"
   ],
   "timestamp": "2026-01-14T12:40:56Z",
   "ereRequestId": "324fs3r345vxab:01"
@@ -177,20 +172,19 @@ examples:
     324fs3r345vx\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
     \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"timestamp\": \"2026-01-14T12:34:56Z\",\n  // as said above, true to\
-    \ tell it is a cluster representative (false is the default)\n  \"isCanonical\"\
-    : false,\n  \"maxResultClusters\": 5, // to limit the response size\n  // As said,\
-    \ we need this internal ID and it can be auto-generated (eg, with UUIDs)\n  \"\
-    ereRequestId\": \"324fs3r345vx:01\"\n}\n"
+    \n  },\n  \"timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5,\
+    \ // to limit the response size\n  // As said, we need this internal ID and it\
+    \ can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
+    \n}\n"
   description: a regular request
 - value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"requestId\": \"\
     324fs3r345vxab\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
     \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"rejectedCanonicalIdentifiers\": [\n    \"http://data.europa.eu/ers/id/324fs3r345vx-bb45we\"\
-    ,\n    \"http://data.europa.eu/ers/id/324fs3r345vx-cc67ui\"\n  ],\n  \"timestamp\"\
-    : \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\n}\n"
-  description: a refresh request (ie, carrying a rejection list)
+    \n  },\n  \"excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
+    \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
+    \n}\n"
+  description: a re-rebuild request (ie, carrying a rejection list)
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
 mixins:
@@ -210,25 +204,6 @@ attributes:
     - EntityMentionResolutionRequest
     range: EntityMention
     required: true
-  maxResultClusters:
-    name: maxResultClusters
-    description: 'An optional hint to the ERE about the maximum number of clusters
-      to be returned
-
-      in the response. This can be used to limit the size of the response.
-
-
-      In general, this is a hint for the ERE, it may ignore it and use a configuration
-
-      parameter instead (or use a combination of the two limits).
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    domain_of:
-    - EntityMentionResolutionRequest
-    range: integer
-    minimum_value: 1
   excludedClusterIds:
     name: excludedClusterIds
     description: "When this is present, the resolution must not bin the entity mention\
@@ -242,7 +217,6 @@ attributes:
     rank: 1000
     domain_of:
     - EntityMentionResolutionRequest
-    range: uri
     multivalued: true
 
 ```
@@ -262,20 +236,19 @@ examples:
     324fs3r345vx\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
     \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"timestamp\": \"2026-01-14T12:34:56Z\",\n  // as said above, true to\
-    \ tell it is a cluster representative (false is the default)\n  \"isCanonical\"\
-    : false,\n  \"maxResultClusters\": 5, // to limit the response size\n  // As said,\
-    \ we need this internal ID and it can be auto-generated (eg, with UUIDs)\n  \"\
-    ereRequestId\": \"324fs3r345vx:01\"\n}\n"
+    \n  },\n  \"timestamp\": \"2026-01-14T12:34:56Z\",\n  \"maxResultClusters\": 5,\
+    \ // to limit the response size\n  // As said, we need this internal ID and it\
+    \ can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
+    \n}\n"
   description: a regular request
 - value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"requestId\": \"\
     324fs3r345vxab\",\n  \"sourceId\": \"TEDSWS\",\n  \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
     ,\n  \"entityMention\": \n  { \n    \"content\": \"epd:ent005 a org:Organization;\
     \ ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\
-    \n  },\n  \"rejectedCanonicalIdentifiers\": [\n    \"http://data.europa.eu/ers/id/324fs3r345vx-bb45we\"\
-    ,\n    \"http://data.europa.eu/ers/id/324fs3r345vx-cc67ui\"\n  ],\n  \"timestamp\"\
-    : \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\n}\n"
-  description: a refresh request (ie, carrying a rejection list)
+    \n  },\n  \"excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
+    \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
+    \n}\n"
+  description: a re-rebuild request (ie, carrying a rejection list)
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
 mixins:
@@ -297,27 +270,6 @@ attributes:
     - EntityMentionResolutionRequest
     range: EntityMention
     required: true
-  maxResultClusters:
-    name: maxResultClusters
-    description: 'An optional hint to the ERE about the maximum number of clusters
-      to be returned
-
-      in the response. This can be used to limit the size of the response.
-
-
-      In general, this is a hint for the ERE, it may ignore it and use a configuration
-
-      parameter instead (or use a combination of the two limits).
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: maxResultClusters
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - EntityMentionResolutionRequest
-    range: integer
-    minimum_value: 1
   excludedClusterIds:
     name: excludedClusterIds
     description: "When this is present, the resolution must not bin the entity mention\
@@ -333,7 +285,7 @@ attributes:
     owner: EntityMentionResolutionRequest
     domain_of:
     - EntityMentionResolutionRequest
-    range: uri
+    range: string
     multivalued: true
   sourceId:
     name: sourceId

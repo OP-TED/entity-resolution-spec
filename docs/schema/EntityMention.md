@@ -27,8 +27,6 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
         
       EntityMention : contentType
         
-      EntityMention : isCanonical
-        
       
 ```
 
@@ -44,7 +42,6 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
 | ---  | --- | --- | --- |
 | [contentType](contentType.md) | 0..1 <br/> [String](String.md) | A string about the MIME format of `content` (e | direct |
 | [content](content.md) | 0..1 <br/> [String](String.md) | A code string representing the entity mention details (eg, RDF or XML descrip... | direct |
-| [isCanonical](isCanonical.md) | 0..1 <br/> [Boolean](Boolean.md) | A boolean flag indicating whether the entity mention is to be considered a ca... | direct |
 
 
 
@@ -122,18 +119,6 @@ attributes:
     rank: 1000
     domain_of:
     - EntityMention
-  isCanonical:
-    name: isCanonical
-    description: "A boolean flag indicating whether the entity mention is to be considered\
-      \ a canonical (the source of truth).\n\nThis is used by the ERS to feed the\
-      \ ERE with well known entity mentions (usually for bootstrapping the ERE).\n\
-      The confidence level to assign to the cluster created should be 1.0 in this\
-      \ case and never overridden by other \nmentions during re-clustering.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    domain_of:
-    - EntityMention
-    range: boolean
 
 ```
 </details>
@@ -173,20 +158,6 @@ attributes:
     domain_of:
     - EntityMention
     range: string
-  isCanonical:
-    name: isCanonical
-    description: "A boolean flag indicating whether the entity mention is to be considered\
-      \ a canonical (the source of truth).\n\nThis is used by the ERS to feed the\
-      \ ERE with well known entity mentions (usually for bootstrapping the ERE).\n\
-      The confidence level to assign to the cluster created should be 1.0 in this\
-      \ case and never overridden by other \nmentions during re-clustering.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: isCanonical
-    owner: EntityMention
-    domain_of:
-    - EntityMention
-    range: boolean
 
 ```
 </details>

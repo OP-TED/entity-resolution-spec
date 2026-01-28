@@ -31,8 +31,8 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
         click EntityMentionResolutionResponse href "../EntityMentionResolutionResponse/"
       EREResponse <|-- EREErrorResponse
         click EREErrorResponse href "../EREErrorResponse/"
-      EREResponse <|-- ResetResponse
-        click ResetResponse href "../ResetResponse/"
+      EREResponse <|-- FullRebuildResponse
+        click FullRebuildResponse href "../FullRebuildResponse/"
       
 
       EREResponse : ereRequestId
@@ -53,7 +53,7 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
     * **EREResponse**
         * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) [ [EntityMentionIdentifers](EntityMentionIdentifers.md)]
         * [EREErrorResponse](EREErrorResponse.md)
-        * [ResetResponse](ResetResponse.md)
+        * [FullRebuildResponse](FullRebuildResponse.md)
 
 
 

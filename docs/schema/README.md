@@ -18,11 +18,11 @@ Name: ersServiceDataSchema
 | [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ResetRequest](ResetRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ResetResponse](ResetResponse.md) | A response to a `ResetRequest`, confirming that the rebuild process has start... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |
 
 
 
@@ -43,8 +43,6 @@ Name: ersServiceDataSchema
 | [errorTrace](errorTrace.md) | A string representing a (stack) trace of the error that occurred |
 | [errorType](errorType.md) | A string representing the error type, eg, the FQN of the raised exception |
 | [excludedClusterIds](excludedClusterIds.md) | When this is present, the resolution must not bin the entity mention into any... |
-| [isCanonical](isCanonical.md) | A boolean flag indicating whether the entity mention is to be considered a ca... |
-| [maxResultClusters](maxResultClusters.md) | An optional hint to the ERE about the maximum number of clusters to be return... |
 | [requestId](requestId.md) | A string representing the unique ID of the request made to the ERS system |
 | [sourceId](sourceId.md) | The ID or URI of the ERS client that originated the request |
 | [timestamp](timestamp.md) | The time when the message was created |
