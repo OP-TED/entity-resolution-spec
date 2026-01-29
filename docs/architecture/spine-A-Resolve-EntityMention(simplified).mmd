@@ -1,0 +1,41 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine A – simplified)
+%% Purpose: bounded resolve with deterministic canonical identifier and idempotent request handling.
+%% Shows: async publication that triggers Spine B.
+%% Excludes: detailed store choreography, ERE behaviour, result integration, curation, and rebuild.
+
+participant Originator as "Originator"
+
+box "Entity Resolution System (ERSys)"
+    participant ERIntake as "Entity Resolution Intake Service"
+    participant ERS as "Entity Resolution Service (ERS)"
+end
+
+participant MessagingMiddleware as "Messaging Middleware"
+
+Originator ->> ERIntake: Resolve Entity Mention<br/>(sourceId, requestId, entityType, EntityMention)
+ERIntake ->> ERS: Validate request and enforce idempotency
+
+alt Request rejected
+    ERS -->> ERIntake: Reject (validation | idempotency conflict | dependency unavailable)
+    ERIntake -->> Originator: 4xx / 503
+else Request accepted
+    ERS ->> ERS: Register request (idempotent)<br/>and derive deterministic canonical identifier
+    ERS -->> ERIntake: 200 OK<br/>Canonical identifier + outcome status (bounded)
+    ERIntake -->> Originator: 200 OK<br/>Canonical identifier + outcome status (bounded)
+
+    ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType, EntityMention)
+end
+
+%% note right of ERS
+%%   Bounded response does not wait for ERE.
+%%   Publication to Messaging Middleware triggers Spine B.
+%% end

@@ -1,0 +1,83 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine E)
+%% Purpose: administrator-triggered rebuild for one entityType, using contract-faithful ERE reset + ERS-driven replay.
+%% Focus: reset acknowledgement, triad-correlated replay (one-by-one), reuse of Spine B integration, lock preservation.
+%% Excludes: progress APIs, batching/chunking, engine internals, and store-level replay mechanics.
+
+participant SystemAdministrator as "System Administrator"
+
+box "Entity Resolution System (ERSys)"
+    participant RebuildSvc as "Rebuild Service"
+    participant ERS as "Entity Resolution Service (ERS)"
+    participant DecisionStore as "Resolution Decision Store"
+    participant CanonicalRegistry as "Canonical Entity Registry"
+end
+
+participant MessagingMiddleware as "Messaging Middleware"
+
+box "Entity Resolution Engine (ERE)"
+    participant ERE as "Entity Resolution Engine (ERE)"
+end
+
+%% --- Initiate rebuild (scoped, explicit) ---
+SystemAdministrator ->> RebuildSvc: Initiate rebuild<br/>(entityType, rebuildMode)
+RebuildSvc ->> ERS: Authorise and start rebuild<br/>(entityType, rebuildMode)
+
+alt Rebuild not permitted (unauthorised or invalid entityType)
+    ERS -->> RebuildSvc: Reject (validation / authorisation error)
+    RebuildSvc -->> SystemAdministrator: 400 / 403
+else Rebuild already active
+    ERS -->> RebuildSvc: Reject (rebuild conflict)
+    RebuildSvc -->> SystemAdministrator: 409 Conflict
+else Rebuild started
+    ERS ->> DecisionStore: Record rebuild session start<br/>(entityType, rebuildMode)
+    DecisionStore -->> ERS: Rebuild session recorded
+    ERS -->> RebuildSvc: 202 Accepted (rebuild started)
+    RebuildSvc -->> SystemAdministrator: 202 Accepted (rebuild started)
+end
+
+%% --- Reset ERE (contract-level) ---
+ERS ->> MessagingMiddleware: Publish Full Rebuild Request (async)<br/>(entityType)
+MessagingMiddleware ->> ERE: Deliver Full Rebuild Request (async)
+
+ERE ->> ERE: Reset internal state for entityType &<br/> rebuild teh clusters<br/>(engine-internal)
+ERE ->> MessagingMiddleware: Publish Full Rebuild Response (async)<br/>(entityType, status = ready)
+MessagingMiddleware ->> ERS: Deliver Full Rebuild Response (async)
+
+%% note right of ERS
+%%   Rebuild is scoped to one entityType.
+%%   Canonical identifier derivation rules do not change.
+%%   Curator locks (confidence = +1 or −1) SHALL NOT be overridden by rebuild integration.
+%% end
+
+%% --- Replay resolution requests (ERS-driven, one-by-one) ---
+loop For each known EntityMention of the entityType (ERS drives replay)
+    ERS ->> MessagingMiddleware: Publish a Resolution Request (async)<br/>(sourceId, requestId, entityType,<br/>EntityMention, rejectionConstraints?)
+    MessagingMiddleware ->> ERE: Deliver Resolution Request (async)
+
+    ERE ->> ERE: Identify candidate clusters and confidence scores<br/>(engine-internal)
+    ERE ->> MessagingMiddleware: Publish Resolution Result (async)<br/>(sourceId, requestId, entityType,<br/>candidateClusterIds + confidence scores)
+    MessagingMiddleware ->> ERS: Deliver Resolution Result (async)
+
+    %% --- Integrate under decision-centric governance (same semantics as Spine B) ---
+    ERS ->> ERS: Correlate by triad and validate envelope
+    ERS ->> ERS: Apply governance constraints<br/>(preserve locks, enforce rejections)
+    ERS ->> DecisionStore: Upsert Resolution Decision<br/>(rebuild-integrated governance state)
+    DecisionStore -->> ERS: Decision recorded
+    ERS ->> CanonicalRegistry: Project current governed assignment<br/>(triad -> current canonical identifier)
+    CanonicalRegistry -->> ERS: Projection updated
+end
+
+%% note right of ERS
+%%   Replay pacing and "ready" signalling are implementation decisions.
+%%   CompletionStatus reflects rebuild policy, including accepted partial completion.
+%%   Lookup (Spine C) remains the convergence mechanism during and after rebuild.
+%% end

@@ -1,0 +1,50 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (high-level overview)
+%% Purpose: show end-to-end resolution cycle with bounded response,
+%% asynchronous engine processing, and convergence via lookup.
+
+%% External client
+participant Originator as "Originator"
+
+box "Entity Resolution System (ERSys)"
+    participant ERIntake as "Entity Resolution Intake Service"
+    participant CanonicalLookup as "Canonical Lookup Service"
+    participant ERS as "Entity Resolution Service (ERS)"
+end
+
+participant MessagingMiddleware as "Messaging Middleware"
+
+box "Entity Resolution Engine (ERE)"
+    participant ERE as "Entity Resolution Engine (ERE)"
+end
+
+%% --- Client-facing bounded resolve ---
+Originator ->> ERIntake: Resolve Entity Mention <br> (request identifiers + EntityMention)
+ERIntake ->> ERS: Validate and register request (idempotent)
+ERS ->> ERS: Derive deterministic canonical identifier &<br> ensure a Resolution Decision exists
+ERS -->> ERIntake: Draft canonical identifier + outcome status (bounded)
+ERIntake -->> Originator: Draft canonical identifier + outcome status (bounded)
+
+%% --- Asynchronous resolution ---
+ERS ->> MessagingMiddleware: Publish resolution request <br> (request identifiers + EntityMention)
+MessagingMiddleware ->> ERE: Deliver request (async)
+
+ERE ->> MessagingMiddleware: Publish candidate alignments <br> (candidates & confidence scores)
+MessagingMiddleware ->> ERS: Deliver results (async)
+
+ERS ->> ERS: Integrate candidates under decision-centric governance
+note right of ERS: ERS remains sole authority for canonical identity and decisions.
+
+%% --- Convergence via lookup ---
+Originator ->> CanonicalLookup: Lookup canonical assignment <br> (originatorId, originatorRequestId, entityType)
+CanonicalLookup ->> ERS: Retrieve current governed assignment
+ERS -->> CanonicalLookup: Current canonical identifier + statusus
+CanonicalLookup -->> Originator: Current canonical identifier

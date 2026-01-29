@@ -1,0 +1,48 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine A)
+%% Purpose: bounded resolve, deterministic canonical identifier, idempotent request registration.
+%% Shows: non-blocking publication to Messaging Middleware as the trigger for Spine B.
+%% Excludes: ERE participation, result integration, curation, rebuild, and store choreography beyond Request Registry.
+
+participant Originator as "Originator"
+
+box "Entity Resolution System (ERSys)"
+    participant ERIntake as "Entity Resolution Intake Service"
+    participant ERS as "Entity Resolution Service (ERS)"
+    participant RequestRegistry as "Request Registry"
+end
+
+participant MessagingMiddleware as "Messaging Middleware"
+
+Originator ->> ERIntake: Resolve Entity Mention<br/>(sourceId, requestId, entityType, EntityMention)
+ERIntake ->> ERS: Validate request and enforce idempotency
+
+alt Invalid request (syntax, mandatory validation, unsupported type)
+    ERS -->> ERIntake: Reject request (validation error)
+    ERIntake -->> Originator: 400 Bad Request
+else Valid request
+    ERS ->> RequestRegistry: Register request (idempotent upsert)
+    alt Idempotency conflict (same triad, different payload)
+        RequestRegistry -->> ERS: Conflict detected
+        ERS -->> ERIntake: Reject request (idempotency conflict)
+        ERIntake -->> Originator: 409 Conflict
+    else Idempotency preserved (new or replay)
+        RequestRegistry -->> ERS: Registered or confirmed
+        ERS ->> ERS: Derive deterministic canonical identifier<br/>and ensure a current Resolution Decision exists
+        ERS -->> ERIntake: Canonical identifier (deterministic) + outcome status (bounded)
+        ERIntake -->> Originator: 200 OK<br/>Canonical identifier (deterministic) + outcome status (bounded)
+
+        ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/><br/>(sourceId, requestId, entityType, EntityMention)
+    end
+end
+
+note right of ERS: The bounded response is independent of ERE completion. <br> Publication to Messaging Middleware triggers Spine B.
+

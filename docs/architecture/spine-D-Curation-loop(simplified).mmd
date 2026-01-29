@@ -1,0 +1,36 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine D – simplified, governance-complete)
+%% Purpose: curator governance action results in updated governed decision and updated canonical projection.
+%% Excludes: store-level choreography, UI browsing, ERE/messaging.
+
+participant Curator as "Curator"
+
+box "Entity Resolution System (ERSys)"
+    participant LinkCurationSvc as "Link Curation Service"
+    participant ERS as "Entity Resolution Service (ERS)"
+end
+
+Curator ->> LinkCurationSvc: Submit curation action<br/>(sourceId, requestId, entityType,<br/>action, targetCanonicalIdentifier?)
+LinkCurationSvc ->> ERS: Apply curation action (governance transition)
+
+alt Request rejected
+    ERS -->> LinkCurationSvc: Reject (validation | unknown triad | conflict)
+    LinkCurationSvc -->> Curator: 4xx
+else Curation applied
+    ERS ->> ERS: Persist updated governed decision<br/>and update canonical projection (single consistent update)
+    ERS -->> LinkCurationSvc: 200 OK (curation applied)
+    LinkCurationSvc -->> Curator: 200 OK (curation applied)
+end
+
+%% note right of ERS
+%%   Curator actions are authoritative locks and override automation.
+%%   The canonical assignment exposed by lookup reflects the current governed decision.
+%% end
