@@ -23,9 +23,9 @@ end
 DownstreamConsumer ->> CanonicalLookup: Lookup canonical assignment<br/>(sourceId, requestId, entityType)
 CanonicalLookup ->> ERS: Validate request and resolve lookup
 ERS ->> CanonicalRegistry: Read current governed assignment<br/>(sourceId, requestId, entityType)
-CanonicalRegistry -->> ERS: Current canonical identifier + outcome status
-ERS -->> CanonicalLookup: Current canonical identifier + outcome status (bounded)
-CanonicalLookup -->> DownstreamConsumer: 200 OK<br/>Current canonical identifier + outcome status (bounded)
+CanonicalRegistry -->> ERS: Current canonical identifier<br/> + outcome status
+ERS -->> CanonicalLookup: Current canonical identifier <br/> + outcome status (bounded)
+CanonicalLookup -->> DownstreamConsumer: 200 OK<br/>Current canonical identifier <br/> + outcome status (bounded)
 
 alt Unknown triad (no registered request)
     ERS -->> CanonicalLookup: 404 Not Found (unknown request)

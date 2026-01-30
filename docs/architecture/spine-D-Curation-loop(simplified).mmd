@@ -19,13 +19,13 @@ box "Entity Resolution System (ERSys)"
 end
 
 Curator ->> LinkCurationSvc: Submit curation action<br/>(sourceId, requestId, entityType,<br/>action, targetCanonicalIdentifier?)
-LinkCurationSvc ->> ERS: Apply curation action (governance transition)
+LinkCurationSvc ->> ERS: Apply curation action <br> (governance transition)
 
 alt Request rejected
     ERS -->> LinkCurationSvc: Reject (validation | unknown triad | conflict)
     LinkCurationSvc -->> Curator: 4xx
 else Curation applied
-    ERS ->> ERS: Persist updated governed decision<br/>and update canonical projection (single consistent update)
+    ERS ->> ERS: Persist updated governed decision<br/>and update canonical projection <br> (single consistent update)
     ERS -->> LinkCurationSvc: 200 OK (curation applied)
     LinkCurationSvc -->> Curator: 200 OK (curation applied)
 end

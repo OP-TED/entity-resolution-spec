@@ -22,15 +22,15 @@ end
 participant MessagingMiddleware as "Messaging Middleware"
 
 Originator ->> ERIntake: Resolve Entity Mention<br/>(sourceId, requestId, entityType, EntityMention)
-ERIntake ->> ERS: Validate request and enforce idempotency
+ERIntake ->> ERS: Validate request <br/>and enforce idempotency
 
 alt Request rejected
-    ERS -->> ERIntake: Reject (validation | idempotency conflict | dependency unavailable)
+    ERS -->> ERIntake: Reject (validation, idempotency conflict, <br/> dependency unavailable)
     ERIntake -->> Originator: 4xx / 503
 else Request accepted
     ERS ->> ERS: Register request (idempotent)<br/>and derive deterministic canonical identifier
-    ERS -->> ERIntake: 200 OK<br/>Canonical identifier + outcome status (bounded)
-    ERIntake -->> Originator: 200 OK<br/>Canonical identifier + outcome status (bounded)
+    ERS -->> ERIntake: Canonical identifier <br/>+ outcome status (bounded)
+    ERIntake -->> Originator: 200 OK<br/>Canonical identifier <br/>+ outcome status (bounded)
 
     ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType, EntityMention)
 end
