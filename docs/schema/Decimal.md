@@ -30,7 +30,7 @@ URI: [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -40,7 +40,7 @@ URI: [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:decimal |
-| native | ers:decimal |
+| native | ere:decimal |
 | broad | schema:Number |
 
 

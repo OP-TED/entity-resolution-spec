@@ -11,7 +11,7 @@ __
 
 
 
-URI: [ers:contentType](https://data.europa.eu/ers/schema/contentType)
+URI: [ere:contentType](https://data.europa.eu/ers/schema/ere/contentType)
 Alias: contentType
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: contentType
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -59,8 +59,8 @@ Alias: contentType
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:contentType |
-| native | ers:contentType |
+| self | ere:contentType |
+| native | ere:contentType |
 
 
 
@@ -73,7 +73,7 @@ name: contentType
 description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: contentType
 owner: EntityMention

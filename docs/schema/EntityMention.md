@@ -13,7 +13,7 @@ __
 
 
 
-URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
+URI: [ere:EntityMention](https://data.europa.eu/ers/schema/ere/EntityMention)
 
 
 
@@ -81,7 +81,7 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -90,8 +90,8 @@ URI: [ers:EntityMention](https://data.europa.eu/ers/schema/EntityMention)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EntityMention |
-| native | ers:EntityMention |
+| self | ere:EntityMention |
+| native | ere:EntityMention |
 
 
 
@@ -110,14 +110,14 @@ name: EntityMention
 description: "An entity mention is a representation of a real-world entity, as provided\
   \ by the ERS.\nIt contains the entity data, along with metadata like type and format.\
   \      \n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   identifier:
     name: identifier
     description: 'The identifier (with the ERS-derived components) of the entity mention.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMention
@@ -128,7 +128,7 @@ attributes:
     description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMention
@@ -139,7 +139,7 @@ attributes:
       XML description).
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMention
@@ -156,14 +156,14 @@ name: EntityMention
 description: "An entity mention is a representation of a real-world entity, as provided\
   \ by the ERS.\nIt contains the entity data, along with metadata like type and format.\
   \      \n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   identifier:
     name: identifier
     description: 'The identifier (with the ERS-derived components) of the entity mention.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: identifier
     owner: EntityMention
@@ -176,7 +176,7 @@ attributes:
     description: 'A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: contentType
     owner: EntityMention
@@ -190,7 +190,7 @@ attributes:
       XML description).
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: content
     owner: EntityMention

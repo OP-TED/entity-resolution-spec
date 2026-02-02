@@ -13,7 +13,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
+URI: [ere:ERERequest](https://data.europa.eu/ers/schema/ere/ERERequest)
 
 
 
@@ -81,7 +81,7 @@ URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -90,8 +90,8 @@ URI: [ers:ERERequest](https://data.europa.eu/ers/schema/ERERequest)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:ERERequest |
-| native | ers:ERERequest |
+| self | ere:ERERequest |
+| native | ere:ERERequest |
 
 
 
@@ -110,7 +110,7 @@ name: ERERequest
 description: 'Root class to represent all the requests sent to the ERE.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREMessage
 abstract: true
 
@@ -125,7 +125,7 @@ name: ERERequest
 description: 'Root class to represent all the requests sent to the ERE.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREMessage
 abstract: true
 attributes:
@@ -136,7 +136,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
@@ -153,7 +153,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
     owner: ERERequest
@@ -166,7 +166,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
     owner: ERERequest

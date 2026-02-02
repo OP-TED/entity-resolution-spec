@@ -15,7 +15,7 @@ __
 
 
 
-URI: [ers:errorType](https://data.europa.eu/ers/schema/errorType)
+URI: [ere:errorType](https://data.europa.eu/ers/schema/ere/errorType)
 Alias: errorType
 
 <!-- no inheritance hierarchy -->
@@ -54,7 +54,7 @@ Alias: errorType
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -63,8 +63,8 @@ Alias: errorType
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:errorType |
-| native | ers:errorType |
+| self | ere:errorType |
+| native | ere:errorType |
 
 
 
@@ -80,7 +80,7 @@ description: 'A string representing the error type, eg, the FQN of the raised ex
   This corresponds to RFC-9457''s `type`.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: errorType
 owner: EREErrorResponse

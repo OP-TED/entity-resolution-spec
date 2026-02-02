@@ -31,7 +31,7 @@ URI: [xsd:date](http://www.w3.org/2001/XMLSchema#date)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -41,7 +41,7 @@ URI: [xsd:date](http://www.w3.org/2001/XMLSchema#date)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:date |
-| native | ers:date |
+| native | ere:date |
 | exact | schema:Date |
 
 

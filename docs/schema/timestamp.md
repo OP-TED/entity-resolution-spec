@@ -11,7 +11,7 @@ __
 
 
 
-URI: [ers:timestamp](https://data.europa.eu/ers/schema/timestamp)
+URI: [ere:timestamp](https://data.europa.eu/ers/schema/ere/timestamp)
 Alias: timestamp
 
 <!-- no inheritance hierarchy -->
@@ -24,14 +24,14 @@ Alias: timestamp
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
-| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
+| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
+| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
 | [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
 | [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |  no  |
-| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
-| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
-| [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
+| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
 
 
 
@@ -55,7 +55,7 @@ Alias: timestamp
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -64,8 +64,8 @@ Alias: timestamp
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:timestamp |
-| native | ers:timestamp |
+| self | ere:timestamp |
+| native | ere:timestamp |
 
 
 
@@ -78,7 +78,7 @@ name: timestamp
 description: 'The time when the message was created. Should be in ISO-8601 format.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: timestamp
 owner: EREMessage

@@ -31,7 +31,7 @@ URI: [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -41,7 +41,7 @@ URI: [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | xsd:boolean |
-| native | ers:boolean |
+| native | ere:boolean |
 | exact | schema:Boolean |
 
 

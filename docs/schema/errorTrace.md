@@ -17,7 +17,7 @@ __
 
 
 
-URI: [ers:errorTrace](https://data.europa.eu/ers/schema/errorTrace)
+URI: [ere:errorTrace](https://data.europa.eu/ers/schema/ere/errorTrace)
 Alias: errorTrace
 
 <!-- no inheritance hierarchy -->
@@ -54,7 +54,7 @@ Alias: errorTrace
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -63,8 +63,8 @@ Alias: errorTrace
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:errorTrace |
-| native | ers:errorTrace |
+| self | ere:errorTrace |
+| native | ere:errorTrace |
 
 
 
@@ -82,7 +82,7 @@ description: 'A string representing a (stack) trace of the error that occurred.
   exposing this kind of server-side information is a security risk.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: errorTrace
 owner: EREErrorResponse

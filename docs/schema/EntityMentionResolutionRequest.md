@@ -11,7 +11,7 @@ __
 
 
 
-URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/EntityMentionResolutionRequest)
+URI: [ere:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/ere/EntityMentionResolutionRequest)
 
 
 
@@ -127,7 +127,7 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -136,8 +136,8 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EntityMentionResolutionRequest |
-| native | ers:EntityMentionResolutionRequest |
+| self | ere:EntityMentionResolutionRequest |
+| native | ere:EntityMentionResolutionRequest |
 
 
 
@@ -176,7 +176,7 @@ examples:
     \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
     \n}\n"
   description: a re-rebuild request (ie, carrying a rejection list)
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: ERERequest
 attributes:
   entityMention:
@@ -187,7 +187,7 @@ attributes:
       batch requests, so this property is single-valued.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionResolutionRequest
@@ -202,7 +202,7 @@ attributes:
       \ this entity as member. In a more advanced \ncase, it might recompute the similarity\
       \ with more advanced algorithms or use updated\ndata.\n\nTODO: Can this be revised?\
       \ What does it happen if an exclusion was made by mistake?\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionResolutionRequest
@@ -239,7 +239,7 @@ examples:
     \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
     \n}\n"
   description: a re-rebuild request (ie, carrying a rejection list)
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: ERERequest
 attributes:
   entityMention:
@@ -250,7 +250,7 @@ attributes:
       batch requests, so this property is single-valued.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: entityMention
     owner: EntityMentionResolutionRequest
@@ -267,7 +267,7 @@ attributes:
       \ this entity as member. In a more advanced \ncase, it might recompute the similarity\
       \ with more advanced algorithms or use updated\ndata.\n\nTODO: Can this be revised?\
       \ What does it happen if an exclusion was made by mistake?\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: excludedClusterIds
     owner: EntityMentionResolutionRequest
@@ -282,7 +282,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
@@ -299,7 +299,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
     owner: EntityMentionResolutionRequest
@@ -312,7 +312,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
     owner: EntityMentionResolutionRequest

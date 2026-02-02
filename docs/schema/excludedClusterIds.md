@@ -27,7 +27,7 @@ __
 
 
 
-URI: [ers:excludedClusterIds](https://data.europa.eu/ers/schema/excludedClusterIds)
+URI: [ere:excludedClusterIds](https://data.europa.eu/ers/schema/ere/excludedClusterIds)
 Alias: excludedClusterIds
 
 <!-- no inheritance hierarchy -->
@@ -66,7 +66,7 @@ Alias: excludedClusterIds
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -75,8 +75,8 @@ Alias: excludedClusterIds
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:excludedClusterIds |
-| native | ers:excludedClusterIds |
+| self | ere:excludedClusterIds |
+| native | ere:excludedClusterIds |
 
 
 
@@ -93,7 +93,7 @@ description: "When this is present, the resolution must not bin the entity menti
   \ entity as member. In a more advanced \ncase, it might recompute the similarity\
   \ with more advanced algorithms or use updated\ndata.\n\nTODO: Can this be revised?\
   \ What does it happen if an exclusion was made by mistake?\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: excludedClusterIds
 owner: EntityMentionResolutionRequest

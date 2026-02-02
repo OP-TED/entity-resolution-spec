@@ -25,7 +25,7 @@ __
 
 
 
-URI: [ers:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/EntityMentionResolutionResponse)
+URI: [ere:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/ere/EntityMentionResolutionResponse)
 
 
 
@@ -137,7 +137,7 @@ URI: [ers:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/Ent
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -146,8 +146,8 @@ URI: [ers:EntityMentionResolutionResponse](https://data.europa.eu/ers/schema/Ent
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EntityMentionResolutionResponse |
-| native | ers:EntityMentionResolutionResponse |
+| self | ere:EntityMentionResolutionResponse |
+| native | ere:EntityMentionResolutionResponse |
 
 
 
@@ -177,7 +177,7 @@ examples:
     : 0.91\n    },\n    { \n      \"clusterId\": \"324fs3r345vx-bb45we\",\n      \"\
     confidenceScore\": 0.65\n    }\n  ],\n  \"timestamp\": \"2026-01-14T12:34:59Z\"\
     ,\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n    \n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREResponse
 attributes:
   entityMentionId:
@@ -185,7 +185,7 @@ attributes:
     description: "The identifier of the entity mention that has been resolved.\n\n\
       This isn't strictly needed, since the `ereRequestId` already links the response\
       \ to \nthe request's entity mention. Yet, it's reported for convenience.\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionResolutionResponse
@@ -200,7 +200,7 @@ attributes:
       to).
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionResolutionResponse
@@ -230,7 +230,7 @@ examples:
     : 0.91\n    },\n    { \n      \"clusterId\": \"324fs3r345vx-bb45we\",\n      \"\
     confidenceScore\": 0.65\n    }\n  ],\n  \"timestamp\": \"2026-01-14T12:34:59Z\"\
     ,\n  \"ereRequestId\": \"324fs3r345vx:01\"\n}\n    \n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREResponse
 attributes:
   entityMentionId:
@@ -238,7 +238,7 @@ attributes:
     description: "The identifier of the entity mention that has been resolved.\n\n\
       This isn't strictly needed, since the `ereRequestId` already links the response\
       \ to \nthe request's entity mention. Yet, it's reported for convenience.\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: entityMentionId
     owner: EntityMentionResolutionResponse
@@ -255,7 +255,7 @@ attributes:
       to).
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: candidates
     owner: EntityMentionResolutionResponse
@@ -271,7 +271,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
@@ -288,7 +288,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
     owner: EntityMentionResolutionResponse
@@ -301,7 +301,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
     owner: EntityMentionResolutionResponse

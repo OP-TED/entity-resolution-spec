@@ -31,7 +31,7 @@ URI: [linkml:DateOrDatetime](https://w3id.org/linkml/DateOrDatetime)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -41,6 +41,6 @@ URI: [linkml:DateOrDatetime](https://w3id.org/linkml/DateOrDatetime)
 | Mapping Type | Mapped Value |
 | ---  | ---  |
 | self | linkml:DateOrDatetime |
-| native | ers:date_or_datetime |
+| native | ere:date_or_datetime |
 
 
