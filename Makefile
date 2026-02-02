@@ -39,19 +39,19 @@ check-uv:
 
 # CI should also generate the docs if a change is found in models
 generate_models: $(LINKML_MODEL_DIR) $(PYTHON_MODEL_DIR)
-	@ gen-pydantic $(LINKML_MODEL) > $(CORE_MODEL)
-	@ gen-json-schema --indent 2 $(LINKML_MODEL) > $(JSON_SCHEMA_MODEL)
+	@ linkml generate pydantic $(LINKML_MODEL) > $(CORE_MODEL)
+	@ linkml generate json-schema --indent 2 $(LINKML_MODEL) > $(JSON_SCHEMA_MODEL)
 
 generate_markdown_docs: $(MODEL_DOCS_DIR)
 # Changing default index name from index.md to README.md, since the github browser automatically shows the latter name
 # when entering the MODEL_DOCS_DIR
-	@ gen-doc $(LINKML_MODEL) -d $(MODEL_DOCS_DIR) --index-name README
+	@ linkml generate doc $(LINKML_MODEL) -d $(MODEL_DOCS_DIR) --index-name README
 # TODO: Probably we want PNG instead, but it doesn't work yet (https://github.com/linkml/linkml/issues/3009)
-	@ gen-plantuml -d $(MODEL_DOCS_DIR) --format svg $(LINKML_MODEL)
+	@ linkml generate plantuml -d $(MODEL_DOCS_DIR) --format svg $(LINKML_MODEL)
 	
 # (Brandizi) I've played with it, but the result isn't great (single-class diagrams in each 
 # class file)
-# @ gen-doc -d $(MODEL_DOCS_DIR) --diagram-type plantuml_class_diagram $(LINKML_MODEL)
+# @ linkml generate doc -d $(MODEL_DOCS_DIR) --diagram-type plantuml_class_diagram $(LINKML_MODEL)
   
 	
 clean_docs:

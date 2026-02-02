@@ -3,19 +3,15 @@
 # Slot: entityType 
 
 
-_A string representing the entity type URI (based on CET)._
+_A string representing the entity type (based on CET). This is typically a URI._
 
 __
 
-_Note that we don't use the `designates_type` thing here, nor the `type` attribute, since _
+_Note that this is at this level, and not at `EntityMention`, since, as said above, _
 
-_we don't have entity mention subclasses for now, and the instances of this class don't _
+_it's needed to identify the entity, even when its content is not present. For the same_
 
-_need any disambiguation._
-
-__
-
-_Also note this has nothing to do with the `type` attribute of requests/responses._
+_reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., _
 
 __
 
@@ -36,7 +32,7 @@ Alias: entityType
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity in the ERS |  no  |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |  no  |
 
 
 
@@ -82,17 +78,17 @@ Alias: entityType
 <details>
 ```yaml
 name: entityType
-description: "A string representing the entity type URI (based on CET).\n\nNote that\
-  \ we don't use the `designates_type` thing here, nor the `type` attribute, since\
-  \ \nwe don't have entity mention subclasses for now, and the instances of this class\
-  \ don't \nneed any disambiguation.\n\nAlso note this has nothing to do with the\
-  \ `type` attribute of requests/responses.\n"
+description: "A string representing the entity type (based on CET). This is typically\
+  \ a URI.\n\nNote that this is at this level, and not at `EntityMention`, since,\
+  \ as said above, \nit's needed to identify the entity, even when its content is\
+  \ not present. For the same\nreason, it's used both for `EREResolutionRequest` and\
+  \ `EREResolutionResponse` messages., \n"
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: entityType
-owner: EntityMention
+owner: EntityMentionIdentifier
 domain_of:
-- EntityMention
+- EntityMentionIdentifier
 range: string
 required: true
 

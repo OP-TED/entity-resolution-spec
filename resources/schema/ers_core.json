@@ -1,52 +1,35 @@
 {
   "$defs": {
-    "AlignmentLink": {
+    "ClusterReference": {
       "additionalProperties": false,
-      "description": "An alignment link representing a possible equivalence between an entity mention in the\n`AlignmentLinkSet` the link belongs to, and a canonical entity, together with a confidence score.\n\nA semi-formal representation:\n\n```\n  for each (canonicalIdentifier, cconfidenceScore) in AlignmentLinkSet.alignmentOptions:\n    entity(subjectEntityMentionIdentifier)  ==  entity(mentionIdentifier) \n      with score = confidenceScore\n```",
+      "description": "A reference to a cluster to which an entity is deemed to belong, with an associated confidence score.\n\nA cluster is a set of entity mentions that have been determined to refer to the same real-world entity.\nEach cluster has a unique clusterId.\n\nA cluster reference is used to report the association between an entity mention and a cluster \nof equivalence.",
       "properties": {
-        "canonicalIdentifier": {
-          "description": "The identifier of the cluster/canonical entity that is considered equivalent to the\nsubject entity mention in the `AlignmentLinkSet` the link belongs to.\n",
+        "clusterId": {
+          "description": "The identifier of the cluster/canonical entity that is considered equivalent to the\nsubject entity mention that an `EntityMentionResolutionResponse` refers to.\n",
           "type": "string"
         },
         "confidenceScore": {
           "description": "A 0-1 value of how confident the ERE is about the equivalence between the subject entity mention\nand the target canonical entity.\n",
+          "maximum": 1.0,
+          "minimum": 0.0,
           "type": "number"
         }
       },
       "required": [
-        "canonicalIdentifier",
+        "clusterId",
         "confidenceScore"
       ],
-      "title": "AlignmentLink",
-      "type": "object"
-    },
-    "AlignmentLinkSet": {
-      "additionalProperties": false,
-      "description": "A set of alignment links to a referred entity.\n\nEach link in the set represents an entity that might be equivalent to the referred entity,\nsee `AlignmentLink` for details.",
-      "properties": {
-        "alignmentOptions": {
-          "description": "A list of possible matches (alignment links) between the subject entity mention\nand candidate canonical entities.\n\nIt is recommended that these are sorted by descending confidence score, although\nthat is not mandatory.\n",
-          "items": {
-            "$ref": "#/$defs/AlignmentLink"
-          },
-          "type": "array"
-        },
-        "subjectEntityMentionIdentifier": {
-          "description": "The identifier of the entity mention that is the subject of these alignment links.\nThis must match the `identifier` attribute of an `EntityMention` that a resolution response\nrefers to.\n",
-          "type": "string"
-        }
-      },
-      "required": [
-        "subjectEntityMentionIdentifier",
-        "alignmentOptions"
-      ],
-      "title": "AlignmentLinkSet",
+      "title": "ClusterReference",
       "type": "object"
     },
     "EREErrorResponse": {
       "additionalProperties": false,
       "description": "Response sent by the ERE when some error/exception occurs while processing a request.\nFor instance, this may happen if the request is malformed or some internal error happens.\n\nThe attributes of this class are based on [RFC-9457](https://datatracker.ietf.org/doc/html/rfc9457).",
       "properties": {
+        "ereRequestId": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
+          "type": "string"
+        },
         "errorDetail": {
           "description": "A human readable detailed message about the error that occurred.\n\nThis corresponds to RFC-9457's `detail`.\n",
           "type": [
@@ -72,16 +55,13 @@
           "description": "A string representing the error type, eg, the FQN of the raised exception.\n\nThis corresponds to RFC-9457's `type`.\n",
           "type": "string"
         },
-        "metadata": {
-          "description": "An optional arbitrary dictionary of further request metadata.\n",
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
           "type": [
             "string",
             "null"
           ]
-        },
-        "requestId": {
-          "description": "A string representing the unique ID of the request this response is about.\n",
-          "type": "string"
         },
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
@@ -93,89 +73,76 @@
       },
       "required": [
         "errorType",
-        "requestId",
-        "type"
+        "type",
+        "ereRequestId"
       ],
       "title": "EREErrorResponse",
       "type": "object"
     },
     "EntityMention": {
       "additionalProperties": false,
-      "description": "An entity mention is a representation of a real-world entity in the ERS. It must have \na data content and a data format, so that components like the ERE can use them for resolution.\n\nMoreover, an entity mention must have a computed identifier (see below).",
+      "description": "An entity mention is a representation of a real-world entity, as provided by the ERS.\nIt contains the entity data, along with metadata like type and format.",
       "properties": {
-        "datFormat": {
-          "description": "A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)\n",
-          "type": [
-            "string",
-            "null"
-          ]
+        "content": {
+          "description": "A code string representing the entity mention details (eg, RDF or XML description).\n",
+          "type": "string"
         },
-        "entityType": {
-          "description": "A string representing the entity type URI (based on CET).\n\nNote that we don't use the `designates_type` thing here, nor the `type` attribute, since \nwe don't have entity mention subclasses for now, and the instances of this class don't \nneed any disambiguation.\n\nAlso note this has nothing to do with the `type` attribute of requests/responses.\n",
+        "contentType": {
+          "description": "A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)\n",
           "type": "string"
         },
         "identifier": {
-          "description": "An URI identifying the entity.\n\nWhile mandatory, this can be computed, using same function that depends on the entity payload.\nIn that case, **there must be** a single function in the whole ERS (including the ERE) that\ncomputes the same identifier for the same payload, eg, a hash, an RDF URI extractor. This is\nneeded for the resolution results to refer to the correct request entities.        \n",
-          "type": "string"
-        },
-        "jsonRepresentation": {
-          "description": "An optional JSON representation of the entity, which is usually achieved from the payload.\nThis is mainly useful for the curation app.\n",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "payload": {
-          "description": "A code string representing the entity details (eg, RDF description).\n",
-          "type": [
-            "string",
-            "null"
-          ]
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The identifier (with the ERS-derived components) of the entity mention.\n"
         }
       },
       "required": [
         "identifier",
-        "entityType"
+        "contentType",
+        "content"
       ],
       "title": "EntityMention",
+      "type": "object"
+    },
+    "EntityMentionIdentifier": {
+      "additionalProperties": false,
+      "description": "A container that groups the attributes needed to identify an entity mention in a resolution request\nor response.\n\nAs per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic\nmethod to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`\n(eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in \nin this hereby ERE service schema) can be built from an entity that is initially the only cluster member.",
+      "properties": {
+        "entityType": {
+          "description": "A string representing the entity type (based on CET). This is typically a URI.\n\nNote that this is at this level, and not at `EntityMention`, since, as said above, \nit's needed to identify the entity, even when its content is not present. For the same\nreason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., \n",
+          "type": "string"
+        },
+        "requestId": {
+          "description": "A string representing the unique ID of the request made to the ERS system. In general, this is unique\nonly within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. \n\nMoreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is \nused to match responses to requests.\n",
+          "type": "string"
+        },
+        "sourceId": {
+          "description": "The ID or URI of the ERS client that originated the request. This identifies an application or a \nperson accessing the ERS system.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceId",
+        "requestId",
+        "entityType"
+      ],
+      "title": "EntityMentionIdentifier",
       "type": "object"
     },
     "EntityMentionResolutionRequest": {
       "additionalProperties": false,
       "description": "An entity resolution request sent to the ERE, containing the entity to be resolved.",
       "properties": {
-        "creationTime": {
-          "description": "The timestamp when the request was created.\n",
-          "format": "date-time",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "draftCanonicalIdentifier": {
-          "description": "An optional URI representing a draft canonical identifier for the entity mention\nin this request.\n\nThe ERS creates this when it still doesn't know anything about an entity resolution, for \nthe purpose of quickly replying something and postpone a final resolution to when the \nERE has it. The ERE must use this ID when it creates a new (typically singleton) cluster\nfor this entity mention, if it can't associate the entity to any cluster it already knows.\n",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
         "entityMention": {
           "$ref": "#/$defs/EntityMention",
-          "description": "The data about the entity to be resolved.\n"
+          "description": "The data about the entity to be resolved. Note that, at least for the moment, we don't support\nbatch requests, so this property is single-valued.\n"
         },
-        "metadata": {
-          "description": "An optional arbitrary dictionary of further request metadata.\n",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "originator": {
-          "description": "The ID or URI of the request originator.\n",
+        "ereRequestId": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
           "type": "string"
         },
-        "rejectedCanonicalIdentifiers": {
-          "description": "When this is present, the request is a refresh request: it is asking that the entity \nis resolved again and the clusters/canonical entities that were previously proposed \nas resolution are now ignored.\n\nThe exact reaction to this is implementation dependent. In the simplest case, the ERE\nmight just create a singleton cluster with this entity as member. In a more advanced \ncase, it might recompute the similarity with more advanced algorithms or use updated\ndata.\n",
+        "excludedClusterIds": {
+          "description": "When this is present, the resolution must not bin the entity mention into any of the\nlisted clusters. This can be used to reject a previous resolution proposed by the ERE.\n\nThe exact reaction to this is implementation dependent. In the simplest case, the ERE\nmight just create a singleton cluster with this entity as member. In a more advanced \ncase, it might recompute the similarity with more advanced algorithms or use updated\ndata.\n\nTODO: Can this be revised? What does it happen if an exclusion was made by mistake?\n",
           "items": {
             "type": "string"
           },
@@ -184,9 +151,13 @@
             "null"
           ]
         },
-        "requestId": {
-          "description": "A string representing the unique ID of this request.\n",
-          "type": "string"
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
@@ -198,31 +169,38 @@
       },
       "required": [
         "entityMention",
-        "requestId",
-        "originator",
-        "type"
+        "type",
+        "ereRequestId"
       ],
       "title": "EntityMentionResolutionRequest",
       "type": "object"
     },
     "EntityMentionResolutionResponse": {
       "additionalProperties": false,
-      "description": "An entity resolution response sent by the ERE.\n\nThis links an `AlignmentLinkSet`, to represent possible resolutions (see the attribute definition).",
+      "description": "An entity resolution response returned by the ERE.\n\nThis is basically a list of candidate clusters to which the entity is deemed to be equivalent.\n\nNote that, for the moment, we don't support batch requests. In future, we might support requests\nwith multiple subjects in the `EntityMention` content (eg, RDF with multiple subjects), in which case \nwe might need to return multiple `EntityMentionResolutionResponse` messages, each with additional \nproperties such as `entityIndex` and `totalEntities`.",
       "properties": {
-        "alignmentLinkSet": {
-          "$ref": "#/$defs/AlignmentLinkSet",
-          "description": "The set of alignment links representing the candidate canonical entities/clusters\nthat the entity mention in the original request could align to (be equivalent to).\n\n**Note**: for the moment, this is not multi-valued, since we don't support batch requests (yet?),\nthus there is only one set in a response, that resolves for the single entity mention in the\noriginal request (with multiple alignment candidates). If, in the future, we support batch requests,\nthen we might need to return one alignment link set per entity mention in a request.\n"
+        "candidates": {
+          "description": "The set of cluster reference/score pairs representing the candidate clusters\nthat the entity mention in the original request could align to (be equivalent to).\n",
+          "items": {
+            "$ref": "#/$defs/ClusterReference"
+          },
+          "type": "array"
         },
-        "metadata": {
-          "description": "An optional arbitrary dictionary of further request metadata.\n",
+        "entityMentionId": {
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The identifier of the entity mention that has been resolved.\n\nThis isn't strictly needed, since the `ereRequestId` already links the response to \nthe request's entity mention. Yet, it's reported for convenience.\n"
+        },
+        "ereRequestId": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
           "type": [
             "string",
             "null"
           ]
-        },
-        "requestId": {
-          "description": "A string representing the unique ID of the request this response is about.\n",
-          "type": "string"
         },
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
@@ -233,39 +211,29 @@
         }
       },
       "required": [
-        "alignmentLinkSet",
-        "requestId",
-        "type"
+        "entityMentionId",
+        "candidates",
+        "type",
+        "ereRequestId"
       ],
       "title": "EntityMentionResolutionResponse",
       "type": "object"
     },
     "FullRebuildRequest": {
       "additionalProperties": false,
-      "description": "A request to reset all the resolutions computed so far and rebuild them as \nrequests about old entities arrive again (and build new entities from scratch).\n\nIt is expected that the ERE client re-sends all the entities to be resolved again,\nusing `EntityMentionResolutionRequest` messages exactly as the first time the resolutions \nwere built. This implies the a client like the ERS logs/persists the entities it receives\nto resolve and also saves manual overriding of ERE results.",
+      "description": "A request to reset all the resolutions computed so far and possibly rebuild them as \nrequests about old entities arrive again (and build new entities from scratch as usually).\n\nIt is expected that the ERE client re-sends all the entities to be resolved again,\nusing `EntityMentionResolutionRequest` messages exactly as the first time the resolutions \nwere built. This implies the a client like the ERS logs/persists the entities it receives\nto resolve and also saves manual overriding of ERE results.\n\nMoreover:\n* The ERE must keep track of past `EntityMention` marked as canonical.\n* The ERE must retain requests with `excludedClusterIds` and apply them again when the \n  same entity mention is re-sent after the full rebuild. TODO: see notes about these properties,\n  on the possible need of withdrawing exclusions.",
       "properties": {
-        "creationTime": {
-          "description": "The timestamp when the request was created.\n",
+        "ereRequestId": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
           "format": "date-time",
           "type": [
             "string",
             "null"
           ]
-        },
-        "metadata": {
-          "description": "An optional arbitrary dictionary of further request metadata.\n",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "originator": {
-          "description": "The ID or URI of the request originator.\n",
-          "type": "string"
-        },
-        "requestId": {
-          "description": "A string representing the unique ID of this request.\n",
-          "type": "string"
         },
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
@@ -276,27 +244,27 @@
         }
       },
       "required": [
-        "requestId",
-        "originator",
-        "type"
+        "type",
+        "ereRequestId"
       ],
       "title": "FullRebuildRequest",
       "type": "object"
     },
     "FullRebuildResponse": {
       "additionalProperties": false,
-      "description": "A response to a `FullRebuildRequest`, confirming that the rebuild process has started.\n\nThis should carry the `requestId` attribute.",
+      "description": "A response to a `FullRebuildRequest`, confirming that the rebuild process has started.\n\nAs for all the requests, this carries the `ereRequestId`, which matches the full rebuild \nrequest being acknowledged.",
       "properties": {
-        "metadata": {
-          "description": "An optional arbitrary dictionary of further request metadata.\n",
+        "ereRequestId": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `requestId` + `sourceId`.\n",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
           "type": [
             "string",
             "null"
           ]
-        },
-        "requestId": {
-          "description": "A string representing the unique ID of the request this response is about.\n",
-          "type": "string"
         },
         "type": {
           "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
@@ -307,8 +275,8 @@
         }
       },
       "required": [
-        "requestId",
-        "type"
+        "type",
+        "ereRequestId"
       ],
       "title": "FullRebuildResponse",
       "type": "object"

@@ -26,7 +26,7 @@ Alias: confidenceScore
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AlignmentLink](AlignmentLink.md) | An alignment link representing a possible equivalence between an entity menti... |  no  |
+| [ClusterReference](ClusterReference.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |  no  |
 
 
 
@@ -38,6 +38,10 @@ Alias: confidenceScore
 * Range: [Float](Float.md)
 
 * Required: True
+
+* Minimum Value: 0
+
+* Maximum Value: 1
 
 
 
@@ -81,11 +85,13 @@ description: 'A 0-1 value of how confident the ERE is about the equivalence betw
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
 alias: confidenceScore
-owner: AlignmentLink
+owner: ClusterReference
 domain_of:
-- AlignmentLink
+- ClusterReference
 range: float
 required: true
+minimum_value: 0.0
+maximum_value: 1.0
 
 ```
 </details>

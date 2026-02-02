@@ -24,10 +24,6 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
       ERERequest <|-- EntityMentionResolutionRequest
         click ERERequest href "../ERERequest/"
       
-      EntityMentionResolutionRequest : creationTime
-        
-      EntityMentionResolutionRequest : draftCanonicalIdentifier
-        
       EntityMentionResolutionRequest : entityMention
         
           
@@ -39,13 +35,11 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
     
 
         
-      EntityMentionResolutionRequest : metadata
+      EntityMentionResolutionRequest : ereRequestId
         
-      EntityMentionResolutionRequest : originator
+      EntityMentionResolutionRequest : excludedClusterIds
         
-      EntityMentionResolutionRequest : rejectedCanonicalIdentifiers
-        
-      EntityMentionResolutionRequest : requestId
+      EntityMentionResolutionRequest : timestamp
         
       EntityMentionResolutionRequest : type
         
@@ -57,8 +51,9 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 
 
 ## Inheritance
-* [ERERequest](ERERequest.md) [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
-    * **EntityMentionResolutionRequest**
+* [EREMessage](EREMessage.md)
+    * [ERERequest](ERERequest.md)
+        * **EntityMentionResolutionRequest**
 
 
 
@@ -67,13 +62,10 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [entityMention](entityMention.md) | 1 <br/> [EntityMention](EntityMention.md) | The data about the entity to be resolved | direct |
-| [draftCanonicalIdentifier](draftCanonicalIdentifier.md) | 0..1 <br/> [Uri](Uri.md) | An optional URI representing a draft canonical identifier for the entity ment... | direct |
-| [rejectedCanonicalIdentifiers](rejectedCanonicalIdentifiers.md) | * <br/> [Uri](Uri.md) | When this is present, the request is a refresh request: it is asking that the... | direct |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of this request | [ERERequest](ERERequest.md) |
-| [originator](originator.md) | 1 <br/> [String](String.md) | The ID or URI of the request originator | [ERERequest](ERERequest.md) |
-| [creationTime](creationTime.md) | 0..1 <br/> [Datetime](Datetime.md) | The timestamp when the request was created | [ERERequest](ERERequest.md) |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [excludedClusterIds](excludedClusterIds.md) | * <br/> [String](String.md) | When this is present, the resolution must not bin the entity mention into any... | direct |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
+| [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
+| [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
 
 
 
@@ -90,50 +82,38 @@ URI: [ers:EntityMentionResolutionRequest](https://data.europa.eu/ers/schema/Enti
 | Value |
 | --- |
 | {
-  "type": "EntityMentionResolutionRequest",            
-  "entityMention": 
-  { 
-    "type": "http://www.w3.org/ns/org#Organization",
-    // As said above, there is always a way to compute this
-    "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
-    "payload": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
-    "dataFormat": "text/turtle",
-    // As Said above, this is optional and JSON-LD is just an example of what it could rendered.
-    "jsonRepresentation": {
-      "@context": {
-        "org": "http://www.w3.org/ns/org#",
-        "cccev": "https://data.europa.eu/cc/cefact/code/"
-      },
-      "@id": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
-      "@type": "org:Organization",
-      "cccev:telephone": "+44 1924306780"
-    }
+  "type": "EntityMentionResolutionRequest",
+  "entityMention": { 
+    "identifier": {
+      "requestId": "324fs3r345vx",
+      "sourceId": "TEDSWS",
+      "entityType": "http://www.w3.org/ns/org#Organization"
+    },
+    "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+    "contentType": "text/turtle"
   },
-  "requestId": "324fs3r345vx",
-  "originator": "TED SWS pipeline",
-  "creationTime": "2026-01-14T12:34:56Z",
-  "metadata": {
-    "originator system": "VocBench editor",
-    "originator timestamp": "23748737643"
-  }
+  "timestamp": "2026-01-14T12:34:56Z",
+  // As said, we need this internal ID and it can be auto-generated (eg, with UUIDs)
+  "ereRequestId": "324fs3r345vx:01"
 }
  |
 | {
-  "type": "EntityMentionResolutionRequest",            
-  "entityMention": 
-  { 
-    "type": "http://www.w3.org/ns/org#Organization",
-    "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",
-    "payload": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
-    "dataFormat": "text/turtle"
+  "type": "EntityMentionResolutionRequest",
+  "entityMention": { 
+    "identifier": {
+      "requestId": "324fs3r345vxab",
+      "sourceId": "TEDSWS",
+      "entityType": "http://www.w3.org/ns/org#Organization",
+    },
+    "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+    "contentType": "text/turtle"
   },
-  "rejectedCanonicalIdentifiers": [
-    "http://data.europa.eu/ers/id/324fs3r345vx-bb45we",
-    "http://data.europa.eu/ers/id/324fs3r345vx-cc67ui"
+  "excludedClusterIds": [
+    "324fs3r345vx-bb45we",
+    "324fs3r345vx-cc67ui"
   ],
-  "requestId": "324fs3r345vx01",
-  "originator": "TED SWS pipeline",
-  "creationTime": "2026-01-14T12:40:56Z"
+  "timestamp": "2026-01-14T12:40:56Z",
+  "ereRequestId": "324fs3r345vxab:01"
 }
  |
 
@@ -178,36 +158,33 @@ description: 'An entity resolution request sent to the ERE, containing the entit
 
   '
 examples:
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",            \n  \"entityMention\"\
-    : \n  { \n    \"type\": \"http://www.w3.org/ns/org#Organization\",\n    // As\
-    \ said above, there is always a way to compute this\n    \"identifier\": \"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa\"\
-    ,\n    \"payload\": \"epd:ent005 a org:Organization; ...   cccev:telephone \\\"\
-    +44 1924306780\\\" .\",\n    \"dataFormat\": \"text/turtle\",\n    // As Said\
-    \ above, this is optional and JSON-LD is just an example of what it could rendered.\n\
-    \    \"jsonRepresentation\": {\n      \"@context\": {\n        \"org\": \"http://www.w3.org/ns/org#\"\
-    ,\n        \"cccev\": \"https://data.europa.eu/cc/cefact/code/\"\n      },\n \
-    \     \"@id\": \"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa\",\n      \"\
-    @type\": \"org:Organization\",\n      \"cccev:telephone\": \"+44 1924306780\"\n\
-    \    }\n  },\n  \"requestId\": \"324fs3r345vx\",\n  \"originator\": \"TED SWS\
-    \ pipeline\",\n  \"creationTime\": \"2026-01-14T12:34:56Z\",\n  \"metadata\":\
-    \ {\n    \"originator system\": \"VocBench editor\",\n    \"originator timestamp\"\
-    : \"23748737643\"\n  }\n}\n"
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vx\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    \n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    timestamp\": \"2026-01-14T12:34:56Z\",\n  // As said, we need this internal ID\
+    \ and it can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
+    \n}\n"
   description: a regular request
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",            \n  \"entityMention\"\
-    : \n  { \n    \"type\": \"http://www.w3.org/ns/org#Organization\",\n    \"identifier\"\
-    : \"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa\",\n    \"payload\": \"epd:ent005\
-    \ a org:Organization; ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"\
-    dataFormat\": \"text/turtle\"\n  },\n  \"rejectedCanonicalIdentifiers\": [\n \
-    \   \"http://data.europa.eu/ers/id/324fs3r345vx-bb45we\",\n    \"http://data.europa.eu/ers/id/324fs3r345vx-cc67ui\"\
-    \n  ],\n  \"requestId\": \"324fs3r345vx01\",\n  \"originator\": \"TED SWS pipeline\"\
-    ,\n  \"creationTime\": \"2026-01-14T12:40:56Z\"\n}\n"
-  description: a refresh request (ie, carrying a rejection list)
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vxab\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    ,\n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
+    \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
+    \n}\n"
+  description: a re-rebuild request (ie, carrying a rejection list)
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
 attributes:
   entityMention:
     name: entityMention
-    description: 'The data about the entity to be resolved.
+    description: 'The data about the entity to be resolved. Note that, at least for
+      the moment, we don''t support
+
+      batch requests, so this property is single-valued.
 
       '
     from_schema: https://data.europa.eu/ers/schema
@@ -216,34 +193,19 @@ attributes:
     - EntityMentionResolutionRequest
     range: EntityMention
     required: true
-  draftCanonicalIdentifier:
-    name: draftCanonicalIdentifier
-    description: "An optional URI representing a draft canonical identifier for the\
-      \ entity mention\nin this request.\n\nThe ERS creates this when it still doesn't\
-      \ know anything about an entity resolution, for \nthe purpose of quickly replying\
-      \ something and postpone a final resolution to when the \nERE has it. The ERE\
-      \ must use this ID when it creates a new (typically singleton) cluster\nfor\
-      \ this entity mention, if it can't associate the entity to any cluster it already\
-      \ knows.\n"
+  excludedClusterIds:
+    name: excludedClusterIds
+    description: "When this is present, the resolution must not bin the entity mention\
+      \ into any of the\nlisted clusters. This can be used to reject a previous resolution\
+      \ proposed by the ERE.\n\nThe exact reaction to this is implementation dependent.\
+      \ In the simplest case, the ERE\nmight just create a singleton cluster with\
+      \ this entity as member. In a more advanced \ncase, it might recompute the similarity\
+      \ with more advanced algorithms or use updated\ndata.\n\nTODO: Can this be revised?\
+      \ What does it happen if an exclusion was made by mistake?\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
     domain_of:
     - EntityMentionResolutionRequest
-    range: uri
-  rejectedCanonicalIdentifiers:
-    name: rejectedCanonicalIdentifiers
-    description: "When this is present, the request is a refresh request: it is asking\
-      \ that the entity \nis resolved again and the clusters/canonical entities that\
-      \ were previously proposed \nas resolution are now ignored.\n\nThe exact reaction\
-      \ to this is implementation dependent. In the simplest case, the ERE\nmight\
-      \ just create a singleton cluster with this entity as member. In a more advanced\
-      \ \ncase, it might recompute the similarity with more advanced algorithms or\
-      \ use updated\ndata.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    domain_of:
-    - EntityMentionResolutionRequest
-    range: uri
     multivalued: true
 
 ```
@@ -259,36 +221,33 @@ description: 'An entity resolution request sent to the ERE, containing the entit
 
   '
 examples:
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",            \n  \"entityMention\"\
-    : \n  { \n    \"type\": \"http://www.w3.org/ns/org#Organization\",\n    // As\
-    \ said above, there is always a way to compute this\n    \"identifier\": \"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa\"\
-    ,\n    \"payload\": \"epd:ent005 a org:Organization; ...   cccev:telephone \\\"\
-    +44 1924306780\\\" .\",\n    \"dataFormat\": \"text/turtle\",\n    // As Said\
-    \ above, this is optional and JSON-LD is just an example of what it could rendered.\n\
-    \    \"jsonRepresentation\": {\n      \"@context\": {\n        \"org\": \"http://www.w3.org/ns/org#\"\
-    ,\n        \"cccev\": \"https://data.europa.eu/cc/cefact/code/\"\n      },\n \
-    \     \"@id\": \"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa\",\n      \"\
-    @type\": \"org:Organization\",\n      \"cccev:telephone\": \"+44 1924306780\"\n\
-    \    }\n  },\n  \"requestId\": \"324fs3r345vx\",\n  \"originator\": \"TED SWS\
-    \ pipeline\",\n  \"creationTime\": \"2026-01-14T12:34:56Z\",\n  \"metadata\":\
-    \ {\n    \"originator system\": \"VocBench editor\",\n    \"originator timestamp\"\
-    : \"23748737643\"\n  }\n}\n"
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vx\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    \n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    timestamp\": \"2026-01-14T12:34:56Z\",\n  // As said, we need this internal ID\
+    \ and it can be auto-generated (eg, with UUIDs)\n  \"ereRequestId\": \"324fs3r345vx:01\"\
+    \n}\n"
   description: a regular request
-- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",            \n  \"entityMention\"\
-    : \n  { \n    \"type\": \"http://www.w3.org/ns/org#Organization\",\n    \"identifier\"\
-    : \"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa\",\n    \"payload\": \"epd:ent005\
-    \ a org:Organization; ...   cccev:telephone \\\"+44 1924306780\\\" .\",\n    \"\
-    dataFormat\": \"text/turtle\"\n  },\n  \"rejectedCanonicalIdentifiers\": [\n \
-    \   \"http://data.europa.eu/ers/id/324fs3r345vx-bb45we\",\n    \"http://data.europa.eu/ers/id/324fs3r345vx-cc67ui\"\
-    \n  ],\n  \"requestId\": \"324fs3r345vx01\",\n  \"originator\": \"TED SWS pipeline\"\
-    ,\n  \"creationTime\": \"2026-01-14T12:40:56Z\"\n}\n"
-  description: a refresh request (ie, carrying a rejection list)
+- value: "{\n  \"type\": \"EntityMentionResolutionRequest\",\n  \"entityMention\"\
+    : { \n    \"identifier\": {\n      \"requestId\": \"324fs3r345vxab\",\n      \"\
+    sourceId\": \"TEDSWS\",\n      \"entityType\": \"http://www.w3.org/ns/org#Organization\"\
+    ,\n    },\n    \"content\": \"epd:ent005 a org:Organization; ...   cccev:telephone\
+    \ \\\"+44 1924306780\\\" .\",\n    \"contentType\": \"text/turtle\"\n  },\n  \"\
+    excludedClusterIds\": [\n    \"324fs3r345vx-bb45we\",\n    \"324fs3r345vx-cc67ui\"\
+    \n  ],\n  \"timestamp\": \"2026-01-14T12:40:56Z\",\n  \"ereRequestId\": \"324fs3r345vxab:01\"\
+    \n}\n"
+  description: a re-rebuild request (ie, carrying a rejection list)
 from_schema: https://data.europa.eu/ers/schema
 is_a: ERERequest
 attributes:
   entityMention:
     name: entityMention
-    description: 'The data about the entity to be resolved.
+    description: 'The data about the entity to be resolved. Note that, at least for
+      the moment, we don''t support
+
+      batch requests, so this property is single-valued.
 
       '
     from_schema: https://data.europa.eu/ers/schema
@@ -299,78 +258,23 @@ attributes:
     - EntityMentionResolutionRequest
     range: EntityMention
     required: true
-  draftCanonicalIdentifier:
-    name: draftCanonicalIdentifier
-    description: "An optional URI representing a draft canonical identifier for the\
-      \ entity mention\nin this request.\n\nThe ERS creates this when it still doesn't\
-      \ know anything about an entity resolution, for \nthe purpose of quickly replying\
-      \ something and postpone a final resolution to when the \nERE has it. The ERE\
-      \ must use this ID when it creates a new (typically singleton) cluster\nfor\
-      \ this entity mention, if it can't associate the entity to any cluster it already\
-      \ knows.\n"
+  excludedClusterIds:
+    name: excludedClusterIds
+    description: "When this is present, the resolution must not bin the entity mention\
+      \ into any of the\nlisted clusters. This can be used to reject a previous resolution\
+      \ proposed by the ERE.\n\nThe exact reaction to this is implementation dependent.\
+      \ In the simplest case, the ERE\nmight just create a singleton cluster with\
+      \ this entity as member. In a more advanced \ncase, it might recompute the similarity\
+      \ with more advanced algorithms or use updated\ndata.\n\nTODO: Can this be revised?\
+      \ What does it happen if an exclusion was made by mistake?\n"
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: draftCanonicalIdentifier
+    alias: excludedClusterIds
     owner: EntityMentionResolutionRequest
     domain_of:
     - EntityMentionResolutionRequest
-    range: uri
-  rejectedCanonicalIdentifiers:
-    name: rejectedCanonicalIdentifiers
-    description: "When this is present, the request is a refresh request: it is asking\
-      \ that the entity \nis resolved again and the clusters/canonical entities that\
-      \ were previously proposed \nas resolution are now ignored.\n\nThe exact reaction\
-      \ to this is implementation dependent. In the simplest case, the ERE\nmight\
-      \ just create a singleton cluster with this entity as member. In a more advanced\
-      \ \ncase, it might recompute the similarity with more advanced algorithms or\
-      \ use updated\ndata.\n"
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: rejectedCanonicalIdentifiers
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - EntityMentionResolutionRequest
-    range: uri
+    range: string
     multivalued: true
-  requestId:
-    name: requestId
-    description: 'A string representing the unique ID of this request.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: requestId
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - ERERequest
-    - EREResponse
-    range: string
-    required: true
-  originator:
-    name: originator
-    description: 'The ID or URI of the request originator.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: originator
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - ERERequest
-    range: string
-    required: true
-  creationTime:
-    name: creationTime
-    description: 'The timestamp when the request was created.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    rank: 1000
-    alias: creationTime
-    owner: EntityMentionResolutionRequest
-    domain_of:
-    - ERERequest
-    range: datetime
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\
@@ -384,21 +288,37 @@ attributes:
     alias: type
     owner: EntityMentionResolutionRequest
     domain_of:
-    - ERECommunicationArtefact
+    - EREMessage
     range: string
     required: true
-  metadata:
-    name: metadata
-    description: 'An optional arbitrary dictionary of further request metadata.
+  ereRequestId:
+    name: ereRequestId
+    description: 'A string representing the unique ID of an ERE request, or the ID
+      of the request a response is about.
+
+      This **is not** the same as `requestId` + `sourceId`.
 
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: metadata
+    alias: ereRequestId
     owner: EntityMentionResolutionRequest
     domain_of:
-    - ERECommunicationArtefact
+    - EREMessage
     range: string
+    required: true
+  timestamp:
+    name: timestamp
+    description: 'The time when the message was created. Should be in ISO-8601 format.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: timestamp
+    owner: EntityMentionResolutionRequest
+    domain_of:
+    - EREMessage
+    range: datetime
 
 ```
 </details>

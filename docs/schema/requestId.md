@@ -3,6 +3,21 @@
 # Slot: requestId 
 
 
+_A string representing the unique ID of the request made to the ERS system. In general, this is unique_
+
+_only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. _
+
+__
+
+_Moreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is _
+
+_used to match responses to requests._
+
+__
+
+
+
+
 
 URI: [ers:requestId](https://data.europa.eu/ers/schema/requestId)
 Alias: requestId
@@ -17,13 +32,7 @@ Alias: requestId
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
-| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
-| [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response sent by the ERE |  no  |
-| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |  no  |
-| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
-| [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
-| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |  no  |
 
 
 
@@ -34,6 +43,8 @@ Alias: requestId
 
 * Range: [String](String.md)
 
+* Required: True
+
 
 
 
@@ -41,6 +52,13 @@ Alias: requestId
 
 
 
+
+
+
+### Schema Source
+
+
+* from schema: https://data.europa.eu/ers/schema
 
 
 
@@ -60,11 +78,19 @@ Alias: requestId
 <details>
 ```yaml
 name: requestId
+description: "A string representing the unique ID of the request made to the ERS system.\
+  \ In general, this is unique\nonly within the scope of the source and the entity\
+  \ type, ie, within `sourceId` and `entityType`. \n\nMoreover, this is **not** the\
+  \ same as `ereRequestId`, which instead, is internal to the ERE and is \nused to\
+  \ match responses to requests.\n"
+from_schema: https://data.europa.eu/ers/schema
+rank: 1000
 alias: requestId
+owner: EntityMentionIdentifier
 domain_of:
-- ERERequest
-- EREResponse
+- EntityMentionIdentifier
 range: string
+required: true
 
 ```
 </details>

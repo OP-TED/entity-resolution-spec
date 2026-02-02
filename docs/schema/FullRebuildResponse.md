@@ -7,7 +7,9 @@ _A response to a `FullRebuildRequest`, confirming that the rebuild process has s
 
 __
 
-_This should carry the `requestId` attribute._
+_As for all the requests, this carries the `ereRequestId`, which matches the full rebuild _
+
+_request being acknowledged._
 
 __
 
@@ -28,9 +30,9 @@ URI: [ers:FullRebuildResponse](https://data.europa.eu/ers/schema/FullRebuildResp
       EREResponse <|-- FullRebuildResponse
         click EREResponse href "../EREResponse/"
       
-      FullRebuildResponse : metadata
+      FullRebuildResponse : ereRequestId
         
-      FullRebuildResponse : requestId
+      FullRebuildResponse : timestamp
         
       FullRebuildResponse : type
         
@@ -42,8 +44,9 @@ URI: [ers:FullRebuildResponse](https://data.europa.eu/ers/schema/FullRebuildResp
 
 
 ## Inheritance
-* [EREResponse](EREResponse.md) [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
-    * **FullRebuildResponse**
+* [EREMessage](EREMessage.md)
+    * [EREResponse](EREResponse.md)
+        * **FullRebuildResponse**
 
 
 
@@ -51,9 +54,9 @@ URI: [ers:FullRebuildResponse](https://data.europa.eu/ers/schema/FullRebuildResp
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request this response is about | [EREResponse](EREResponse.md) |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
+| [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
+| [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
 
 
 
@@ -100,13 +103,9 @@ URI: [ers:FullRebuildResponse](https://data.europa.eu/ers/schema/FullRebuildResp
 <details>
 ```yaml
 name: FullRebuildResponse
-description: 'A response to a `FullRebuildRequest`, confirming that the rebuild process
-  has started.
-
-
-  This should carry the `requestId` attribute.
-
-  '
+description: "A response to a `FullRebuildRequest`, confirming that the rebuild process\
+  \ has started.\n\nAs for all the requests, this carries the `ereRequestId`, which\
+  \ matches the full rebuild \nrequest being acknowledged.\n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: EREResponse
 
@@ -118,30 +117,12 @@ is_a: EREResponse
 <details>
 ```yaml
 name: FullRebuildResponse
-description: 'A response to a `FullRebuildRequest`, confirming that the rebuild process
-  has started.
-
-
-  This should carry the `requestId` attribute.
-
-  '
+description: "A response to a `FullRebuildRequest`, confirming that the rebuild process\
+  \ has started.\n\nAs for all the requests, this carries the `ereRequestId`, which\
+  \ matches the full rebuild \nrequest being acknowledged.\n"
 from_schema: https://data.europa.eu/ers/schema
 is_a: EREResponse
 attributes:
-  requestId:
-    name: requestId
-    description: 'A string representing the unique ID of the request this response
-      is about.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    alias: requestId
-    owner: FullRebuildResponse
-    domain_of:
-    - ERERequest
-    - EREResponse
-    range: string
-    required: true
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\
@@ -155,21 +136,37 @@ attributes:
     alias: type
     owner: FullRebuildResponse
     domain_of:
-    - ERECommunicationArtefact
+    - EREMessage
     range: string
     required: true
-  metadata:
-    name: metadata
-    description: 'An optional arbitrary dictionary of further request metadata.
+  ereRequestId:
+    name: ereRequestId
+    description: 'A string representing the unique ID of an ERE request, or the ID
+      of the request a response is about.
+
+      This **is not** the same as `requestId` + `sourceId`.
 
       '
     from_schema: https://data.europa.eu/ers/schema
     rank: 1000
-    alias: metadata
+    alias: ereRequestId
     owner: FullRebuildResponse
     domain_of:
-    - ERECommunicationArtefact
+    - EREMessage
     range: string
+    required: true
+  timestamp:
+    name: timestamp
+    description: 'The time when the message was created. Should be in ISO-8601 format.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: timestamp
+    owner: FullRebuildResponse
+    domain_of:
+    - EREMessage
+    range: datetime
 
 ```
 </details>
