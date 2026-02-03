@@ -23,7 +23,7 @@ __
 
 
 
-URI: [ers:EntityMentionIdentifier](https://data.europa.eu/ers/schema/EntityMentionIdentifier)
+URI: [ere:EntityMentionIdentifier](https://data.europa.eu/ers/schema/ere/EntityMentionIdentifier)
 
 
 
@@ -83,7 +83,7 @@ URI: [ers:EntityMentionIdentifier](https://data.europa.eu/ers/schema/EntityMenti
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -92,8 +92,8 @@ URI: [ers:EntityMentionIdentifier](https://data.europa.eu/ers/schema/EntityMenti
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EntityMentionIdentifier |
-| native | ers:EntityMentionIdentifier |
+| self | ere:EntityMentionIdentifier |
+| native | ere:EntityMentionIdentifier |
 
 
 
@@ -116,13 +116,13 @@ description: "A container that groups the attributes needed to identify an entit
   (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned\
   \ in various places in \nin this hereby ERE service schema) can be built from an\
   \ entity that is initially the only cluster member.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   sourceId:
     name: sourceId
     description: "The ID or URI of the ERS client that originated the request. This\
       \ identifies an application or a \nperson accessing the ERS system.\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionIdentifier
@@ -134,7 +134,7 @@ attributes:
       \ the entity type, ie, within `sourceId` and `entityType`. \n\nMoreover, this\
       \ is **not** the same as `ereRequestId`, which instead, is internal to the ERE\
       \ and is \nused to match responses to requests.\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionIdentifier
@@ -147,7 +147,7 @@ attributes:
       \ as said above, \nit's needed to identify the entity, even when its content\
       \ is not present. For the same\nreason, it's used both for `EREResolutionRequest`\
       \ and `EREResolutionResponse` messages., \n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EntityMentionIdentifier
@@ -168,13 +168,13 @@ description: "A container that groups the attributes needed to identify an entit
   (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned\
   \ in various places in \nin this hereby ERE service schema) can be built from an\
   \ entity that is initially the only cluster member.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   sourceId:
     name: sourceId
     description: "The ID or URI of the ERS client that originated the request. This\
       \ identifies an application or a \nperson accessing the ERS system.\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: sourceId
     owner: EntityMentionIdentifier
@@ -189,7 +189,7 @@ attributes:
       \ the entity type, ie, within `sourceId` and `entityType`. \n\nMoreover, this\
       \ is **not** the same as `ereRequestId`, which instead, is internal to the ERE\
       \ and is \nused to match responses to requests.\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: requestId
     owner: EntityMentionIdentifier
@@ -204,7 +204,7 @@ attributes:
       \ as said above, \nit's needed to identify the entity, even when its content\
       \ is not present. For the same\nreason, it's used both for `EREResolutionRequest`\
       \ and `EREResolutionResponse` messages., \n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: entityType
     owner: EntityMentionIdentifier

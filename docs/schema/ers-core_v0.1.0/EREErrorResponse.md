@@ -17,7 +17,7 @@ __
 
 
 
-URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
+URI: [ere:EREErrorResponse](https://data.europa.eu/ers/schema/ere/EREErrorResponse)
 
 
 
@@ -30,6 +30,8 @@ URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
       EREResponse <|-- EREErrorResponse
         click EREResponse href "../EREResponse/"
       
+      EREErrorResponse : ereRequestId
+        
       EREErrorResponse : errorDetail
         
       EREErrorResponse : errorTitle
@@ -38,9 +40,7 @@ URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
         
       EREErrorResponse : errorType
         
-      EREErrorResponse : metadata
-        
-      EREErrorResponse : requestId
+      EREErrorResponse : timestamp
         
       EREErrorResponse : type
         
@@ -52,8 +52,9 @@ URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
 
 
 ## Inheritance
-* [EREResponse](EREResponse.md) [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
-    * **EREErrorResponse**
+* [EREMessage](EREMessage.md)
+    * [EREResponse](EREResponse.md)
+        * **EREErrorResponse**
 
 
 
@@ -65,9 +66,9 @@ URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
 | [errorTitle](errorTitle.md) | 0..1 <br/> [String](String.md) | A human readable brief message about the error that occurred | direct |
 | [errorDetail](errorDetail.md) | 0..1 <br/> [String](String.md) | A human readable detailed message about the error that occurred | direct |
 | [errorTrace](errorTrace.md) | 0..1 <br/> [String](String.md) | A string representing a (stack) trace of the error that occurred | direct |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request this response is about | [EREResponse](EREResponse.md) |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
+| [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
+| [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
 
 
 
@@ -104,7 +105,7 @@ URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -113,8 +114,8 @@ URI: [ers:EREErrorResponse](https://data.europa.eu/ers/schema/EREErrorResponse)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EREErrorResponse |
-| native | ers:EREErrorResponse |
+| self | ere:EREErrorResponse |
+| native | ere:EREErrorResponse |
 
 
 
@@ -148,7 +149,7 @@ examples:
     \ and not recommended for production use\n  \"errorTrace\": \"Traceback (most\
     \ recent call last):\\n  File \\\"/app/ere/service.py\\\", line 45, in process_request\\\
     n...\"\n}\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREResponse
 attributes:
   errorType:
@@ -160,7 +161,7 @@ attributes:
       This corresponds to RFC-9457''s `type`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EREErrorResponse
@@ -173,7 +174,7 @@ attributes:
       This corresponds to RFC-9457''s `title`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EREErrorResponse
@@ -185,7 +186,7 @@ attributes:
       This corresponds to RFC-9457''s `detail`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EREErrorResponse
@@ -199,7 +200,7 @@ attributes:
       exposing this kind of server-side information is a security risk.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EREErrorResponse
@@ -230,7 +231,7 @@ examples:
     \ and not recommended for production use\n  \"errorTrace\": \"Traceback (most\
     \ recent call last):\\n  File \\\"/app/ere/service.py\\\", line 45, in process_request\\\
     n...\"\n}\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREResponse
 attributes:
   errorType:
@@ -242,7 +243,7 @@ attributes:
       This corresponds to RFC-9457''s `type`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: errorType
     owner: EREErrorResponse
@@ -258,7 +259,7 @@ attributes:
       This corresponds to RFC-9457''s `title`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: errorTitle
     owner: EREErrorResponse
@@ -273,7 +274,7 @@ attributes:
       This corresponds to RFC-9457''s `detail`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: errorDetail
     owner: EREErrorResponse
@@ -290,27 +291,13 @@ attributes:
       exposing this kind of server-side information is a security risk.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: errorTrace
     owner: EREErrorResponse
     domain_of:
     - EREErrorResponse
     range: string
-  requestId:
-    name: requestId
-    description: 'A string representing the unique ID of the request this response
-      is about.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    alias: requestId
-    owner: EREErrorResponse
-    domain_of:
-    - ERERequest
-    - EREResponse
-    range: string
-    required: true
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\
@@ -318,28 +305,43 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
     owner: EREErrorResponse
     domain_of:
-    - ERECommunicationArtefact
-    - EntityMention
+    - EREMessage
     range: string
     required: true
-  metadata:
-    name: metadata
-    description: 'An optional arbitrary dictionary of further request metadata.
+  ereRequestId:
+    name: ereRequestId
+    description: 'A string representing the unique ID of an ERE request, or the ID
+      of the request a response is about.
+
+      This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
-    alias: metadata
+    alias: ereRequestId
     owner: EREErrorResponse
     domain_of:
-    - ERECommunicationArtefact
+    - EREMessage
     range: string
+    required: true
+  timestamp:
+    name: timestamp
+    description: 'The time when the message was created. Should be in ISO-8601 format.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema/ere
+    rank: 1000
+    alias: timestamp
+    owner: EREErrorResponse
+    domain_of:
+    - EREMessage
+    range: datetime
 
 ```
 </details>

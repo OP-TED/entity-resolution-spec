@@ -11,7 +11,7 @@ __
 
 
 
-URI: [ers:entityMention](https://data.europa.eu/ers/schema/entityMention)
+URI: [ere:entityMention](https://data.europa.eu/ers/schema/ere/entityMention)
 Alias: entityMention
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: entityMention
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -59,8 +59,8 @@ Alias: entityMention
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:entityMention |
-| native | ers:entityMention |
+| self | ere:entityMention |
+| native | ere:entityMention |
 
 
 
@@ -73,7 +73,7 @@ name: entityMention
 description: 'The data about the entity to be resolved.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: entityMention
 owner: EntityMentionResolutionRequest

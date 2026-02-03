@@ -13,7 +13,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
+URI: [ere:EREResponse](https://data.europa.eu/ers/schema/ere/EREResponse)
 
 
 
@@ -23,8 +23,8 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
  classDiagram
     class EREResponse
     click EREResponse href "../EREResponse/"
-      ERECommunicationArtefact <|-- EREResponse
-        click ERECommunicationArtefact href "../ERECommunicationArtefact/"
+      EREMessage <|-- EREResponse
+        click EREMessage href "../EREMessage/"
       
 
       EREResponse <|-- EntityMentionResolutionResponse
@@ -35,9 +35,9 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
         click FullRebuildResponse href "../FullRebuildResponse/"
       
 
-      EREResponse : metadata
+      EREResponse : ereRequestId
         
-      EREResponse : requestId
+      EREResponse : timestamp
         
       EREResponse : type
         
@@ -49,10 +49,11 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 
 ## Inheritance
-* **EREResponse** [ [ERECommunicationArtefact](ERECommunicationArtefact.md)]
-    * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md)
-    * [EREErrorResponse](EREErrorResponse.md)
-    * [FullRebuildResponse](FullRebuildResponse.md)
+* [EREMessage](EREMessage.md)
+    * **EREResponse**
+        * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md)
+        * [EREErrorResponse](EREErrorResponse.md)
+        * [FullRebuildResponse](FullRebuildResponse.md)
 
 
 
@@ -60,9 +61,9 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [requestId](requestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of the request this response is about | direct |
-| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
-| [metadata](metadata.md) | 0..1 <br/> [String](String.md) | An optional arbitrary dictionary of further request metadata | [ERECommunicationArtefact](ERECommunicationArtefact.md) |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
+| [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
+| [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
 
 
 
@@ -83,7 +84,7 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -92,8 +93,8 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EREResponse |
-| native | ers:EREResponse |
+| self | ere:EREResponse |
+| native | ere:EREResponse |
 
 
 
@@ -112,22 +113,9 @@ name: EREResponse
 description: 'Root class to represent all the responses sent by the ERE.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
+is_a: EREMessage
 abstract: true
-mixins:
-- ERECommunicationArtefact
-attributes:
-  requestId:
-    name: requestId
-    description: 'A string representing the unique ID of the request this response
-      is about.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    domain_of:
-    - ERERequest
-    - EREResponse
-    required: true
 
 ```
 </details>
@@ -140,25 +128,10 @@ name: EREResponse
 description: 'Root class to represent all the responses sent by the ERE.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
+is_a: EREMessage
 abstract: true
-mixins:
-- ERECommunicationArtefact
 attributes:
-  requestId:
-    name: requestId
-    description: 'A string representing the unique ID of the request this response
-      is about.
-
-      '
-    from_schema: https://data.europa.eu/ers/schema
-    alias: requestId
-    owner: EREResponse
-    domain_of:
-    - ERERequest
-    - EREResponse
-    range: string
-    required: true
   type:
     name: type
     description: "The type of the request or result.\n\nAs per LinkML specification,\
@@ -166,28 +139,43 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
     owner: EREResponse
     domain_of:
-    - ERECommunicationArtefact
-    - EntityMention
+    - EREMessage
     range: string
     required: true
-  metadata:
-    name: metadata
-    description: 'An optional arbitrary dictionary of further request metadata.
+  ereRequestId:
+    name: ereRequestId
+    description: 'A string representing the unique ID of an ERE request, or the ID
+      of the request a response is about.
+
+      This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
-    alias: metadata
+    alias: ereRequestId
     owner: EREResponse
     domain_of:
-    - ERECommunicationArtefact
+    - EREMessage
     range: string
+    required: true
+  timestamp:
+    name: timestamp
+    description: 'The time when the message was created. Should be in ISO-8601 format.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema/ere
+    rank: 1000
+    alias: timestamp
+    owner: EREResponse
+    domain_of:
+    - EREMessage
+    range: datetime
 
 ```
 </details>

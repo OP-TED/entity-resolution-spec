@@ -211,6 +211,11 @@ __marimo__/
 
 # MacOS
 .DS_Store
-/resources/transformation/xmi_conceptual_model/UML_EA.DTD
 /.pycharm_plugin/
+/docs/architecture/
 .claude/
+.pycharm_plugin/
+.idea/
+.vscode/
+.mypy_cache/
+.pyre/

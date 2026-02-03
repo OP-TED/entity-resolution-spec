@@ -282,11 +282,11 @@
       "type": "object"
     }
   },
-  "$id": "https://data.europa.eu/ers/schema",
+  "$id": "https://data.europa.eu/ers/schema/ere",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "additionalProperties": true,
   "metamodel_version": "1.7.0",
-  "title": "ersServiceDataSchema",
+  "title": "ereServiceSchema",
   "type": "object",
   "version": "0.1.0"
 }

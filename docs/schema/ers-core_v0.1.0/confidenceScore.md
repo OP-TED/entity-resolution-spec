@@ -13,7 +13,7 @@ __
 
 
 
-URI: [ers:confidenceScore](https://data.europa.eu/ers/schema/confidenceScore)
+URI: [ere:confidenceScore](https://data.europa.eu/ers/schema/ere/confidenceScore)
 Alias: confidenceScore
 
 <!-- no inheritance hierarchy -->
@@ -52,7 +52,7 @@ Alias: confidenceScore
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -61,8 +61,8 @@ Alias: confidenceScore
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:confidenceScore |
-| native | ers:confidenceScore |
+| self | ere:confidenceScore |
+| native | ere:confidenceScore |
 
 
 
@@ -78,7 +78,7 @@ description: 'A 0-1 value of how confident the ERE is about the equivalence betw
   and the target canonical entity.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: confidenceScore
 owner: AlignmentLink

@@ -11,7 +11,7 @@ __
 
 
 
-URI: [ers:content](https://data.europa.eu/ers/schema/content)
+URI: [ere:content](https://data.europa.eu/ers/schema/ere/content)
 Alias: content
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: content
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -59,8 +59,8 @@ Alias: content
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:content |
-| native | ers:content |
+| self | ere:content |
+| native | ere:content |
 
 
 
@@ -74,7 +74,7 @@ description: 'A code string representing the entity mention details (eg, RDF or 
   description).
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: content
 owner: EntityMention

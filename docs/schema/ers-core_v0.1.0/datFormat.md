@@ -1,9 +1,9 @@
 
 
-# Slot: datFormat 
+# Slot: identifier 
 
 
-_A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)_
+_The identifier (with the ERS-derived components) of the entity mention._
 
 __
 
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:datFormat](https://data.europa.eu/ers/schema/datFormat)
-Alias: datFormat
+URI: [ere:identifier](https://data.europa.eu/ers/schema/ere/identifier)
+Alias: identifier
 
 <!-- no inheritance hierarchy -->
 
@@ -24,7 +24,7 @@ Alias: datFormat
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity in the ERS |  no  |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |  no  |
 
 
 
@@ -33,7 +33,9 @@ Alias: datFormat
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [EntityMentionIdentifier](EntityMentionIdentifier.md)
+
+* Required: True
 
 
 
@@ -48,7 +50,7 @@ Alias: datFormat
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -57,8 +59,8 @@ Alias: datFormat
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:datFormat |
-| native | ers:datFormat |
+| self | ere:identifier |
+| native | ere:identifier |
 
 
 
@@ -67,17 +69,18 @@ Alias: datFormat
 
 <details>
 ```yaml
-name: datFormat
-description: 'A string about the MIME format of `payload` (e.g. text/turtle, application/ld+json)
+name: identifier
+description: 'The identifier (with the ERS-derived components) of the entity mention.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
-alias: datFormat
+alias: identifier
 owner: EntityMention
 domain_of:
 - EntityMention
-range: string
+range: EntityMentionIdentifier
+required: true
 
 ```
 </details>

@@ -31,9 +31,9 @@ sequenceDiagram
     DB-->>ERE: Top candidates
 
     alt Best distance < threshold
-        ERE->>DB: Assign entity to best cluster
-        ERE->>DB: Update cluster centroid
-        Note over ERE: Entity joins existing cluster
+        ERE->>DB: Assign entity to best clusters
+        ERE->>DB: Update cluster centroids
+        Note over ERE: Entity joins existing clusters
     else Distance >= threshold
         ERE->>DB: Create new cluster
         ERE->>DB: Store entity in new cluster

@@ -13,7 +13,7 @@ __
 
 
 
-URI: [ers:clusterId](https://data.europa.eu/ers/schema/clusterId)
+URI: [ere:clusterId](https://data.europa.eu/ers/schema/ere/clusterId)
 Alias: clusterId
 
 <!-- no inheritance hierarchy -->
@@ -52,7 +52,7 @@ Alias: clusterId
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -61,8 +61,8 @@ Alias: clusterId
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:clusterId |
-| native | ers:clusterId |
+| self | ere:clusterId |
+| native | ere:clusterId |
 
 
 
@@ -78,7 +78,7 @@ description: 'The identifier of the cluster/canonical entity that is considered 
   subject entity mention that an `EntityMentionResolutionResponse` refers to.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: clusterId
 owner: ClusterReference

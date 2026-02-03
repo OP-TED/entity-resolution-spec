@@ -1,13 +1,13 @@
-id: https://data.europa.eu/ers/schema
-name: ersServiceDataSchema
-description: A LinkML schema for the ERS Services.
+id: https://data.europa.eu/ers/schema/ere
+name: ereServiceSchema
+description: A LinkML schema for the ERS/ERE Service
 version: 0.1.0
 imports:
   - linkml:types
 prefixes:
   linkml: https://w3id.org/linkml/
-  ers: https://data.europa.eu/ers/schema/
-default_prefix: ers
+  ere: https://data.europa.eu/ers/schema/ere/
+default_prefix: ere
 default_range: string
 
 classes:

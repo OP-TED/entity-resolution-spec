@@ -1,23 +1,19 @@
 
 
-# Class: FullRebuildResponse 
+# Class: ERERequest 
 
 
-_A response to a `FullRebuildRequest`, confirming that the rebuild process has started._
-
-__
-
-_As for all the requests, this carries the `ereRequestId`, which matches the full rebuild _
-
-_request being acknowledged._
+_Root class to represent all the requests sent to the ERE._
 
 __
 
 
 
 
+* __NOTE__: this is an abstract class and should not be instantiated directly
 
-URI: [ere:FullRebuildResponse](https://data.europa.eu/ers/schema/ere/FullRebuildResponse)
+
+URI: [ere:ERERequest](https://data.europa.eu/ers/schema/ere/ERERequest)
 
 
 
@@ -25,16 +21,23 @@ URI: [ere:FullRebuildResponse](https://data.europa.eu/ers/schema/ere/FullRebuild
 
 ```mermaid
  classDiagram
-    class FullRebuildResponse
-    click FullRebuildResponse href "../FullRebuildResponse/"
-      EREResponse <|-- FullRebuildResponse
-        click EREResponse href "../EREResponse/"
+    class ERERequest
+    click ERERequest href "../ERERequest/"
+      EREMessage <|-- ERERequest
+        click EREMessage href "../EREMessage/"
       
-      FullRebuildResponse : ereRequestId
+
+      ERERequest <|-- EntityMentionResolutionRequest
+        click EntityMentionResolutionRequest href "../EntityMentionResolutionRequest/"
+      ERERequest <|-- FullRebuildRequest
+        click FullRebuildRequest href "../FullRebuildRequest/"
+      
+
+      ERERequest : ereRequestId
         
-      FullRebuildResponse : timestamp
+      ERERequest : timestamp
         
-      FullRebuildResponse : type
+      ERERequest : type
         
       
 ```
@@ -45,8 +48,9 @@ URI: [ere:FullRebuildResponse](https://data.europa.eu/ers/schema/ere/FullRebuild
 
 ## Inheritance
 * [EREMessage](EREMessage.md)
-    * [EREResponse](EREResponse.md)
-        * **FullRebuildResponse**
+    * **ERERequest**
+        * [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md)
+        * [FullRebuildRequest](FullRebuildRequest.md)
 
 
 
@@ -86,8 +90,8 @@ URI: [ere:FullRebuildResponse](https://data.europa.eu/ers/schema/ere/FullRebuild
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ere:FullRebuildResponse |
-| native | ere:FullRebuildResponse |
+| self | ere:ERERequest |
+| native | ere:ERERequest |
 
 
 
@@ -102,12 +106,13 @@ URI: [ere:FullRebuildResponse](https://data.europa.eu/ers/schema/ere/FullRebuild
 
 <details>
 ```yaml
-name: FullRebuildResponse
-description: "A response to a `FullRebuildRequest`, confirming that the rebuild process\
-  \ has started.\n\nAs for all the requests, this carries the `ereRequestId`, which\
-  \ matches the full rebuild \nrequest being acknowledged.\n"
+name: ERERequest
+description: 'Root class to represent all the requests sent to the ERE.
+
+  '
 from_schema: https://data.europa.eu/ers/schema/ere
-is_a: EREResponse
+is_a: EREMessage
+abstract: true
 
 ```
 </details>
@@ -116,12 +121,13 @@ is_a: EREResponse
 
 <details>
 ```yaml
-name: FullRebuildResponse
-description: "A response to a `FullRebuildRequest`, confirming that the rebuild process\
-  \ has started.\n\nAs for all the requests, this carries the `ereRequestId`, which\
-  \ matches the full rebuild \nrequest being acknowledged.\n"
+name: ERERequest
+description: 'Root class to represent all the requests sent to the ERE.
+
+  '
 from_schema: https://data.europa.eu/ers/schema/ere
-is_a: EREResponse
+is_a: EREMessage
+abstract: true
 attributes:
   type:
     name: type
@@ -134,7 +140,7 @@ attributes:
     rank: 1000
     designates_type: true
     alias: type
-    owner: FullRebuildResponse
+    owner: ERERequest
     domain_of:
     - EREMessage
     range: string
@@ -150,7 +156,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
-    owner: FullRebuildResponse
+    owner: ERERequest
     domain_of:
     - EREMessage
     range: string
@@ -163,7 +169,7 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
-    owner: FullRebuildResponse
+    owner: ERERequest
     domain_of:
     - EREMessage
     range: datetime

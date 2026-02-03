@@ -15,7 +15,7 @@ __
 
 
 
-URI: [ers:errorTitle](https://data.europa.eu/ers/schema/errorTitle)
+URI: [ere:errorTitle](https://data.europa.eu/ers/schema/ere/errorTitle)
 Alias: errorTitle
 
 <!-- no inheritance hierarchy -->
@@ -52,7 +52,7 @@ Alias: errorTitle
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -61,8 +61,8 @@ Alias: errorTitle
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:errorTitle |
-| native | ers:errorTitle |
+| self | ere:errorTitle |
+| native | ere:errorTitle |
 
 
 
@@ -78,7 +78,7 @@ description: 'A human readable brief message about the error that occurred.
   This corresponds to RFC-9457''s `title`.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: errorTitle
 owner: EREErrorResponse
