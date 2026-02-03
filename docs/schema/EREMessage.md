@@ -1,0 +1,215 @@
+
+
+# Class: EREMessage 
+
+
+_Root abstraction to represent attributes common to both requests and results._
+
+_This is modelled as a mixin in LinkML (so that it can't be instantiated directly)._
+
+__
+
+
+
+
+* __NOTE__: this is an abstract class and should not be instantiated directly
+
+
+URI: [ers:EREMessage](https://data.europa.eu/ers/schema/EREMessage)
+
+
+
+
+
+```mermaid
+ classDiagram
+    class EREMessage
+    click EREMessage href "../EREMessage/"
+      EREMessage <|-- ERERequest
+        click ERERequest href "../ERERequest/"
+      EREMessage <|-- EREResponse
+        click EREResponse href "../EREResponse/"
+      
+      EREMessage : ereRequestId
+        
+      EREMessage : timestamp
+        
+      EREMessage : type
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* **EREMessage**
+    * [ERERequest](ERERequest.md)
+    * [EREResponse](EREResponse.md)
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | direct |
+| [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | direct |
+| [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | direct |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://data.europa.eu/ers/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ers:EREMessage |
+| native | ers:EREMessage |
+
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: EREMessage
+description: 'Root abstraction to represent attributes common to both requests and
+  results.
+
+  This is modelled as a mixin in LinkML (so that it can''t be instantiated directly).
+
+  '
+from_schema: https://data.europa.eu/ers/schema
+abstract: true
+attributes:
+  type:
+    name: type
+    description: "The type of the request or result.\n\nAs per LinkML specification,\
+      \ `designates_type` is used here in order to allow for this\nslot to tell the\
+      \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
+      In other words, a particular request will have `type` set with values like \n\
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    designates_type: true
+    domain_of:
+    - EREMessage
+    required: true
+  ereRequestId:
+    name: ereRequestId
+    description: 'A string representing the unique ID of an ERE request, or the ID
+      of the request a response is about.
+
+      This **is not** the same as `requestId` + `sourceId`.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    domain_of:
+    - EREMessage
+    required: true
+  timestamp:
+    name: timestamp
+    description: 'The time when the message was created. Should be in ISO-8601 format.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    domain_of:
+    - EREMessage
+    range: datetime
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: EREMessage
+description: 'Root abstraction to represent attributes common to both requests and
+  results.
+
+  This is modelled as a mixin in LinkML (so that it can''t be instantiated directly).
+
+  '
+from_schema: https://data.europa.eu/ers/schema
+abstract: true
+attributes:
+  type:
+    name: type
+    description: "The type of the request or result.\n\nAs per LinkML specification,\
+      \ `designates_type` is used here in order to allow for this\nslot to tell the\
+      \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
+      In other words, a particular request will have `type` set with values like \n\
+      `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    designates_type: true
+    alias: type
+    owner: EREMessage
+    domain_of:
+    - EREMessage
+    range: string
+    required: true
+  ereRequestId:
+    name: ereRequestId
+    description: 'A string representing the unique ID of an ERE request, or the ID
+      of the request a response is about.
+
+      This **is not** the same as `requestId` + `sourceId`.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: ereRequestId
+    owner: EREMessage
+    domain_of:
+    - EREMessage
+    range: string
+    required: true
+  timestamp:
+    name: timestamp
+    description: 'The time when the message was created. Should be in ISO-8601 format.
+
+      '
+    from_schema: https://data.europa.eu/ers/schema
+    rank: 1000
+    alias: timestamp
+    owner: EREMessage
+    domain_of:
+    - EREMessage
+    range: datetime
+
+```
+</details>

@@ -91,167 +91,209 @@ linkml_meta = LinkMLMeta({'default_prefix': 'ers',
      'source_file': 'resources/schema/ers-core_v0.1.0.yaml'} )
 
 
-class RequestOrResponseMixin(ConfiguredBaseModel):
+class EREMessage(ConfiguredBaseModel):
     """
-    Root mixin to represent attributes common to both requests and results.
+    Root abstraction to represent attributes common to both requests and results.
+    This is modelled as a mixin in LinkML (so that it can't be instantiated directly).
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://data.europa.eu/ers/schema',
-         'mixin': True})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    type: Literal["RequestOrResponseMixin"] = Field(default="RequestOrResponseMixin", description="""The type of the request or result.
+    type: Literal["EREMessage"] = Field(default="EREMessage", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class Request(RequestOrResponseMixin):
+class ERERequest(EREMessage):
     """
     Root class to represent all the requests sent to the ERE.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://data.europa.eu/ers/schema',
-         'mixins': ['RequestOrResponseMixin']})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    requestId: str = Field(default=..., description="""A string representing the unique ID of this request.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    originator: str = Field(default=..., description="""The ID or URI of the request originator.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request']} })
-    type: Literal["Request"] = Field(default="Request", description="""The type of the request or result.
+    type: Literal["ERERequest"] = Field(default="ERERequest", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class Response(RequestOrResponseMixin):
+class EREResponse(EREMessage):
     """
     Root class to represent all the responses sent by the ERE.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://data.europa.eu/ers/schema',
-         'mixins': ['RequestOrResponseMixin']})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request this response is about.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    type: Literal["Response"] = Field(default="Response", description="""The type of the request or result.
+    type: Literal["EREResponse"] = Field(default="EREResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class EntityResolutionRequest(Request):
+class EntityMentionResolutionRequest(ERERequest):
     """
     An entity resolution request sent to the ERE, containing the entity to be resolved.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'examples': [{'value': '{\n'
-                                '  "type": "EntityResolutionRequest",            \n'
-                                '  "entity": \n'
-                                '  { \n'
-                                '    "type": "http://www.w3.org/ns/org#Organization",\n'
-                                '    "id": '
-                                '"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",\n'
-                                '    "entityData": "epd:ent005 a org:Organization; '
-                                '...   cccev:telephone \\"+44 1924306780\\" .",\n'
-                                '    "entityDataFormat": "text/turtle"\n'
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'examples': [{'description': 'a regular request',
+                       'value': '{\n'
+                                '  "type": "EntityMentionResolutionRequest",\n'
+                                '  "entityMention": { \n'
+                                '    "identifier": {\n'
+                                '      "requestId": "324fs3r345vx",\n'
+                                '      "sourceId": "TEDSWS",\n'
+                                '      "entityType": '
+                                '"http://www.w3.org/ns/org#Organization"\n'
+                                '    },\n'
+                                '    "content": "epd:ent005 a org:Organization; ...   '
+                                'cccev:telephone \\"+44 1924306780\\" .",\n'
+                                '    "contentType": "text/turtle"\n'
                                 '  },\n'
-                                '  "requestId": "324fs3r345vx",\n'
-                                '  "originator": "TED SWS pipeline",\n'
-                                '  "metadata": {\n'
-                                '    "originator system": "VocBench editor",\n'
-                                '    "originator timestamp": "23748737643"\n'
-                                '  }\n'
+                                '  "timestamp": "2026-01-14T12:34:56Z",\n'
+                                '  // As said, we need this internal ID and it can be '
+                                'auto-generated (eg, with UUIDs)\n'
+                                '  "ereRequestId": "324fs3r345vx:01"\n'
+                                '}\n'},
+                      {'description': 'a re-rebuild request (ie, carrying a rejection '
+                                      'list)',
+                       'value': '{\n'
+                                '  "type": "EntityMentionResolutionRequest",\n'
+                                '  "entityMention": { \n'
+                                '    "identifier": {\n'
+                                '      "requestId": "324fs3r345vxab",\n'
+                                '      "sourceId": "TEDSWS",\n'
+                                '      "entityType": '
+                                '"http://www.w3.org/ns/org#Organization",\n'
+                                '    },\n'
+                                '    "content": "epd:ent005 a org:Organization; ...   '
+                                'cccev:telephone \\"+44 1924306780\\" .",\n'
+                                '    "contentType": "text/turtle"\n'
+                                '  },\n'
+                                '  "excludedClusterIds": [\n'
+                                '    "324fs3r345vx-bb45we",\n'
+                                '    "324fs3r345vx-cc67ui"\n'
+                                '  ],\n'
+                                '  "timestamp": "2026-01-14T12:40:56Z",\n'
+                                '  "ereRequestId": "324fs3r345vxab:01"\n'
                                 '}\n'}],
          'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    entity: Entity = Field(default=..., description="""The data about the entity to be resolved.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityResolutionRequest']} })
-    requestId: str = Field(default=..., description="""A string representing the unique ID of this request.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    originator: str = Field(default=..., description="""The ID or URI of the request originator.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request']} })
-    type: Literal["EntityResolutionRequest"] = Field(default="EntityResolutionRequest", description="""The type of the request or result.
+    entityMention: EntityMention = Field(default=..., description="""The data about the entity to be resolved. Note that, at least for the moment, we don't support
+batch requests, so this property is single-valued.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
+    excludedClusterIds: Optional[list[str]] = Field(default=[], description="""When this is present, the resolution must not bin the entity mention into any of the
+listed clusters. This can be used to reject a previous resolution proposed by the ERE.
+
+The exact reaction to this is implementation dependent. In the simplest case, the ERE
+might just create a singleton cluster with this entity as member. In a more advanced 
+case, it might recompute the similarity with more advanced algorithms or use updated
+data.
+
+TODO: Can this be revised? What does it happen if an exclusion was made by mistake?
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
+    type: Literal["EntityMentionResolutionRequest"] = Field(default="EntityMentionResolutionRequest", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class EntityResolutionResponse(Response):
+class EntityMentionResolutionResponse(EREResponse):
     """
-    An entity resolution response sent by the ERE.
+    An entity resolution response returned by the ERE.
 
-    This contains a reference to the canonical entity that the ERE has associated to the original 
-    entity in the request. It also reports a confidence score for the established association.
+    This is basically a list of candidate clusters to which the entity is deemed to be equivalent.
+
+    Note that, for the moment, we don't support batch requests. In future, we might support requests
+    with multiple subjects in the `EntityMention` content (eg, RDF with multiple subjects), in which case 
+    we might need to return multiple `EntityMentionResolutionResponse` messages, each with additional 
+    properties such as `entityIndex` and `totalEntities`.
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'examples': [{'value': '{\n'
-                                '  "type": "EntityResolutionResponse",\n'
-                                '  "sourceEntityId": '
-                                '"http://data.europa.eu/ers/id/324fs3r345vx-q11rea",\n'
-                                '  "confidenceLevel": 0.91,\n'
-                                '  "requestId": "324fs3r345vx"\n'
-                                '  "canonicalEntity": \n'
-                                '  { \n'
-                                '    "type": "http://www.w3.org/ns/org#Organization",\n'
-                                '    "id": '
-                                '"http://data.europa.eu/ers/id/324fs3r345vx-aa32wa",\n'
-                                '    "entityData": "epd:ent001 a org:Organization; '
-                                '...   cccev:telephone \\"+441924306780\\" .",\n'
-                                '    "entityDataFormat": "text/turtle"\n'
-                                '  }\n'
-                                '}\n'}],
+                                '  "type": "EntityMentionResolutionResponse",\n'
+                                '  "entityMentionId": {\n'
+                                '    "requestId": "324fs3r345vx",\n'
+                                '    "sourceId": "TEDSWS",\n'
+                                '    "entityType": '
+                                '"http://www.w3.org/ns/org#Organization"\n'
+                                '  },\n'
+                                '  "candidates": [\n'
+                                '    { \n'
+                                '      "clusterId": "324fs3r345vx-aa32wa",\n'
+                                '      "confidenceScore": 0.91\n'
+                                '    },\n'
+                                '    { \n'
+                                '      "clusterId": "324fs3r345vx-bb45we",\n'
+                                '      "confidenceScore": 0.65\n'
+                                '    }\n'
+                                '  ],\n'
+                                '  "timestamp": "2026-01-14T12:34:59Z",\n'
+                                '  "ereRequestId": "324fs3r345vx:01"\n'
+                                '}\n'
+                                '    \n'}],
          'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    canonicalEntity: CanonicalEntity = Field(default=..., description="""The canonical entity that the ERE has associated to the original entity.
-This includes the canonical entity URI and its type.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityResolutionResponse']} })
-    sourceEntityId: str = Field(default=..., description="""The ID or URI of the original entity that has been resolved.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityResolutionResponse']} })
-    confidenceLevel: Optional[float] = Field(default=None, description="""A 0-1 value of how confident the ERE is about associating the original entity
-with the canonical entity's cluster.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityResolutionResponse']} })
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request this response is about.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    type: Literal["EntityResolutionResponse"] = Field(default="EntityResolutionResponse", description="""The type of the request or result.
+    entityMentionId: EntityMentionIdentifier = Field(default=..., description="""The identifier of the entity mention that has been resolved.
+
+This isn't strictly needed, since the `ereRequestId` already links the response to 
+the request's entity mention. Yet, it's reported for convenience.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
+    candidates: list[ClusterReference] = Field(default=..., description="""The set of cluster reference/score pairs representing the candidate clusters
+that the entity mention in the original request could align to (be equivalent to).
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
+    type: Literal["EntityMentionResolutionResponse"] = Field(default="EntityMentionResolutionResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class ErrorResponse(Response):
+class EREErrorResponse(EREResponse):
     """
     Response sent by the ERE when some error/exception occurs while processing a request.
     For instance, this may happen if the request is malformed or some internal error happens.
@@ -260,14 +302,14 @@ class ErrorResponse(Response):
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'examples': [{'value': '{\n'
-                                '  "type": "ErrorResponse",\n'
+                                '  "type": "EREErrorResponse",\n'
                                 '  "requestId": "324fs3r345vx",\n'
                                 '  "errorType": '
                                 '"ere.exceptions.MalformedRequestError",\n'
                                 '  "errorTitle": "The entity data is missing in the '
                                 'request",\n'
                                 '  "errorDetail": "The \'entity\' attribute is '
-                                'required in EntityResolutionRequest message",\n'
+                                'required in EntityMentionResolutionRequest message",\n'
                                 '  // Optional and not recommended for production use\n'
                                 '  "errorTrace": "Traceback (most recent call '
                                 'last):\\n  File \\"/app/ere/service.py\\", line 45, '
@@ -278,145 +320,171 @@ class ErrorResponse(Response):
     errorType: str = Field(default=..., description="""A string representing the error type, eg, the FQN of the raised exception.
 
 This corresponds to RFC-9457's `type`.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['ErrorResponse']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREErrorResponse']} })
     errorTitle: Optional[str] = Field(default=None, description="""A human readable brief message about the error that occurred.
 
 This corresponds to RFC-9457's `title`.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['ErrorResponse']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREErrorResponse']} })
     errorDetail: Optional[str] = Field(default=None, description="""A human readable detailed message about the error that occurred.
 
 This corresponds to RFC-9457's `detail`.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['ErrorResponse']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREErrorResponse']} })
     errorTrace: Optional[str] = Field(default=None, description="""A string representing a (stack) trace of the error that occurred.
 
 This is optional and typically used for debugging purposes only, since
 exposing this kind of server-side information is a security risk.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['ErrorResponse']} })
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request this response is about.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    type: Literal["ErrorResponse"] = Field(default="ErrorResponse", description="""The type of the request or result.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREErrorResponse']} })
+    type: Literal["EREErrorResponse"] = Field(default="EREErrorResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class Entity(ConfiguredBaseModel):
+class EntityMention(ConfiguredBaseModel):
     """
-    An entity is a representation of a real-world entity, as provided by the ERS.
-    It contains the entity data (e.g. RDF description) along with metadata about
-    the entity, such as its type and the data format used to represent it.
-
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
-
-    id: Optional[str] = Field(default=None, description="""A string containing the entity ID or URI (set by the ERS or, for canonical entities, by the ERE).
-
-Note that the ID isn't mandatory when an entity is submitted for resolution, since the initial input
-might be something like unstructured text, where the entity and its ID is to be recognised.        
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'CanonicalEntity']} })
-    type: str = Field(default=..., description="""A string representing the entity type URI (based on CET).
-
-Note that we don't use the `designates_type` thing here, since entities or canonical entities 
-are always used in clearly distinct contexts.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    entityDataFormat: Optional[str] = Field(default=None, description="""A string about the MIME format of `entityData` (e.g. text/turtle, application/ld+json)
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity']} })
-    entityData: Optional[str] = Field(default=None, description="""A code string representing the entity details (eg, RDF description).
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity']} })
-
-
-class CanonicalEntity(Entity):
-    """
-    A canonical entity is an entity that the ERE has created during the resolution process
-    of ERS entities.
-
-    TODO: we don't support lineage for the moment, see the ERE contract document.
+    An entity mention is a representation of a real-world entity, as provided by the ERS.
+    It contains the entity data, along with metadata like type and format.      
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    id: str = Field(default=..., description="""The (canonical) URI of the canonical entity. This restricts the parent range to URIs only.
-
-Contrary to `Entity.id`, this is always known/required for canonical entities.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity', 'CanonicalEntity']} })
-    type: str = Field(default=..., description="""A string representing the entity type URI (based on CET).
-
-Note that we don't use the `designates_type` thing here, since entities or canonical entities 
-are always used in clearly distinct contexts.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    entityDataFormat: Optional[str] = Field(default=None, description="""A string about the MIME format of `entityData` (e.g. text/turtle, application/ld+json)
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity']} })
-    entityData: Optional[str] = Field(default=None, description="""A code string representing the entity details (eg, RDF description).
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity']} })
+    identifier: EntityMentionIdentifier = Field(default=..., description="""The identifier (with the ERS-derived components) of the entity mention.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
+    contentType: str = Field(default=..., description="""A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
+    content: str = Field(default=..., description="""A code string representing the entity mention details (eg, RDF or XML description).
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
 
 
-class RebuildRequest(Request):
+class EntityMentionIdentifier(ConfiguredBaseModel):
     """
-    A request to reset all the resolutions computed so far and rebuild them as 
-    requests about old entities arrive again (and build new entities from scratch).
+    A container that groups the attributes needed to identify an entity mention in a resolution request
+    or response.
+
+    As per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic
+    method to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`
+    (eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in 
+    in this hereby ERE service schema) can be built from an entity that is initially the only cluster member.
+
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+
+    sourceId: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
+person accessing the ERS system.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+    requestId: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
+only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
+
+Moreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is 
+used to match responses to requests.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+    entityType: str = Field(default=..., description="""A string representing the entity type (based on CET). This is typically a URI.
+
+Note that this is at this level, and not at `EntityMention`, since, as said above, 
+it's needed to identify the entity, even when its content is not present. For the same
+reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages., 
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+
+
+class ClusterReference(ConfiguredBaseModel):
+    """
+    A reference to a cluster to which an entity is deemed to belong, with an associated confidence score.
+
+    A cluster is a set of entity mentions that have been determined to refer to the same real-world entity.
+    Each cluster has a unique clusterId.
+
+    A cluster reference is used to report the association between an entity mention and a cluster 
+    of equivalence.
+
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+
+    clusterId: str = Field(default=..., description="""The identifier of the cluster/canonical entity that is considered equivalent to the
+subject entity mention that an `EntityMentionResolutionResponse` refers to.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
+    confidenceScore: float = Field(default=..., description="""A 0-1 value of how confident the ERE is about the equivalence between the subject entity mention
+and the target canonical entity.
+""", ge=0.0, le=1.0, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
+
+
+class FullRebuildRequest(ERERequest):
+    """
+    A request to reset all the resolutions computed so far and possibly rebuild them as 
+    requests about old entities arrive again (and build new entities from scratch as usually).
 
     It is expected that the ERE client re-sends all the entities to be resolved again,
-    using `EntityResolutionRequest` messages exactly as the first time the resolutions 
+    using `EntityMentionResolutionRequest` messages exactly as the first time the resolutions 
     were built. This implies the a client like the ERS logs/persists the entities it receives
     to resolve and also saves manual overriding of ERE results.
 
+    Moreover:
+    * The ERE must keep track of past `EntityMention` marked as canonical.
+    * The ERE must retain requests with `excludedClusterIds` and apply them again when the 
+      same entity mention is re-sent after the full rebuild. TODO: see notes about these properties,
+      on the possible need of withdrawing exclusions.
+
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    requestId: str = Field(default=..., description="""A string representing the unique ID of this request.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    originator: str = Field(default=..., description="""The ID or URI of the request originator.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request']} })
-    type: Literal["RebuildRequest"] = Field(default="RebuildRequest", description="""The type of the request or result.
+    type: Literal["FullRebuildRequest"] = Field(default="FullRebuildRequest", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
-class RebuildResponse(Response):
+class FullRebuildResponse(EREResponse):
     """
-    A response to a `RebuildRequest`, confirming that the rebuild process has started.
+    A response to a `FullRebuildRequest`, confirming that the rebuild process has started.
 
-    This should carry the `requestId` attribute.
+    As for all the requests, this carries the `ereRequestId`, which matches the full rebuild 
+    request being acknowledged.
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
 
-    requestId: str = Field(default=..., description="""A string representing the unique ID of the request this response is about.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Request', 'Response']} })
-    type: Literal["RebuildResponse"] = Field(default="RebuildResponse", description="""The type of the request or result.
+    type: Literal["FullRebuildResponse"] = Field(default="FullRebuildResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this
 slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
 
 In other words, a particular request will have `type` set with values like 
-`EntityResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['RequestOrResponseMixin', 'Entity']} })
-    metadata: Optional[str] = Field(default=None, description="""An optional arbitrary dictionary of further request metadata.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['RequestOrResponseMixin']} })
+`EntityMentionResolutionRequest` or `EntityResolutionResult`
+""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
+    ereRequestId: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+This **is not** the same as `requestId` + `sourceId`.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
+    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
-RequestOrResponseMixin.model_rebuild()
-Request.model_rebuild()
-Response.model_rebuild()
-EntityResolutionRequest.model_rebuild()
-EntityResolutionResponse.model_rebuild()
-ErrorResponse.model_rebuild()
-Entity.model_rebuild()
-CanonicalEntity.model_rebuild()
-RebuildRequest.model_rebuild()
-RebuildResponse.model_rebuild()
+EREMessage.model_rebuild()
+ERERequest.model_rebuild()
+EREResponse.model_rebuild()
+EntityMentionResolutionRequest.model_rebuild()
+EntityMentionResolutionResponse.model_rebuild()
+EREErrorResponse.model_rebuild()
+EntityMention.model_rebuild()
+EntityMentionIdentifier.model_rebuild()
+ClusterReference.model_rebuild()
+FullRebuildRequest.model_rebuild()
+FullRebuildResponse.model_rebuild()

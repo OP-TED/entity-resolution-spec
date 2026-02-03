@@ -12,16 +12,17 @@ Name: ersServiceDataSchema
 
 | Class | Description |
 | --- | --- |
-| [Entity](Entity.md) | An entity is a representation of a real-world entity, as provided by the ERS |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CanonicalEntity](CanonicalEntity.md) | A canonical entity is an entity that the ERE has created during the resolutio... |
-| [Request](Request.md) | Root class to represent all the requests sent to the ERE |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityResolutionRequest](EntityResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RebuildRequest](RebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |
-| [RequestOrResponseMixin](RequestOrResponseMixin.md) | Root mixin to represent attributes common to both requests and results |
-| [Response](Response.md) | Root class to represent all the responses sent by the ERE |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityResolutionResponse](EntityResolutionResponse.md) | An entity resolution response sent by the ERE |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ErrorResponse](ErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[RebuildResponse](RebuildResponse.md) | A response to a `RebuildRequest`, confirming that the rebuild process has sta... |
+| [ClusterReference](ClusterReference.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |
+| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |
 
 
 
@@ -29,20 +30,24 @@ Name: ersServiceDataSchema
 
 | Slot | Description |
 | --- | --- |
-| [canonicalEntity](canonicalEntity.md) | The canonical entity that the ERE has associated to the original entity |
-| [confidenceLevel](confidenceLevel.md) | A 0-1 value of how confident the ERE is about associating the original entity |
-| [entity](entity.md) | The data about the entity to be resolved |
-| [entityData](entityData.md) | A code string representing the entity details (eg, RDF description) |
-| [entityDataFormat](entityDataFormat.md) | A string about the MIME format of `entityData` (e |
+| [candidates](candidates.md) | The set of cluster reference/score pairs representing the candidate clusters |
+| [clusterId](clusterId.md) | The identifier of the cluster/canonical entity that is considered equivalent ... |
+| [confidenceScore](confidenceScore.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... |
+| [content](content.md) | A code string representing the entity mention details (eg, RDF or XML descrip... |
+| [contentType](contentType.md) | A string about the MIME format of `content` (e |
+| [entityMention](entityMention.md) | The data about the entity to be resolved |
+| [entityMentionId](entityMentionId.md) | The identifier of the entity mention that has been resolved |
+| [entityType](entityType.md) | A string representing the entity type (based on CET) |
+| [ereRequestId](ereRequestId.md) | A string representing the unique ID of an ERE request, or the ID of the reque... |
 | [errorDetail](errorDetail.md) | A human readable detailed message about the error that occurred |
 | [errorTitle](errorTitle.md) | A human readable brief message about the error that occurred |
 | [errorTrace](errorTrace.md) | A string representing a (stack) trace of the error that occurred |
 | [errorType](errorType.md) | A string representing the error type, eg, the FQN of the raised exception |
-| [id](id.md) | A string containing the entity ID or URI (set by the ERS or, for canonical en... |
-| [metadata](metadata.md) | An optional arbitrary dictionary of further request metadata |
-| [originator](originator.md) | The ID or URI of the request originator |
-| [requestId](requestId.md) | A string representing the unique ID of this request |
-| [sourceEntityId](sourceEntityId.md) | The ID or URI of the original entity that has been resolved |
+| [excludedClusterIds](excludedClusterIds.md) | When this is present, the resolution must not bin the entity mention into any... |
+| [identifier](identifier.md) | The identifier (with the ERS-derived components) of the entity mention |
+| [requestId](requestId.md) | A string representing the unique ID of the request made to the ERS system |
+| [sourceId](sourceId.md) | The ID or URI of the ERS client that originated the request |
+| [timestamp](timestamp.md) | The time when the message was created |
 | [type](type.md) | The type of the request or result |
 
 

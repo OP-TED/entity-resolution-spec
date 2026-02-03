@@ -1,9 +1,9 @@
 
 
-# Slot: sourceEntityId 
+# Slot: content 
 
 
-_The ID or URI of the original entity that has been resolved._
+_A code string representing the entity mention details (eg, RDF or XML description)._
 
 __
 
@@ -11,8 +11,8 @@ __
 
 
 
-URI: [ers:sourceEntityId](https://data.europa.eu/ers/schema/sourceEntityId)
-Alias: sourceEntityId
+URI: [ers:content](https://data.europa.eu/ers/schema/content)
+Alias: content
 
 <!-- no inheritance hierarchy -->
 
@@ -24,7 +24,7 @@ Alias: sourceEntityId
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityResolutionResponse](EntityResolutionResponse.md) | An entity resolution response sent by the ERE |  no  |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |  no  |
 
 
 
@@ -59,8 +59,8 @@ Alias: sourceEntityId
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:sourceEntityId |
-| native | ers:sourceEntityId |
+| self | ers:content |
+| native | ers:content |
 
 
 
@@ -69,16 +69,17 @@ Alias: sourceEntityId
 
 <details>
 ```yaml
-name: sourceEntityId
-description: 'The ID or URI of the original entity that has been resolved.
+name: content
+description: 'A code string representing the entity mention details (eg, RDF or XML
+  description).
 
   '
 from_schema: https://data.europa.eu/ers/schema
 rank: 1000
-alias: sourceEntityId
-owner: EntityResolutionResponse
+alias: content
+owner: EntityMention
 domain_of:
-- EntityResolutionResponse
+- EntityMention
 range: string
 required: true
 

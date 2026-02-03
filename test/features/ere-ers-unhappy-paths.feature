@@ -1,6 +1,6 @@
-Feature: ERE/ERS interaction upon rebuild requests
+Feature: ERE/ERS unhappy path interactions
 
-This feature describes what happens in cases like malformed requests, system errors, or alike
+This feature describes what happens in cases like malformed requests, system errors, or alike.
 
 Scenario: The ERE replies with an error response to a malformed request
 
@@ -9,6 +9,6 @@ When
 Then 
 	The ERE asynchronously pushes an error response to the responses channel that looks like:
 
-	requestId: the ID of the malformed request
-	errorMessage: a description of the error
-	type: "ErrorResponse" # JSON object property, matches the LinkML class in the service schema.
+	`ereRequestId`: the ID of the malformed request
+	`errorTitle`/`errorMessage`: a human-readable description of the error
+	`type`: "EREErrorResponse" # JSON object property, matches the LinkML class in the service schema.
