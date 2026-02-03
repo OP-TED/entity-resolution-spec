@@ -11,7 +11,7 @@ __
 
 
 
-URI: [ers:identifier](https://data.europa.eu/ers/schema/identifier)
+URI: [ere:identifier](https://data.europa.eu/ers/schema/ere/identifier)
 Alias: identifier
 
 <!-- no inheritance hierarchy -->
@@ -50,7 +50,7 @@ Alias: identifier
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -59,8 +59,8 @@ Alias: identifier
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:identifier |
-| native | ers:identifier |
+| self | ere:identifier |
+| native | ere:identifier |
 
 
 
@@ -73,7 +73,7 @@ name: identifier
 description: 'The identifier (with the ERS-derived components) of the entity mention.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: identifier
 owner: EntityMention

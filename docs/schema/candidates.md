@@ -13,7 +13,7 @@ __
 
 
 
-URI: [ers:candidates](https://data.europa.eu/ers/schema/candidates)
+URI: [ere:candidates](https://data.europa.eu/ers/schema/ere/candidates)
 Alias: candidates
 
 <!-- no inheritance hierarchy -->
@@ -54,7 +54,7 @@ Alias: candidates
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -63,8 +63,8 @@ Alias: candidates
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:candidates |
-| native | ers:candidates |
+| self | ere:candidates |
+| native | ere:candidates |
 
 
 
@@ -80,7 +80,7 @@ description: 'The set of cluster reference/score pairs representing the candidat
   that the entity mention in the original request could align to (be equivalent to).
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: candidates
 owner: EntityMentionResolutionResponse

@@ -15,7 +15,7 @@ __
 
 
 
-URI: [ers:errorDetail](https://data.europa.eu/ers/schema/errorDetail)
+URI: [ere:errorDetail](https://data.europa.eu/ers/schema/ere/errorDetail)
 Alias: errorDetail
 
 <!-- no inheritance hierarchy -->
@@ -52,7 +52,7 @@ Alias: errorDetail
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -61,8 +61,8 @@ Alias: errorDetail
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:errorDetail |
-| native | ers:errorDetail |
+| self | ere:errorDetail |
+| native | ere:errorDetail |
 
 
 
@@ -78,7 +78,7 @@ description: 'A human readable detailed message about the error that occurred.
   This corresponds to RFC-9457''s `detail`.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: errorDetail
 owner: EREErrorResponse

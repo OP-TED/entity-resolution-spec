@@ -8,21 +8,21 @@ ICON_ERROR = [x]
 ICON_WARNING = [!]
 ICON_PROGRESS = [-]
 
-LINKML_MODEL_NAME=ers-core
+LINKML_MODEL_NAME=ere-service-schema
 LINKML_MODEL_VERSION=0.1.0
-PYTHON_MODEL_NAME=ers_core
+PYTHON_MODEL_PATH=src/ere/models/core.py
 
-LINKML_MODEL_DIR=resources/schema
-LINKML_MODEL=$(LINKML_MODEL_DIR)/$(LINKML_MODEL_NAME)_v$(LINKML_MODEL_VERSION).yaml
-PYTHON_MODEL_DIR=src/models
-CORE_MODEL=$(PYTHON_MODEL_DIR)/$(PYTHON_MODEL_NAME).py
-JSON_SCHEMA_MODEL=$(LINKML_MODEL_DIR)/$(PYTHON_MODEL_NAME).json
-DOCS_DIR=docs
-MODEL_DOCS_DIR=$(DOCS_DIR)/schema
+SCHEMAS_DIR=resources/schemas
 
-#-----------------------------------------------------------------------------
-# Dev commands
-#-----------------------------------------------------------------------------
+LINKML_MODEL_PATH=$(SCHEMAS_DIR)/$(LINKML_MODEL_NAME)-v$(LINKML_MODEL_VERSION).yaml
+JSON_SCHEMA_PATH=$(SCHEMAS_DIR)/$(LINKML_MODEL_NAME)-v$(LINKML_MODEL_VERSION).json
+
+MODEL_DOCS_DIR=docs/schema
+MODEL_DOCS_README=$(MODEL_DOCS_DIR)/README.md
+
+## Setup commands
+#
+
 install: check-uv
 	@ echo "Installing dependencies using uv..."
 	@ uv sync --no-dev
@@ -37,25 +37,47 @@ check-uv:
 		curl -LsSf https://astral.sh/uv/install.sh | sh; \
 	}
 
-# CI should also generate the docs if a change is found in models
-generate_models: $(LINKML_MODEL_DIR) $(PYTHON_MODEL_DIR)
-	@ linkml generate pydantic $(LINKML_MODEL) > $(CORE_MODEL)
-	@ linkml generate json-schema --indent 2 $(LINKML_MODEL) > $(JSON_SCHEMA_MODEL)
+## Build commands
+#
 
-generate_markdown_docs: $(MODEL_DOCS_DIR)
+all: $(PYTHON_MODEL_PATH) $(JSON_SCHEMA_PATH) $(MODEL_DOCS_README)
+.PHONY: all generate-models generate-doc clean clean-doc clean-models install install-dev check-uv
+
+generate-models: $(PYTHON_MODEL_PATH) $(JSON_SCHEMA_PATH)
+
+$(PYTHON_MODEL_PATH): $(LINKML_MODEL_PATH)
+	@ echo "Generating Python service model..."
+	@ mkdir -p $(dir $(PYTHON_MODEL_PATH))
+	@ linkml generate pydantic $(LINKML_MODEL_PATH) > $(PYTHON_MODEL_PATH)
+
+$(JSON_SCHEMA_PATH): $(LINKML_MODEL_PATH)
+	@ echo "Generating JSON Schema for the ERE service..."
+	@ mkdir -p $(dir $(JSON_SCHEMA_PATH))
+	@ linkml generate json-schema --indent 2 $(LINKML_MODEL_PATH) > $(JSON_SCHEMA_PATH)
+
+
+generate-doc: $(MODEL_DOCS_README)
+
+$(MODEL_DOCS_README): $(LINKML_MODEL_PATH)
+	@ echo "Generating documentation for the ERE service Schema..."
 # Changing default index name from index.md to README.md, since the github browser automatically shows the latter name
 # when entering the MODEL_DOCS_DIR
-	@ linkml generate doc $(LINKML_MODEL) -d $(MODEL_DOCS_DIR) --index-name README
+	@ linkml generate doc $(LINKML_MODEL_PATH) -d $(MODEL_DOCS_DIR) --index-name README
 # TODO: Probably we want PNG instead, but it doesn't work yet (https://github.com/linkml/linkml/issues/3009)
-	@ linkml generate plantuml -d $(MODEL_DOCS_DIR) --format svg $(LINKML_MODEL)
+	@ linkml generate plantuml -d $(MODEL_DOCS_DIR) --format svg $(LINKML_MODEL_PATH)
 	
 # (Brandizi) I've played with it, but the result isn't great (single-class diagrams in each 
 # class file)
-# @ linkml generate doc -d $(MODEL_DOCS_DIR) --diagram-type plantuml_class_diagram $(LINKML_MODEL)
-  
-	
-clean_docs:
+# @ linkml generate doc -d $(MODEL_DOCS_DIR) --diagram-type plantuml_class_diagram $(LINKML_MODEL_PATH)
+
+
+clean-models:
+	@ echo "Cleaning up generated models..."
+	@ rm -rf $(PYTHON_MODEL_PATH) $(JSON_SCHEMA_PATH)
+
+clean-doc:
 	@ echo "Cleaning up generated documentation..."
 	@ rm -rf $(MODEL_DOCS_DIR)/*.md
 
-clean: clean_docs
+clean: clean-doc clean-models
+	@ echo "All generated files cleaned."

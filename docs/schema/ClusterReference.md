@@ -23,7 +23,7 @@ __
 
 
 
-URI: [ers:ClusterReference](https://data.europa.eu/ers/schema/ClusterReference)
+URI: [ere:ClusterReference](https://data.europa.eu/ers/schema/ere/ClusterReference)
 
 
 
@@ -79,7 +79,7 @@ URI: [ers:ClusterReference](https://data.europa.eu/ers/schema/ClusterReference)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -88,8 +88,8 @@ URI: [ers:ClusterReference](https://data.europa.eu/ers/schema/ClusterReference)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:ClusterReference |
-| native | ers:ClusterReference |
+| self | ere:ClusterReference |
+| native | ere:ClusterReference |
 
 
 
@@ -110,7 +110,7 @@ description: "A reference to a cluster to which an entity is deemed to belong, w
   \ have been determined to refer to the same real-world entity.\nEach cluster has\
   \ a unique clusterId.\n\nA cluster reference is used to report the association between\
   \ an entity mention and a cluster \nof equivalence.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   clusterId:
     name: clusterId
@@ -120,7 +120,7 @@ attributes:
       subject entity mention that an `EntityMentionResolutionResponse` refers to.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - ClusterReference
@@ -133,7 +133,7 @@ attributes:
       and the target canonical entity.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - ClusterReference
@@ -155,7 +155,7 @@ description: "A reference to a cluster to which an entity is deemed to belong, w
   \ have been determined to refer to the same real-world entity.\nEach cluster has\
   \ a unique clusterId.\n\nA cluster reference is used to report the association between\
   \ an entity mention and a cluster \nof equivalence.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   clusterId:
     name: clusterId
@@ -165,7 +165,7 @@ attributes:
       subject entity mention that an `EntityMentionResolutionResponse` refers to.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: clusterId
     owner: ClusterReference
@@ -181,7 +181,7 @@ attributes:
       and the target canonical entity.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: confidenceScore
     owner: ClusterReference

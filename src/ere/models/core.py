@@ -78,17 +78,17 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'default_prefix': 'ers',
+linkml_meta = LinkMLMeta({'default_prefix': 'ere',
      'default_range': 'string',
-     'description': 'A LinkML schema for the ERS Services.',
-     'id': 'https://data.europa.eu/ers/schema',
+     'description': 'A LinkML schema for the ERS/ERE Service',
+     'id': 'https://data.europa.eu/ers/schema/ere',
      'imports': ['linkml:types'],
-     'name': 'ersServiceDataSchema',
-     'prefixes': {'ers': {'prefix_prefix': 'ers',
-                          'prefix_reference': 'https://data.europa.eu/ers/schema/'},
+     'name': 'ereServiceSchema',
+     'prefixes': {'ere': {'prefix_prefix': 'ere',
+                          'prefix_reference': 'https://data.europa.eu/ers/schema/ere/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'}},
-     'source_file': 'resources/schema/ers-core_v0.1.0.yaml'} )
+     'source_file': 'resources/schemas/ere-service-schema-v0.1.0.yaml'} )
 
 
 class EREMessage(ConfiguredBaseModel):
@@ -97,7 +97,7 @@ class EREMessage(ConfiguredBaseModel):
     This is modelled as a mixin in LinkML (so that it can't be instantiated directly).
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     type: Literal["EREMessage"] = Field(default="EREMessage", description="""The type of the request or result.
 
@@ -119,7 +119,7 @@ class ERERequest(EREMessage):
     Root class to represent all the requests sent to the ERE.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     type: Literal["ERERequest"] = Field(default="ERERequest", description="""The type of the request or result.
 
@@ -141,7 +141,7 @@ class EREResponse(EREMessage):
     Root class to represent all the responses sent by the ERE.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True, 'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     type: Literal["EREResponse"] = Field(default="EREResponse", description="""The type of the request or result.
 
@@ -204,7 +204,7 @@ class EntityMentionResolutionRequest(ERERequest):
                                 '  "timestamp": "2026-01-14T12:40:56Z",\n'
                                 '  "ereRequestId": "324fs3r345vxab:01"\n'
                                 '}\n'}],
-         'from_schema': 'https://data.europa.eu/ers/schema'})
+         'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     entityMention: EntityMention = Field(default=..., description="""The data about the entity to be resolved. Note that, at least for the moment, we don't support
 batch requests, so this property is single-valued.
@@ -268,7 +268,7 @@ class EntityMentionResolutionResponse(EREResponse):
                                 '  "ereRequestId": "324fs3r345vx:01"\n'
                                 '}\n'
                                 '    \n'}],
-         'from_schema': 'https://data.europa.eu/ers/schema'})
+         'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     entityMentionId: EntityMentionIdentifier = Field(default=..., description="""The identifier of the entity mention that has been resolved.
 
@@ -315,7 +315,7 @@ class EREErrorResponse(EREResponse):
                                 'last):\\n  File \\"/app/ere/service.py\\", line 45, '
                                 'in process_request\\n..."\n'
                                 '}\n'}],
-         'from_schema': 'https://data.europa.eu/ers/schema'})
+         'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     errorType: str = Field(default=..., description="""A string representing the error type, eg, the FQN of the raised exception.
 
@@ -355,7 +355,7 @@ class EntityMention(ConfiguredBaseModel):
     It contains the entity data, along with metadata like type and format.      
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     identifier: EntityMentionIdentifier = Field(default=..., description="""The identifier (with the ERS-derived components) of the entity mention.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
@@ -376,7 +376,7 @@ class EntityMentionIdentifier(ConfiguredBaseModel):
     in this hereby ERE service schema) can be built from an entity that is initially the only cluster member.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     sourceId: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
 person accessing the ERS system.
@@ -406,7 +406,7 @@ class ClusterReference(ConfiguredBaseModel):
     of equivalence.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     clusterId: str = Field(default=..., description="""The identifier of the cluster/canonical entity that is considered equivalent to the
 subject entity mention that an `EntityMentionResolutionResponse` refers to.
@@ -433,7 +433,7 @@ class FullRebuildRequest(ERERequest):
       on the possible need of withdrawing exclusions.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     type: Literal["FullRebuildRequest"] = Field(default="FullRebuildRequest", description="""The type of the request or result.
 
@@ -458,7 +458,7 @@ class FullRebuildResponse(EREResponse):
     request being acknowledged.
 
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://data.europa.eu/ers/schema/ere'})
 
     type: Literal["FullRebuildResponse"] = Field(default="FullRebuildResponse", description="""The type of the request or result.
 

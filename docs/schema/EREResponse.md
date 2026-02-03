@@ -13,7 +13,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
+URI: [ere:EREResponse](https://data.europa.eu/ers/schema/ere/EREResponse)
 
 
 
@@ -84,7 +84,7 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -93,8 +93,8 @@ URI: [ers:EREResponse](https://data.europa.eu/ers/schema/EREResponse)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EREResponse |
-| native | ers:EREResponse |
+| self | ere:EREResponse |
+| native | ere:EREResponse |
 
 
 
@@ -113,7 +113,7 @@ name: EREResponse
 description: 'Root class to represent all the responses sent by the ERE.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREMessage
 abstract: true
 
@@ -128,7 +128,7 @@ name: EREResponse
 description: 'Root class to represent all the responses sent by the ERE.
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: EREMessage
 abstract: true
 attributes:
@@ -139,7 +139,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
@@ -156,7 +156,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
     owner: EREResponse
@@ -169,7 +169,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
     owner: EREResponse

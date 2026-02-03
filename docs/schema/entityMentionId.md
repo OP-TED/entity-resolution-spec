@@ -17,7 +17,7 @@ __
 
 
 
-URI: [ers:entityMentionId](https://data.europa.eu/ers/schema/entityMentionId)
+URI: [ere:entityMentionId](https://data.europa.eu/ers/schema/ere/entityMentionId)
 Alias: entityMentionId
 
 <!-- no inheritance hierarchy -->
@@ -56,7 +56,7 @@ Alias: entityMentionId
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -65,8 +65,8 @@ Alias: entityMentionId
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:entityMentionId |
-| native | ers:entityMentionId |
+| self | ere:entityMentionId |
+| native | ere:entityMentionId |
 
 
 
@@ -79,7 +79,7 @@ name: entityMentionId
 description: "The identifier of the entity mention that has been resolved.\n\nThis\
   \ isn't strictly needed, since the `ereRequestId` already links the response to\
   \ \nthe request's entity mention. Yet, it's reported for convenience.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: entityMentionId
 owner: EntityMentionResolutionResponse
