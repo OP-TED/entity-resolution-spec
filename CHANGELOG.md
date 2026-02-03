@@ -3,8 +3,13 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [unreleased]
+...
+
+## [0.2.0-rc.1] - 2026-02-03
 ### Added
+* Architecture diagram PNGs under `docs/architecture/diagrams/`
+* Mermaid sequence diagrams under `docs/architecture/sequence_diagrams/`
 
 ### Changed
 * data model changed according to recent
@@ -13,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 	* Entity mention ID based on `requestID` + `sourceID` + `entityType`
 * Documentation updates, eg, sequence diagram
 * Gherkin tests updated according to the cases described in the new ERE Technical Contract
+* README updated: added Documentation Overview with links to schema docs (`docs/schema/README.md`), architecture diagrams (`docs/architecture/diagrams/`), Mermaid sequences (`docs/architecture/sequence_diagrams/`), and an informative ERS–ERE interface note (`docs/ere-interface-seq-diag.md`)
 
 
 ## [0.1.0-rc.2] - 2026-01-16
@@ -31,4 +37,3 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 * [LinkML schema](resources/schema/ers-core_v0.1.0.yaml) to specify the interaction with the ERE service.
 	* Includes auto-generated [navigable documents](docs/schema/README.md), a [class diagram](docs/schema/README.md) and a [sequence diagram](docs/ere-interface-seq-diag.png).
 * [Gherkin Tests](test/features/), based on [collected test data](test/test_data/), possible [test cases](test/test_data/analysis/README.md)
-

@@ -89,3 +89,4 @@ See [docs/architecture/sequence_diagrams/README.md](docs/architecture/sequence_d
 ### Informative Interface Sequence
 See [docs/ere-interface-seq-diag.md](docs/ere-interface-seq-diag.md) — informative sequence overview for ERS–ERE interactions.
 Note: the ERS–ERE contract is the normative specification; this file is provided for additional context.
+
