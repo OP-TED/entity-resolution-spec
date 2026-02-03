@@ -1,8 +1,29 @@
-# Archived
-This repo has been migrated to the [OP-TED repository](https://github.com/OP-TED/entity-resolution-spec) and then archived.
-
-# entity-resolution-spec
+# Entity Resolution Specifications
 Formal software contract, shared data models, sample messages, and compliance tests required for integrating new Entity Resolution Engines (EREs) into the system.
+
+> Note: Active development continues in the OP-TED repository: https://github.com/OP-TED/entity-resolution-spec
+
+## Requirements
+
+- UNIX-compatible environment (Linux/macOS/WSL2)
+- Make
+- Python (managed via [uv](https://docs.astral.sh/uv/getting-started/installation/))
+
+## Quick Start
+
+```bash
+make             # installs user dependencies via uv
+make install-dev # installs development tooling (tests, lint, codegen)
+make generate_models
+make generate_docs
+```
+
+## Make targets overview
+
+- install: user dependencies
+- install-dev: dev dependencies (tests, lint, LinkML codegen)
+- generate_models: regenerate Pydantic models from LinkML
+- generate_docs: regenerate documentation
 
 ## Installation
 
@@ -24,15 +45,15 @@ This will install the additional dependencies required for development, such as 
 
 ## Development
 
-This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core model is defined in the `resources/linkml` directory, and the Python (Pydantic) models (pluralized to refer to all the classes as is the practice in the programming community) are generated using the [LinkML](https://linkml.io/) framework.
+This project uses model-driven development (MDD) and domain-driven design (DDD). The core model is defined in `resources/linkml`, and Python (Pydantic) models are generated using the [LinkML](https://linkml.io/) framework.
 
-The generated Python models can be found in the `src/models` directory. You can regenerate them by running:
+Generated Python models are in `src/models`. Regenerate them with:
 
 ```bash
 make generate_models
 ```
 
-Once you are happy, you can also regenerate the documentation by running:
+Regenerate documentation with:
 
 ```bash
 make generate_docs
@@ -51,3 +72,20 @@ specifications only and does not have runnable unit tests.
 This repository contains manual deduplication for organizations and procedures from RDF tender notices. The duplication was done using fuzzy string matching with manual checking of the results.
 
 [Details here](./test/test_data/README.md)
+
+## Documentation Overview
+
+Documentation resources for understanding the model, architecture, and interfaces:
+
+### Model Schema Docs
+See [docs/schema/README.md](docs/schema/README.md) — canonical data model and service schema documentation generated from the ERS–ERE definitions.
+
+### Architectural Diagrams
+See [docs/architecture/diagrams/README.md](docs/architecture/diagrams/README.md) — prescribed architectural diagrams illustrating system structure and components.
+
+### Sequence Diagrams (Mermaid)
+See [docs/architecture/sequence_diagrams/README.md](docs/architecture/sequence_diagrams/README.md) — Mermaid-format sequence diagrams describing key system interactions.
+
+### Informative Interface Sequence
+See [docs/ere-interface-seq-diag.md](docs/ere-interface-seq-diag.md) — informative sequence overview for ERS–ERE interactions.
+Note: the ERS–ERE contract is the normative specification; this file is provided for additional context.
