@@ -3,7 +3,9 @@
 # Slot: entityMention 
 
 
-_The data about the entity to be resolved._
+_The data about the entity to be resolved. Note that, at least for the moment, we don't support_
+
+_batch requests, so this property is single-valued._
 
 __
 
@@ -70,7 +72,10 @@ Alias: entityMention
 <details>
 ```yaml
 name: entityMention
-description: 'The data about the entity to be resolved.
+description: 'The data about the entity to be resolved. Note that, at least for the
+  moment, we don''t support
+
+  batch requests, so this property is single-valued.
 
   '
 from_schema: https://data.europa.eu/ers/schema

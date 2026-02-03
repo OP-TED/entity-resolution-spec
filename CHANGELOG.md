@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 ### Changed
+* data model changed according to recent
+  * Terminology cleaned (eg, "cluster reference" in place of "alignment option")
+	* Simplifications (eg, alignment set removed)
+	* Entity mention ID based on `requestID` + `sourceID` + `entityType`
+* Documentation updates, eg, sequence diagram
+* Gherkin tests updated according to the cases described in the new ERE Technical Contract
 
 
 ## [0.1.0-rc.2] - 2026-01-16

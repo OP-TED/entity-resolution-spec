@@ -12,17 +12,17 @@ Name: ersServiceDataSchema
 
 | Class | Description |
 | --- | --- |
-| [AlignmentLink](AlignmentLink.md) | An alignment link representing a possible equivalence between an entity menti... |
-| [AlignmentLinkSet](AlignmentLinkSet.md) | A set of alignment links to a referred entity |
-| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity in the ERS |
-| [ERECommunicationArtefact](ERECommunicationArtefact.md) | Root abstraction to represent attributes common to both requests and results |
-| [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and rebuild them as  |
-| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response sent by the ERE |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |
+| [ClusterReference](ClusterReference.md) | A reference to a cluster to which an entity is deemed to belong, with an asso... |
+| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |
+| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |
 
 
 
@@ -30,25 +30,24 @@ Name: ersServiceDataSchema
 
 | Slot | Description |
 | --- | --- |
-| [alignmentLinkSet](alignmentLinkSet.md) | The set of alignment links representing the candidate canonical entities/clus... |
-| [alignmentOptions](alignmentOptions.md) | A list of possible matches (alignment links) between the subject entity menti... |
-| [canonicalIdentifier](canonicalIdentifier.md) | The identifier of the cluster/canonical entity that is considered equivalent ... |
+| [candidates](candidates.md) | The set of cluster reference/score pairs representing the candidate clusters |
+| [clusterId](clusterId.md) | The identifier of the cluster/canonical entity that is considered equivalent ... |
 | [confidenceScore](confidenceScore.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... |
-| [creationTime](creationTime.md) | The timestamp when the request was created |
-| [datFormat](datFormat.md) | A string about the MIME format of `payload` (e |
+| [content](content.md) | A code string representing the entity mention details (eg, RDF or XML descrip... |
+| [contentType](contentType.md) | A string about the MIME format of `content` (e |
 | [entityMention](entityMention.md) | The data about the entity to be resolved |
+| [entityMentionId](entityMentionId.md) | The identifier of the entity mention that has been resolved |
+| [entityType](entityType.md) | A string representing the entity type (based on CET) |
+| [ereRequestId](ereRequestId.md) | A string representing the unique ID of an ERE request, or the ID of the reque... |
 | [errorDetail](errorDetail.md) | A human readable detailed message about the error that occurred |
 | [errorTitle](errorTitle.md) | A human readable brief message about the error that occurred |
 | [errorTrace](errorTrace.md) | A string representing a (stack) trace of the error that occurred |
 | [errorType](errorType.md) | A string representing the error type, eg, the FQN of the raised exception |
-| [identifier](identifier.md) | An URI identifying the entity |
-| [jsonRepresentation](jsonRepresentation.md) | An optional JSON representation of the entity, which is usually achieved from... |
-| [metadata](metadata.md) | An optional arbitrary dictionary of further request metadata |
-| [originator](originator.md) | The ID or URI of the request originator |
-| [payload](payload.md) | A code string representing the entity details (eg, RDF description) |
-| [rejectedCanonicalIdentifiers](rejectedCanonicalIdentifiers.md) | When this is present, the request is a refresh request: it is asking that the... |
-| [requestId](requestId.md) | A string representing the unique ID of this request |
-| [subjectEntityMentionIdentifier](subjectEntityMentionIdentifier.md) | The identifier of the entity mention that is the subject of these alignment l... |
+| [excludedClusterIds](excludedClusterIds.md) | When this is present, the resolution must not bin the entity mention into any... |
+| [identifier](identifier.md) | The identifier (with the ERS-derived components) of the entity mention |
+| [requestId](requestId.md) | A string representing the unique ID of the request made to the ERS system |
+| [sourceId](sourceId.md) | The ID or URI of the ERS client that originated the request |
+| [timestamp](timestamp.md) | The time when the message was created |
 | [type](type.md) | The type of the request or result |
 
 
