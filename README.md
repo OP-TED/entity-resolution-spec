@@ -3,37 +3,28 @@ Formal software contract, shared data models, sample messages, and compliance te
 
 ## Installation
 
-To get started, you need a UNIX-compatible environment (Mac/Linux/WSL2) with Make and [Poetry](https://python-poetry.org/). You can then use the following command:
+To get started, you need a UNIX-compatible environment (Mac/Linux/WSL2) with Make, Python and [Poetry](https://python-poetry.org/). You can then use the following command to setup your environment:
 
 ```bash
-poetry install
+make install
 ```
 
 This will install the necessary user dependencies in a Poetry-managed virtual environment.
 
-To install the development dependencies as well, run:
-
-```bash
-poetry install --with dev
-```
-
-This will install the additional dependencies required for development, such as testing and linting tools, including LinkML for codegen (see below).
 
 ## Development
 
 This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core model is defined in the `resources/linkml` directory, and the Python (Pydantic) models (pluralized to refer to all the classes as is the practice in the programming community) are generated using the [LinkML](https://linkml.io/) framework.
 
-The generated Python models can be found in the `src/models` directory. You can regenerate them by running:
+The generated Python models can be found in the `src/models` directory. 
+You can regenerate both the LinkML-based models (Python, JSONSchema) and the navigable documentation, by running:
 
 ```bash
-make generate_models
+make all
 ```
 
-Once you are happy, you can also regenerate the documentation by running:
+*the Makefile has more granular targets, see its content for details*.
 
-```bash
-make generate_docs
-```
 
 ## Running and Testing
 
