@@ -1,22 +1,27 @@
 Feature: ERE/ERS idempotent requests
 
-  This feature tests that ERE resolution request are idempotent.
+  This feature tests idempotent interactions with the ERE.
 
 Scenario: Repeated regular resolution request returns the same result
 
+  This is true if no full rebuilds or requests with rejected clusters have happened in between.
+
 Given
-  That the ERE has previously replied to a resolution request for an entity E, with
-  no excluded cluster IDs in the request
+  That the ERE has previously replied to a resolution request for an entity E
+  (with or without excluded clusters)
 And
   No `FullBuildRequest` has been pushed since the previous resolution
+And
+  No resolution request about the same entity mention that contains excluded clusters 
+  has been pushed since the previous resolution
 When
   The ERS pushes again the same resolution request for the entity E into the ERE requests channel
 Then 
   The ERE asynchronously pushes an `EntityMentionResolutionResponse` object that contains the
   same set of `candidateClusters` as in the previous response for E, including their confidence score.
 
-  Since returning the cluster references in score order is not required, the order this invariant
-  doesn't apply to that, the second result can come in a different order for the cluster references.
+  Since returning the cluster references in score order is not required, such order doesn't apply to 
+  this invariant, i.e., the second result can come in a different order for the cluster references.
 
 
 Scenario: Repeated resolution request with rejected clusters returns the same result
@@ -38,32 +43,48 @@ Then
   Thus, the response excludes the same clusters.
 
 
-Scenario Outline: Rejected clusters don't affect later regular resolution requests
+Scenario: Rejected clusters affect later resolution requests
 
-  If a resolution request about E yields a set of candidate clusters, a request excluding 
-  some of those clusters will do so in the result, however, any further request without
-  exclusions must return the same original set of candidate clusters.
-  
-  In other words, requests with excluded clusters don't change the ERE internal state, since
-  the ERE has only a consulting role and final decisions on clustering are an ERS's responsibility.
+  If a request excludes some clusters, then all the requests that follow will have the same exclusions.
 
-  Examples:
-    | excludedCardinality |
-    | 1                   |
-    | 2                   |
-      
 Given
   That the ERE has previously replied to a resolution request for an entity E, with
-  no excluded cluster IDs in the request, yielding a set of candidate clusters C[]
+  a set `R[]` of excluded cluster IDs in the request
 And
-  That the ERE has also replied to a resolution request for the same entity E, with
-  a set `R[]` of excluded cluster IDs, such that some clusters in C[] are in R[]
+  A resolution request for the same entity E is pushed again, with no excluded clusters
+Then
+  The response to the new request must not contain any cluster in R[].
+
+  We assume that the reply to the first request doesn't contain R[] either, as per the 
+  corresponding scenario in the [common cases feature](ere-ers-common-cases.feature).
+
+
+
+Scenario: Multiple resolution requests containing excluded clusters cause the respective exclusions to be merged
+
+  If multiple requests exclude multiple clusters for the same entity, then the ERE must exclude them
+  all in subsequent responses.
+
+Given
+  The ERE has received a resolution request for an entity E, which excludes
+  a set `R1[]` of cluster IDs
 And
-  R[] has <excludedCardinality> entries
-And
-  No `FullBuildRequest` has been pushed since the previous resolution
+  The ERE has replied to the initial request with a set of candidate clusters R2[]
 When
-  The ERS pushes again the original resolution request for the entity E, with no excluded clusters
-Then 
-  The ERE asynchronously pushes an `EntityMentionResolutionResponse` object that contains the
-  same set of `candidateClusters` C[] as in the first response for E, including their confidence score.
+  A new resolution about E is sent that contains R2[] as excluded clusters
+Then
+  The ERE response doesn't contain any cluster ID in R1[] or R2[].
+
+
+Scenario: Multiple resolution requests with multiple rejections affect later resolution requests
+
+  If multiple requests exclude multiple clusters for the same entity, then the ERE must exclude them
+  all in subsequent responses. This is a combination of the two previous scenarios.
+Given
+  The same pre-conditions as "Multiple resolution requests containing excluded clusters cause the respective exclusions to be merged"
+And
+  The request with R2[] has been sent and replied
+When
+  A new resolution about E is sent that contains no excluded clusters
+Then
+  The ERE response doesn't contain any cluster ID in R1[] or R2[].
