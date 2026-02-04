@@ -3,18 +3,18 @@ Formal software contract, shared data models, sample messages, and compliance te
 
 ## Installation
 
-To get started, you need a UNIX-compatible environment (Mac/Linux/WSL2) with Make. You can then use the following command:
+To get started, you need a UNIX-compatible environment (Mac/Linux/WSL2) with Make and [Poetry](https://python-poetry.org/). You can then use the following command:
 
 ```bash
-make
+poetry install
 ```
 
-This will run the first and default Make target `make install`, which installs the necessary _user_ dependencies with the [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager.
+This will install the necessary user dependencies in a Poetry-managed virtual environment.
 
-To install the development dependencies, you can run:
+To install the development dependencies as well, run:
 
 ```bash
-make install-dev
+poetry install --with dev
 ```
 
 This will install the additional dependencies required for development, such as testing and linting tools, including LinkML for codegen (see below).
