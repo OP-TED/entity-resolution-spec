@@ -27,37 +27,29 @@ make generate_docs
 
 ## Installation
 
-To get started, you need a UNIX-compatible environment (Mac/Linux/WSL2) with Make. You can then use the following command:
+To get started, you need a UNIX-compatible environment (Mac/Linux/WSL2) with Make, Python and [Poetry](https://python-poetry.org/). You can then use the following command to setup your environment:
 
 ```bash
-make
+make install
 ```
 
-This will run the first and default Make target `make install`, which installs the necessary _user_ dependencies with the [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager.
+This will install the necessary user dependencies in a Poetry-managed virtual environment.
 
-To install the development dependencies, you can run:
-
-```bash
-make install-dev
-```
-
-This will install the additional dependencies required for development, such as testing and linting tools, including LinkML for codegen (see below).
 
 ## Development
 
-This project uses model-driven development (MDD) and domain-driven design (DDD). The core model is defined in `resources/linkml`, and Python (Pydantic) models are generated using the [LinkML](https://linkml.io/) framework.
+This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core model is defined in the `resources/linkml` directory, and the Python (Pydantic) models (pluralized to refer to all the classes as is the practice in the programming community) are generated using the [LinkML](https://linkml.io/) framework.
 
 Generated Python models are in `src/models`. Regenerate them with:
+The generated Python models can be found in the `src/models` directory. 
+You can regenerate both the LinkML-based models (Python, JSONSchema) and the navigable documentation, by running:
 
 ```bash
-make generate_models
+make all
 ```
 
-Regenerate documentation with:
+*the Makefile has more granular targets, see its content for details*.
 
-```bash
-make generate_docs
-```
 
 ## Running and Testing
 

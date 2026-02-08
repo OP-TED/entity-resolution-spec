@@ -1,17 +1,34 @@
 [project]
-name = "er-system"
+name = "ers-core"
 version = "0.0.1"
-description = "A pluggable entity resolution system for data transformation pipelines"
+description = """
+  The core components for the Entity Resolution System (ERS) components.
+  
+  The ERS is a pluggable entity resolution system for data transformation pipelines.
+"""
+
 authors = [
-    { name = "meaningfy.ws", email = "hi@meaningfy.ws" }
+    {name = "Meaningfy", email = "hi@meaningfy.ws"}
 ]
+
 readme = "README.md"
-requires-python = ">=3.9,<3.13"
-dependencies = [
-    "pydantic (>=2.10.6,<3.0.0)",
-]
+requires-python = "^3.14"
+
+[tool.poetry.dependencies]
+python = "^3.14"
+pydantic = ">=2.10.6,<3.0.0"
 
 [dependency-groups]
 dev = [
-    "linkml>=1.9.2,<2.0.0",
+    "linkml (>=1.9.2,<2.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+# Needed when the root doesn't contain $project_name
+packages = [
+  { include = "*", from = "src" }
 ]

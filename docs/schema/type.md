@@ -1,11 +1,21 @@
 
 
-# Slot: ereRequestId 
+# Slot: type 
 
 
-_A string representing the unique ID of an ERE request, or the ID of the request a response is about._
+_The type of the request or result._
 
-_This **is not** the same as `requestId` + `sourceId`._
+__
+
+_As per LinkML specification, `designates_type` is used here in order to allow for this_
+
+_slot to tell the concrete subclass that an instance (such as a JSON object) belongs to._
+
+__
+
+_In other words, a particular request will have `type` set with values like _
+
+_`EntityMentionResolutionRequest` or `EntityResolutionResult`_
 
 __
 
@@ -13,8 +23,8 @@ __
 
 
 
-URI: [ere:ereRequestId](https://data.europa.eu/ers/schema/ere/ereRequestId)
-Alias: ereRequestId
+URI: [ere:type](https://data.europa.eu/ers/schema/ere/type)
+Alias: type
 
 <!-- no inheritance hierarchy -->
 
@@ -68,8 +78,8 @@ Alias: ereRequestId
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ere:ereRequestId |
-| native | ere:ereRequestId |
+| self | ere:type |
+| native | ere:type |
 
 
 
@@ -78,16 +88,16 @@ Alias: ereRequestId
 
 <details>
 ```yaml
-name: ereRequestId
-description: 'A string representing the unique ID of an ERE request, or the ID of
-  the request a response is about.
-
-  This **is not** the same as `requestId` + `sourceId`.
-
-  '
+name: type
+description: "The type of the request or result.\n\nAs per LinkML specification, `designates_type`\
+  \ is used here in order to allow for this\nslot to tell the concrete subclass that\
+  \ an instance (such as a JSON object) belongs to.\n\nIn other words, a particular\
+  \ request will have `type` set with values like \n`EntityMentionResolutionRequest`\
+  \ or `EntityResolutionResult`\n"
 from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
-alias: ereRequestId
+designates_type: true
+alias: type
 owner: EREMessage
 domain_of:
 - EREMessage
