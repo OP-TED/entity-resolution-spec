@@ -9,8 +9,9 @@ config:
 sequenceDiagram
 %% Maps to EA diagram: UML Sequence (Spine B – simplified)
 %% Purpose: ERS–ERE asynchronous proposal exchange and governance-first integration.
-%% Focus: triad correlation, advisory results, idempotent absorption, and projection update as an architectural outcome.
-%% Excludes: store-level choreography, scoring internals, pruning policy detail, and client-facing REST.
+%% Focus: triad correlation, advisory engine outputs, and governed state update.
+%% Excludes: client REST flows, detailed store choreography, scoring internals,
+%% pruning mechanics, curation UI, and rebuild initiation.
 
 box "Entity Resolution System (ERSys)"
     participant ERS as "Entity Resolution Service (ERS)"
@@ -22,12 +23,12 @@ box "Entity Resolution Engine (ERE)"
     participant ERE as "Entity Resolution Engine (ERE)"
 end
 
-%% --- Request (triggered by Spine A or rebuild replay) ---
-ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType, EntityMention,<br/>rejectionConstraints?)
+%% --- Request (triggered by Spine A or rebuild processing) ---
+ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType,<br/>EntityMention, rejectionConstraints?)
 MessagingMiddleware ->> ERE: Deliver Resolution Request (async)
 
-%% --- Result (advisory proposal) ---
-ERE ->> MessagingMiddleware: Publish Resolution Result (async)<br/>(sourceId, requestId, entityType,<br/>candidateClusters + engine confidence scores)
+%% --- Advisory result ---
+ERE ->> MessagingMiddleware: Publish Resolution Result (async)<br/>(sourceId, requestId, entityType,<br/>candidate cluster references + engine metadata)
 MessagingMiddleware ->> ERS: Deliver Resolution Result (async)
 
 %% --- Governance-first integration ---
@@ -35,11 +36,13 @@ alt Contract violation (missing triad / invalid schema)
     ERS ->> ERS: Record contract violation and ignore
 else Acceptable delivery (including duplicates or late arrivals)
     ERS ->> ERS: Correlate by triad and apply governance constraints<br/>(preserve curator locks, enforce rejections)
-    ERS ->> ERS: Persist updated governed decision<br/>and update canonical projection (single consistent update)
+    ERS ->> ERS: Persist updated Resolution Decision<br/>and update canonical projection
 end
 
-%% note right of ERS
-%%   ERE outputs are proposals only.
-%%   Messaging is at-least-once, so ERS tolerates duplicates and lateness.
-%%   The canonical assignment exposed by lookup reflects the current governed decision.
-%% end
+%% note right of ERS:
+%%   ERE outputs are advisory proposals only.
+%%   Messaging is at-least-once; ERS tolerates duplicates and lateness.
+%%   Integration may occur after a client resolve has completed:
+%%   - governance state is updated,
+%%   - no callbacks or notifications are triggered,
+%%   - completed client requests are not retroactively altered.

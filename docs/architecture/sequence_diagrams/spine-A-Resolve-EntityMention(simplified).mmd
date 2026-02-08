@@ -8,9 +8,9 @@ config:
 ---
 sequenceDiagram
 %% Maps to EA diagram: UML Sequence (Spine A – simplified)
-%% Purpose: bounded resolve with deterministic canonical identifier and idempotent request handling.
-%% Shows: async publication that triggers Spine B.
-%% Excludes: detailed store choreography, ERE behaviour, result integration, curation, and rebuild.
+%% Purpose: bounded synchronous resolve with idempotent request handling.
+%% Shows: async publication to Messaging Middleware as part of the bounded resolve.
+%% Excludes: detailed store choreography, ERE logic, candidate integration details, curation, and rebuild.
 
 participant Originator as "Originator"
 
@@ -20,22 +20,27 @@ box "Entity Resolution System (ERSys)"
 end
 
 participant MessagingMiddleware as "Messaging Middleware"
+%% participant ERE as "Entity Resolution Engine (ERE)"
 
 Originator ->> ERIntake: Resolve Entity Mention<br/>(sourceId, requestId, entityType, EntityMention)
-ERIntake ->> ERS: Validate request <br/>and enforce idempotency
+ERIntake ->> ERS: Validate request<br/>and enforce idempotency
 
 alt Request rejected
-    ERS -->> ERIntake: Reject (validation, idempotency conflict, <br/> dependency unavailable)
+    ERS -->> ERIntake: Reject (validation, idempotency conflict,<br/> dependency unavailable)
     ERIntake -->> Originator: 4xx / 503
 else Request accepted
-    ERS ->> ERS: Register request (idempotent)<br/>and derive deterministic canonical identifier
-    ERS -->> ERIntake: Canonical identifier <br/>+ outcome status (bounded)
-    ERIntake -->> Originator: 200 OK<br/>Canonical identifier <br/>+ outcome status (bounded)
-
     ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType, EntityMention)
+    %% MessagingMiddleware ->> ERE: Deliver request (async)
+
+    alt Resolution completes successfully within bounded execution window
+        MessagingMiddleware -->> ERS: Deliver results (async)
+        ERS ->> ERS: Record Resolution Decision<br/>and update canonical projection
+        ERS -->> ERIntake: Canonical identifier
+        ERIntake -->> Originator: 200 OK<br/>Canonical identifier
+    else Timeout or failure within bounded execution window
+        ERS -->> ERIntake: Error (no canonical identifier)
+        ERIntake -->> Originator: 5xx/timeout<br/>Error (no canonical identifier)
+    end
 end
 
-%% note right of ERS
-%%   Bounded response does not wait for ERE.
-%%   Publication to Messaging Middleware triggers Spine B.
-%% end
+note right of ERS: Publication initiates engine processing.<br>Late/duplicate results may be integrated later,<br> but do not retroactively change the completed client response.

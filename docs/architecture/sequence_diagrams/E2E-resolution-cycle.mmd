@@ -8,14 +8,13 @@ config:
 ---
 sequenceDiagram
 %% Maps to EA diagram: UML Sequence (high-level overview)
-%% Purpose: show end-to-end resolution cycle with bounded response,
-%% asynchronous engine processing, and convergence via lookup.
+%% Purpose: bounded synchronous client resolve, async ERS–ERE messaging,
+%% and convergence via lookup; late/duplicate results are absorbed without client push.
 
-%% External client
 participant Originator as "Originator"
 
 box "Entity Resolution System (ERSys)"
-    participant ERIntake as "Entity Resolution Intake Service"
+    participant ERSAPI as "ERS Resolve API"
     participant CanonicalLookup as "Canonical Lookup Service"
     participant ERS as "Entity Resolution Service (ERS)"
 end
@@ -26,25 +25,35 @@ box "Entity Resolution Engine (ERE)"
     participant ERE as "Entity Resolution Engine (ERE)"
 end
 
-%% --- Client-facing bounded resolve ---
-Originator ->> ERIntake: Resolve Entity Mention <br> (request identifiers + EntityMention)
-ERIntake ->> ERS: Validate and register request (idempotent)
-ERS ->> ERS: Derive deterministic canonical identifier &<br> ensure a Resolution Decision exists
-ERS -->> ERIntake: Draft canonical identifier <br> + outcome status (bounded)
-ERIntake -->> Originator: Draft canonical identifier <br>+ outcome status (bounded)
+%% --- Client-facing bounded resolve (waits for completion) ---
+Originator ->> ERSAPI: Resolve Entity Mention<br>(request identifiers + EntityMention)
+ERSAPI ->> ERS: Validate and register request<br>(idempotent)
 
-%% --- Asynchronous resolution ---
-ERS ->> MessagingMiddleware: Publish resolution request <br> (request identifiers + EntityMention)
+ERS ->> MessagingMiddleware: Publish resolution request<br>(request identifiers + EntityMention)
 MessagingMiddleware ->> ERE: Deliver request (async)
 
-ERE ->> MessagingMiddleware: Publish candidate alignments <br> (candidates & confidence scores)
-MessagingMiddleware ->> ERS: Deliver results (async)
+alt Resolution completes successfully within bounded execution window
+    ERE ->> ERE: Resolve EntityMention
+    ERE ->> MessagingMiddleware: Publish candidate alignments<br>(candidate links)
+    MessagingMiddleware ->> ERS: Deliver results (async)
+    ERS ->> ERS: Evaluate proposals under governance<br>(record Resolution Decision)
+    ERS ->> ERS: Update Canonical Entity Registry<br>(current governed assignment)
+    ERS -->> ERSAPI: Canonical identifier
+    ERSAPI -->> Originator: Canonical identifier
+else Timeout or failure within bounded execution window
+    ERS -->> ERSAPI: Error (no canonical identifier)
+    ERSAPI -->> Originator: Error (no canonical identifier)
+end
 
-ERS ->> ERS: Integrate candidates under decision-centric governance
-%%note right of ERS: ERS remains sole authority for canonical identity and decisions.
+%% --- Late / duplicate responses (after client request completed) ---
+ERE ->> MessagingMiddleware: Publish candidate alignments<br>(late or duplicate)
+MessagingMiddleware ->> ERS: Deliver results (async)
+ERS ->> ERS: Evaluate applicability, integrate if applicable<br>(update resolution decision context <br> and current governed assignment)
+%% note right of ERS: Integration of late/duplicate results does not retroactively<br>affect the completed client request; no callback or push to Originator.
 
 %% --- Convergence via lookup ---
-Originator ->> CanonicalLookup: Lookup canonical assignment <br> (originatorId, originatorRequestId, entityType)
+Originator ->> CanonicalLookup: Lookup canonical assignment<br>(originatorId, originatorRequestId, entityType)
 CanonicalLookup ->> ERS: Retrieve current governed assignment
-ERS -->> CanonicalLookup: Current canonical identifier + statusus
+ERS -->> CanonicalLookup: Current canonical identifier
 CanonicalLookup -->> Originator: Current canonical identifier
+

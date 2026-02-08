@@ -9,25 +9,37 @@ config:
 sequenceDiagram
 %% Maps to EA diagram: UML Sequence (conceptual overview)
 %% Simplified: ERSys collapsed to single ERS lifeline
+%% Semantics aligned with the locked extended diagram.
 
 participant Originator as "Originator"
 participant ERS as "Entity Resolution Service (ERS)"
 participant MessagingMiddleware as "Messaging Middleware"
 participant ERE as "Entity Resolution Engine (ERE)"
 
-%% Phase 1 — Bounded intake (synchronous)
+%% Phase 1 — Bounded resolve (synchronous; waits for completion)
 Originator ->> ERS: Resolve Entity Mention<br/>(request identifiers + EntityMention)
-ERS ->> ERS: Validate and register request (idempotent)
-ERS ->> ERS: Derive deterministic canonical identifier<br/>and ensure Resolution Decision exists
-ERS -->> Originator: Draft canonical identifier <br/>+ status (bounded)
+ERS ->> ERS: Validate and register request<br/>(idempotent)
 
-%% Phase 2 — Automated assessment (asynchronous)
 ERS ->> MessagingMiddleware: Publish resolution request<br/>(request identifiers + EntityMention)
 MessagingMiddleware ->> ERE: Deliver request (async)
-ERE ->> MessagingMiddleware: Publish resolution response <br/>(candidates + confidence scores)
+
+alt Resolution completes successfully within bounded execution window
+    ERE ->> ERE: Resolve EntityMention
+    ERE ->> MessagingMiddleware: Publish candidate alignments<br/>(candidate links)
+    MessagingMiddleware ->> ERS: Deliver results (async)
+    ERS ->> ERS: Evaluate proposals under governance<br/>(record Resolution Decision)
+    ERS ->> ERS: Update Canonical Entity Registry<br/>(current governed assignment)
+    ERS -->> Originator: Canonical identifier
+else Timeout or failure within bounded execution window
+    ERS -->> Originator: Error (no canonical identifier)
+end
+
+%% Phase 2 — Late / duplicate responses (after client request completed)
+ERE ->> MessagingMiddleware: Publish candidate alignments<br/>(late or duplicate)
 MessagingMiddleware ->> ERS: Deliver results (async)
-ERS ->> ERS: Integrate candidates <br> under decision-centric governance
+ERS ->> ERS: Evaluate applicability, integrate if applicable<br>(update resolution decision<br> and current assignment)
+%% note right of ERS: No callback or push to Originator; completed request outcome is final.
 
 %% Phase 3 — Convergence (read-only observation)
-Originator ->> ERS: Lookup canonical assignment<br/>(sourceId, requestId, entityType)
-ERS -->> Originator: Current canonical identifier + status
+Originator ->> ERS: Lookup canonical assignment<br/>(request identifiers)
+ERS -->> Originator: Current canonical identifier

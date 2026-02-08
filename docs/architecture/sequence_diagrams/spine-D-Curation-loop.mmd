@@ -34,7 +34,7 @@ else Concurrent modification detected
     ERS -->> LinkCurationSvc: Reject (conflict)
     LinkCurationSvc -->> Curator: 409 Conflict
 else Curation applied
-    ERS ->> DecisionStore: Upsert Resolution Decision<br/>(governance state + curator lock, confidence = +1 or −1)
+    ERS ->> DecisionStore: Upsert Resolution Decision<br/>(governance state + curator lock, confidence)
     DecisionStore -->> ERS: Decision recorded
     ERS ->> CanonicalRegistry: Project current governed assignment<br/>(triad -> current canonical identifier)
     CanonicalRegistry -->> ERS: Projection updated
