@@ -1,9 +1,15 @@
 Feature: ERE/ERS interaction upon rebuild requests
 
-  The ERE correctly processes a rebuild request, asynchronously replies with an acknowledgement
-	response to it, and it keeps processing resolution requests as usual after the a rebuild.
-
+  The ERE replies to a full rebuild request with an acknowledgement response.
 	
+	After that, past resolutions are possibly recomputed. Since this is optional and implementation-dependent,
+	we don't specifically test it here, and possibly, it has to be an implementation-level test.
+	
+	However, the ERE must remember excluded clusters across rebuilds, so this is covered in a scenario below.
+	
+  TODO: per-type rebuild requests.
+
+
 Scenario: The ERE acknowledges a rebuild request
 
   Upon a full rebuild request pushed to the ERE, this asynchronously replies with a response that
@@ -29,3 +35,18 @@ Then
 	configured system timeout. The response is like 
 	[a regular resolution response](ere-ers-common-cases.feature), possibly with a new
 	set of cluster references.
+
+
+Scenario: Rejected clusters are preserved across full rebuilds
+
+Given
+  The ERE has received a resolution request for an entity E, which excludes
+  a set `R[]` of cluster IDs
+And
+  The ERE has replied to the initial request
+And
+  A `FullBuildRequest` has been pushed since the previous resolution
+When
+  A new resolution about E is sent that contains no excluded clusters
+Then
+  The ERE response after a full rebuild doesn't contain any cluster ID in R[].

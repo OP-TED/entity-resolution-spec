@@ -27,12 +27,11 @@ Then
     - `type`: "EntityMentionResolutionResponse"
     - `entityMentionId`: an instance of `EntityMentionIdentifier` with 
       `sourceId`, `requestId`,`entityType` equal to the mention in the original request and
-      corresponding to E
-      taken from the original request
+      corresponding to E taken from the original request
     - These are common to all responses and we won't repeat them in the following
 
   
-  - `candidateClusters`: a list of `ClusterReference` such like:`
+  - `candidateClusters`: a list of `ClusterReference` objects such like:`
   - `{ "clusterId": <identifier(Ci)>, "confidenceScore": <score(E, Ci)>}`
     for i = 0..3
   - All of `score(E, Ci)` are above the confidence threshold configured in the ERE
@@ -65,9 +64,11 @@ Scenario: A resolution request with excluded cluster IDs returns different clust
   cluster references in the response.
   
   Typically, we expect that the ERE creates a new singleton cluster for the entity mention, but it may also 
-  return an alternative known cluster, eg, after a rebuild-all request or upon internal re-evaluation 
-  (although re-evaluations of this kind aren't stored, see the 
-  [idempotent resolutions](test/features/ere-ers-idempotent-resolutions.feature))
+  return an alternative known cluster, eg, after a rebuild-all request or upon internal re-evaluation.
+  
+  As per the technical contract, the ERE might or might not store these rejection lists, the bottom line
+  is that, after a request of thi type, no further response about the same entity must contain the excluded
+  clusters any more (see the [idempotent resolutions feature](ere-ers-idempotent-resolutions.feature)).
     
 When 
   The ERS pushes a resolution request for an entity into the requests channel
