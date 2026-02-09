@@ -211,3 +211,11 @@ __marimo__/
 
 # MacOS
 .DS_Store
+/.pycharm_plugin/
+/docs/architecture/
+.claude/
+.pycharm_plugin/
+.idea/
+.vscode/
+.mypy_cache/
+.pyre/

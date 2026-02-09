@@ -1,10 +1,10 @@
-# ersServiceDataSchema
+# ereServiceSchema
 
-A LinkML schema for the ERS Services.
+A LinkML schema for the ERS/ERE Service
 
-URI: https://data.europa.eu/ers/schema
+URI: https://data.europa.eu/ers/schema/ere
 
-Name: ersServiceDataSchema
+Name: ereServiceSchema
 
 
 

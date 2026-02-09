@@ -1,0 +1,48 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine B – simplified)
+%% Purpose: ERS–ERE asynchronous proposal exchange and governance-first integration.
+%% Focus: triad correlation, advisory engine outputs, and governed state update.
+%% Excludes: client REST flows, detailed store choreography, scoring internals,
+%% pruning mechanics, curation UI, and rebuild initiation.
+
+box "Entity Resolution System (ERSys)"
+    participant ERS as "Entity Resolution Service (ERS)"
+end
+
+participant MessagingMiddleware as "Messaging Middleware"
+
+box "Entity Resolution Engine (ERE)"
+    participant ERE as "Entity Resolution Engine (ERE)"
+end
+
+%% --- Request (triggered by Spine A or rebuild processing) ---
+ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType,<br/>EntityMention, rejectionConstraints?)
+MessagingMiddleware ->> ERE: Deliver Resolution Request (async)
+
+%% --- Advisory result ---
+ERE ->> MessagingMiddleware: Publish Resolution Result (async)<br/>(sourceId, requestId, entityType,<br/>candidate cluster references + engine metadata)
+MessagingMiddleware ->> ERS: Deliver Resolution Result (async)
+
+%% --- Governance-first integration ---
+alt Contract violation (missing triad / invalid schema)
+    ERS ->> ERS: Record contract violation and ignore
+else Acceptable delivery (including duplicates or late arrivals)
+    ERS ->> ERS: Correlate by triad and apply governance constraints<br/>(preserve curator locks, enforce rejections)
+    ERS ->> ERS: Persist updated Resolution Decision<br/>and update canonical projection
+end
+
+%% note right of ERS:
+%%   ERE outputs are advisory proposals only.
+%%   Messaging is at-least-once; ERS tolerates duplicates and lateness.
+%%   Integration may occur after a client resolve has completed:
+%%   - governance state is updated,
+%%   - no callbacks or notifications are triggered,
+%%   - completed client requests are not retroactively altered.

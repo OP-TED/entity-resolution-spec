@@ -23,7 +23,7 @@ __
 
 
 
-URI: [ers:type](https://data.europa.eu/ers/schema/type)
+URI: [ere:type](https://data.europa.eu/ers/schema/ere/type)
 Alias: type
 
 <!-- no inheritance hierarchy -->
@@ -36,14 +36,14 @@ Alias: type
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
-| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
-| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
-| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |  no  |
 | [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
-| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
+| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
 | [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
+| [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
+| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |  no  |
+| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
 
 
 
@@ -69,7 +69,7 @@ Alias: type
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -78,8 +78,8 @@ Alias: type
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:type |
-| native | ers:type |
+| self | ere:type |
+| native | ere:type |
 
 
 
@@ -94,7 +94,7 @@ description: "The type of the request or result.\n\nAs per LinkML specification,
   \ an instance (such as a JSON object) belongs to.\n\nIn other words, a particular\
   \ request will have `type` set with values like \n`EntityMentionResolutionRequest`\
   \ or `EntityResolutionResult`\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 designates_type: true
 alias: type

@@ -13,7 +13,7 @@ __
 
 
 
-URI: [ers:sourceId](https://data.europa.eu/ers/schema/sourceId)
+URI: [ere:sourceId](https://data.europa.eu/ers/schema/ere/sourceId)
 Alias: sourceId
 
 <!-- no inheritance hierarchy -->
@@ -52,7 +52,7 @@ Alias: sourceId
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -61,8 +61,8 @@ Alias: sourceId
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:sourceId |
-| native | ers:sourceId |
+| self | ere:sourceId |
+| native | ere:sourceId |
 
 
 
@@ -74,7 +74,7 @@ Alias: sourceId
 name: sourceId
 description: "The ID or URI of the ERS client that originated the request. This identifies\
   \ an application or a \nperson accessing the ERS system.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: sourceId
 owner: EntityMentionIdentifier

@@ -19,7 +19,7 @@ __
 
 
 
-URI: [ers:entityType](https://data.europa.eu/ers/schema/entityType)
+URI: [ere:entityType](https://data.europa.eu/ers/schema/ere/entityType)
 Alias: entityType
 
 <!-- no inheritance hierarchy -->
@@ -58,7 +58,7 @@ Alias: entityType
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -67,8 +67,8 @@ Alias: entityType
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:entityType |
-| native | ers:entityType |
+| self | ere:entityType |
+| native | ere:entityType |
 
 
 
@@ -83,7 +83,7 @@ description: "A string representing the entity type (based on CET). This is typi
   \ as said above, \nit's needed to identify the entity, even when its content is\
   \ not present. For the same\nreason, it's used both for `EREResolutionRequest` and\
   \ `EREResolutionResponse` messages., \n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: entityType
 owner: EntityMentionIdentifier

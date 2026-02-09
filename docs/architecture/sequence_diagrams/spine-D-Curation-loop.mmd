@@ -1,0 +1,46 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine D)
+%% Purpose: curator governance loop over Resolution Decisions and canonical projection.
+%% Focus: decision-centric curation, curator authority/lock semantics, projection update.
+%% Excludes: ERE/messaging, candidate computation, rebuild, UI browsing flows, and internal read choreography.
+
+participant Curator as "Curator"
+
+box "Entity Resolution System (ERSys)"
+    participant LinkCurationSvc as "Link Curation Service"
+    participant ERS as "Entity Resolution Service (ERS)"
+    participant DecisionStore as "Resolution Decision Store"
+    participant CanonicalRegistry as "Canonical Entity Registry"
+end
+
+Curator ->> LinkCurationSvc: Submit curation action<br/>(sourceId, requestId, entityType,<br/>action: accept | reject | reassign,<br/>targetCanonicalIdentifier?)
+LinkCurationSvc ->> ERS: Apply curation action under governance rules
+
+alt Invalid request (missing triad, unsupported action, invalid target)
+    ERS -->> LinkCurationSvc: Reject (validation error)
+    LinkCurationSvc -->> Curator: 400 Bad Request
+else Unknown decision (no current Resolution Decision)
+    ERS -->> LinkCurationSvc: Reject (unknown decision)
+    LinkCurationSvc -->> Curator: 404 Not Found
+else Concurrent modification detected
+    ERS -->> LinkCurationSvc: Reject (conflict)
+    LinkCurationSvc -->> Curator: 409 Conflict
+else Curation applied
+    ERS ->> DecisionStore: Upsert Resolution Decision<br/>(governance state + curator lock, confidence)
+    DecisionStore -->> ERS: Decision recorded
+    ERS ->> CanonicalRegistry: Project current governed assignment<br/>(triad -> current canonical identifier)
+    CanonicalRegistry -->> ERS: Projection updated
+    ERS -->> LinkCurationSvc: 200 OK (curation applied)
+    LinkCurationSvc -->> Curator: 200 OK (curation applied)
+end
+
+%% note right of ERS: Curator actions are authoritative locks and override automation. <br>  Canonical Registry is a projection of the current governed Resolution Decision. <br>  Bulk curation uses the same per-decision governance transition, repeated per triad. <br>
+

@@ -1,0 +1,60 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  mirrorActors: false
+  sequence:
+    bottomMarginAdj: 0.1
+---
+sequenceDiagram
+%% Maps to EA diagram: UML Sequence (Spine B)
+%% Purpose: ERS–ERE asynchronous resolution exchange and governance-first integration.
+%% Focus: triad correlation, advisory engine outputs, idempotent absorption, decision update + projection update.
+%% Excludes: client REST intake/lookup, UI flows, rebuild initiation, and detailed persistence mechanics.
+
+box "Entity Resolution System (ERSys)"
+    participant ERS as "Entity Resolution Service (ERS)"
+    participant DecisionStore as "Resolution Decision Store"
+    participant CanonicalRegistry as "Canonical Entity Registry"
+end
+
+participant MessagingMiddleware as "Messaging Middleware"
+
+box "Entity Resolution Engine (ERE)"
+    participant ERE as "Entity Resolution Engine (ERE)"
+end
+
+%% --- Publish request (triggered by Spine A or by rebuild processing) ---
+ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType,<br/>EntityMention, excludedClusterIds)
+MessagingMiddleware ->> ERE: Deliver Resolution Request (async)
+
+%% --- Engine computes proposals (non-authoritative) ---
+ERE ->> ERE: Compute candidate cluster references<br/>+ confidence & similarity (optional)
+
+%% --- Publish result ---
+ERE ->> MessagingMiddleware: Publish Resolution Result (async)<br/>(sourceId, requestId, entityType,<br/>candidateClusterIds + confidence scores)
+MessagingMiddleware ->> ERS: Deliver Resolution Result (async)
+
+%% note right of ERS:
+%%   ERE outputs are proposals only.
+%%   Similarity metadata is non-normative.
+%%   Messaging is at-least-once: ERS tolerates duplicates and lateness.
+%%   Integration may occur after a client resolve has completed; such integration:
+%%   (1) updates governance state, (2) triggers no callbacks/notifications,
+%%   (3) does not retroactively alter the completed client request outcome.
+
+%% --- Integrate under decision-centric governance ---
+ERS ->> ERS: Correlate by triad and validate contract envelope
+ERS ->> ERS: Prune / normalise proposals (top N policy)
+ERS ->> DecisionStore: Upsert Resolution Decision<br/>(governance state & decision context)
+DecisionStore -->> ERS: Decision recorded
+ERS ->> CanonicalRegistry: Project the Resolution Decision as current governed assignment<br/>(triad -> current canonical identifier)
+CanonicalRegistry -->> ERS: Projection updated
+
+alt Duplicate delivery (same triad, equivalent result)
+    ERS ->> ERS: Idempotently absorb (no additional state change)
+else Late delivery (triad superseded by newer governed state)
+    ERS ->> ERS: Absorb only if applicable under locks and invariants
+else Contract violation (invalid schema or missing triad)
+    ERS ->> ERS: Record as contract violation and ignore
+end

@@ -19,7 +19,7 @@ __
 
 
 
-URI: [ers:requestId](https://data.europa.eu/ers/schema/requestId)
+URI: [ere:requestId](https://data.europa.eu/ers/schema/ere/requestId)
 Alias: requestId
 
 <!-- no inheritance hierarchy -->
@@ -58,7 +58,7 @@ Alias: requestId
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -67,8 +67,8 @@ Alias: requestId
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:requestId |
-| native | ers:requestId |
+| self | ere:requestId |
+| native | ere:requestId |
 
 
 
@@ -83,7 +83,7 @@ description: "A string representing the unique ID of the request made to the ERS
   \ type, ie, within `sourceId` and `entityType`. \n\nMoreover, this is **not** the\
   \ same as `ereRequestId`, which instead, is internal to the ERE and is \nused to\
   \ match responses to requests.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
 alias: requestId
 owner: EntityMentionIdentifier

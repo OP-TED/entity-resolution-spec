@@ -35,7 +35,7 @@ __
 
 
 
-URI: [ers:FullRebuildRequest](https://data.europa.eu/ers/schema/FullRebuildRequest)
+URI: [ere:FullRebuildRequest](https://data.europa.eu/ers/schema/ere/FullRebuildRequest)
 
 
 
@@ -95,7 +95,7 @@ URI: [ers:FullRebuildRequest](https://data.europa.eu/ers/schema/FullRebuildReque
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -104,8 +104,8 @@ URI: [ers:FullRebuildRequest](https://data.europa.eu/ers/schema/FullRebuildReque
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:FullRebuildRequest |
-| native | ers:FullRebuildRequest |
+| self | ere:FullRebuildRequest |
+| native | ere:FullRebuildRequest |
 
 
 
@@ -132,7 +132,7 @@ description: "A request to reset all the resolutions computed so far and possibl
   \ and apply them again when the \n  same entity mention is re-sent after the full\
   \ rebuild. TODO: see notes about these properties,\n  on the possible need of withdrawing\
   \ exclusions.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: ERERequest
 
 ```
@@ -154,7 +154,7 @@ description: "A request to reset all the resolutions computed so far and possibl
   \ and apply them again when the \n  same entity mention is re-sent after the full\
   \ rebuild. TODO: see notes about these properties,\n  on the possible need of withdrawing\
   \ exclusions.\n"
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 is_a: ERERequest
 attributes:
   type:
@@ -164,7 +164,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
@@ -181,7 +181,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
     owner: FullRebuildRequest
@@ -194,7 +194,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
     owner: FullRebuildRequest

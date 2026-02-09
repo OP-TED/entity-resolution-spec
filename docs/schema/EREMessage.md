@@ -15,7 +15,7 @@ __
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ers:EREMessage](https://data.europa.eu/ers/schema/EREMessage)
+URI: [ere:EREMessage](https://data.europa.eu/ers/schema/ere/EREMessage)
 
 
 
@@ -77,7 +77,7 @@ URI: [ers:EREMessage](https://data.europa.eu/ers/schema/EREMessage)
 ### Schema Source
 
 
-* from schema: https://data.europa.eu/ers/schema
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -86,8 +86,8 @@ URI: [ers:EREMessage](https://data.europa.eu/ers/schema/EREMessage)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ers:EREMessage |
-| native | ers:EREMessage |
+| self | ere:EREMessage |
+| native | ere:EREMessage |
 
 
 
@@ -109,7 +109,7 @@ description: 'Root abstraction to represent attributes common to both requests a
   This is modelled as a mixin in LinkML (so that it can''t be instantiated directly).
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 abstract: true
 attributes:
   type:
@@ -119,7 +119,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     domain_of:
@@ -133,7 +133,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EREMessage
@@ -143,7 +143,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     domain_of:
     - EREMessage
@@ -163,7 +163,7 @@ description: 'Root abstraction to represent attributes common to both requests a
   This is modelled as a mixin in LinkML (so that it can''t be instantiated directly).
 
   '
-from_schema: https://data.europa.eu/ers/schema
+from_schema: https://data.europa.eu/ers/schema/ere
 abstract: true
 attributes:
   type:
@@ -173,7 +173,7 @@ attributes:
       \ concrete subclass that an instance (such as a JSON object) belongs to.\n\n\
       In other words, a particular request will have `type` set with values like \n\
       `EntityMentionResolutionRequest` or `EntityResolutionResult`\n"
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     designates_type: true
     alias: type
@@ -190,7 +190,7 @@ attributes:
       This **is not** the same as `requestId` + `sourceId`.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: ereRequestId
     owner: EREMessage
@@ -203,7 +203,7 @@ attributes:
     description: 'The time when the message was created. Should be in ISO-8601 format.
 
       '
-    from_schema: https://data.europa.eu/ers/schema
+    from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
     alias: timestamp
     owner: EREMessage
