@@ -66,6 +66,20 @@ install: ## Install dependencies using Poetry
 	@poetry sync
 	$(call log_done,Dependencies installed.)
 
+# ─── Quality ─────────────────────────────────────────────────────────────────────
+
+.PHONY: lint
+lint: ## Run ruff linter on source code
+	$(call log_progress,Running ruff checks...)
+	@poetry run ruff check src/
+	$(call log_done,Ruff checks completed.)
+
+.PHONY: lint-schema
+lint-schema: ## Run LinkML linter on YAML schemas
+	$(call log_progress,Linting LinkML schemas...)
+	@poetry run linkml lint --ignore-warnings $(SCHEMAS_DIR)/
+	$(call log_done,LinkML schema lint completed.)
+
 # ─── Aggregate targets ──────────────────────────────────────────────────────────
 
 .PHONY: all
