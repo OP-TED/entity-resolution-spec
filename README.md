@@ -1,4 +1,5 @@
 # Entity Resolution Specifications
+
 Formal software contract, shared data models, sample messages, and compliance tests required for integrating new Entity Resolution Engines (EREs) into the system.
 
 > Note: Active development continues in the OP-TED repository: https://github.com/OP-TED/entity-resolution-spec
@@ -20,10 +21,13 @@ make generate_docs
 
 ## Make targets overview
 
-- install: user dependencies
-- install-dev: dev dependencies (tests, lint, LinkML codegen)
-- generate_models: regenerate Pydantic models from LinkML
-- generate_docs: regenerate documentation
+- `install`: install dependencies via Poetry
+- `all`: generate all models, schemas, and documentation
+- `generate-models`: regenerate Pydantic models and JSON Schema from LinkML
+- `generate-doc`: regenerate documentation
+- `lint`: run ruff linter on source code
+- `lint-schema`: run LinkML linter on YAML schemas
+- `clean`: remove all generated artifacts
 
 ## Installation
 
