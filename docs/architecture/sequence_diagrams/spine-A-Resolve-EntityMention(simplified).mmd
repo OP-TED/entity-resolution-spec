@@ -7,10 +7,10 @@ config:
     bottomMarginAdj: 0.1
 ---
 sequenceDiagram
-%% Maps to EA diagram: UML Sequence (Spine A – simplified)
-%% Purpose: bounded synchronous resolve with idempotent request handling.
-%% Shows: async publication to Messaging Middleware as part of the bounded resolve.
-%% Excludes: detailed store choreography, ERE logic, candidate integration details, curation, and rebuild.
+%% Maps to EA diagram: UML Sequence (Spine A)
+%% Purpose: bounded resolve with idempotent request handling (UCB11)
+%% Shows: async publication to Messaging Middleware and bounded response semantics
+%% Excludes: store choreography details, engine internals, curation, rebuild
 
 participant Originator as "Originator"
 
@@ -20,27 +20,33 @@ box "Entity Resolution System (ERSys)"
 end
 
 participant MessagingMiddleware as "Messaging Middleware"
-%% participant ERE as "Entity Resolution Engine (ERE)"
 
-Originator ->> ERIntake: Resolve Entity Mention<br/>(sourceId, requestId, entityType, EntityMention)
-ERIntake ->> ERS: Validate request<br/>and enforce idempotency
+Originator ->> ERIntake: Resolve Entity Mention<br/>(sourceId, requestId, entityType,<br> EntityMention, context)
+ERIntake ->> ERS: Validate and handle idempotency<br/>(register request if new)
 
 alt Request rejected
-    ERS -->> ERIntake: Reject (validation, idempotency conflict,<br/> dependency unavailable)
-    ERIntake -->> Originator: 4xx / 503
+    ERS -->> ERIntake: Reject<br/>(validation, idempotency conflict, dependency unavailable)
+    ERIntake -->> Originator: 4xx or 503
+else Request is an idempotent repeat
+    ERS -->> ERIntake: Previously returned identifier
+    ERIntake -->> Originator: 200 OK<br/>(identifier)
 else Request accepted
-    ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType, EntityMention)
-    %% MessagingMiddleware ->> ERE: Deliver request (async)
+    ERS ->> MessagingMiddleware: Publish resolution request (async)<br/>(sourceId, requestId, entityType, EntityMention)
 
-    alt Resolution completes successfully within bounded execution window
-        MessagingMiddleware -->> ERS: Deliver results (async)
-        ERS ->> ERS: Record Resolution Decision<br/>and update canonical projection
-        ERS -->> ERIntake: Canonical identifier
-        ERIntake -->> Originator: 200 OK<br/>Canonical identifier
-    else Timeout or failure within bounded execution window
-        ERS -->> ERIntake: Error (no canonical identifier)
-        ERIntake -->> Originator: 5xx/timeout<br/>Error (no canonical identifier)
+    alt ERE result received within ERS to ERE execution window
+        MessagingMiddleware -->> ERS: Deliver resolution result (async)<br/>(canonical clusterId + top alternative clusterIds)
+        ERS ->> ERS: Persist resolution decision and update lookup projection
+        ERS -->> ERIntake: Canonical clusterId
+        ERIntake -->> Originator: 200 OK<br/>Canonical clusterId
+    else ERE result not received within ERS to ERE execution window
+        ERS ->> ERS: Create provisional singleton and persist decision
+        ERS ->> MessagingMiddleware: Publish placement instruction (async)<br/>(assign mention to singleton clusterId)
+        ERS -->> ERIntake: Provisional clusterId
+        ERIntake -->> Originator: 200 OK<br/>Provisional clusterId
+    else Client timeout budget exceeded
+        ERS -->> ERIntake: Error
+        ERIntake -->> Originator: 5xx or timeout
     end
 end
 
-note right of ERS: Publication initiates engine processing.<br>Late/duplicate results may be integrated later,<br> but do not retroactively change the completed client response.
+%% note right of ERS: Late or duplicate engine results may update the stored decision and lookup projection\nCompleted client responses are not retroactively changed
