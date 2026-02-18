@@ -31,8 +31,6 @@ URI: [ere:EREResponse](https://data.europa.eu/ers/schema/ere/EREResponse)
         click EntityMentionResolutionResponse href "../EntityMentionResolutionResponse/"
       EREResponse <|-- EREErrorResponse
         click EREErrorResponse href "../EREErrorResponse/"
-      EREResponse <|-- FullRebuildResponse
-        click FullRebuildResponse href "../FullRebuildResponse/"
       
 
       EREResponse : ere_request_id
@@ -53,7 +51,6 @@ URI: [ere:EREResponse](https://data.europa.eu/ers/schema/ere/EREResponse)
     * **EREResponse**
         * [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md)
         * [EREErrorResponse](EREErrorResponse.md)
-        * [FullRebuildResponse](FullRebuildResponse.md)
 
 
 
@@ -154,6 +151,15 @@ attributes:
       of the request a response is about.
 
       This **is not** the same as `request_id` + `source_id`.
+
+
+      Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse`
+      message
+
+      can originate from within the ERE, without any previous request counterpart,
+      as a notification of
+
+      resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 
       '
     from_schema: https://data.europa.eu/ers/schema/ere

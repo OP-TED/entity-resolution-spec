@@ -111,6 +111,8 @@ $(MODEL_DOCS_README): $(ALL_SCHEMA_SOURCES)
 	@poetry run linkml generate doc $(ERE_SCHEMA_PATH) \
 		-d $(MODEL_DOCS_DIR) --index-name README
 # TODO: Prefer PNG once upstream is fixed (https://github.com/linkml/linkml/issues/3009)
+# TODO: --no-mergeimports doesn't work (https://github.com/linkml/linkml/issues/1296), so, for
+#   the moment, we include core imported classes in the diagram.
 	@poetry run linkml generate plantuml \
 		-d $(MODEL_DOCS_DIR) --format svg $(ERE_SCHEMA_PATH)
 	$(call log_done,Documentation generated -> $(MODEL_DOCS_DIR))

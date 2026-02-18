@@ -35,6 +35,10 @@ classes:
         description: |
           A string representing the unique ID of an ERE request, or the ID of the request a response is about.
           This **is not** the same as `request_id` + `source_id`.
+
+          Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+          can originate from within the ERE, without any previous request counterpart, as a notification of
+          resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
         required: true
       timestamp:
         range: datetime
