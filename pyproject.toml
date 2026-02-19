@@ -3,7 +3,7 @@ name = "ers-core"
 version = "0.0.1"
 description = """
   The core components for the Entity Resolution System (ERS) components.
-  
+
   The ERS is a pluggable entity resolution system for data transformation pipelines.
 """
 
@@ -29,7 +29,7 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-# Needed when the root doesn't contain $project_name
+# Needed when the root doesn't contain $project_name
 packages = [
   { include = "*", from = "src" }
 ]
