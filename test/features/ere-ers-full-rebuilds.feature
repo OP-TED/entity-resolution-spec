@@ -1,5 +1,7 @@
 Feature: ERE/ERS interaction upon rebuild requests
 
+	TODO: probably to remove, since this request has been turned into an internal operation.
+
   The ERE replies to a full rebuild request with an acknowledgement response.
 	
 	After that, past resolutions are possibly recomputed. Since this is optional and implementation-dependent,
