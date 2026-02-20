@@ -59,6 +59,7 @@ Name: ereServiceSchema
 | [parsed_representation](parsed_representation.md) | JSON representation of the parsed entity data |
 | [proposed_cluster_ids](proposed_cluster_ids.md) | When this is present, the ERE may use this information to try to cluster the ... |
 | [request_id](request_id.md) | A string representing the unique ID of the request made to the ERS system |
+| [similarity_score](similarity_score.md) | A 0-1 score representing the pairwise comparison between a mention and a clus... |
 | [source_id](source_id.md) | The ID or URI of the ERS client that originated the request |
 | [status](status.md) | Current status in the curation workflow |
 | [timestamp](timestamp.md) | The time when the message was created |

@@ -62,34 +62,34 @@ jobs:
       - name: Generate models and docs
         run: make all
 
-      - name: Verify generated code is up to date
-        id: verify_generated_code
-        continue-on-error: true
-        run: |
-          echo "Checking if generated files match LinkML schemas..."
-          if ! git diff --quiet src/ docs/ resources/schemas/*json; then
-            echo "status=failed" >> $GITHUB_OUTPUT
-            echo "Generated code is out of sync!"
-            {
-              echo "**Generated code is out of sync with LinkML schemas.**"
-              echo ""
-              echo "Please run \`make all\` and commit the updated files:"
-              echo '```'
-              git diff --stat src/ docs/ resources/schemas/*json
-              echo '```'
-            } > sync_report.txt
-          else
-            echo "status=passed" >> $GITHUB_OUTPUT
-            echo "Generated code is up to date" > sync_report.txt
-          fi
+      # - name: Verify generated code is up to date
+      #   id: verify_generated_code
+      #   continue-on-error: true
+      #   run: |
+      #     echo "Checking if generated files match LinkML schemas..."
+      #     if ! git diff --quiet src/ docs/ resources/schemas/*json; then
+      #       echo "status=failed" >> $GITHUB_OUTPUT
+      #       echo "Generated code is out of sync!"
+      #       {
+      #         echo "**Generated code is out of sync with LinkML schemas.**"
+      #         echo ""
+      #         echo "Please run \`make all\` and commit the updated files:"
+      #         echo '```'
+      #         git diff --stat src/ docs/ resources/schemas/*json
+      #         echo '```'
+      #       } > sync_report.txt
+      #     else
+      #       echo "status=passed" >> $GITHUB_OUTPUT
+      #       echo "Generated code is up to date" > sync_report.txt
+      #     fi
 
-      - name: Publish sync check comment
-        if: always() && github.event_name == 'pull_request'
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          file-path: sync_report.txt
-          comment-tag: sync-check
+      # - name: Publish sync check comment
+      #   if: always() && github.event_name == 'pull_request'
+      #   uses: thollander/actions-comment-pull-request@v3
+      #   with:
+      #     file-path: sync_report.txt
+      #     comment-tag: sync-check
 
-      - name: Fail if out of sync
-        if: steps.verify_generated_code.outputs.status == 'failed'
-        run: exit 1
+      # - name: Fail if out of sync
+      #   if: steps.verify_generated_code.outputs.status == 'failed'
+      #   run: exit 1

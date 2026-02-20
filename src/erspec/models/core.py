@@ -134,7 +134,7 @@ reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` me
 
 
 class ClusterReference(PydanticModel):
-    """A reference to a cluster to which an entity is deemed to belong, with an associated confidence score.
+    """A reference to a cluster to which an entity is deemed to belong, with an associated confidence and similarity scores.
 
 A cluster is a set of entity mentions that have been determined to refer to the same real-world entity.
 Each cluster has a unique clusterId.
@@ -146,6 +146,9 @@ subject entity mention that an `EntityMentionResolutionResponse` refers to.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
     confidence_score: float = Field(default=..., description="""A 0-1 value of how confident the ERE is about the equivalence between the subject entity mention
 and the target canonical entity.
+""", ge=0.0, le=1.0, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
+    similarity_score: float = Field(default=..., description="""A 0-1 score representing the pairwise comparison between a mention and a cluster (likely
+based on a representative representation).
 """, ge=0.0, le=1.0, json_schema_extra = { "linkml_meta": {'domain_of': ['ClusterReference']} })
 
 
