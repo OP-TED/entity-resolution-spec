@@ -132,6 +132,15 @@ attributes:
 
       This **is not** the same as `request_id` + `source_id`.
 
+
+      Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse`
+      message
+
+      can originate from within the ERE, without any previous request counterpart,
+      as a notification of
+
+      resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
+
       '
     from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
@@ -188,6 +197,15 @@ attributes:
       of the request a response is about.
 
       This **is not** the same as `request_id` + `source_id`.
+
+
+      Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse`
+      message
+
+      can originate from within the ERE, without any previous request counterpart,
+      as a notification of
+
+      resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 
       '
     from_schema: https://data.europa.eu/ers/schema/ere

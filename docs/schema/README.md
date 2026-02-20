@@ -21,11 +21,9 @@ Name: ereServiceSchema
 | [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |
 
 
 
@@ -53,12 +51,13 @@ Name: ereServiceSchema
 | [error_title](error_title.md) | A human readable brief message about the error that occurred |
 | [error_trace](error_trace.md) | A string representing a (stack) trace of the error that occurred |
 | [error_type](error_type.md) | A string representing the error type, eg, the FQN of the raised exception |
-| [excluded_cluster_ids](excluded_cluster_ids.md) | When this is present, the resolution must not bin the entity mention into any... |
+| [excluded_cluster_ids](excluded_cluster_ids.md) | When this is present, the ERE may use this information to avoid clustering th... |
 | [id](id.md) | Unique identifier for the decision |
 | [identifier](identifier.md) | Unique identifier for the canonical entity |
 | [instance_id](instance_id.md) | Identifier of the modified entity |
 | [instance_type](instance_type.md) | Type of entity being modified (e |
 | [parsed_representation](parsed_representation.md) | JSON representation of the parsed entity data |
+| [proposed_cluster_ids](proposed_cluster_ids.md) | When this is present, the ERE may use this information to try to cluster the ... |
 | [request_id](request_id.md) | A string representing the unique ID of the request made to the ERS system |
 | [source_id](source_id.md) | The ID or URI of the ERS client that originated the request |
 | [status](status.md) | Current status in the curation workflow |
