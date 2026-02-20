@@ -37,11 +37,11 @@ Alias: type
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
-| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
 | [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
-| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
 | [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
+| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
+| [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
 
 
 

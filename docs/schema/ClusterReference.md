@@ -3,7 +3,7 @@
 # Class: ClusterReference 
 
 
-_A reference to a cluster to which an entity is deemed to belong, with an associated confidence score._
+_A reference to a cluster to which an entity is deemed to belong, with an associated confidence and similarity scores._
 
 __
 
@@ -37,6 +37,8 @@ URI: [ere:ClusterReference](https://data.europa.eu/ers/schema/ere/ClusterReferen
         
       ClusterReference : confidence_score
         
+      ClusterReference : similarity_score
+        
       
 ```
 
@@ -52,6 +54,7 @@ URI: [ere:ClusterReference](https://data.europa.eu/ers/schema/ere/ClusterReferen
 | ---  | --- | --- | --- |
 | [cluster_id](cluster_id.md) | 1 <br/> [String](String.md) | The identifier of the cluster/canonical entity that is considered equivalent ... | direct |
 | [confidence_score](confidence_score.md) | 1 <br/> [Float](Float.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... | direct |
+| [similarity_score](similarity_score.md) | 1 <br/> [Float](Float.md) | A 0-1 score representing the pairwise comparison between a mention and a clus... | direct |
 
 
 
@@ -108,10 +111,10 @@ URI: [ere:ClusterReference](https://data.europa.eu/ers/schema/ere/ClusterReferen
 ```yaml
 name: ClusterReference
 description: "A reference to a cluster to which an entity is deemed to belong, with\
-  \ an associated confidence score.\n\nA cluster is a set of entity mentions that\
-  \ have been determined to refer to the same real-world entity.\nEach cluster has\
-  \ a unique clusterId.\n\nA cluster reference is used to report the association between\
-  \ an entity mention and a cluster \nof equivalence.\n"
+  \ an associated confidence and similarity scores.\n\nA cluster is a set of entity\
+  \ mentions that have been determined to refer to the same real-world entity.\nEach\
+  \ cluster has a unique clusterId.\n\nA cluster reference is used to report the association\
+  \ between an entity mention and a cluster \nof equivalence.\n"
 from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   cluster_id:
@@ -143,6 +146,22 @@ attributes:
     required: true
     minimum_value: 0.0
     maximum_value: 1.0
+  similarity_score:
+    name: similarity_score
+    description: 'A 0-1 score representing the pairwise comparison between a mention
+      and a cluster (likely
+
+      based on a representative representation).
+
+      '
+    from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
+    domain_of:
+    - ClusterReference
+    range: float
+    required: true
+    minimum_value: 0.0
+    maximum_value: 1.0
 
 ```
 </details>
@@ -153,10 +172,10 @@ attributes:
 ```yaml
 name: ClusterReference
 description: "A reference to a cluster to which an entity is deemed to belong, with\
-  \ an associated confidence score.\n\nA cluster is a set of entity mentions that\
-  \ have been determined to refer to the same real-world entity.\nEach cluster has\
-  \ a unique clusterId.\n\nA cluster reference is used to report the association between\
-  \ an entity mention and a cluster \nof equivalence.\n"
+  \ an associated confidence and similarity scores.\n\nA cluster is a set of entity\
+  \ mentions that have been determined to refer to the same real-world entity.\nEach\
+  \ cluster has a unique clusterId.\n\nA cluster reference is used to report the association\
+  \ between an entity mention and a cluster \nof equivalence.\n"
 from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   cluster_id:
@@ -186,6 +205,24 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     alias: confidence_score
+    owner: ClusterReference
+    domain_of:
+    - ClusterReference
+    range: float
+    required: true
+    minimum_value: 0.0
+    maximum_value: 1.0
+  similarity_score:
+    name: similarity_score
+    description: 'A 0-1 score representing the pairwise comparison between a mention
+      and a cluster (likely
+
+      based on a representative representation).
+
+      '
+    from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
+    alias: similarity_score
     owner: ClusterReference
     domain_of:
     - ClusterReference
