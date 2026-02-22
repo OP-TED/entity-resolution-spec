@@ -9,6 +9,14 @@ _This **is not** the same as `request_id` + `source_id`._
 
 __
 
+_Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message_
+
+_can originate from within the ERE, without any previous request counterpart, as a notification of_
+
+_resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`._
+
+__
+
 
 
 
@@ -26,13 +34,11 @@ Alias: ere_request_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [FullRebuildResponse](FullRebuildResponse.md) | A response to a `FullRebuildRequest`, confirming that the rebuild process has... |  no  |
-| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
-| [FullRebuildRequest](FullRebuildRequest.md) | A request to reset all the resolutions computed so far and possibly rebuild t... |  no  |
+| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
 | [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md) | An entity resolution request sent to the ERE, containing the entity to be res... |  no  |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
-| [EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |  no  |
 | [ERERequest](ERERequest.md) | Root class to represent all the requests sent to the ERE |  no  |
+| [EREMessage](EREMessage.md) | Root abstraction to represent attributes common to both requests and results |  no  |
 | [EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |  no  |
 
 
@@ -83,6 +89,15 @@ description: 'A string representing the unique ID of an ERE request, or the ID o
   the request a response is about.
 
   This **is not** the same as `request_id` + `source_id`.
+
+
+  Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse`
+  message
+
+  can originate from within the ERE, without any previous request counterpart, as
+  a notification of
+
+  resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 
   '
 from_schema: https://data.europa.eu/ers/schema/ere

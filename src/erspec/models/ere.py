@@ -108,6 +108,10 @@ In other words, a particular request will have `type` set with values like
 """, json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
     ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
 This **is not** the same as `request_id` + `source_id`.
+
+Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+can originate from within the ERE, without any previous request counterpart, as a notification of
+resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
     timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
@@ -125,6 +129,10 @@ In other words, a particular request will have `type` set with values like
 """, json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
     ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
 This **is not** the same as `request_id` + `source_id`.
+
+Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+can originate from within the ERE, without any previous request counterpart, as a notification of
+resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
     timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
@@ -142,6 +150,10 @@ In other words, a particular request will have `type` set with values like
 """, json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
     ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
 This **is not** the same as `request_id` + `source_id`.
+
+Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+can originate from within the ERE, without any previous request counterpart, as a notification of
+resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
     timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
@@ -152,15 +164,33 @@ class EntityMentionResolutionRequest(ERERequest):
     entity_mention: EntityMention = Field(default=..., description="""The data about the entity to be resolved. Note that, at least for the moment, we don't support
 batch requests, so this property is single-valued.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
-    excluded_cluster_ids: Optional[list[str]] = Field(default=[], description="""When this is present, the resolution must not bin the entity mention into any of the
-listed clusters. This can be used to reject a previous resolution proposed by the ERE.
+    proposed_cluster_ids: Optional[list[str]] = Field(default=[], description="""When this is present, the ERE may use this information to try to cluster the entity in one of 
+the listed clusters.
 
-The exact reaction to this is implementation dependent. In the simplest case, the ERE
-might just create a singleton cluster with this entity as member. In a more advanced 
+In particular, when an initial request about an entity isn't answered within a timeout, 
+a subsequent new request can be sent about the same entity and with the canonical ID of it
+as a single proposed cluster ID. This suggests the ERE that it can create a new singleton cluster
+with the entity as its initial only member and its canonical ID as the cluster ID. The ERE
+can evolve such a cluster later, when further similar entities are sent in, or when it 
+has had more time to associate the initial entity to others. 
+
+Whatever, the case, the ERE **has no obligation** to fulfil the proposal, how it reacts to 
+this list is implementation dependent, and the ERE remains the ultimate authority to provide 
+the final resolution decision.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
+    excluded_cluster_ids: Optional[list[str]] = Field(default=[], description="""When this is present, the ERE may use this information to avoid clustering the entity in 
+the listed clusters.
+
+This can be used to notify the ERE that a curator has rejected a previous resolution 
+proposed by the ERE.
+
+As for `proposed_cluster_ids`, the ERE **has no obligation** to fulfil the exclusions, and 
+it remains the ultimate authority to provide the final resolution decision.
+
+Similarly, the exact reaction to this is implementation dependent. In the simplest case, the ERE
+might just create a singleton cluster with the current entity as member. In a more advanced 
 case, it might recompute the similarity with more advanced algorithms or use updated
 data.
-
-TODO: Can this be revised? What does it happen if an exclusion was made by mistake?
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionRequest']} })
     type: Literal["EntityMentionResolutionRequest"] = Field(default="EntityMentionResolutionRequest", description="""The type of the request or result.
 
@@ -172,6 +202,10 @@ In other words, a particular request will have `type` set with values like
 """, json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
     ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
 This **is not** the same as `request_id` + `source_id`.
+
+Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+can originate from within the ERE, without any previous request counterpart, as a notification of
+resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
     timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
@@ -204,6 +238,10 @@ In other words, a particular request will have `type` set with values like
 """, json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
     ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
 This **is not** the same as `request_id` + `source_id`.
+
+Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+can originate from within the ERE, without any previous request counterpart, as a notification of
+resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
     timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
@@ -241,55 +279,10 @@ In other words, a particular request will have `type` set with values like
 """, json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
     ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
 This **is not** the same as `request_id` + `source_id`.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
-    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
 
-
-class FullRebuildRequest(ERERequest):
-    """A request to reset all the resolutions computed so far and possibly rebuild them as 
-requests about old entities arrive again (and build new entities from scratch as usually).
-
-It is expected that the ERE client re-sends all the entities to be resolved again,
-using `EntityMentionResolutionRequest` messages exactly as the first time the resolutions 
-were built. This implies the a client like the ERS logs/persists the entities it receives
-to resolve and also saves manual overriding of ERE results.
-
-Moreover:
-* The ERE must keep track of past `EntityMention` marked as canonical.
-* The ERE must retain requests with `excluded_cluster_ids` and apply them again when the 
-  same entity mention is re-sent after the full rebuild. TODO: see notes about these properties,
-  on the possible need of withdrawing exclusions."""
-    type: Literal["FullRebuildRequest"] = Field(default="FullRebuildRequest", description="""The type of the request or result.
-
-As per LinkML specification, `designates_type` is used here in order to allow for this
-slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
-
-In other words, a particular request will have `type` set with values like 
-`EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
-    ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
-This **is not** the same as `request_id` + `source_id`.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
-    timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
-
-
-class FullRebuildResponse(EREResponse):
-    """A response to a `FullRebuildRequest`, confirming that the rebuild process has started.
-
-As for all the requests, this carries the `ere_request_id`, which matches the full rebuild 
-request being acknowledged."""
-    type: Literal["FullRebuildResponse"] = Field(default="FullRebuildResponse", description="""The type of the request or result.
-
-As per LinkML specification, `designates_type` is used here in order to allow for this
-slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
-
-In other words, a particular request will have `type` set with values like 
-`EntityMentionResolutionRequest` or `EntityResolutionResult`
-""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['EREMessage']} })
-    ere_request_id: str = Field(default=..., description="""A string representing the unique ID of an ERE request, or the ID of the request a response is about.
-This **is not** the same as `request_id` + `source_id`.
+Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+can originate from within the ERE, without any previous request counterpart, as a notification of
+resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })
     timestamp: Optional[datetime ] = Field(default=None, description="""The time when the message was created. Should be in ISO-8601 format.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EREMessage']} })

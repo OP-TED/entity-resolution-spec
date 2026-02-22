@@ -1,0 +1,95 @@
+name: Quality Check
+
+on:
+  push:
+    branches: [develop, main]
+    paths:
+      - "src/**"
+      - "resources/schemas/**"
+      - "pyproject.toml"
+      - "poetry.lock"
+      - "Makefile"
+      - ".github/workflows/code-quality.yaml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "resources/schemas/**"
+      - "pyproject.toml"
+      - "poetry.lock"
+      - "Makefile"
+      - ".github/workflows/code-quality.yaml"
+
+jobs:
+  quality:
+    name: Lint, Build & Verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Read Python version from pyproject.toml
+        id: python-version
+        run: echo "version=$(grep -m1 'python = ' pyproject.toml | sed 's/.*"[~^]=\?//' | sed 's/"//')" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ steps.python-version.outputs.version }}
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: poetry-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Lint LinkML schemas
+        run: poetry run linkml lint --ignore-warnings resources/schemas/
+
+      - name: Run ruff linter
+        run: poetry run ruff check src/
+
+      - name: Generate models and docs
+        run: make all
+
+      # - name: Verify generated code is up to date
+      #   id: verify_generated_code
+      #   continue-on-error: true
+      #   run: |
+      #     echo "Checking if generated files match LinkML schemas..."
+      #     if ! git diff --quiet src/ docs/ resources/schemas/*json; then
+      #       echo "status=failed" >> $GITHUB_OUTPUT
+      #       echo "Generated code is out of sync!"
+      #       {
+      #         echo "**Generated code is out of sync with LinkML schemas.**"
+      #         echo ""
+      #         echo "Please run \`make all\` and commit the updated files:"
+      #         echo '```'
+      #         git diff --stat src/ docs/ resources/schemas/*json
+      #         echo '```'
+      #       } > sync_report.txt
+      #     else
+      #       echo "status=passed" >> $GITHUB_OUTPUT
+      #       echo "Generated code is up to date" > sync_report.txt
+      #     fi
+
+      # - name: Publish sync check comment
+      #   if: always() && github.event_name == 'pull_request'
+      #   uses: thollander/actions-comment-pull-request@v3
+      #   with:
+      #     file-path: sync_report.txt
+      #     comment-tag: sync-check
+
+      # - name: Fail if out of sync
+      #   if: steps.verify_generated_code.outputs.status == 'failed'
+      #   run: exit 1

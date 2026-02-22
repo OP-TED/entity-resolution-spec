@@ -66,6 +66,20 @@ install: ## Install dependencies using Poetry
 	@poetry sync
 	$(call log_done,Dependencies installed.)
 
+# ─── Quality ─────────────────────────────────────────────────────────────────────
+
+.PHONY: lint
+lint: ## Run ruff linter on source code
+	$(call log_progress,Running ruff checks...)
+	@poetry run ruff check src/
+	$(call log_done,Ruff checks completed.)
+
+.PHONY: lint-schema
+lint-schema: ## Run LinkML linter on YAML schemas
+	$(call log_progress,Linting LinkML schemas...)
+	@poetry run linkml lint --ignore-warnings $(SCHEMAS_DIR)/
+	$(call log_done,LinkML schema lint completed.)
+
 # ─── Aggregate targets ──────────────────────────────────────────────────────────
 
 .PHONY: all
@@ -111,6 +125,8 @@ $(MODEL_DOCS_README): $(ALL_SCHEMA_SOURCES)
 	@poetry run linkml generate doc $(ERE_SCHEMA_PATH) \
 		-d $(MODEL_DOCS_DIR) --index-name README
 # TODO: Prefer PNG once upstream is fixed (https://github.com/linkml/linkml/issues/3009)
+# TODO: --no-mergeimports doesn't work (https://github.com/linkml/linkml/issues/1296), so, for
+#   the moment, we include core imported classes in the diagram.
 	@poetry run linkml generate plantuml \
 		-d $(MODEL_DOCS_DIR) --format svg $(ERE_SCHEMA_PATH)
 	$(call log_done,Documentation generated -> $(MODEL_DOCS_DIR))
