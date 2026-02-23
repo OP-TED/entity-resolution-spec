@@ -21,61 +21,27 @@ enums:
       PROCEDURE:
         description: A procurement procedure entity
 
-  DecisionStatus:
-    description: Status of a resolution decision in the curation workflow
-    permissible_values:
-      AUTOMATIC_CONFIDENT:
-        description: Resolution confidence exceeds threshold; no manual review required
-      PENDING_MANUAL_REVIEW:
-        description: Resolution confidence below threshold; awaiting curator action
-      MANUALLY_REVIEWED:
-        description: Curator has taken an action
-
-  DecisionAction:
-    description: Action taken on a decision by the curator
+  UserActionType:
+    description: Types of curator actions on entity mention resolutions
     permissible_values:
       ACCEPT_TOP:
-        description: Curator accepted the top candidate
+        description: Curator accepted the top candidate from ERE
       ACCEPT_ALTERNATIVE:
         description: Curator selected an alternative candidate
       REJECT_ALL:
         description: Curator rejected all candidates
 
-  AuditAction:
-    description: Actions recorded in the audit log
-    permissible_values:
-      ACCEPT:
-        description: Accept action performed
-      REJECT:
-        description: Reject action performed
-      ASSIGN:
-        description: Assign to alternative cluster action performed
-
 
 classes:
-
-  CanonicalEntityIdentifier:
-    description: |
-      A logical identity construct providing a stable identity anchor.
-      Represents a cluster of equivalent entity mentions.
-    attributes:
-      identifier:
-        required: true
-        description: Unique identifier for the canonical entity.
-      equivalent_to:
-        range: EntityMentionIdentifier
-        multivalued: true
-        description: Entity mentions that have been resolved to this canonical entity.
-        required: true
 
   EntityMention:
     description: |
       An entity mention is a representation of a real-world entity, as provided by the ERS.
       It contains the entity data, along with metadata like type and format.
     attributes:
-      identifier:
+      identifiedBy:
         description: |
-          The identifier (with the ERS-derived components) of the entity mention.
+          The identification triad of the entity mention.
         range: EntityMentionIdentifier
         required: true
       content_type:
@@ -123,6 +89,21 @@ classes:
           reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages.,
         required: true
 
+  LookupState:
+    description: |
+      Tracks the resolution state for entity mentions from a particular source.
+      Records when the source was last resolved against the canonical clustering.
+    attributes:
+      source_id:
+        description: |
+          The ID or URI of the ERS client (originator) for which we track lookup state.
+        required: true
+      last_snapshot:
+        range: datetime
+        description: |
+          Timestamp of the last resolution operation for this source.
+          Used to determine if a refreshBulk or other update is needed.
+        required: true
 
   ClusterReference:
     description: |
@@ -158,62 +139,86 @@ classes:
 
   Decision:
     description: |
-      Aggregate root representing a resolution decision requiring curation.
-      Captures the state and outcome of entity mention resolution.
+      Canonical placement of an entity mention to a cluster.
+      Represents the latest resolution decision (from ERE or curator override).
     attributes:
       id:
-        description: Unique identifier for the decision
+        description: Unique decision identifier
         required: true
       about_entity_mention:
         range: EntityMentionIdentifier
-        description: Reference to the entity mention being resolved
+        description: The entity mention being resolved
         required: true
-      status:
-        range: DecisionStatus
-        description: Current status in the curation workflow
-        required: true
-      action:
-        range: DecisionAction
-        description: Action taken by curator
-      accepted_candidate:
+      current_placement:
         range: ClusterReference
-        description: The cluster reference accepted for this entity mention
+        description: |
+          The accepted cluster for this mention (latest from ERE or curator).
         required: true
       candidates:
         range: ClusterReference
         multivalued: true
-        description: All cluster references proposed by ERE, ordered by confidence
+        description: |
+          Top-N alternative clusters proposed by ERE (for curation UI preview).
         required: true
       created_at:
         range: datetime
-        description: Timestamp when the decision was created
+        description: When the decision was first created
         required: true
       updated_at:
         range: datetime
-        description: Timestamp when the decision was last updated
+        description: When the decision was last updated (ERE refresh or curator action)
 
-  AuditLog:
-    description: Audit trail entry for curation actions
+  UserAction:
+    description: |
+      Immutable record of a curator action on an entity mention resolution.
+      Stored in the User Action Log for traceability and training.
+
+      NOT related to ERE messages; represents curator intent only.
     attributes:
       id:
-        description: Unique identifier for the audit entry
+        description: Unique audit trail entry identifier
+        required: true
+      about_entity_mention:
+        range: EntityMentionIdentifier
+        description: The entity mention the curator acted upon
+        required: true
+      candidates:
+        range: ClusterReference
+        multivalued: true
+        description: |
+          The candidate clusters presented to the curator for selection.
+          Ordered by confidence (same as shown in curation UI).
+        required: true
+      selected_cluster:
+        range: ClusterReference
+        description: |
+          The cluster selected by the curator (if action was ACCEPT_TOP
+          or ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL.
+      action_type:
+        range: UserActionType
+        description: The type of action the curator performed
         required: true
       actor:
-        description: User identifier who performed the action
+        description: User ID or identifier of the curator who performed the action
         required: true
-      action:
-        range: AuditAction
-        description: The action performed
-        required: true
-      instance_type:
-        description: Type of entity being modified (e.g., Decision)
-        required: true
-      instance_id:
-        description: Identifier of the modified entity
-        required: true
-      changes:
-        description: JSON representation of action-specific context
       created_at:
         range: datetime
-        description: Timestamp when the action was performed
+        description: Timestamp when the curator action was recorded
+        required: true
+      metadata:
+        description: |
+          JSON metadata providing context (e.g., curator notes, reasoning).
+
+  CanonicalEntityIdentifier:
+    description: |
+      A logical identity construct providing a stable identity anchor.
+      Represents a cluster of equivalent entity mentions.
+    attributes:
+      identifier:
+        required: true
+        description: Unique identifier for the canonical entity.
+      equivalent_to:
+        range: EntityMentionIdentifier
+        multivalued: true
+        description: Entity mentions that have been resolved to this canonical entity.
         required: true

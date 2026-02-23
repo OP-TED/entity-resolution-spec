@@ -3,9 +3,9 @@
 # Class: Decision 
 
 
-_Aggregate root representing a resolution decision requiring curation._
+_Canonical placement of an entity mention to a cluster._
 
-_Captures the state and outcome of entity mention resolution._
+_Represents the latest resolution decision (from ERE or curator override)._
 
 __
 
@@ -34,28 +34,6 @@ URI: [ere:Decision](https://data.europa.eu/ers/schema/ere/Decision)
     
 
         
-      Decision : accepted_candidate
-        
-          
-    
-        
-        
-        Decision --> "1" ClusterReference : accepted_candidate
-        click ClusterReference href "../ClusterReference/"
-    
-
-        
-      Decision : action
-        
-          
-    
-        
-        
-        Decision --> "0..1" DecisionAction : action
-        click DecisionAction href "../DecisionAction/"
-    
-
-        
       Decision : candidates
         
           
@@ -69,18 +47,18 @@ URI: [ere:Decision](https://data.europa.eu/ers/schema/ere/Decision)
         
       Decision : created_at
         
-      Decision : id
-        
-      Decision : status
+      Decision : current_placement
         
           
     
         
         
-        Decision --> "1" DecisionStatus : status
-        click DecisionStatus href "../DecisionStatus/"
+        Decision --> "1" ClusterReference : current_placement
+        click ClusterReference href "../ClusterReference/"
     
 
+        
+      Decision : id
         
       Decision : updated_at
         
@@ -97,14 +75,12 @@ URI: [ere:Decision](https://data.europa.eu/ers/schema/ere/Decision)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> [String](String.md) | Unique identifier for the decision | direct |
-| [about_entity_mention](about_entity_mention.md) | 1 <br/> [EntityMentionIdentifier](EntityMentionIdentifier.md) | Reference to the entity mention being resolved | direct |
-| [status](status.md) | 1 <br/> [DecisionStatus](DecisionStatus.md) | Current status in the curation workflow | direct |
-| [action](action.md) | 0..1 <br/> [DecisionAction](DecisionAction.md) | Action taken by curator | direct |
-| [accepted_candidate](accepted_candidate.md) | 1 <br/> [ClusterReference](ClusterReference.md) | The cluster reference accepted for this entity mention | direct |
-| [candidates](candidates.md) | 1..* <br/> [ClusterReference](ClusterReference.md) | All cluster references proposed by ERE, ordered by confidence | direct |
-| [created_at](created_at.md) | 1 <br/> [Datetime](Datetime.md) | Timestamp when the decision was created | direct |
-| [updated_at](updated_at.md) | 0..1 <br/> [Datetime](Datetime.md) | Timestamp when the decision was last updated | direct |
+| [id](id.md) | 1 <br/> [String](String.md) | Unique decision identifier | direct |
+| [about_entity_mention](about_entity_mention.md) | 1 <br/> [EntityMentionIdentifier](EntityMentionIdentifier.md) | The entity mention being resolved | direct |
+| [current_placement](current_placement.md) | 1 <br/> [ClusterReference](ClusterReference.md) | The accepted cluster for this mention (latest from ERE or curator) | direct |
+| [candidates](candidates.md) | 1..* <br/> [ClusterReference](ClusterReference.md) | Top-N alternative clusters proposed by ERE (for curation UI preview) | direct |
+| [created_at](created_at.md) | 1 <br/> [Datetime](Datetime.md) | When the decision was first created | direct |
+| [updated_at](updated_at.md) | 0..1 <br/> [Datetime](Datetime.md) | When the decision was last updated (ERE refresh or curator action) | direct |
 
 
 
@@ -151,52 +127,37 @@ URI: [ere:Decision](https://data.europa.eu/ers/schema/ere/Decision)
 <details>
 ```yaml
 name: Decision
-description: 'Aggregate root representing a resolution decision requiring curation.
+description: 'Canonical placement of an entity mention to a cluster.
 
-  Captures the state and outcome of entity mention resolution.
+  Represents the latest resolution decision (from ERE or curator override).
 
   '
 from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   id:
     name: id
-    description: Unique identifier for the decision
+    description: Unique decision identifier
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     domain_of:
     - Decision
-    - AuditLog
+    - UserAction
     required: true
   about_entity_mention:
     name: about_entity_mention
-    description: Reference to the entity mention being resolved
+    description: The entity mention being resolved
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     domain_of:
     - Decision
+    - UserAction
     range: EntityMentionIdentifier
     required: true
-  status:
-    name: status
-    description: Current status in the curation workflow
-    from_schema: https://data.europa.eu/ers/schema/ers
-    rank: 1000
-    domain_of:
-    - Decision
-    range: DecisionStatus
-    required: true
-  action:
-    name: action
-    description: Action taken by curator
-    from_schema: https://data.europa.eu/ers/schema/ers
-    rank: 1000
-    domain_of:
-    - Decision
-    - AuditLog
-    range: DecisionAction
-  accepted_candidate:
-    name: accepted_candidate
-    description: The cluster reference accepted for this entity mention
+  current_placement:
+    name: current_placement
+    description: 'The accepted cluster for this mention (latest from ERE or curator).
+
+      '
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     domain_of:
@@ -205,27 +166,30 @@ attributes:
     required: true
   candidates:
     name: candidates
-    description: All cluster references proposed by ERE, ordered by confidence
+    description: 'Top-N alternative clusters proposed by ERE (for curation UI preview).
+
+      '
     from_schema: https://data.europa.eu/ers/schema/ers
     domain_of:
     - EntityMentionResolutionResponse
     - Decision
+    - UserAction
     range: ClusterReference
     required: true
     multivalued: true
   created_at:
     name: created_at
-    description: Timestamp when the decision was created
+    description: When the decision was first created
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     domain_of:
     - Decision
-    - AuditLog
+    - UserAction
     range: datetime
     required: true
   updated_at:
     name: updated_at
-    description: Timestamp when the decision was last updated
+    description: When the decision was last updated (ERE refresh or curator action)
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     domain_of:
@@ -240,64 +204,45 @@ attributes:
 <details>
 ```yaml
 name: Decision
-description: 'Aggregate root representing a resolution decision requiring curation.
+description: 'Canonical placement of an entity mention to a cluster.
 
-  Captures the state and outcome of entity mention resolution.
+  Represents the latest resolution decision (from ERE or curator override).
 
   '
 from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
   id:
     name: id
-    description: Unique identifier for the decision
+    description: Unique decision identifier
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     alias: id
     owner: Decision
     domain_of:
     - Decision
-    - AuditLog
+    - UserAction
     range: string
     required: true
   about_entity_mention:
     name: about_entity_mention
-    description: Reference to the entity mention being resolved
+    description: The entity mention being resolved
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     alias: about_entity_mention
     owner: Decision
     domain_of:
     - Decision
+    - UserAction
     range: EntityMentionIdentifier
     required: true
-  status:
-    name: status
-    description: Current status in the curation workflow
+  current_placement:
+    name: current_placement
+    description: 'The accepted cluster for this mention (latest from ERE or curator).
+
+      '
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
-    alias: status
-    owner: Decision
-    domain_of:
-    - Decision
-    range: DecisionStatus
-    required: true
-  action:
-    name: action
-    description: Action taken by curator
-    from_schema: https://data.europa.eu/ers/schema/ers
-    rank: 1000
-    alias: action
-    owner: Decision
-    domain_of:
-    - Decision
-    - AuditLog
-    range: DecisionAction
-  accepted_candidate:
-    name: accepted_candidate
-    description: The cluster reference accepted for this entity mention
-    from_schema: https://data.europa.eu/ers/schema/ers
-    rank: 1000
-    alias: accepted_candidate
+    alias: current_placement
     owner: Decision
     domain_of:
     - Decision
@@ -305,31 +250,34 @@ attributes:
     required: true
   candidates:
     name: candidates
-    description: All cluster references proposed by ERE, ordered by confidence
+    description: 'Top-N alternative clusters proposed by ERE (for curation UI preview).
+
+      '
     from_schema: https://data.europa.eu/ers/schema/ers
     alias: candidates
     owner: Decision
     domain_of:
     - EntityMentionResolutionResponse
     - Decision
+    - UserAction
     range: ClusterReference
     required: true
     multivalued: true
   created_at:
     name: created_at
-    description: Timestamp when the decision was created
+    description: When the decision was first created
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     alias: created_at
     owner: Decision
     domain_of:
     - Decision
-    - AuditLog
+    - UserAction
     range: datetime
     required: true
   updated_at:
     name: updated_at
-    description: Timestamp when the decision was last updated
+    description: When the decision was last updated (ERE refresh or curator action)
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     alias: updated_at

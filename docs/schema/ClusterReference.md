@@ -65,8 +65,10 @@ URI: [ere:ClusterReference](https://data.europa.eu/ers/schema/ere/ClusterReferen
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [candidates](candidates.md) | range | [ClusterReference](ClusterReference.md) |
-| [Decision](Decision.md) | [accepted_candidate](accepted_candidate.md) | range | [ClusterReference](ClusterReference.md) |
+| [Decision](Decision.md) | [current_placement](current_placement.md) | range | [ClusterReference](ClusterReference.md) |
 | [Decision](Decision.md) | [candidates](candidates.md) | range | [ClusterReference](ClusterReference.md) |
+| [UserAction](UserAction.md) | [candidates](candidates.md) | range | [ClusterReference](ClusterReference.md) |
+| [UserAction](UserAction.md) | [selected_cluster](selected_cluster.md) | range | [ClusterReference](ClusterReference.md) |
 
 
 

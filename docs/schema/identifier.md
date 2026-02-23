@@ -57,8 +57,8 @@ Alias: identifier
 name: identifier
 alias: identifier
 domain_of:
-- CanonicalEntityIdentifier
 - EntityMention
+- CanonicalEntityIdentifier
 range: string
 
 ```

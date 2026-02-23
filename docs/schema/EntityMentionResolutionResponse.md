@@ -205,6 +205,7 @@ attributes:
     domain_of:
     - EntityMentionResolutionResponse
     - Decision
+    - UserAction
     range: ClusterReference
     required: true
     multivalued: true
@@ -263,6 +264,7 @@ attributes:
     domain_of:
     - EntityMentionResolutionResponse
     - Decision
+    - UserAction
     range: ClusterReference
     required: true
     multivalued: true

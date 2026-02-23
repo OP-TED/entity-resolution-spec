@@ -18,7 +18,8 @@ Alias: candidates
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
-| [Decision](Decision.md) | Aggregate root representing a resolution decision requiring curation |  no  |
+| [Decision](Decision.md) | Canonical placement of an entity mention to a cluster |  no  |
+| [UserAction](UserAction.md) | Immutable record of a curator action on an entity mention resolution |  no  |
 
 
 
@@ -59,6 +60,7 @@ alias: candidates
 domain_of:
 - EntityMentionResolutionResponse
 - Decision
+- UserAction
 range: string
 
 ```

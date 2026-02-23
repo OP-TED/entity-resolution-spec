@@ -17,8 +17,8 @@ Alias: created_at
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [AuditLog](AuditLog.md) | Audit trail entry for curation actions |  no  |
-| [Decision](Decision.md) | Aggregate root representing a resolution decision requiring curation |  no  |
+| [UserAction](UserAction.md) | Immutable record of a curator action on an entity mention resolution |  no  |
+| [Decision](Decision.md) | Canonical placement of an entity mention to a cluster |  no  |
 
 
 
@@ -58,7 +58,7 @@ name: created_at
 alias: created_at
 domain_of:
 - Decision
-- AuditLog
+- UserAction
 range: string
 
 ```

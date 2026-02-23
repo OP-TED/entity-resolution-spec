@@ -124,9 +124,10 @@ attributes:
 
       '
     from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
     domain_of:
-    - CanonicalEntityIdentifier
     - EntityMention
+    - CanonicalEntityIdentifier
     range: EntityMentionIdentifier
     required: true
   content_type:
@@ -182,11 +183,12 @@ attributes:
 
       '
     from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
     alias: identifier
     owner: EntityMention
     domain_of:
-    - CanonicalEntityIdentifier
     - EntityMention
+    - CanonicalEntityIdentifier
     range: EntityMentionIdentifier
     required: true
   content_type:

@@ -222,3 +222,11 @@ __marimo__/
 
 # CI/CD artifacts
 sync_report.txt
+.gitnexus
+.serenity/
+.pycharm_plugin
+.venv
+.trueflow
+.claude
+AGENTS.md
+CLAUDE.md

@@ -1,16 +1,18 @@
 
 
-# Slot: actor 
+# Slot: metadata 
 
 
-_User ID or identifier of the curator who performed the action_
+_JSON metadata providing context (e.g., curator notes, reasoning)._
+
+__
 
 
 
 
 
-URI: [ere:actor](https://data.europa.eu/ers/schema/ere/actor)
-Alias: actor
+URI: [ere:metadata](https://data.europa.eu/ers/schema/ere/metadata)
+Alias: metadata
 
 <!-- no inheritance hierarchy -->
 
@@ -32,8 +34,6 @@ Alias: actor
 ## Properties
 
 * Range: [String](String.md)
-
-* Required: True
 
 
 
@@ -57,8 +57,8 @@ Alias: actor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ere:actor |
-| native | ere:actor |
+| self | ere:metadata |
+| native | ere:metadata |
 
 
 
@@ -67,16 +67,17 @@ Alias: actor
 
 <details>
 ```yaml
-name: actor
-description: User ID or identifier of the curator who performed the action
+name: metadata
+description: 'JSON metadata providing context (e.g., curator notes, reasoning).
+
+  '
 from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
-alias: actor
+alias: metadata
 owner: UserAction
 domain_of:
 - UserAction
 range: string
-required: true
 
 ```
 </details>
