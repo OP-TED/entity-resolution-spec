@@ -34,7 +34,7 @@ jobs:
 
       - name: Read Python version from pyproject.toml
         id: python-version
-        run: echo "version=$(grep -m1 'python = ' pyproject.toml | sed 's/.*"[~^]=\?//' | sed 's/"//')" >> $GITHUB_OUTPUT
+        run: echo "version=$(grep -m1 'python = ' pyproject.toml | grep -oP '\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
 
       - name: Set up Python
         uses: actions/setup-python@v6
