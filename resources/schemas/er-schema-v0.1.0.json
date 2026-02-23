@@ -168,9 +168,9 @@
           "description": "A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)\n",
           "type": "string"
         },
-        "identifier": {
+        "identifiedBy": {
           "$ref": "#/$defs/EntityMentionIdentifier",
-          "description": "The identifier (with the ERS-derived components) of the entity mention.\n"
+          "description": "The identification triad of the entity mention.\n"
         },
         "parsed_representation": {
           "description": "JSON representation of the parsed entity data.\n",
@@ -181,7 +181,7 @@
         }
       },
       "required": [
-        "identifier",
+        "identifiedBy",
         "content_type",
         "content"
       ],
@@ -321,6 +321,27 @@
       ],
       "title": "EntityType",
       "type": "string"
+    },
+    "LookupState": {
+      "additionalProperties": false,
+      "description": "Tracks the resolution state for entity mentions from a particular source.\nRecords when the source was last resolved against the canonical clustering.",
+      "properties": {
+        "last_snapshot": {
+          "description": "Timestamp of the last resolution operation for this source.\nUsed to determine if a refreshBulk or other update is needed.\n",
+          "format": "date-time",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "The ID or URI of the ERS client (originator) for which we track lookup state.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "last_snapshot"
+      ],
+      "title": "LookupState",
+      "type": "object"
     },
     "UserAction": {
       "additionalProperties": false,

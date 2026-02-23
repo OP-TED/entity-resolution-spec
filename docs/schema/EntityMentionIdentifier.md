@@ -65,7 +65,7 @@ URI: [ere:EntityMentionIdentifier](https://data.europa.eu/ers/schema/ere/EntityM
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | [entity_mention_id](entity_mention_id.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
-| [EntityMention](EntityMention.md) | [identifier](identifier.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
+| [EntityMention](EntityMention.md) | [identifiedBy](identifiedBy.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
 | [Decision](Decision.md) | [about_entity_mention](about_entity_mention.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
 | [UserAction](UserAction.md) | [about_entity_mention](about_entity_mention.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
 | [CanonicalEntityIdentifier](CanonicalEntityIdentifier.md) | [equivalent_to](equivalent_to.md) | range | [EntityMentionIdentifier](EntityMentionIdentifier.md) |
@@ -129,6 +129,7 @@ attributes:
     rank: 1000
     domain_of:
     - EntityMentionIdentifier
+    - LookupState
     required: true
   request_id:
     name: request_id
@@ -183,6 +184,7 @@ attributes:
     owner: EntityMentionIdentifier
     domain_of:
     - EntityMentionIdentifier
+    - LookupState
     range: string
     required: true
   request_id:

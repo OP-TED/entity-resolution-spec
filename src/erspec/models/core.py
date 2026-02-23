@@ -55,8 +55,8 @@ class UserActionType(str, Enum):
 class EntityMention(PydanticModel):
     """An entity mention is a representation of a real-world entity, as provided by the ERS.
 It contains the entity data, along with metadata like type and format."""
-    identifier: EntityMentionIdentifier = Field(default=..., description="""The identifier (with the ERS-derived components) of the entity mention.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention', 'CanonicalEntityIdentifier']} })
+    identifiedBy: EntityMentionIdentifier = Field(default=..., description="""The identification triad of the entity mention.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     content_type: str = Field(default=..., description="""A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     content: str = Field(default=..., description="""A code string representing the entity mention details (eg, RDF or XML description).
@@ -75,7 +75,7 @@ method to build a canonical identifier from the combination of `sourceId`, `requ
 in this hereby ERE service schema) can be built from an entity that is initially the only cluster member."""
     source_id: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
 person accessing the ERS system.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier', 'LookupState']} })
     request_id: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
 only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
 
@@ -88,6 +88,16 @@ Note that this is at this level, and not at `EntityMention`, since, as said abov
 it's needed to identify the entity, even when its content is not present. For the same
 reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages.,
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+
+
+class LookupState(PydanticModel):
+    """Tracks the resolution state for entity mentions from a particular source.
+Records when the source was last resolved against the canonical clustering."""
+    source_id: str = Field(default=..., description="""The ID or URI of the ERS client (originator) for which we track lookup state.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier', 'LookupState']} })
+    last_snapshot: datetime  = Field(default=..., description="""Timestamp of the last resolution operation for this source.
+Used to determine if a refreshBulk or other update is needed.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['LookupState']} })
 
 
 class ClusterReference(PydanticModel):
@@ -145,6 +155,6 @@ or ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL.
 class CanonicalEntityIdentifier(PydanticModel):
     """A logical identity construct providing a stable identity anchor.
 Represents a cluster of equivalent entity mentions."""
-    identifier: str = Field(default=..., description="""Unique identifier for the canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention', 'CanonicalEntityIdentifier']} })
+    identifier: str = Field(default=..., description="""Unique identifier for the canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier']} })
     equivalent_to: list[EntityMentionIdentifier] = Field(default=..., description="""Entity mentions that have been resolved to this canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier']} })
 

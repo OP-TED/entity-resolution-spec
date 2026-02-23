@@ -3,6 +3,11 @@
 # Slot: identifier 
 
 
+_Unique identifier for the canonical entity._
+
+
+
+
 
 URI: [ere:identifier](https://data.europa.eu/ers/schema/ere/identifier)
 Alias: identifier
@@ -18,7 +23,6 @@ Alias: identifier
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [CanonicalEntityIdentifier](CanonicalEntityIdentifier.md) | A logical identity construct providing a stable identity anchor |  no  |
-| [EntityMention](EntityMention.md) | An entity mention is a representation of a real-world entity, as provided by ... |  no  |
 
 
 
@@ -29,6 +33,8 @@ Alias: identifier
 
 * Range: [String](String.md)
 
+* Required: True
+
 
 
 
@@ -36,6 +42,13 @@ Alias: identifier
 
 
 
+
+
+
+### Schema Source
+
+
+* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -55,11 +68,15 @@ Alias: identifier
 <details>
 ```yaml
 name: identifier
+description: Unique identifier for the canonical entity.
+from_schema: https://data.europa.eu/ers/schema/ere
+rank: 1000
 alias: identifier
+owner: CanonicalEntityIdentifier
 domain_of:
-- EntityMention
 - CanonicalEntityIdentifier
 range: string
+required: true
 
 ```
 </details>

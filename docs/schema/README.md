@@ -23,6 +23,7 @@ Name: ereServiceSchema
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREResponse](EREResponse.md) | Root class to represent all the responses sent by the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[EREErrorResponse](EREErrorResponse.md) | Response sent by the ERE when some error/exception occurs while processing a ... |
+| [LookupState](LookupState.md) | Tracks the resolution state for entity mentions from a particular source |
 | [UserAction](UserAction.md) | Immutable record of a curator action on an entity mention resolution |
 
 
@@ -52,7 +53,9 @@ Name: ereServiceSchema
 | [error_type](error_type.md) | A string representing the error type, eg, the FQN of the raised exception |
 | [excluded_cluster_ids](excluded_cluster_ids.md) | When this is present, the ERE may use this information to avoid clustering th... |
 | [id](id.md) | Unique decision identifier |
-| [identifier](identifier.md) | The identifier (with the ERS-derived components) of the entity mention |
+| [identifiedBy](identifiedBy.md) | The identification triad of the entity mention |
+| [identifier](identifier.md) | Unique identifier for the canonical entity |
+| [last_snapshot](last_snapshot.md) | Timestamp of the last resolution operation for this source |
 | [metadata](metadata.md) | JSON metadata providing context (e |
 | [parsed_representation](parsed_representation.md) | JSON representation of the parsed entity data |
 | [proposed_cluster_ids](proposed_cluster_ids.md) | When this is present, the ERE may use this information to try to cluster the ... |

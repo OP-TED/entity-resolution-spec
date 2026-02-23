@@ -108,8 +108,8 @@ attributes:
     name: identifier
     description: Unique identifier for the canonical entity.
     from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
     domain_of:
-    - EntityMention
     - CanonicalEntityIdentifier
     required: true
   equivalent_to:
@@ -142,10 +142,10 @@ attributes:
     name: identifier
     description: Unique identifier for the canonical entity.
     from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
     alias: identifier
     owner: CanonicalEntityIdentifier
     domain_of:
-    - EntityMention
     - CanonicalEntityIdentifier
     range: string
     required: true

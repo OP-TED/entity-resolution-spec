@@ -27,13 +27,13 @@ URI: [ere:EntityMention](https://data.europa.eu/ers/schema/ere/EntityMention)
         
       EntityMention : content_type
         
-      EntityMention : identifier
+      EntityMention : identifiedBy
         
           
     
         
         
-        EntityMention --> "1" EntityMentionIdentifier : identifier
+        EntityMention --> "1" EntityMentionIdentifier : identifiedBy
         click EntityMentionIdentifier href "../EntityMentionIdentifier/"
     
 
@@ -53,7 +53,7 @@ URI: [ere:EntityMention](https://data.europa.eu/ers/schema/ere/EntityMention)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [identifier](identifier.md) | 1 <br/> [EntityMentionIdentifier](EntityMentionIdentifier.md) | The identifier (with the ERS-derived components) of the entity mention | direct |
+| [identifiedBy](identifiedBy.md) | 1 <br/> [EntityMentionIdentifier](EntityMentionIdentifier.md) | The identification triad of the entity mention | direct |
 | [content_type](content_type.md) | 1 <br/> [String](String.md) | A string about the MIME format of `content` (e | direct |
 | [content](content.md) | 1 <br/> [String](String.md) | A code string representing the entity mention details (eg, RDF or XML descrip... | direct |
 | [parsed_representation](parsed_representation.md) | 0..1 <br/> [String](String.md) | JSON representation of the parsed entity data | direct |
@@ -118,16 +118,15 @@ description: 'An entity mention is a representation of a real-world entity, as p
   '
 from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
-  identifier:
-    name: identifier
-    description: 'The identifier (with the ERS-derived components) of the entity mention.
+  identifiedBy:
+    name: identifiedBy
+    description: 'The identification triad of the entity mention.
 
       '
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     domain_of:
     - EntityMention
-    - CanonicalEntityIdentifier
     range: EntityMentionIdentifier
     required: true
   content_type:
@@ -177,18 +176,17 @@ description: 'An entity mention is a representation of a real-world entity, as p
   '
 from_schema: https://data.europa.eu/ers/schema/ere
 attributes:
-  identifier:
-    name: identifier
-    description: 'The identifier (with the ERS-derived components) of the entity mention.
+  identifiedBy:
+    name: identifiedBy
+    description: 'The identification triad of the entity mention.
 
       '
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
-    alias: identifier
+    alias: identifiedBy
     owner: EntityMention
     domain_of:
     - EntityMention
-    - CanonicalEntityIdentifier
     range: EntityMentionIdentifier
     required: true
   content_type:
