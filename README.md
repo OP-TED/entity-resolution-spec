@@ -8,15 +8,14 @@ Formal software contract, shared data models, sample messages, and compliance te
 
 - UNIX-compatible environment (Linux/macOS/WSL2)
 - Make
-- Python (managed via [uv](https://docs.astral.sh/uv/getting-started/installation/))
+- Python 3.12+
+- [Poetry](https://python-poetry.org/) (for dependency management)
 
 ## Quick Start
 
 ```bash
-make             # installs user dependencies via uv
-make install-dev # installs development tooling (tests, lint, codegen)
-make generate_models
-make generate_docs
+make install      # install dependencies via Poetry
+make all          # generate all models, schemas, and documentation
 ```
 
 ## Make targets overview
@@ -24,7 +23,7 @@ make generate_docs
 - `install`: install dependencies via Poetry
 - `all`: generate all models, schemas, and documentation
 - `generate-models`: regenerate Pydantic models and JSON Schema from LinkML
-- `generate-doc`: regenerate documentation
+- `generate-docs`: regenerate documentation
 - `lint`: run ruff linter on source code
 - `lint-schema`: run LinkML linter on YAML schemas
 - `clean`: remove all generated artifacts
@@ -42,17 +41,15 @@ This will install the necessary user dependencies in a Poetry-managed virtual en
 
 ## Development
 
-This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core model is defined in the `resources/linkml` directory, and the Python (Pydantic) models (pluralized to refer to all the classes as is the practice in the programming community) are generated using the [LinkML](https://linkml.io/) framework.
+This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
 
-Generated Python models are in `src/models`. Regenerate them with:
-The generated Python models can be found in the `src/models` directory. 
-You can regenerate both the LinkML-based models (Python, JSONSchema) and the navigable documentation, by running:
+Generated Python models are in `src/erspec/models`. Regenerate them with:
 
 ```bash
 make all
 ```
 
-*the Makefile has more granular targets, see its content for details*.
+This regenerates both the LinkML-based models (Python, JSONSchema) and the navigable documentation. See the Makefile for more granular targets.
 
 
 ## Running and Testing
