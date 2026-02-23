@@ -40,31 +40,13 @@ class EntityType(str, Enum):
     """
 
 
-class DecisionStatus(str, Enum):
+class UserActionType(str, Enum):
     """
-    Status of a resolution decision in the curation workflow
-    """
-    AUTOMATIC_CONFIDENT = "AUTOMATIC_CONFIDENT"
-    """
-    Resolution confidence exceeds threshold; no manual review required
-    """
-    PENDING_MANUAL_REVIEW = "PENDING_MANUAL_REVIEW"
-    """
-    Resolution confidence below threshold; awaiting curator action
-    """
-    MANUALLY_REVIEWED = "MANUALLY_REVIEWED"
-    """
-    Curator has taken an action
-    """
-
-
-class DecisionAction(str, Enum):
-    """
-    Action taken on a decision by the curator
+    Types of curator actions on entity mention resolutions
     """
     ACCEPT_TOP = "ACCEPT_TOP"
     """
-    Curator accepted the top candidate
+    Curator accepted the top candidate from ERE
     """
     ACCEPT_ALTERNATIVE = "ACCEPT_ALTERNATIVE"
     """
@@ -73,24 +55,6 @@ class DecisionAction(str, Enum):
     REJECT_ALL = "REJECT_ALL"
     """
     Curator rejected all candidates
-    """
-
-
-class AuditAction(str, Enum):
-    """
-    Actions recorded in the audit log
-    """
-    ACCEPT = "ACCEPT"
-    """
-    Accept action performed
-    """
-    REJECT = "REJECT"
-    """
-    Reject action performed
-    """
-    ASSIGN = "ASSIGN"
-    """
-    Assign to alternative cluster action performed
     """
 
 
@@ -227,7 +191,7 @@ the request's entity mention. Yet, it's reported for convenience.
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionResolutionResponse']} })
     candidates: list[ClusterReference] = Field(default=..., description="""The set of cluster reference/score pairs representing the candidate clusters
 that the entity mention in the original request could align to (be equivalent to).
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'EntityMentionResolutionResponse']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction', 'EntityMentionResolutionResponse']} })
     type: Literal["EntityMentionResolutionResponse"] = Field(default="EntityMentionResolutionResponse", description="""The type of the request or result.
 
 As per LinkML specification, `designates_type` is used here in order to allow for this

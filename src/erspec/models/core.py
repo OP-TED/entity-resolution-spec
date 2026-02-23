@@ -33,31 +33,13 @@ class EntityType(str, Enum):
     """
 
 
-class DecisionStatus(str, Enum):
+class UserActionType(str, Enum):
     """
-    Status of a resolution decision in the curation workflow
-    """
-    AUTOMATIC_CONFIDENT = "AUTOMATIC_CONFIDENT"
-    """
-    Resolution confidence exceeds threshold; no manual review required
-    """
-    PENDING_MANUAL_REVIEW = "PENDING_MANUAL_REVIEW"
-    """
-    Resolution confidence below threshold; awaiting curator action
-    """
-    MANUALLY_REVIEWED = "MANUALLY_REVIEWED"
-    """
-    Curator has taken an action
-    """
-
-
-class DecisionAction(str, Enum):
-    """
-    Action taken on a decision by the curator
+    Types of curator actions on entity mention resolutions
     """
     ACCEPT_TOP = "ACCEPT_TOP"
     """
-    Curator accepted the top candidate
+    Curator accepted the top candidate from ERE
     """
     ACCEPT_ALTERNATIVE = "ACCEPT_ALTERNATIVE"
     """
@@ -69,37 +51,12 @@ class DecisionAction(str, Enum):
     """
 
 
-class AuditAction(str, Enum):
-    """
-    Actions recorded in the audit log
-    """
-    ACCEPT = "ACCEPT"
-    """
-    Accept action performed
-    """
-    REJECT = "REJECT"
-    """
-    Reject action performed
-    """
-    ASSIGN = "ASSIGN"
-    """
-    Assign to alternative cluster action performed
-    """
-
-
-
-class CanonicalEntityIdentifier(PydanticModel):
-    """A logical identity construct providing a stable identity anchor.
-Represents a cluster of equivalent entity mentions."""
-    identifier: str = Field(default=..., description="""Unique identifier for the canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier', 'EntityMention']} })
-    equivalent_to: list[EntityMentionIdentifier] = Field(default=..., description="""Entity mentions that have been resolved to this canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier']} })
-
 
 class EntityMention(PydanticModel):
     """An entity mention is a representation of a real-world entity, as provided by the ERS.
 It contains the entity data, along with metadata like type and format."""
-    identifier: EntityMentionIdentifier = Field(default=..., description="""The identifier (with the ERS-derived components) of the entity mention.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier', 'EntityMention']} })
+    identifiedBy: EntityMentionIdentifier = Field(default=..., description="""The identification triad of the entity mention.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     content_type: str = Field(default=..., description="""A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     content: str = Field(default=..., description="""A code string representing the entity mention details (eg, RDF or XML description).
@@ -118,7 +75,7 @@ method to build a canonical identifier from the combination of `sourceId`, `requ
 in this hereby ERE service schema) can be built from an entity that is initially the only cluster member."""
     source_id: str = Field(default=..., description="""The ID or URI of the ERS client that originated the request. This identifies an application or a 
 person accessing the ERS system.
-""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier', 'LookupState']} })
     request_id: str = Field(default=..., description="""A string representing the unique ID of the request made to the ERS system. In general, this is unique
 only within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. 
 
@@ -131,6 +88,16 @@ Note that this is at this level, and not at `EntityMention`, since, as said abov
 it's needed to identify the entity, even when its content is not present. For the same
 reason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages.,
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier']} })
+
+
+class LookupState(PydanticModel):
+    """Tracks the resolution state for entity mentions from a particular source.
+Records when the source was last resolved against the canonical clustering."""
+    source_id: str = Field(default=..., description="""The ID or URI of the ERS client (originator) for which we track lookup state.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMentionIdentifier', 'LookupState']} })
+    last_snapshot: datetime  = Field(default=..., description="""Timestamp of the last resolution operation for this source.
+Used to determine if a refreshBulk or other update is needed.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['LookupState']} })
 
 
 class ClusterReference(PydanticModel):
@@ -153,25 +120,41 @@ based on a representative representation).
 
 
 class Decision(PydanticModel):
-    """Aggregate root representing a resolution decision requiring curation.
-Captures the state and outcome of entity mention resolution."""
-    id: str = Field(default=..., description="""Unique identifier for the decision""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'AuditLog']} })
-    about_entity_mention: EntityMentionIdentifier = Field(default=..., description="""Reference to the entity mention being resolved""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision']} })
-    status: DecisionStatus = Field(default=..., description="""Current status in the curation workflow""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision']} })
-    action: Optional[DecisionAction] = Field(default=None, description="""Action taken by curator""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'AuditLog']} })
-    accepted_candidate: ClusterReference = Field(default=..., description="""The cluster reference accepted for this entity mention""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision']} })
-    candidates: list[ClusterReference] = Field(default=..., description="""All cluster references proposed by ERE, ordered by confidence""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'EntityMentionResolutionResponse']} })
-    created_at: datetime  = Field(default=..., description="""Timestamp when the decision was created""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'AuditLog']} })
-    updated_at: Optional[datetime ] = Field(default=None, description="""Timestamp when the decision was last updated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision']} })
+    """Canonical placement of an entity mention to a cluster.
+Represents the latest resolution decision (from ERE or curator override)."""
+    id: str = Field(default=..., description="""Unique decision identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction']} })
+    about_entity_mention: EntityMentionIdentifier = Field(default=..., description="""The entity mention being resolved""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction']} })
+    current_placement: ClusterReference = Field(default=..., description="""The accepted cluster for this mention (latest from ERE or curator).
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision']} })
+    candidates: list[ClusterReference] = Field(default=..., description="""Top-N alternative clusters proposed by ERE (for curation UI preview).
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction', 'EntityMentionResolutionResponse']} })
+    created_at: datetime  = Field(default=..., description="""When the decision was first created""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction']} })
+    updated_at: Optional[datetime ] = Field(default=None, description="""When the decision was last updated (ERE refresh or curator action)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision']} })
 
 
-class AuditLog(PydanticModel):
-    """Audit trail entry for curation actions"""
-    id: str = Field(default=..., description="""Unique identifier for the audit entry""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'AuditLog']} })
-    actor: str = Field(default=..., description="""User identifier who performed the action""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditLog']} })
-    action: AuditAction = Field(default=..., description="""The action performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'AuditLog']} })
-    instance_type: str = Field(default=..., description="""Type of entity being modified (e.g., Decision)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditLog']} })
-    instance_id: str = Field(default=..., description="""Identifier of the modified entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditLog']} })
-    changes: Optional[str] = Field(default=None, description="""JSON representation of action-specific context""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditLog']} })
-    created_at: datetime  = Field(default=..., description="""Timestamp when the action was performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'AuditLog']} })
+class UserAction(PydanticModel):
+    """Immutable record of a curator action on an entity mention resolution.
+Stored in the User Action Log for traceability and training.
+
+NOT related to ERE messages; represents curator intent only."""
+    id: str = Field(default=..., description="""Unique audit trail entry identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction']} })
+    about_entity_mention: EntityMentionIdentifier = Field(default=..., description="""The entity mention the curator acted upon""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction']} })
+    candidates: list[ClusterReference] = Field(default=..., description="""The candidate clusters presented to the curator for selection.
+Ordered by confidence (same as shown in curation UI).
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction', 'EntityMentionResolutionResponse']} })
+    selected_cluster: Optional[ClusterReference] = Field(default=None, description="""The cluster selected by the curator (if action was ACCEPT_TOP
+or ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['UserAction']} })
+    action_type: UserActionType = Field(default=..., description="""The type of action the curator performed""", json_schema_extra = { "linkml_meta": {'domain_of': ['UserAction']} })
+    actor: str = Field(default=..., description="""User ID or identifier of the curator who performed the action""", json_schema_extra = { "linkml_meta": {'domain_of': ['UserAction']} })
+    created_at: datetime  = Field(default=..., description="""Timestamp when the curator action was recorded""", json_schema_extra = { "linkml_meta": {'domain_of': ['Decision', 'UserAction']} })
+    metadata: Optional[str] = Field(default=None, description="""JSON metadata providing context (e.g., curator notes, reasoning).
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['UserAction']} })
+
+
+class CanonicalEntityIdentifier(PydanticModel):
+    """A logical identity construct providing a stable identity anchor.
+Represents a cluster of equivalent entity mentions."""
+    identifier: str = Field(default=..., description="""Unique identifier for the canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier']} })
+    equivalent_to: list[EntityMentionIdentifier] = Field(default=..., description="""Entity mentions that have been resolved to this canonical entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CanonicalEntityIdentifier']} })
 

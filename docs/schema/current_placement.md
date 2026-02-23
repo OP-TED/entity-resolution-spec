@@ -1,16 +1,18 @@
 
 
-# Slot: updated_at 
+# Slot: current_placement 
 
 
-_When the decision was last updated (ERE refresh or curator action)_
+_The accepted cluster for this mention (latest from ERE or curator)._
+
+__
 
 
 
 
 
-URI: [ere:updated_at](https://data.europa.eu/ers/schema/ere/updated_at)
-Alias: updated_at
+URI: [ere:current_placement](https://data.europa.eu/ers/schema/ere/current_placement)
+Alias: current_placement
 
 <!-- no inheritance hierarchy -->
 
@@ -31,7 +33,9 @@ Alias: updated_at
 
 ## Properties
 
-* Range: [Datetime](Datetime.md)
+* Range: [ClusterReference](ClusterReference.md)
+
+* Required: True
 
 
 
@@ -55,8 +59,8 @@ Alias: updated_at
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ere:updated_at |
-| native | ere:updated_at |
+| self | ere:current_placement |
+| native | ere:current_placement |
 
 
 
@@ -65,15 +69,18 @@ Alias: updated_at
 
 <details>
 ```yaml
-name: updated_at
-description: When the decision was last updated (ERE refresh or curator action)
+name: current_placement
+description: 'The accepted cluster for this mention (latest from ERE or curator).
+
+  '
 from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
-alias: updated_at
+alias: current_placement
 owner: Decision
 domain_of:
 - Decision
-range: datetime
+range: ClusterReference
+required: true
 
 ```
 </details>

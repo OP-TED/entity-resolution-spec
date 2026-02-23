@@ -1,16 +1,20 @@
 
 
-# Slot: actor 
+# Slot: selected_cluster 
 
 
-_User ID or identifier of the curator who performed the action_
+_The cluster selected by the curator (if action was ACCEPT_TOP_
+
+_or ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL._
+
+__
 
 
 
 
 
-URI: [ere:actor](https://data.europa.eu/ers/schema/ere/actor)
-Alias: actor
+URI: [ere:selected_cluster](https://data.europa.eu/ers/schema/ere/selected_cluster)
+Alias: selected_cluster
 
 <!-- no inheritance hierarchy -->
 
@@ -31,9 +35,7 @@ Alias: actor
 
 ## Properties
 
-* Range: [String](String.md)
-
-* Required: True
+* Range: [ClusterReference](ClusterReference.md)
 
 
 
@@ -57,8 +59,8 @@ Alias: actor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ere:actor |
-| native | ere:actor |
+| self | ere:selected_cluster |
+| native | ere:selected_cluster |
 
 
 
@@ -67,16 +69,19 @@ Alias: actor
 
 <details>
 ```yaml
-name: actor
-description: User ID or identifier of the curator who performed the action
+name: selected_cluster
+description: 'The cluster selected by the curator (if action was ACCEPT_TOP
+
+  or ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL.
+
+  '
 from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
-alias: actor
+alias: selected_cluster
 owner: UserAction
 domain_of:
 - UserAction
-range: string
-required: true
+range: ClusterReference
 
 ```
 </details>

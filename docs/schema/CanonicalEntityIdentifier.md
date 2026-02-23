@@ -111,7 +111,6 @@ attributes:
     rank: 1000
     domain_of:
     - CanonicalEntityIdentifier
-    - EntityMention
     required: true
   equivalent_to:
     name: equivalent_to
@@ -148,7 +147,6 @@ attributes:
     owner: CanonicalEntityIdentifier
     domain_of:
     - CanonicalEntityIdentifier
-    - EntityMention
     range: string
     required: true
   equivalent_to:

@@ -1,63 +1,5 @@
 {
   "$defs": {
-    "AuditAction": {
-      "description": "Actions recorded in the audit log",
-      "enum": [
-        "ACCEPT",
-        "REJECT",
-        "ASSIGN"
-      ],
-      "title": "AuditAction",
-      "type": "string"
-    },
-    "AuditLog": {
-      "additionalProperties": false,
-      "description": "Audit trail entry for curation actions",
-      "properties": {
-        "action": {
-          "$ref": "#/$defs/AuditAction",
-          "description": "The action performed"
-        },
-        "actor": {
-          "description": "User identifier who performed the action",
-          "type": "string"
-        },
-        "changes": {
-          "description": "JSON representation of action-specific context",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "created_at": {
-          "description": "Timestamp when the action was performed",
-          "format": "date-time",
-          "type": "string"
-        },
-        "id": {
-          "description": "Unique identifier for the audit entry",
-          "type": "string"
-        },
-        "instance_id": {
-          "description": "Identifier of the modified entity",
-          "type": "string"
-        },
-        "instance_type": {
-          "description": "Type of entity being modified (e.g., Decision)",
-          "type": "string"
-        }
-      },
-      "required": [
-        "id",
-        "actor",
-        "action",
-        "instance_type",
-        "instance_id",
-        "created_at"
-      ],
-      "title": "AuditLog",
-      "type": "object"
-    },
     "CanonicalEntityIdentifier": {
       "additionalProperties": false,
       "description": "A logical identity construct providing a stable identity anchor.\nRepresents a cluster of equivalent entity mentions.",
@@ -112,42 +54,34 @@
     },
     "Decision": {
       "additionalProperties": false,
-      "description": "Aggregate root representing a resolution decision requiring curation.\nCaptures the state and outcome of entity mention resolution.",
+      "description": "Canonical placement of an entity mention to a cluster.\nRepresents the latest resolution decision (from ERE or curator override).",
       "properties": {
         "about_entity_mention": {
           "$ref": "#/$defs/EntityMentionIdentifier",
-          "description": "Reference to the entity mention being resolved"
-        },
-        "accepted_candidate": {
-          "$ref": "#/$defs/ClusterReference",
-          "description": "The cluster reference accepted for this entity mention"
-        },
-        "action": {
-          "$ref": "#/$defs/DecisionAction",
-          "description": "Action taken by curator"
+          "description": "The entity mention being resolved"
         },
         "candidates": {
-          "description": "All cluster references proposed by ERE, ordered by confidence",
+          "description": "Top-N alternative clusters proposed by ERE (for curation UI preview).\n",
           "items": {
             "$ref": "#/$defs/ClusterReference"
           },
           "type": "array"
         },
         "created_at": {
-          "description": "Timestamp when the decision was created",
+          "description": "When the decision was first created",
           "format": "date-time",
           "type": "string"
         },
+        "current_placement": {
+          "$ref": "#/$defs/ClusterReference",
+          "description": "The accepted cluster for this mention (latest from ERE or curator).\n"
+        },
         "id": {
-          "description": "Unique identifier for the decision",
+          "description": "Unique decision identifier",
           "type": "string"
         },
-        "status": {
-          "$ref": "#/$defs/DecisionStatus",
-          "description": "Current status in the curation workflow"
-        },
         "updated_at": {
-          "description": "Timestamp when the decision was last updated",
+          "description": "When the decision was last updated (ERE refresh or curator action)",
           "format": "date-time",
           "type": [
             "string",
@@ -158,33 +92,12 @@
       "required": [
         "id",
         "about_entity_mention",
-        "status",
-        "accepted_candidate",
+        "current_placement",
         "candidates",
         "created_at"
       ],
       "title": "Decision",
       "type": "object"
-    },
-    "DecisionAction": {
-      "description": "Action taken on a decision by the curator",
-      "enum": [
-        "ACCEPT_TOP",
-        "ACCEPT_ALTERNATIVE",
-        "REJECT_ALL"
-      ],
-      "title": "DecisionAction",
-      "type": "string"
-    },
-    "DecisionStatus": {
-      "description": "Status of a resolution decision in the curation workflow",
-      "enum": [
-        "AUTOMATIC_CONFIDENT",
-        "PENDING_MANUAL_REVIEW",
-        "MANUALLY_REVIEWED"
-      ],
-      "title": "DecisionStatus",
-      "type": "string"
     },
     "EREErrorResponse": {
       "additionalProperties": false,
@@ -255,9 +168,9 @@
           "description": "A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)\n",
           "type": "string"
         },
-        "identifier": {
+        "identifiedBy": {
           "$ref": "#/$defs/EntityMentionIdentifier",
-          "description": "The identifier (with the ERS-derived components) of the entity mention.\n"
+          "description": "The identification triad of the entity mention.\n"
         },
         "parsed_representation": {
           "description": "JSON representation of the parsed entity data.\n",
@@ -268,7 +181,7 @@
         }
       },
       "required": [
-        "identifier",
+        "identifiedBy",
         "content_type",
         "content"
       ],
@@ -407,6 +320,99 @@
         "PROCEDURE"
       ],
       "title": "EntityType",
+      "type": "string"
+    },
+    "LookupState": {
+      "additionalProperties": false,
+      "description": "Tracks the resolution state for entity mentions from a particular source.\nRecords when the source was last resolved against the canonical clustering.",
+      "properties": {
+        "last_snapshot": {
+          "description": "Timestamp of the last resolution operation for this source.\nUsed to determine if a refreshBulk or other update is needed.\n",
+          "format": "date-time",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "The ID or URI of the ERS client (originator) for which we track lookup state.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "last_snapshot"
+      ],
+      "title": "LookupState",
+      "type": "object"
+    },
+    "UserAction": {
+      "additionalProperties": false,
+      "description": "Immutable record of a curator action on an entity mention resolution.\nStored in the User Action Log for traceability and training.\n\nNOT related to ERE messages; represents curator intent only.",
+      "properties": {
+        "about_entity_mention": {
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The entity mention the curator acted upon"
+        },
+        "action_type": {
+          "$ref": "#/$defs/UserActionType",
+          "description": "The type of action the curator performed"
+        },
+        "actor": {
+          "description": "User ID or identifier of the curator who performed the action",
+          "type": "string"
+        },
+        "candidates": {
+          "description": "The candidate clusters presented to the curator for selection.\nOrdered by confidence (same as shown in curation UI).\n",
+          "items": {
+            "$ref": "#/$defs/ClusterReference"
+          },
+          "type": "array"
+        },
+        "created_at": {
+          "description": "Timestamp when the curator action was recorded",
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique audit trail entry identifier",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "JSON metadata providing context (e.g., curator notes, reasoning).\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selected_cluster": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClusterReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The cluster selected by the curator (if action was ACCEPT_TOP\nor ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL.\n"
+        }
+      },
+      "required": [
+        "id",
+        "about_entity_mention",
+        "candidates",
+        "action_type",
+        "actor",
+        "created_at"
+      ],
+      "title": "UserAction",
+      "type": "object"
+    },
+    "UserActionType": {
+      "description": "Types of curator actions on entity mention resolutions",
+      "enum": [
+        "ACCEPT_TOP",
+        "ACCEPT_ALTERNATIVE",
+        "REJECT_ALL"
+      ],
+      "title": "UserActionType",
       "type": "string"
     }
   },

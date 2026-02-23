@@ -1,16 +1,16 @@
 
 
-# Slot: actor 
+# Slot: action_type 
 
 
-_User ID or identifier of the curator who performed the action_
+_The type of action the curator performed_
 
 
 
 
 
-URI: [ere:actor](https://data.europa.eu/ers/schema/ere/actor)
-Alias: actor
+URI: [ere:action_type](https://data.europa.eu/ers/schema/ere/action_type)
+Alias: action_type
 
 <!-- no inheritance hierarchy -->
 
@@ -31,7 +31,7 @@ Alias: actor
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [UserActionType](UserActionType.md)
 
 * Required: True
 
@@ -57,8 +57,8 @@ Alias: actor
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ere:actor |
-| native | ere:actor |
+| self | ere:action_type |
+| native | ere:action_type |
 
 
 
@@ -67,15 +67,15 @@ Alias: actor
 
 <details>
 ```yaml
-name: actor
-description: User ID or identifier of the curator who performed the action
+name: action_type
+description: The type of action the curator performed
 from_schema: https://data.europa.eu/ers/schema/ere
 rank: 1000
-alias: actor
+alias: action_type
 owner: UserAction
 domain_of:
 - UserAction
-range: string
+range: UserActionType
 required: true
 
 ```
