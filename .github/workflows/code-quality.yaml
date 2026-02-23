@@ -62,34 +62,52 @@ jobs:
       - name: Generate models and docs
         run: make all
 
-      # - name: Verify generated code is up to date
-      #   id: verify_generated_code
-      #   continue-on-error: true
-      #   run: |
-      #     echo "Checking if generated files match LinkML schemas..."
-      #     if ! git diff --quiet src/ docs/ resources/schemas/*json; then
-      #       echo "status=failed" >> $GITHUB_OUTPUT
-      #       echo "Generated code is out of sync!"
-      #       {
-      #         echo "**Generated code is out of sync with LinkML schemas.**"
-      #         echo ""
-      #         echo "Please run \`make all\` and commit the updated files:"
-      #         echo '```'
-      #         git diff --stat src/ docs/ resources/schemas/*json
-      #         echo '```'
-      #       } > sync_report.txt
-      #     else
-      #       echo "status=passed" >> $GITHUB_OUTPUT
-      #       echo "Generated code is up to date" > sync_report.txt
-      #     fi
+      - name: Verify generated code is up to date
+        id: verify_generated_code
+        continue-on-error: true
+        run: |
+          echo "Checking if generated files match LinkML schemas..."
+          SYNC_FAILED=false
 
-      # - name: Publish sync check comment
-      #   if: always() && github.event_name == 'pull_request'
-      #   uses: thollander/actions-comment-pull-request@v3
-      #   with:
-      #     file-path: sync_report.txt
-      #     comment-tag: sync-check
+          # src/ and JSON schemas are deterministic — use git diff directly
+          if ! git diff --quiet src/ resources/schemas/*json; then
+            SYNC_FAILED=true
+          fi
 
-      # - name: Fail if out of sync
-      #   if: steps.verify_generated_code.outputs.status == 'failed'
-      #   run: exit 1
+          # docs/ uses order-insensitive comparison because linkml generate doc
+          # produces non-deterministic markdown table row order across runs.
+          for f in $(git diff --name-only docs/); do
+            committed=$(git show HEAD:"$f" | sort | sha256sum | awk '{print $1}')
+            generated=$(sort "$f" | sha256sum | awk '{print $1}')
+            if [ "$committed" != "$generated" ]; then
+              SYNC_FAILED=true
+              break
+            fi
+          done
+
+          if [ "$SYNC_FAILED" = true ]; then
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "Generated code is out of sync!"
+            {
+              echo "**Generated code is out of sync with LinkML schemas.**"
+              echo ""
+              echo "Please run \`make all\` and commit the updated files:"
+              echo '```'
+              git diff --stat src/ docs/ resources/schemas/*json
+              echo '```'
+            } > sync_report.txt
+          else
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "Generated code is up to date" > sync_report.txt
+          fi
+
+      - name: Publish sync check comment
+        if: always() && github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          file-path: sync_report.txt
+          comment-tag: sync-check
+
+      - name: Fail if out of sync
+        if: steps.verify_generated_code.outputs.status == 'failed'
+        run: exit 1
