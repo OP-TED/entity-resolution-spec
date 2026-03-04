@@ -17,8 +17,8 @@ Alias: id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Decision](Decision.md) | Canonical placement of an entity mention to a cluster |  no  |
 | [UserAction](UserAction.md) | Immutable record of a curator action on an entity mention resolution |  no  |
+| [Decision](Decision.md) | Canonical placement of an entity mention to a cluster |  no  |
 
 
 
