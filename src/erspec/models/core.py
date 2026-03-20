@@ -19,20 +19,6 @@ metamodel_version = "None"
 version = "0.1.0"
 
 
-class EntityType(str, Enum):
-    """
-    Types of entities that can be resolved
-    """
-    ORGANISATION = "ORGANISATION"
-    """
-    An organization entity
-    """
-    PROCEDURE = "PROCEDURE"
-    """
-    A procurement procedure entity
-    """
-
-
 class UserActionType(str, Enum):
     """
     Types of curator actions on entity mention resolutions
@@ -62,6 +48,8 @@ It contains the entity data, along with metadata like type and format."""
     content: str = Field(default=..., description="""A code string representing the entity mention details (eg, RDF or XML description).
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
     parsed_representation: Optional[str] = Field(default=None, description="""JSON representation of the parsed entity data.
+""", json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
+    context: Optional[str] = Field(default=None, description="""Optional context reference (e.g. notice or document ID).
 """, json_schema_extra = { "linkml_meta": {'domain_of': ['EntityMention']} })
 
 

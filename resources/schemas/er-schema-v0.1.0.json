@@ -168,6 +168,13 @@
           "description": "A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)\n",
           "type": "string"
         },
+        "context": {
+          "description": "Optional context reference (e.g. notice or document ID).\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "identifiedBy": {
           "$ref": "#/$defs/EntityMentionIdentifier",
           "description": "The identification triad of the entity mention.\n"
@@ -312,15 +319,6 @@
       ],
       "title": "EntityMentionResolutionResponse",
       "type": "object"
-    },
-    "EntityType": {
-      "description": "Types of entities that can be resolved",
-      "enum": [
-        "ORGANISATION",
-        "PROCEDURE"
-      ],
-      "title": "EntityType",
-      "type": "string"
     },
     "LookupState": {
       "additionalProperties": false,

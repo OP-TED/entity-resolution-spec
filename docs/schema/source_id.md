@@ -17,8 +17,8 @@ Alias: source_id
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |  no  |
 | [LookupState](LookupState.md) | Tracks the resolution state for entity mentions from a particular source |  no  |
+| [EntityMentionIdentifier](EntityMentionIdentifier.md) | A container that groups the attributes needed to identify an entity mention i... |  no  |
 
 
 
