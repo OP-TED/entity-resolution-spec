@@ -27,6 +27,8 @@ URI: [ere:EntityMention](https://data.europa.eu/ers/schema/ere/EntityMention)
         
       EntityMention : content_type
         
+      EntityMention : context
+        
       EntityMention : identifiedBy
         
           
@@ -57,6 +59,7 @@ URI: [ere:EntityMention](https://data.europa.eu/ers/schema/ere/EntityMention)
 | [content_type](content_type.md) | 1 <br/> [String](String.md) | A string about the MIME format of `content` (e | direct |
 | [content](content.md) | 1 <br/> [String](String.md) | A code string representing the entity mention details (eg, RDF or XML descrip... | direct |
 | [parsed_representation](parsed_representation.md) | 0..1 <br/> [String](String.md) | JSON representation of the parsed entity data | direct |
+| [context](context.md) | 0..1 <br/> [String](String.md) | Optional context reference (e | direct |
 
 
 
@@ -159,6 +162,15 @@ attributes:
     rank: 1000
     domain_of:
     - EntityMention
+  context:
+    name: context
+    description: 'Optional context reference (e.g. notice or document ID).
+
+      '
+    from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
+    domain_of:
+    - EntityMention
 
 ```
 </details>
@@ -224,6 +236,18 @@ attributes:
     from_schema: https://data.europa.eu/ers/schema/ers
     rank: 1000
     alias: parsed_representation
+    owner: EntityMention
+    domain_of:
+    - EntityMention
+    range: string
+  context:
+    name: context
+    description: 'Optional context reference (e.g. notice or document ID).
+
+      '
+    from_schema: https://data.europa.eu/ers/schema/ers
+    rank: 1000
+    alias: context
     owner: EntityMention
     domain_of:
     - EntityMention

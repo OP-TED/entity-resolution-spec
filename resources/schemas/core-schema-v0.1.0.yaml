@@ -13,14 +13,6 @@ default_range: string
 
 enums:
 
-  EntityType:
-    description: Types of entities that can be resolved
-    permissible_values:
-      ORGANISATION:
-        description: An organization entity
-      PROCEDURE:
-        description: A procurement procedure entity
-
   UserActionType:
     description: Types of curator actions on entity mention resolutions
     permissible_values:
@@ -55,6 +47,9 @@ classes:
       parsed_representation:
         description: |
           JSON representation of the parsed entity data.
+      context:
+        description: |
+          Optional context reference (e.g. notice or document ID).
 
   EntityMentionIdentifier:
     description: |

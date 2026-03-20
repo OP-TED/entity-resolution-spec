@@ -26,20 +26,6 @@ metamodel_version = "None"
 version = "0.1.0"
 
 
-class EntityType(str, Enum):
-    """
-    Types of entities that can be resolved
-    """
-    ORGANISATION = "ORGANISATION"
-    """
-    An organization entity
-    """
-    PROCEDURE = "PROCEDURE"
-    """
-    A procurement procedure entity
-    """
-
-
 class UserActionType(str, Enum):
     """
     Types of curator actions on entity mention resolutions

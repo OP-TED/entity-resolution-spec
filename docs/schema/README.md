@@ -40,6 +40,7 @@ Name: ereServiceSchema
 | [confidence_score](confidence_score.md) | A 0-1 value of how confident the ERE is about the equivalence between the sub... |
 | [content](content.md) | A code string representing the entity mention details (eg, RDF or XML descrip... |
 | [content_type](content_type.md) | A string about the MIME format of `content` (e |
+| [context](context.md) | Optional context reference (e |
 | [created_at](created_at.md) | When the decision was first created |
 | [current_placement](current_placement.md) | The accepted cluster for this mention (latest from ERE or curator) |
 | [entity_mention](entity_mention.md) | The data about the entity to be resolved |
@@ -72,7 +73,6 @@ Name: ereServiceSchema
 
 | Enumeration | Description |
 | --- | --- |
-| [EntityType](EntityType.md) | Types of entities that can be resolved |
 | [UserActionType](UserActionType.md) | Types of curator actions on entity mention resolutions |
 
 
