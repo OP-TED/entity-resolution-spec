@@ -7,39 +7,43 @@ config:
     bottomMarginAdj: 0.1
 ---
 sequenceDiagram
-%% Maps to EA diagram: UML Sequence (conceptual overview)
-%% Simplified: ERSys collapsed to single ERS lifeline
-%% Semantics aligned with the locked extended diagram.
+%% Maps to EA diagram: UML Sequence (conceptual E2E overview)
+%% Aligned with UCB11 (intake), UC12 (result processing), UC1.3 (bulk lookup)
+%% ERSys collapsed to single ERS lifeline
 
 participant Originator as "Originator"
 participant ERS as "Entity Resolution Service (ERS)"
 participant MessagingMiddleware as "Messaging Middleware"
 participant ERE as "Entity Resolution Engine (ERE)"
 
-%% Phase 1 — Bounded resolve (synchronous; waits for completion)
+%% Phase 1 — Resolve request (UCB11)
 Originator ->> ERS: Resolve Entity Mention<br/>(request identifiers + EntityMention)
-ERS ->> ERS: Validate and register request<br/>(idempotent)
+ERS ->> ERS: Validate and register request<br/>(idempotency + Request Registry)
 
 ERS ->> MessagingMiddleware: Publish resolution request<br/>(request identifiers + EntityMention)
 MessagingMiddleware ->> ERE: Deliver request (async)
 
-alt Resolution completes successfully within bounded execution window
-    ERE ->> ERE: Resolve EntityMention
-    ERE ->> MessagingMiddleware: Publish candidate alignments<br/>(candidate links)
-    MessagingMiddleware ->> ERS: Deliver results (async)
-    ERS ->> ERS: Evaluate proposals under governance<br/>(record Resolution Decision)
-    ERS ->> ERS: Update Canonical Entity Registry<br/>(current governed assignment)
-    ERS -->> Originator: Canonical identifier
-else Timeout or failure within bounded execution window
-    ERS -->> Originator: Error (no canonical identifier)
+alt ERE returns within ERS to ERE execution window
+    ERE ->> ERE: Resolve mention to cluster
+    ERE ->> MessagingMiddleware: Publish resolution result<br/>(canonical clusterId + top alternative clusterIds)
+    MessagingMiddleware ->> ERS: Deliver resolution result (async)
+    ERS ->> ERS: Process resolution result<br/>(persist Resolution Decision and current assignment)
+    ERS -->> Originator: Canonical clusterId
+else ERE does not return within ERS to ERE execution window
+    ERS ->> ERS: Create provisional singleton and persist decision
+    ERS ->> MessagingMiddleware: Publish placement instruction<br/>(assign mention to singleton clusterId)
+    MessagingMiddleware ->> ERE: Deliver placement instruction (async)
+    ERS -->> Originator: Provisional clusterId
+else Validation failure or internal error
+    ERS -->> Originator: Error
 end
 
-%% Phase 2 — Late / duplicate responses (after client request completed)
-ERE ->> MessagingMiddleware: Publish candidate alignments<br/>(late or duplicate)
-MessagingMiddleware ->> ERS: Deliver results (async)
-ERS ->> ERS: Evaluate applicability, integrate if applicable<br>(update resolution decision<br> and current assignment)
-%% note right of ERS: No callback or push to Originator; completed request outcome is final.
+%% Phase 2 — Late or duplicate resolution results (UC12)
+ERE ->> MessagingMiddleware: Publish resolution result<br/>(canonical clusterId + alternatives)
+MessagingMiddleware ->> ERS: Deliver resolution result (async)
+ERS ->> ERS: Process resolution result<br/>(persist Resolution Decision and current assignment)
 
-%% Phase 3 — Convergence (read-only observation)
-Originator ->> ERS: Lookup canonical assignment<br/>(request identifiers)
-ERS -->> Originator: Current canonical identifier
+%% Phase 3 — Bulk lookup by source (UC1.3)
+Originator ->> ERS: Bulk lookup by sourceId<br/>(since lastSeenTimestamp)
+ERS ->> ERS: Return unseen updates and mark exposed<br/>(by sourceId + Originator)
+ERS -->> Originator: Resolution update set<br/>(clusterId assignments + metadata)

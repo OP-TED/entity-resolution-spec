@@ -4,7 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [unreleased]
-...
+
+## [0.2.0-rc.2] - 2026-02-20
+### Added
+* CI: GitHub Actions quality-check workflow (`.github/workflows/code-quality.yaml`) — LinkML schema linting, `ruff` Python linting, model/docs generation with sync verification, and PR comment posting ([ERS1-103])
+* `lint` and `lint-schema` Make targets ([ERS1-103])
+* data model: `proposed_cluster_ids` field on `EntityMentionResolutionRequest` — allows the caller to suggest candidate clusters; the ERE has no obligation to honour the proposal ([ERS1-119])
+* data model: `similarity_score` field on `ClusterReference` — a 0–1 pairwise score between an entity mention and a cluster representative ([ERS1-119])
+* Schema docs: `EREErrorResponse.md`, `EREMessage.md`, `EntityMentionResolutionResponse.md`, `proposed_cluster_ids.md`, `similarity_score.md` ([ERS1-119])
+
+### Changed
+* data model: revised semantics of `excluded_cluster_ids` — ERE has no obligation to honour exclusions, and it remains the ultimate resolution authority ([ERS1-119])
+* data model: clarified `ere_request_id` — notification responses originating inside the ERE (without a prior request) use the prefix `ereNotification:` ([ERS1-119])
+* Removed `FullRebuildRequest` / `FullRebuildResponse` classes from ERE schema and docs ([ERS1-119])
+* Renamed `entityType.md` → `EntityType.md` in schema docs ([ERS1-119])
+* Gherkin tests updated to reflect the V4 ERE Contract — simplified idempotent-resolution scenarios, added full-rebuild stub, aligned unhappy-path tests ([ERS1-120])
+* README updated: added `lint` / `lint-schema` targets to the Makefile overview ([ERS1-103])
 
 ## [0.2.0-rc.1] - 2026-02-03
 ### Added

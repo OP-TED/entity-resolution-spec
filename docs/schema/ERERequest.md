@@ -29,11 +29,9 @@ URI: [ere:ERERequest](https://data.europa.eu/ers/schema/ere/ERERequest)
 
       ERERequest <|-- EntityMentionResolutionRequest
         click EntityMentionResolutionRequest href "../EntityMentionResolutionRequest/"
-      ERERequest <|-- FullRebuildRequest
-        click FullRebuildRequest href "../FullRebuildRequest/"
       
 
-      ERERequest : ereRequestId
+      ERERequest : ere_request_id
         
       ERERequest : timestamp
         
@@ -50,7 +48,6 @@ URI: [ere:ERERequest](https://data.europa.eu/ers/schema/ere/ERERequest)
 * [EREMessage](EREMessage.md)
     * **ERERequest**
         * [EntityMentionResolutionRequest](EntityMentionResolutionRequest.md)
-        * [FullRebuildRequest](FullRebuildRequest.md)
 
 
 
@@ -59,7 +56,7 @@ URI: [ere:ERERequest](https://data.europa.eu/ers/schema/ere/ERERequest)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [type](type.md) | 1 <br/> [String](String.md) | The type of the request or result | [EREMessage](EREMessage.md) |
-| [ereRequestId](ereRequestId.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
+| [ere_request_id](ere_request_id.md) | 1 <br/> [String](String.md) | A string representing the unique ID of an ERE request, or the ID of the reque... | [EREMessage](EREMessage.md) |
 | [timestamp](timestamp.md) | 0..1 <br/> [Datetime](Datetime.md) | The time when the message was created | [EREMessage](EREMessage.md) |
 
 
@@ -145,17 +142,26 @@ attributes:
     - EREMessage
     range: string
     required: true
-  ereRequestId:
-    name: ereRequestId
+  ere_request_id:
+    name: ere_request_id
     description: 'A string representing the unique ID of an ERE request, or the ID
       of the request a response is about.
 
-      This **is not** the same as `requestId` + `sourceId`.
+      This **is not** the same as `request_id` + `source_id`.
+
+
+      Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse`
+      message
+
+      can originate from within the ERE, without any previous request counterpart,
+      as a notification of
+
+      resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
 
       '
     from_schema: https://data.europa.eu/ers/schema/ere
     rank: 1000
-    alias: ereRequestId
+    alias: ere_request_id
     owner: ERERequest
     domain_of:
     - EREMessage

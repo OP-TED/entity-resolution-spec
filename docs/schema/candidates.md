@@ -3,15 +3,6 @@
 # Slot: candidates 
 
 
-_The set of cluster reference/score pairs representing the candidate clusters_
-
-_that the entity mention in the original request could align to (be equivalent to)._
-
-__
-
-
-
-
 
 URI: [ere:candidates](https://data.europa.eu/ers/schema/ere/candidates)
 Alias: candidates
@@ -26,7 +17,9 @@ Alias: candidates
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [UserAction](UserAction.md) | Immutable record of a curator action on an entity mention resolution |  no  |
 | [EntityMentionResolutionResponse](EntityMentionResolutionResponse.md) | An entity resolution response returned by the ERE |  no  |
+| [Decision](Decision.md) | Canonical placement of an entity mention to a cluster |  no  |
 
 
 
@@ -35,11 +28,7 @@ Alias: candidates
 
 ## Properties
 
-* Range: [ClusterReference](ClusterReference.md)
-
-* Multivalued: True
-
-* Required: True
+* Range: [String](String.md)
 
 
 
@@ -48,13 +37,6 @@ Alias: candidates
 
 
 
-
-
-
-### Schema Source
-
-
-* from schema: https://data.europa.eu/ers/schema/ere
 
 
 
@@ -74,21 +56,12 @@ Alias: candidates
 <details>
 ```yaml
 name: candidates
-description: 'The set of cluster reference/score pairs representing the candidate
-  clusters
-
-  that the entity mention in the original request could align to (be equivalent to).
-
-  '
-from_schema: https://data.europa.eu/ers/schema/ere
-rank: 1000
 alias: candidates
-owner: EntityMentionResolutionResponse
 domain_of:
 - EntityMentionResolutionResponse
-range: ClusterReference
-required: true
-multivalued: true
+- Decision
+- UserAction
+range: string
 
 ```
 </details>

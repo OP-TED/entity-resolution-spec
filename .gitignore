@@ -219,3 +219,14 @@ __marimo__/
 .vscode/
 .mypy_cache/
 .pyre/
+
+# CI/CD artifacts
+sync_report.txt
+.gitnexus
+.serenity/
+.pycharm_plugin
+.venv
+.trueflow
+.claude
+AGENTS.md
+CLAUDE.md

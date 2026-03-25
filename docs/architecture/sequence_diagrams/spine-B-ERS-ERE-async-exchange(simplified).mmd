@@ -7,42 +7,36 @@ config:
     bottomMarginAdj: 0.1
 ---
 sequenceDiagram
-%% Maps to EA diagram: UML Sequence (Spine B – simplified)
-%% Purpose: ERS–ERE asynchronous proposal exchange and governance-first integration.
-%% Focus: triad correlation, advisory engine outputs, and governed state update.
-%% Excludes: client REST flows, detailed store choreography, scoring internals,
-%% pruning mechanics, curation UI, and rebuild initiation.
+%% Maps to EA diagram: UML Sequence (Spine B)
+%% Purpose: async resolution outcome integration and UC12 processing
+%% Covers: solicited outcomes (Spine A, Spine D) and unsolicited outcomes (engine initiated reclustering)
+%% Focus: triad correlation, optional constraints, at least once delivery tolerance
+%% Excludes: client REST flows, detailed store choreography, scoring internals, curation UI
 
-box "Entity Resolution System (ERSys)"
+%%box "Entity Resolution System (ERSys)"
     participant ERS as "Entity Resolution Service (ERS)"
-end
+%%end
 
 participant MessagingMiddleware as "Messaging Middleware"
 
-box "Entity Resolution Engine (ERE)"
+%%box "Entity Resolution Engine (ERE)"
     participant ERE as "Entity Resolution Engine (ERE)"
+%%end
+
+opt ERS publishes a resolution request
+    ERS ->> MessagingMiddleware: Publish resolution request (async)<br/>(sourceId, requestId, entityType, EntityMention,<br/>optional rejectionConstraints, optional preferredPlacement)
+    MessagingMiddleware ->> ERE: Deliver resolution request (async)
 end
 
-%% --- Request (triggered by Spine A or rebuild processing) ---
-ERS ->> MessagingMiddleware: Publish Resolution Request (async)<br/>(sourceId, requestId, entityType,<br/>EntityMention, rejectionConstraints?)
-MessagingMiddleware ->> ERE: Deliver Resolution Request (async)
+%% Resolution outcome
+ERE ->> MessagingMiddleware: Publish resolution result (async)<br/>(sourceId, requestId, entityType,<br/>canonical clusterId, top alternative clusterIds)
+MessagingMiddleware ->> ERS: Deliver resolution result (async)
 
-%% --- Advisory result ---
-ERE ->> MessagingMiddleware: Publish Resolution Result (async)<br/>(sourceId, requestId, entityType,<br/>candidate cluster references + engine metadata)
-MessagingMiddleware ->> ERS: Deliver Resolution Result (async)
-
-%% --- Governance-first integration ---
-alt Contract violation (missing triad / invalid schema)
+%% UC12 processing
+alt Contract violation (missing triad or invalid schema)
     ERS ->> ERS: Record contract violation and ignore
 else Acceptable delivery (including duplicates or late arrivals)
-    ERS ->> ERS: Correlate by triad and apply governance constraints<br/>(preserve curator locks, enforce rejections)
-    ERS ->> ERS: Persist updated Resolution Decision<br/>and update canonical projection
+    ERS ->> ERS: Correlate by triad and persist latest assignment<br/>(update Resolution Decision and lookup projection)
 end
 
-%% note right of ERS:
-%%   ERE outputs are advisory proposals only.
-%%   Messaging is at-least-once; ERS tolerates duplicates and lateness.
-%%   Integration may occur after a client resolve has completed:
-%%   - governance state is updated,
-%%   - no callbacks or notifications are triggered,
-%%   - completed client requests are not retroactively altered.
+%% note right of ERS: Optional rejectionConstraints express negative evidence<br/>Optional preferredPlacement expresses recommended cluster assignment<br/>Outcomes may arrive without a preceding request due to engine initiated reclustering<br/>Messaging is at least once and results may be late or duplicated<br/>Completed client responses are not retroactively changed

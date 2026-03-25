@@ -9,6 +9,6 @@ When
 Then 
 	The ERE asynchronously pushes an error response to the responses channel that looks like:
 
-	`ereRequestId`: the ID of the malformed request
-	`errorTitle`/`errorMessage`: a human-readable description of the error
+	`ere_request_id`: the ID of the malformed request
+	`error_title`/`error_message`: a human-readable description of the error
 	`type`: "EREErrorResponse" # JSON object property, matches the LinkML class in the service schema.
