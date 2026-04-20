@@ -5,17 +5,11 @@ on:
     branches: [develop, main]
     paths:
       - "src/**"
-      - "resources/schemas/**"
-      - "pyproject.toml"
-      - "poetry.lock"
       - "Makefile"
       - ".github/workflows/code-quality.yaml"
   pull_request:
     paths:
       - "src/**"
-      - "resources/schemas/**"
-      - "pyproject.toml"
-      - "poetry.lock"
       - "Makefile"
       - ".github/workflows/code-quality.yaml"
 
@@ -34,7 +28,7 @@ jobs:
 
       - name: Read Python version from pyproject.toml
         id: python-version
-        run: echo "version=$(grep -m1 'python = ' pyproject.toml | grep -oP '\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
+        run: echo "version=$(grep -m1 'python = ' src/pyproject.toml | grep -oP '\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -48,16 +42,16 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pypoetry
-          key: poetry-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+          key: poetry-${{ runner.os }}-${{ hashFiles('src/poetry.lock') }}
 
       - name: Install dependencies
         run: make install
 
       - name: Lint LinkML schemas
-        run: poetry run linkml lint --ignore-warnings resources/schemas/
+        run: make lint-schema
 
       - name: Run ruff linter
-        run: poetry run ruff check src/
+        run: make lint
 
       - name: Generate models and docs
         run: make -B all
@@ -70,7 +64,7 @@ jobs:
           OUT_OF_SYNC=""
 
           # src/ and JSON schemas are deterministic — use git diff directly
-          for f in $(git diff --name-only src/ resources/schemas/*json); do
+          for f in $(git diff --name-only src/erspec/ src/resources/schemas/*json); do
             OUT_OF_SYNC="$OUT_OF_SYNC $f"
           done
 
