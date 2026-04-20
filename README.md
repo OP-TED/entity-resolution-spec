@@ -40,7 +40,7 @@ This will install the necessary user dependencies in a Poetry-managed virtual en
 
 ## Development
 
-This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
+This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `src/resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
 
 Generated Python models are in `src/erspec/models`. Regenerate them with:
 

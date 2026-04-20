@@ -10,7 +10,7 @@ Scenario: A standard resolution request appears on the ERE request channel after
   to the ERE request channel. ERE can rely on the request being correlated to the entity mention
   triad and carrying the entity mention content.
 
-  Contract reference: see resources/schemas/ere-service-schema-v0.1.0.yaml (EntityMentionResolutionRequest)
+  Contract reference: see src/resources/schemas/ere-service-schema-v0.1.0.yaml (EntityMentionResolutionRequest)
 
 Given
   A valid entity mention with a known triad (source_id, request_id, entity_type) is submitted to ERS
@@ -52,7 +52,7 @@ Scenario Outline: A re-evaluation request appears on the ERE request channel aft
   ERS publishes a re-evaluation request to the ERE request channel. The curator interaction is the
   triggering context; the subject under test is the request that ERE receives.
 
-  Contract reference: see resources/schemas/ere-service-schema-v0.1.0.yaml (EntityMentionResolutionRequest)
+  Contract reference: see src/resources/schemas/ere-service-schema-v0.1.0.yaml (EntityMentionResolutionRequest)
 
 Given
   An entity mention E has previously been resolved and a cluster assignment is available

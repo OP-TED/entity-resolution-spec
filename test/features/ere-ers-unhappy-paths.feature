@@ -29,7 +29,7 @@ Scenario: ERE replies with an error response to a malformed resolution request
   When ERS publishes a resolution request that is structurally invalid, ERE must reply with
   an `EREErrorResponse` on the ERS response channel.
 
-  Contract reference: resources/schemas/er-schema-v0.1.0.json (EREErrorResponse)
+  Contract reference: src/resources/schemas/er-schema-v0.1.0.json (EREErrorResponse)
 
 When
   ERS pushes a malformed resolution request into the ERE request channel
@@ -46,7 +46,7 @@ Scenario: An entity mention with an unsupported entity type is rejected by ERE
   unknown type, it must return an error response. ERS will not forward requests for types
   not listed in the service schema.
 
-  Contract reference: resources/schemas/ere-service-schema-v0.1.0.yaml (supported entity types)
+  Contract reference: src/resources/schemas/ere-service-schema-v0.1.0.yaml (supported entity types)
 
 When
   ERS pushes a resolution request for an entity mention with an unsupported entity type
