@@ -1,6 +1,6 @@
 [project]
 name = "ers-spec"
-version = "0.3.0"
+version = "1.0.0"
 description = """
   The core components for the Entity Resolution System (ERS) components.
 
