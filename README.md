@@ -1,8 +1,7 @@
 # Entity Resolution Specifications
 
-Formal software contract, shared data models, sample messages, and compliance tests required for integrating new Entity Resolution Engines (EREs) into the system.
+Formal software contract, shared data models, sample messages, and compliance tests required for integrating new Entity Resolution Engines (EREs) into Entity Resolution System.
 
-> Note: Active development continues in the OP-TED repository: https://github.com/OP-TED/entity-resolution-spec
 
 ## Requirements
 
@@ -52,10 +51,9 @@ make all
 This regenerates both the LinkML-based models (Python, JSONSchema) and the navigable documentation. See the Makefile for more granular targets.
 
 
-## Running and Testing
+## Gherkin Specification
 
-TODO: this will be added in future. Right now, this repository contains
-specifications only and does not have runnable unit tests.
+This repository contains Gherkin feature files under `test/features/` that serve as a formal specification of the expected behaviour of the ERE. They describe the observable contract between ERS and ERE at specification level — independent of any particular ERE implementation — and may serve as the basis for implementing acceptance tests for a conformant ERE.
 
 
 ## Test data
