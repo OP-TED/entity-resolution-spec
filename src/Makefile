@@ -22,7 +22,7 @@ endef
 SCHEMAS_DIR    = resources/schemas
 SCRIPTS_DIR    = resources/scripts
 TEMPLATES_DIR  = resources/templates
-MODELS_DIR     = src/erspec/models
+MODELS_DIR     = erspec/models
 
 # Schema identifiers
 ERE_SCHEMA_NAME    = ere-service-schema
@@ -40,7 +40,7 @@ PYTHON_ERE_MODEL   = $(MODELS_DIR)/ere.py
 PYTHON_CORE_MODEL  = $(MODELS_DIR)/core.py
 JSON_SCHEMA_PATH   = $(SCHEMAS_DIR)/$(JSON_SCHEMA_NAME)-v$(SCHEMA_VERSION).json
 
-MODEL_DOCS_DIR     = docs/schema
+MODEL_DOCS_DIR     = ../docs/schema
 MODEL_DOCS_README  = $(MODEL_DOCS_DIR)/README.md
 
 # ─── Help ────────────────────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ install: ## Install dependencies using Poetry
 .PHONY: lint
 lint: ## Run ruff linter on source code
 	$(call log_progress,Running ruff checks...)
-	@poetry run ruff check src/
+	@poetry run ruff check erspec/
 	$(call log_done,Ruff checks completed.)
 
 .PHONY: lint-schema
