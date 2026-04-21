@@ -38,9 +38,15 @@ make install
 This will install the necessary user dependencies in a Poetry-managed virtual environment.
 
 
+## Repository Layout
+
+This repository follows the repository owner's requirements for project structure, which place the self-contained Python project (source code, dependencies, and build scripts) under `src/`. This layout is required for the repository owner's deployment tooling to locate and operate the project correctly.
+
+The canonical `Makefile` lives at the repo root and runs all targets from there. All `poetry` commands are directed to the project in `src/` via `poetry --directory src`.
+
 ## Development
 
-This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
+This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `src/resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
 
 Generated Python models are in `src/erspec/models`. Regenerate them with:
 

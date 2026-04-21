@@ -23,7 +23,7 @@ from erspec.models.pydantic_model import PydanticModel
 
 
 metamodel_version = "None"
-version = "0.1.0"
+version = "1.0.0"
 
 
 class UserActionType(str, Enum):
