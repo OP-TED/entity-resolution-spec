@@ -5,6 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [unreleased]
 
+## [1.0.0-rc.1] - 2026-04-21
+### Added
+* data model: `context` field on `EntityMention` — carries the surrounding textual context for an entity mention
+
+### Changed
+* Repository layout restructured: schemas, scripts, templates, and build configuration consolidated under `src/`; root-level `resources/`, `Makefile`, `pyproject.toml` and `poetry.lock` moved into `src/`
+* Schema files renamed to drop the version suffix (e.g. `core-schema-v0.1.0.yaml` → `core-schema.yaml`); internal schema version bumped to 1.0.0
+* Makefile: build logic consolidated into a single root-level `Makefile`; CI workflows updated to match revised `make` targets and paths
+* Gherkin test suite overhauled: new feature files added for outcome integration, request publishing, and detailed resolution cases; outdated `ere-ers-common-cases` and `ere-ers-full-rebuilds` feature files removed; unhappy-path scenarios significantly extended
+* Schema docs and worked examples updated to reflect the current schema structure and revised repository paths
+
+### Fixed
+* CI: PR comment step is now skipped on cross-fork pull requests to prevent permission failures
+
 ## [0.2.0-rc.2] - 2026-02-20
 ### Added
 * CI: GitHub Actions quality-check workflow (`.github/workflows/code-quality.yaml`) — LinkML schema linting, `ruff` Python linting, model/docs generation with sync verification, and PR comment posting ([ERS1-103])
