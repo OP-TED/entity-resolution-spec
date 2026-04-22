@@ -18,30 +18,28 @@ define log_done
 endef
 
 # ─── Paths & Naming ─────────────────────────────────────────────────────────────
+# Root-relative paths — used by Make for dependency tracking only.
+# Recipes use src/-relative paths via `cd src &&`.
 
-SCHEMAS_DIR    = resources/schemas
-SCRIPTS_DIR    = resources/scripts
-TEMPLATES_DIR  = resources/templates
+SCHEMAS_DIR    = src/resources/schemas
+SCRIPTS_DIR    = src/resources/scripts
+TEMPLATES_DIR  = src/resources/templates
 MODELS_DIR     = src/erspec/models
 
-# Schema identifiers
-ERE_SCHEMA_NAME    = ere-service-schema
-CORE_SCHEMA_NAME   = core-schema
-JSON_SCHEMA_NAME   = er-schema
-SCHEMA_VERSION     = 0.1.0
+ERE_SCHEMA_NAME  = ere-service-schema
+CORE_SCHEMA_NAME = core-schema
+JSON_SCHEMA_NAME = er-schema
 
-# Source schemas (core is imported by ere, so it is a dependency)
-ERE_SCHEMA_PATH    = $(SCHEMAS_DIR)/$(ERE_SCHEMA_NAME)-v$(SCHEMA_VERSION).yaml
-CORE_SCHEMA_PATH   = $(SCHEMAS_DIR)/$(CORE_SCHEMA_NAME)-v$(SCHEMA_VERSION).yaml
+ERE_SCHEMA_PATH    = $(SCHEMAS_DIR)/$(ERE_SCHEMA_NAME).yaml
+CORE_SCHEMA_PATH   = $(SCHEMAS_DIR)/$(CORE_SCHEMA_NAME).yaml
 ALL_SCHEMA_SOURCES = $(ERE_SCHEMA_PATH) $(CORE_SCHEMA_PATH)
 
-# Generated artefacts
-PYTHON_ERE_MODEL   = $(MODELS_DIR)/ere.py
-PYTHON_CORE_MODEL  = $(MODELS_DIR)/core.py
-JSON_SCHEMA_PATH   = $(SCHEMAS_DIR)/$(JSON_SCHEMA_NAME)-v$(SCHEMA_VERSION).json
+PYTHON_ERE_MODEL  = $(MODELS_DIR)/ere.py
+PYTHON_CORE_MODEL = $(MODELS_DIR)/core.py
+JSON_SCHEMA_PATH  = $(SCHEMAS_DIR)/$(JSON_SCHEMA_NAME).json
 
-MODEL_DOCS_DIR     = docs/schema
-MODEL_DOCS_README  = $(MODEL_DOCS_DIR)/README.md
+MODEL_DOCS_DIR    = docs/schema
+MODEL_DOCS_README = $(MODEL_DOCS_DIR)/README.md
 
 # ─── Help ────────────────────────────────────────────────────────────────────────
 
@@ -58,12 +56,11 @@ help:
 		}' $(MAKEFILE_LIST)
 
 # ─── Setup ───────────────────────────────────────────────────────────────────────
-# Note: Python, Poetry and Make are pre-requisites and are not handled here.
 
 .PHONY: install
 install: ## Install dependencies using Poetry
 	$(call log_progress,Installing dependencies using Poetry...)
-	@poetry sync
+	@cd src && poetry sync
 	$(call log_done,Dependencies installed.)
 
 # ─── Quality ─────────────────────────────────────────────────────────────────────
@@ -71,13 +68,14 @@ install: ## Install dependencies using Poetry
 .PHONY: lint
 lint: ## Run ruff linter on source code
 	$(call log_progress,Running ruff checks...)
-	@poetry run ruff check src/
+	@cd src && poetry run ruff check erspec/
 	$(call log_done,Ruff checks completed.)
 
 .PHONY: lint-schema
 lint-schema: ## Run LinkML linter on YAML schemas
 	$(call log_progress,Linting LinkML schemas...)
-	@poetry run linkml lint --ignore-warnings $(SCHEMAS_DIR)/
+	@cd src && poetry run linkml lint --ignore-warnings resources/schemas/$(ERE_SCHEMA_NAME).yaml
+	@cd src && poetry run linkml lint --ignore-warnings resources/schemas/$(CORE_SCHEMA_NAME).yaml
 	$(call log_done,LinkML schema lint completed.)
 
 # ─── Aggregate targets ──────────────────────────────────────────────────────────
@@ -94,26 +92,26 @@ generate-models: $(PYTHON_ERE_MODEL) $(JSON_SCHEMA_PATH) ## Generate Python mode
 generate-doc: $(MODEL_DOCS_README) ## Generate schema documentation and diagrams
 	$(call log_done,Documentation generated.)
 
-# ─── Python Pydantic models (split generation: ere + core) ──────────────────────
+# ─── Python Pydantic models ──────────────────────────────────────────────────────
 
 $(PYTHON_ERE_MODEL) $(PYTHON_CORE_MODEL) &: $(ALL_SCHEMA_SOURCES)
 	$(call log_progress,Generating Python models...)
 	@mkdir -p $(MODELS_DIR)
-	@poetry run python $(SCRIPTS_DIR)/generate_models.py \
-		--schema $(ERE_SCHEMA_PATH) \
-		--output $(PYTHON_ERE_MODEL) \
-		--template-dir $(TEMPLATES_DIR) \
-		--schemas-dir $(SCHEMAS_DIR)
-	@poetry run ruff check --fix $(MODELS_DIR)
+	@cd src && poetry run python resources/scripts/generate_models.py \
+		--schema resources/schemas/$(ERE_SCHEMA_NAME).yaml \
+		--output erspec/models/ere.py \
+		--template-dir resources/templates \
+		--schemas-dir resources/schemas
+	@cd src && poetry run ruff check --fix erspec/models/
 	$(call log_done,Python models generated.)
 
 # ─── JSON Schema ─────────────────────────────────────────────────────────────────
-# The ERE schema imports core, so `linkml generate json-schema` will include both.
 
 $(JSON_SCHEMA_PATH): $(ALL_SCHEMA_SOURCES)
 	$(call log_progress,Generating JSON Schema...)
 	@mkdir -p $(dir $(JSON_SCHEMA_PATH))
-	@poetry run linkml generate json-schema --indent 2 $(ERE_SCHEMA_PATH) > $(JSON_SCHEMA_PATH)
+	@cd src && poetry run linkml generate json-schema --indent 2 \
+		resources/schemas/$(ERE_SCHEMA_NAME).yaml > resources/schemas/$(JSON_SCHEMA_NAME).json
 	$(call log_done,JSON Schema generated -> $(JSON_SCHEMA_PATH))
 
 # ─── Documentation & PlantUML diagrams ──────────────────────────────────────────
@@ -121,14 +119,10 @@ $(JSON_SCHEMA_PATH): $(ALL_SCHEMA_SOURCES)
 $(MODEL_DOCS_README): $(ALL_SCHEMA_SOURCES)
 	$(call log_progress,Generating schema documentation...)
 	@mkdir -p $(MODEL_DOCS_DIR)
-# Index is named README.md so GitHub renders it when browsing the directory.
-	@poetry run linkml generate doc $(ERE_SCHEMA_PATH) \
-		-d $(MODEL_DOCS_DIR) --index-name README
-# TODO: Prefer PNG once upstream is fixed (https://github.com/linkml/linkml/issues/3009)
-# TODO: --no-mergeimports doesn't work (https://github.com/linkml/linkml/issues/1296), so, for
-#   the moment, we include core imported classes in the diagram.
-	@poetry run linkml generate plantuml \
-		-d $(MODEL_DOCS_DIR) --format svg $(ERE_SCHEMA_PATH)
+	@cd src && poetry run linkml generate doc resources/schemas/$(ERE_SCHEMA_NAME).yaml \
+		-d ../docs/schema --index-name README
+	@cd src && poetry run linkml generate plantuml \
+		-d ../docs/schema --format svg resources/schemas/$(ERE_SCHEMA_NAME).yaml
 	$(call log_done,Documentation generated -> $(MODEL_DOCS_DIR))
 
 # ─── Clean ───────────────────────────────────────────────────────────────────────

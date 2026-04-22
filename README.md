@@ -1,8 +1,7 @@
 # Entity Resolution Specifications
 
-Formal software contract, shared data models, sample messages, and compliance tests required for integrating new Entity Resolution Engines (EREs) into the system.
+Formal software contract, shared data models, sample messages, and compliance tests required for integrating new Entity Resolution Engines (EREs) into Entity Resolution System.
 
-> Note: Active development continues in the OP-TED repository: https://github.com/OP-TED/entity-resolution-spec
 
 ## Requirements
 
@@ -39,9 +38,15 @@ make install
 This will install the necessary user dependencies in a Poetry-managed virtual environment.
 
 
+## Repository Layout
+
+This repository follows the repository owner's requirements for project structure, which place the self-contained Python project (source code, dependencies, and build scripts) under `src/`. This layout is required for the repository owner's deployment tooling to locate and operate the project correctly.
+
+The canonical `Makefile` lives at the repo root and runs all targets from there. All `poetry` commands are directed to the project in `src/` via `poetry --directory src`.
+
 ## Development
 
-This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
+This project uses principles of model-driven development (MDD) and domain-driven design (DDD). The core models are defined in the `src/resources/schemas` directory using [LinkML](https://linkml.io/), and the Python (Pydantic) models are generated from these specifications.
 
 Generated Python models are in `src/erspec/models`. Regenerate them with:
 
@@ -52,10 +57,9 @@ make all
 This regenerates both the LinkML-based models (Python, JSONSchema) and the navigable documentation. See the Makefile for more granular targets.
 
 
-## Running and Testing
+## Gherkin Specification
 
-TODO: this will be added in future. Right now, this repository contains
-specifications only and does not have runnable unit tests.
+This repository contains Gherkin feature files under `test/features/` that serve as a formal specification of the expected behaviour of the ERE. They describe the observable contract between ERS and ERE at specification level — independent of any particular ERE implementation — and may serve as the basis for implementing acceptance tests for a conformant ERE.
 
 
 ## Test data

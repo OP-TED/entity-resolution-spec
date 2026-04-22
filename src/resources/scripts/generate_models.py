@@ -27,7 +27,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--schema",
         required=True,
         type=Path,
-        help="Path to the top-level LinkML YAML schema (e.g. resources/schemas/ere-service-schema-v0.1.0.yaml).",
+        help="Path to the top-level LinkML YAML schema (e.g. resources/schemas/ere-service-schema.yaml).",
     )
     parser.add_argument(
         "--output",

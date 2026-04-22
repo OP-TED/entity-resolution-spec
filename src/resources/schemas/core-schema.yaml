@@ -1,7 +1,7 @@
 id: https://data.europa.eu/ers/schema/ers
 name: coreSchema
 description: ERS domain layer models for entity resolution
-version: 0.1.0
+version: 1.0.0
 imports:
   - linkml:types
 prefixes:

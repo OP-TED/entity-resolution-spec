@@ -18,27 +18,24 @@ Outcome: equivalent entities with high confidence.
 
 **Request**:
 
-```javascript
+```json
 {
   "type": "EntityMentionResolutionRequest",
-  "entityMention": 
-  { 
-    // This is an instance of the EntityMention class (see the LinkML schema)
-    "type": "http://www.w3.org/ns/org#Organization",
-    "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline",
-    "payload": "<SEE BELOW>",
-    "dataFormat": "text/turtle"
+  "entity_mention": {
+    "identifiedBy": {
+      "source_id": "ted-sws-pipeline",
+      "request_id": "324fs3r345vx",
+      "entity_type": "http://www.w3.org/ns/org#Organization"
+    },
+    "content": "<SEE BELOW>",
+    "content_type": "text/turtle"
   },
-  "requestId": "324fs3r345vx",
-  "originator": "TED SWS pipeline",
-  "metadata": {
-    "originator system": "VocBench editor",
-    "originator timestamp": "23748737643"
-  }
+  "ere_request_id": "324fs3r345vx:01",
+  "timestamp": "2026-01-14T12:34:56Z"
 }
 ```
 
-This is the content of the `payload` for this example:
+This is the content of the `content` field for this example:
 
 ```javascript
 PREFIX cccev: <http://data.europa.eu/m8g/>
@@ -85,33 +82,38 @@ epd:id_2023-S-210-661238_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj
 
 As you can see, The data have a triple-centric description of the entity to resolve, plus linked entities. The ERE is supposed to resolve the former, possibly using the linked entities (such as addresses or contact points).
 
-*Note*: `identifier` is derived from the request data. It can be done in serveral ways. For the purpose of this example, the URI `http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline` is built by simple concatenation of request id and originator.
-
 **Resolution**:
 
 In this case, we have a canonical entity with high confidence matching score (due to key fields being identical):
 
-```javascript
+```json
 {
   "type": "EntityMentionResolutionResponse",
-  "requestId": "324fs3r345vx",
-  "alignmentLinkSet": {
-    "subjectEntityMentionIdentifier": "http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline",
-    "alignmentOptions": [
-      {
-        "canonicalIdentifier": "http://data.europa.eu/ers/id/324fs3r345vxaa32wa",
-        "confidenceScore": 0.91
-      },
-      {
-        "canonicalIdentifier": "http://data.europa.eu/ers/id/324fs3r345vxbb45we",
-        "confidenceScore": 0.65
-      }
-    ]
-  }
+  "entity_mention_id": {
+    "source_id": "ted-sws-pipeline",
+    "request_id": "324fs3r345vx",
+    "entity_type": "http://www.w3.org/ns/org#Organization"
+  },
+  "candidates": [
+    {
+      "cluster_id": "e05a78bda0dbd2aa0d4a41e94949e2c97503db06c0cc3c111610076936eb0c0c",
+      "confidence_score": 0.91,
+      "similarity_score": 0.89
+    },
+    {
+      "cluster_id": "aec9934e70d35c8e41aa4c3afd0262820423ec159c81236e73e9890e2237597f",
+      "confidence_score": 0.65,
+      "similarity_score": 0.62
+    }
+  ],
+  "ere_request_id": "324fs3r345vx:01",
+  "timestamp": "2026-01-14T12:34:59Z"
 }
 ```
 
-*Note*: `http://data.europa.eu/ers/id/324fs3r345vxaa32wa` and `http://data.europa.eu/ers/id/324fs3r345vxbb45we` correspond to canonical URIs annotating clusters of entity mentions. Payload of the entity mentions is irrelevant and therefore not presented in this example.
+*Note*: `e05a78bda0dbd2aa0d4a41e94949e2c97503db06c0cc3c111610076936eb0c0c` and `aec9934e70d35c8e41aa4c3afd0262820423ec159c81236e73e9890e2237597f` are cluster identifiers (SHA-256 hex digests). Payload of the entity mentions in those clusters is irrelevant and therefore not presented in this example.
+
+The first candidate (`candidates[0]`) is the one ERS selects as the canonical assignment. ERE is responsible for placing the best-matching candidate first.
 
 
 ---
@@ -124,22 +126,20 @@ Outcome: distinct entities with low confidence match.
 
 **Request**:
 
-```javascript
+```json
 {
   "type": "EntityMentionResolutionRequest",
-  "entityMention": 
-  { 
-    // This is an instance of the EntityMention class (see the LinkML schema)
-    "type": "http://www.w3.org/ns/org#Procedure",
-    "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline",
-    "payload": "<SEE BELOW>",
-    "dataFormat": "text/turtle"
+  "entity_mention": {
+    "identifiedBy": {
+      "source_id": "ted-sws-pipeline",
+      "request_id": "324fs3r345vx",
+      "entity_type": "http://www.w3.org/ns/org#Procedure"
+    },
+    "content": "<SEE BELOW>",
+    "content_type": "text/turtle"
   },
-  "requestId": "324fs3r345vx",
-  "originator": "TED SWS pipeline",
-  "metadata": {
-    "originator timestamp": "23748737643"
-  }
+  "ere_request_id": "324fs3r345vx:01",
+  "timestamp": "2026-01-14T12:34:56Z"
 }
 ```
 
@@ -168,65 +168,78 @@ epd:id_2023-S-211-665742_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73
 
 No match found above the confidence threshold, the ERE creates a new canonical URI for the incoming entity:
 
-```javascript
+```json
 {
   "type": "EntityMentionResolutionResponse",
-  "requestId": "324fs3r345vx",
-  "alignmentLinkSet": {
-    "subjectEntityMentionIdentifier": "http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline",
-    "alignmentOptions": [
-      {
-        "canonicalIdentifier": "http://data.europa.eu/ers/id/324fs3r345vxwer4rq",
-        "confidenceScore": 1.0
-      }
-    ]
-  }
+  "entity_mention_id": {
+    "source_id": "ted-sws-pipeline",
+    "request_id": "324fs3r345vx",
+    "entity_type": "http://www.w3.org/ns/org#Procedure"
+  },
+  "candidates": [
+    {
+      "cluster_id": "e7cd6ade8061a4bcbf446bb6809c96451b20e5b3387306629348b34a7386d5ac",
+      "confidence_score": 0.0,
+      "similarity_score": 0.0
+    }
+  ],
+  "ere_request_id": "324fs3r345vx:01",
+  "timestamp": "2026-01-14T12:34:59Z"
 }
 ```
 
 
 ## Example 3: Organisations with minor detail variations -- Resolution with excluded identifiers
+
 This example is built on top of Example 1 and presents a case when a subsequent
 resolution request is submitted to obtain other URIs than the provided two.
+The previously returned cluster IDs are passed as `excluded_cluster_ids` to steer the ERE
+away from those assignments.
 
 **Request**:
 
-```javascript
+```json
 {
   "type": "EntityMentionResolutionRequest",
-  "entityMention": {
-    "type": "http://www.w3.org/ns/org#Organization",
-    "identifier": "http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline",
-    "payload": "<SEE PAYLOAD FOR EXAMPLE 1>",
-    "dataFormat": "text/turtle"
+  "entity_mention": {
+    "identifiedBy": {
+      "source_id": "ted-sws-pipeline",
+      "request_id": "324fs3r345a4fr",
+      "entity_type": "http://www.w3.org/ns/org#Organization"
+    },
+    "content": "<SEE PAYLOAD FOR EXAMPLE 1>",
+    "content_type": "text/turtle"
   },
-  "rejectedCanonicalIdentifiers": [
-    "http://data.europa.eu/ers/id/324fs3r345vxaa32wa",
-    "http://data.europa.eu/ers/id/324fs3r345vxbb45we"
+  "excluded_cluster_ids": [
+    "e05a78bda0dbd2aa0d4a41e94949e2c97503db06c0cc3c111610076936eb0c0c",
+    "aec9934e70d35c8e41aa4c3afd0262820423ec159c81236e73e9890e2237597f"
   ],
-  "requestId": "324fs3r345a4fr",
-  "originator": "TED SWS pipeline",
-  "creationTime": "2026-01-15T14:50:56Z"
+  "ere_request_id": "324fs3r345a4fr:01",
+  "timestamp": "2026-01-15T14:50:56Z"
 }
 ```
 
 
 **Resolution**:
 
-In this case, no other match was found besides the two URIs that have been excluded and therefore a new canonical URI is returned:
+In this case, no other match was found besides the two clusters that have been excluded and therefore a new canonical URI is returned:
 
-```javascript
+```json
 {
   "type": "EntityMentionResolutionResponse",
-  "requestId": "324fs3r345a4fr",
-  "alignmentLinkSet": {
-    "subjectEntityMentionIdentifier": "http://data.europa.eu/ers/id/324fs3r345vx-ted-sws-pipeline",
-    "alignmentOptions": [
-      {
-        "canonicalIdentifier": "http://data.europa.eu/ers/id/324fs3r345vuaa3990",
-        "confidenceScore": 1.0
-      }
-    ]
-  }
+  "entity_mention_id": {
+    "source_id": "ted-sws-pipeline",
+    "request_id": "324fs3r345a4fr",
+    "entity_type": "http://www.w3.org/ns/org#Organization"
+  },
+  "candidates": [
+    {
+      "cluster_id": "ce2ff706f4a30d12c2f4ca9686abcaedf878e8e20f1ff4dd1dab2433b7f5af14",
+      "confidence_score": 0.0,
+      "similarity_score": 0.0
+    }
+  ],
+  "ere_request_id": "324fs3r345a4fr:01",
+  "timestamp": "2026-01-15T14:51:02Z"
 }
 ```
