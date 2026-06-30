@@ -70,7 +70,10 @@ jobs:
 
           # docs/ uses order-insensitive comparison because linkml generate doc
           # produces non-deterministic markdown table row order across runs.
+          # SVG files are skipped entirely — their output is non-deterministic
+          # and cannot be compared reliably.
           for f in $(git diff --name-only docs/); do
+            [[ "$f" == *.svg ]] && continue
             committed=$(git show HEAD:"$f" | sort | sha256sum | awk '{print $1}')
             generated=$(sort "$f" | sha256sum | awk '{print $1}')
             if [ "$committed" != "$generated" ]; then

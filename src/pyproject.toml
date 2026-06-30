@@ -8,7 +8,7 @@ description = """
 """
 
 authors = [
-    {name = "Meaningfy", email = "hi@meaningfy.ws"}
+    {name = "Publications Office of the European Union"}
 ]
 
 readme = "../README.md"
