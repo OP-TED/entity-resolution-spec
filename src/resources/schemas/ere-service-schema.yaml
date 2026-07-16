@@ -1,0 +1,260 @@
+id: https://data.europa.eu/ers/schema/ere
+name: ereServiceSchema
+description: A LinkML schema for the ERS/ERE Service
+version: 1.0.0
+imports:
+  - linkml:types
+  - ./core-schema
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ere: https://data.europa.eu/ers/schema/ere/
+default_prefix: ere
+default_range: string
+
+classes:
+
+  EREMessage:
+    description: |
+      Root abstraction to represent attributes common to both requests and results.
+      This is modelled as a mixin in LinkML (so that it can't be instantiated directly).
+    abstract: true # should be implied by mixin, but just in case
+    attributes:
+      type:
+        description: |
+          The type of the request or result.
+
+          As per LinkML specification, `designates_type` is used here in order to allow for this
+          slot to tell the concrete subclass that an instance (such as a JSON object) belongs to.
+
+          In other words, a particular request will have `type` set with values like 
+          `EntityMentionResolutionRequest` or `EntityResolutionResult`
+        designates_type: true
+        required: true
+      ere_request_id:
+        # We decided we don't need a responseId for the moment
+        description: |
+          A string representing the unique ID of an ERE request, or the ID of the request a response is about.
+          This **is not** the same as `request_id` + `source_id`.
+
+          Note on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message
+          can originate from within the ERE, without any previous request counterpart, as a notification of
+          resolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.
+        required: true
+      timestamp:
+        range: datetime
+        description: |
+          The time when the message was created. Should be in ISO-8601 format.
+
+
+  ERERequest:
+    description: |
+      Root class to represent all the requests sent to the ERE.
+    abstract: true
+    is_a: EREMessage
+
+
+  EREResponse:
+    description: |
+      Root class to represent all the responses sent by the ERE.
+    abstract: true
+    is_a: EREMessage
+
+
+  EntityMentionResolutionRequest:
+    is_a: ERERequest
+    description: |
+      An entity resolution request sent to the ERE, containing the entity to be resolved.
+    attributes:
+      entity_mention:
+        range: EntityMention
+        description: |
+          The data about the entity to be resolved. Note that, at least for the moment, we don't support
+          batch requests, so this property is single-valued.
+        required: true
+      proposed_cluster_ids:
+        description: |
+          When this is present, the ERE may use this information to try to cluster the entity in one of 
+          the listed clusters.
+
+          In particular, when an initial request about an entity isn't answered within a timeout, 
+          a subsequent new request can be sent about the same entity and with the canonical ID of it
+          as a single proposed cluster ID. This suggests the ERE that it can create a new singleton cluster
+          with the entity as its initial only member and its canonical ID as the cluster ID. The ERE
+          can evolve such a cluster later, when further similar entities are sent in, or when it 
+          has had more time to associate the initial entity to others. 
+
+          Whatever, the case, the ERE **has no obligation** to fulfil the proposal, how it reacts to 
+          this list is implementation dependent, and the ERE remains the ultimate authority to provide 
+          the final resolution decision.
+        multivalued: true
+      excluded_cluster_ids:
+        description: |
+          When this is present, the ERE may use this information to avoid clustering the entity in 
+          the listed clusters.
+          
+          This can be used to notify the ERE that a curator has rejected a previous resolution 
+          proposed by the ERE.
+
+          As for `proposed_cluster_ids`, the ERE **has no obligation** to fulfil the exclusions, and 
+          it remains the ultimate authority to provide the final resolution decision.
+
+          Similarly, the exact reaction to this is implementation dependent. In the simplest case, the ERE
+          might just create a singleton cluster with the current entity as member. In a more advanced 
+          case, it might recompute the similarity with more advanced algorithms or use updated
+          data.
+        multivalued: true
+    examples:
+      - description: a regular request
+        value: | 
+          {
+            "type": "EntityMentionResolutionRequest",
+            "entity_mention": { 
+              "identifier": {
+                "request_id": "324fs3r345vx",
+                "source_id": "TEDSWS",
+                "entity_type": "http://www.w3.org/ns/org#Organization"
+              },
+              "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+              "content_type": "text/turtle"
+            },
+            "timestamp": "2026-01-14T12:34:56Z",
+            // As said, we need this internal ID and it can be auto-generated (eg, with UUIDs)
+            "ere_request_id": "324fs3r345vx:01"
+          }
+      - description: a re-rebuild request (ie, carrying a rejection list)
+        value: |
+          {
+            "type": "EntityMentionResolutionRequest",
+            "entity_mention": { 
+              "identifier": {
+                "request_id": "324fs3r345vxab",
+                "source_id": "TEDSWS",
+                "entity_type": "http://www.w3.org/ns/org#Organization",
+              },
+              "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+              "content_type": "text/turtle"
+            },
+            "excluded_cluster_ids": [
+              "324fs3r345vx-bb45we",
+              "324fs3r345vx-cc67ui"
+            ],
+            "timestamp": "2026-01-14T12:40:56Z",
+            "ere_request_id": "324fs3r345vxab:01"
+          }
+      - description: A request with the entity as proposed cluster ID
+        value: |
+          {
+            "type": "EntityMentionResolutionRequest",
+            "entity_mention": { 
+              "identifier": {
+                "request_id": "324fs3r345vxab",
+                "source_id": "TEDSWS",
+                "entity_type": "http://www.w3.org/ns/org#Organization",
+              },
+              "content": "epd:ent005 a org:Organization; ...   cccev:telephone \"+44 1924306780\" .",
+              "content_type": "text/turtle"
+            },
+            "proposed_cluster_ids": [
+              // which is sha256 ( source_id + request_id + entity_type )
+              "e2e8eea1865aef0e2406ea326520abc252b2afa836ed71434f6a32811904bfad"
+            ],
+            "timestamp": "2026-01-14T12:40:56Z",
+            "ere_request_id": "324fs3r345vxab:01"
+          } 
+
+
+
+  EntityMentionResolutionResponse:
+    is_a: EREResponse
+    description: |
+      An entity resolution response returned by the ERE.
+      
+      This is basically a list of candidate clusters to which the entity is deemed to be equivalent.
+
+      Note that, for the moment, we don't support batch requests. In future, we might support requests
+      with multiple subjects in the `EntityMention` content (eg, RDF with multiple subjects), in which case 
+      we might need to return multiple `EntityMentionResolutionResponse` messages, each with additional 
+      properties such as `entityIndex` and `totalEntities`.
+    attributes:
+      entity_mention_id:
+        range: EntityMentionIdentifier
+        description: |
+          The identifier of the entity mention that has been resolved.
+
+          This isn't strictly needed, since the `ere_request_id` already links the response to 
+          the request's entity mention. Yet, it's reported for convenience.
+        required: true
+      candidates:
+        range: ClusterReference
+        multivalued: true
+        description: |
+          The set of cluster reference/score pairs representing the candidate clusters
+          that the entity mention in the original request could align to (be equivalent to).
+        required: true
+    examples:
+      - value: |
+          {
+            "type": "EntityMentionResolutionResponse",
+            "entity_mention_id": {
+              "request_id": "324fs3r345vx",
+              "source_id": "TEDSWS",
+              "entity_type": "http://www.w3.org/ns/org#Organization"
+            },
+            "candidates": [
+              { 
+                "cluster_id": "324fs3r345vx-aa32wa",
+                "confidence_score": 0.91
+              },
+              { 
+                "cluster_id": "324fs3r345vx-bb45we",
+                "confidence_score": 0.65
+              }
+            ],
+            "timestamp": "2026-01-14T12:34:59Z",
+            "ere_request_id": "324fs3r345vx:01"
+          }
+              
+
+
+  EREErrorResponse:
+    is_a: EREResponse
+    description: |
+      Response sent by the ERE when some error/exception occurs while processing a request.
+      For instance, this may happen if the request is malformed or some internal error happens.
+
+      The attributes of this class are based on [RFC-9457](https://datatracker.ietf.org/doc/html/rfc9457).
+    attributes:
+      error_type:
+        description: |
+          A string representing the error type, eg, the FQN of the raised exception.
+
+          This corresponds to RFC-9457's `type`.
+        required: true
+      error_title:
+        description: |
+          A human readable brief message about the error that occurred.
+
+          This corresponds to RFC-9457's `title`.
+      error_detail:
+        description: |
+          A human readable detailed message about the error that occurred.
+
+          This corresponds to RFC-9457's `detail`.
+      
+      error_trace:
+        description: |
+          A string representing a (stack) trace of the error that occurred.
+
+          This is optional and typically used for debugging purposes only, since
+          exposing this kind of server-side information is a security risk.
+    examples:
+      - value: |
+          {
+            "type": "EREErrorResponse",
+            "request_id": "324fs3r345vx",
+            "error_type": "ere.exceptions.MalformedRequestError",
+            "error_title": "The entity data is missing in the request",
+            "error_detail": "The 'entity' attribute is required in EntityMentionResolutionRequest message",
+            // Optional and not recommended for production use
+            "error_trace": "Traceback (most recent call last):\n  File \"/app/ere/service.py\", line 45, in process_request\n..."
+          }

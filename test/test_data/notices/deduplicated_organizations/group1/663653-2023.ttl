@@ -1,0 +1,143 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-147-470887_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-147-470887_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-147-470887_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 147-470887" .
+
+epd:id_2023-S-210-663653_AwardCriterionCost_DebEgs9FY45WxqkUVE6CyN a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/cost>;
+  cccev:name "ФП - Финансово предложение"@bg;
+  cccev:weight "90"@bg .
+
+epd:id_2023-S-210-663653_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "ТП - Техническо  предложение"@bg;
+  cccev:weight "10"@bg .
+
+epd:id_2023-S-210-663653_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasBuyerProfile "https://app.eop.bg/buyer/18354"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-663653_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2023-S-210-663653_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-663653_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasContactName "Калина Владимирова Георгиева"@bg;
+  epo:hasInternetAddress "https://ucdp-smolian.com"^^xsd:anyURI;
+  cccev:email "kalinages@abv.bg";
+  cccev:telephone "+359 899189823" .
+
+epd:id_2023-S-210-663653_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
+  locn:fullAddress "Сервизната база на Изпълнителя."@bg .
+
+epd:id_2023-S-210-663653_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG>;
+  locn:address epd:id_2023-S-210-663653_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-210-663653_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663653_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions true;
+  epo:hasOptionsDescription "Възложителят предвижда  възможност  за  увеличаване  на  прогнозната  стойност в размер до + 30 % или с до 140 000 /сто и  четиридесет  хиляди  лева/  без ДДС."@bg .
+
+epd:id_2023-S-210-663653_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:describesLot epd:id_2023-S-210-663653_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
+  epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/none-rej>;
+  epo:hasNonAwardedContractTitle "„Следгаранционно сервизно и техническо обслужване, профилактика, диагностика и ремонт на комбинирани багер – товарачи, марка JCB, модел 4CX собственост на „ЮЦДП“ – Смолян, включително доставка на резе"@bg .
+
+epd:id_2023-S-210-663653_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/50100000> .
+
+epd:id_2023-S-210-663653_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663653_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasDescription "Предметът на обществената поръчка е: „Следгаранционно сервизно и техническо обслужване, профилактика, диагностика и ремонт на комбинирани багер – товарачи, марка JCB, модел 4CX собственост на „ЮЦДП“ – Смолян, включително доставка на резервни части и консумативи за срок от 24 месеца за стопанствата на територията на област Пазарджик“.Обект на поръчкатаОбект на настоящата обществена поръчка е „предоставяне на услуги“ по смисъла на чл.3, ал.1, т.3 от ЗОП.Обектът на поръчката съгласно Общия терминологичен речник – CPV с код 50100000  „Услуги по техническо обслужване и ремонт на превозни средства и свързаното с тях оборудване“. Обхват и обем на дейностите, предмет на настоящата обществена поръчкаВ обхвата на услугите по следгаранционна сервизно и техническо обслужване се включват следните основни дейности:- Профилактика, диагностика и ремонт на комбинирани багер-таварачите марка JCB, модел 4CX;- Доставка на нови, оригинални, неупотребявани и нерециклирани резервни части и консумативи за 11 (единадесет) броя комбинирани багер-товарачи марка JCB, модел 4CX, предоставени за стопанисване на ТП „ДГС Алабак“, ТП „ДГС Батак“, ТП „ДЛС Борово “, ТП „ДГС Панагюрище“, ТП „ДГС Пещера “, ТП „ДГС Ракитово“, ТП „ДГС Родопи“, ТП „ДГС Селище “, ТП „ДЛС Чепино“, ТП „ДЛС Широка поляна”,  ТП ДГС \"Пазарджик\" , попадащи в териториалния обхват на област Пазарджик към „ЮЦДП“ - Смолян, описани в Приложенията към Техническата спецификация.Приложените списъци с резервни части, материали и консумативи към Техническата спецификация съдържат оригинални резервни части, материали и консумативи за ТЕХНИКАТА, които се идентифицират с референтен номер на производител на оригиналното оборудване, за които е приложимо. Участникът следва да предложи в офертата си:-    оригинални части, предназначени за последващо влагане или-    части предназначени за след продажбено обслужване - идентични или еквивалентни на описаните в приложението оригинални резервни части за ТЕХНИКАТА.-    Текущ/авариен ремонт и подмяна на резервни части (при необходимост и след получаване на заявка от Възложителя), съгласно Техническа спецификация.Подробна, изчерпателна и детайлна информация за изискванията към изпълнение на поръчката се съдържа в Техническата спецификация /Приложение №1/, представляваща неразделна част от настоящата документация за участие."@bg;
+  epo:hasPurpose epd:id_2023-S-210-663653_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-663653_AwardCriterionCost_DebEgs9FY45WxqkUVE6CyN,
+    epd:id_2023-S-210-663653_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP .
+
+epd:id_2023-S-210-663653_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesRole epd:id_2023-S-210-663653_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2023-S-210-663653_Reviewer_bdZjimbzCaRXbeYeBmF94j;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663653_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-663653_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:refersToPrevious epd:id_2023-S-147-470887_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-663653_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-663653_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-663653" .
+
+epd:id_2023-S-210-663653_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG>;
+  locn:postCode "4400";
+  locn:postName "гр.Пазарджик";
+  locn:thoroughfare "ул. АЛЕКСАНДЪР СТАМБОЛИЙСКИ №.50" .
+
+epd:id_2023-S-210-663653_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM a epo:Identifier;
+  epo:hasIdentifierValue "2016195800049" .
+
+epd:id_2023-S-210-663653_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasID epd:id_2023-S-210-663653_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM;
+  epo:hasLegalName "ТЕРИТОРИАЛНО ПОДЕЛЕНИЕ \"ДЪРЖАВНО ГОРСКО СТОПАНСТВО ПАЗАРДЖИК\""@bg;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>;
+  epo:hasMainActivityDescription "Стопанисване на горите-управление, възпроизводство, ползване и опазване съгласно Закона за горите";
+  cccev:registeredAddress epd:id_2023-S-210-663653_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-663653_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/50100000> .
+
+epd:id_2023-S-210-663653_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasDescription "Предметът на обществената поръчка е: „Следгаранционно сервизно и техническо обслужване, профилактика, диагностика и ремонт на комбинирани багер – товарачи, марка JCB, модел 4CX собственост на „ЮЦДП“ – Смолян, включително доставка на резервни части и консумативи за срок от 24 месеца за стопанствата на територията на област Пазарджик“.Обект на поръчкатаОбект на настоящата обществена поръчка е „предоставяне на услуги“ по смисъла на чл.3, ал.1, т.3 от ЗОП.Обектът на поръчката съгласно Общия терминологичен речник – CPV с код 50100000  „Услуги по техническо обслужване и ремонт на превозни средства и свързаното с тях оборудване“. Обхват и обем на дейностите, предмет на настоящата обществена поръчкаВ обхвата на услугите по следгаранционна сервизно и техническо обслужване се включват следните основни дейности:- Профилактика, диагностика и ремонт на комбинирани багер-таварачите марка JCB, модел 4CX;- Доставка на нови, оригинални, неупотребявани и нерециклирани резервни части  ..."@bg;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-663653_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2023-S-210-663653_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle "„Следгаранционно сервизно и техническо обслужване, профилактика, диагностика и ремонт на комбинирани багер – товарачи, марка JCB, модел 4CX собственост на „ЮЦДП“ – Смолян, включително ..."@bg;
+  epo:isCoveredByGPA false .
+
+epd:id_2023-S-210-663653_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j a cccev:ContactPoint;
+  epo:hasFax "+359 29807315";
+  epo:hasInternetAddress "http://www.cpc.bg"^^xsd:anyURI;
+  cccev:email "delovodstvo@cpc.bg";
+  cccev:telephone "+359 29356113" .
+
+epd:id_2023-S-210-663653_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  locn:postCode "1000";
+  locn:postName "София";
+  locn:thoroughfare "бул. Витоша № 18" .
+
+epd:id_2023-S-210-663653_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "Комисия за защита на конкуренцията"@bg;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663653_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j;
+  cccev:registeredAddress epd:id_2023-S-210-663653_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-663653_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-663653_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663653_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663653_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663653_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663901_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663653_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-050232/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663653_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-078-233767/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663653_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-113-353030_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663653_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143077/bdZjimbzCaRXbeYeBmF94j> .

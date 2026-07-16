@@ -1,0 +1,425 @@
+{
+  "$defs": {
+    "CanonicalEntityIdentifier": {
+      "additionalProperties": false,
+      "description": "A logical identity construct providing a stable identity anchor.\nRepresents a cluster of equivalent entity mentions.",
+      "properties": {
+        "equivalent_to": {
+          "description": "Entity mentions that have been resolved to this canonical entity.",
+          "items": {
+            "$ref": "#/$defs/EntityMentionIdentifier"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Unique identifier for the canonical entity.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier",
+        "equivalent_to"
+      ],
+      "title": "CanonicalEntityIdentifier",
+      "type": "object"
+    },
+    "ClusterReference": {
+      "additionalProperties": false,
+      "description": "A reference to a cluster to which an entity is deemed to belong, with an associated confidence and similarity scores.\n\nA cluster is a set of entity mentions that have been determined to refer to the same real-world entity.\nEach cluster has a unique clusterId.\n\nA cluster reference is used to report the association between an entity mention and a cluster \nof equivalence.",
+      "properties": {
+        "cluster_id": {
+          "description": "The identifier of the cluster/canonical entity that is considered equivalent to the\nsubject entity mention that an `EntityMentionResolutionResponse` refers to.\n",
+          "type": "string"
+        },
+        "confidence_score": {
+          "description": "A 0-1 value of how confident the ERE is about the equivalence between the subject entity mention\nand the target canonical entity.\n",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        "similarity_score": {
+          "description": "A 0-1 score representing the pairwise comparison between a mention and a cluster (likely\nbased on a representative representation).\n",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        }
+      },
+      "required": [
+        "cluster_id",
+        "confidence_score",
+        "similarity_score"
+      ],
+      "title": "ClusterReference",
+      "type": "object"
+    },
+    "Decision": {
+      "additionalProperties": false,
+      "description": "Canonical placement of an entity mention to a cluster.\nRepresents the latest resolution decision (from ERE or curator override).",
+      "properties": {
+        "about_entity_mention": {
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The entity mention being resolved"
+        },
+        "candidates": {
+          "description": "Top-N alternative clusters proposed by ERE (for curation UI preview).\n",
+          "items": {
+            "$ref": "#/$defs/ClusterReference"
+          },
+          "type": "array"
+        },
+        "created_at": {
+          "description": "When the decision was first created",
+          "format": "date-time",
+          "type": "string"
+        },
+        "current_placement": {
+          "$ref": "#/$defs/ClusterReference",
+          "description": "The accepted cluster for this mention (latest from ERE or curator).\n"
+        },
+        "id": {
+          "description": "Unique decision identifier",
+          "type": "string"
+        },
+        "updated_at": {
+          "description": "When the decision was last updated (ERE refresh or curator action)",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "about_entity_mention",
+        "current_placement",
+        "candidates",
+        "created_at"
+      ],
+      "title": "Decision",
+      "type": "object"
+    },
+    "EREErrorResponse": {
+      "additionalProperties": false,
+      "description": "Response sent by the ERE when some error/exception occurs while processing a request.\nFor instance, this may happen if the request is malformed or some internal error happens.\n\nThe attributes of this class are based on [RFC-9457](https://datatracker.ietf.org/doc/html/rfc9457).",
+      "properties": {
+        "ere_request_id": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `request_id` + `source_id`.\n\nNote on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message\ncan originate from within the ERE, without any previous request counterpart, as a notification of\nresolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.\n",
+          "type": "string"
+        },
+        "error_detail": {
+          "description": "A human readable detailed message about the error that occurred.\n\nThis corresponds to RFC-9457's `detail`.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error_title": {
+          "description": "A human readable brief message about the error that occurred.\n\nThis corresponds to RFC-9457's `title`.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error_trace": {
+          "description": "A string representing a (stack) trace of the error that occurred.\n\nThis is optional and typically used for debugging purposes only, since\nexposing this kind of server-side information is a security risk.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error_type": {
+          "description": "A string representing the error type, eg, the FQN of the raised exception.\n\nThis corresponds to RFC-9457's `type`.\n",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "EREErrorResponse"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "error_type",
+        "type",
+        "ere_request_id"
+      ],
+      "title": "EREErrorResponse",
+      "type": "object"
+    },
+    "EntityMention": {
+      "additionalProperties": false,
+      "description": "An entity mention is a representation of a real-world entity, as provided by the ERS.\nIt contains the entity data, along with metadata like type and format.",
+      "properties": {
+        "content": {
+          "description": "A code string representing the entity mention details (eg, RDF or XML description).\n",
+          "type": "string"
+        },
+        "content_type": {
+          "description": "A string about the MIME format of `content` (e.g. text/turtle, application/ld+json)\n",
+          "type": "string"
+        },
+        "context": {
+          "description": "Optional context reference (e.g. notice or document ID).\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identifiedBy": {
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The identification triad of the entity mention.\n"
+        },
+        "parsed_representation": {
+          "description": "JSON representation of the parsed entity data.\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "identifiedBy",
+        "content_type",
+        "content"
+      ],
+      "title": "EntityMention",
+      "type": "object"
+    },
+    "EntityMentionIdentifier": {
+      "additionalProperties": false,
+      "description": "A container that groups the attributes needed to identify an entity mention in a resolution request\nor response.\n\nAs per ERS architectural decision, in the whole ERS and ERE systems, there is always a deterministic\nmethod to build a canonical identifier from the combination of `sourceId`, `requestId` and `entityType`\n(eg, string concatenation plus some prefix). Similarly, a cluster ID (mentioned in various places in \nin this hereby ERE service schema) can be built from an entity that is initially the only cluster member.",
+      "properties": {
+        "entity_type": {
+          "description": "A string representing the entity type (based on CET). This is typically a URI.\n\nNote that this is at this level, and not at `EntityMention`, since, as said above, \nit's needed to identify the entity, even when its content is not present. For the same\nreason, it's used both for `EREResolutionRequest` and `EREResolutionResponse` messages.,\n",
+          "type": "string"
+        },
+        "request_id": {
+          "description": "A string representing the unique ID of the request made to the ERS system. In general, this is unique\nonly within the scope of the source and the entity type, ie, within `sourceId` and `entityType`. \n\nMoreover, this is **not** the same as `ereRequestId`, which instead, is internal to the ERE and is \nused to match responses to requests.\n",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "The ID or URI of the ERS client that originated the request. This identifies an application or a \nperson accessing the ERS system.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "request_id",
+        "entity_type"
+      ],
+      "title": "EntityMentionIdentifier",
+      "type": "object"
+    },
+    "EntityMentionResolutionRequest": {
+      "additionalProperties": false,
+      "description": "An entity resolution request sent to the ERE, containing the entity to be resolved.",
+      "properties": {
+        "entity_mention": {
+          "$ref": "#/$defs/EntityMention",
+          "description": "The data about the entity to be resolved. Note that, at least for the moment, we don't support\nbatch requests, so this property is single-valued.\n"
+        },
+        "ere_request_id": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `request_id` + `source_id`.\n\nNote on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message\ncan originate from within the ERE, without any previous request counterpart, as a notification of\nresolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.\n",
+          "type": "string"
+        },
+        "excluded_cluster_ids": {
+          "description": "When this is present, the ERE may use this information to avoid clustering the entity in \nthe listed clusters.\n\nThis can be used to notify the ERE that a curator has rejected a previous resolution \nproposed by the ERE.\n\nAs for `proposed_cluster_ids`, the ERE **has no obligation** to fulfil the exclusions, and \nit remains the ultimate authority to provide the final resolution decision.\n\nSimilarly, the exact reaction to this is implementation dependent. In the simplest case, the ERE\nmight just create a singleton cluster with the current entity as member. In a more advanced \ncase, it might recompute the similarity with more advanced algorithms or use updated\ndata.\n",
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "proposed_cluster_ids": {
+          "description": "When this is present, the ERE may use this information to try to cluster the entity in one of \nthe listed clusters.\n\nIn particular, when an initial request about an entity isn't answered within a timeout, \na subsequent new request can be sent about the same entity and with the canonical ID of it\nas a single proposed cluster ID. This suggests the ERE that it can create a new singleton cluster\nwith the entity as its initial only member and its canonical ID as the cluster ID. The ERE\ncan evolve such a cluster later, when further similar entities are sent in, or when it \nhas had more time to associate the initial entity to others. \n\nWhatever, the case, the ERE **has no obligation** to fulfil the proposal, how it reacts to \nthis list is implementation dependent, and the ERE remains the ultimate authority to provide \nthe final resolution decision.\n",
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "EntityMentionResolutionRequest"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_mention",
+        "type",
+        "ere_request_id"
+      ],
+      "title": "EntityMentionResolutionRequest",
+      "type": "object"
+    },
+    "EntityMentionResolutionResponse": {
+      "additionalProperties": false,
+      "description": "An entity resolution response returned by the ERE.\n\nThis is basically a list of candidate clusters to which the entity is deemed to be equivalent.\n\nNote that, for the moment, we don't support batch requests. In future, we might support requests\nwith multiple subjects in the `EntityMention` content (eg, RDF with multiple subjects), in which case \nwe might need to return multiple `EntityMentionResolutionResponse` messages, each with additional \nproperties such as `entityIndex` and `totalEntities`.",
+      "properties": {
+        "candidates": {
+          "description": "The set of cluster reference/score pairs representing the candidate clusters\nthat the entity mention in the original request could align to (be equivalent to).\n",
+          "items": {
+            "$ref": "#/$defs/ClusterReference"
+          },
+          "type": "array"
+        },
+        "entity_mention_id": {
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The identifier of the entity mention that has been resolved.\n\nThis isn't strictly needed, since the `ere_request_id` already links the response to \nthe request's entity mention. Yet, it's reported for convenience.\n"
+        },
+        "ere_request_id": {
+          "description": "A string representing the unique ID of an ERE request, or the ID of the request a response is about.\nThis **is not** the same as `request_id` + `source_id`.\n\nNote on notification responses: as per ERE contract, an `EntityMentionResolutionResponse` message\ncan originate from within the ERE, without any previous request counterpart, as a notification of\nresolution update. In this case, `ere_request_id` has the prefix `ereNotification:`.\n",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "The time when the message was created. Should be in ISO-8601 format.\n",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "description": "The type of the request or result.\n\nAs per LinkML specification, `designates_type` is used here in order to allow for this\nslot to tell the concrete subclass that an instance (such as a JSON object) belongs to.\n\nIn other words, a particular request will have `type` set with values like \n`EntityMentionResolutionRequest` or `EntityResolutionResult`\n",
+          "enum": [
+            "EntityMentionResolutionResponse"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_mention_id",
+        "candidates",
+        "type",
+        "ere_request_id"
+      ],
+      "title": "EntityMentionResolutionResponse",
+      "type": "object"
+    },
+    "LookupState": {
+      "additionalProperties": false,
+      "description": "Tracks the resolution state for entity mentions from a particular source.\nRecords when the source was last resolved against the canonical clustering.",
+      "properties": {
+        "last_snapshot": {
+          "description": "Timestamp of the last resolution operation for this source.\nUsed to determine if a refreshBulk or other update is needed.\n",
+          "format": "date-time",
+          "type": "string"
+        },
+        "source_id": {
+          "description": "The ID or URI of the ERS client (originator) for which we track lookup state.\n",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "last_snapshot"
+      ],
+      "title": "LookupState",
+      "type": "object"
+    },
+    "UserAction": {
+      "additionalProperties": false,
+      "description": "Immutable record of a curator action on an entity mention resolution.\nStored in the User Action Log for traceability and training.\n\nNOT related to ERE messages; represents curator intent only.",
+      "properties": {
+        "about_entity_mention": {
+          "$ref": "#/$defs/EntityMentionIdentifier",
+          "description": "The entity mention the curator acted upon"
+        },
+        "action_type": {
+          "$ref": "#/$defs/UserActionType",
+          "description": "The type of action the curator performed"
+        },
+        "actor": {
+          "description": "User ID or identifier of the curator who performed the action",
+          "type": "string"
+        },
+        "candidates": {
+          "description": "The candidate clusters presented to the curator for selection.\nOrdered by confidence (same as shown in curation UI).\n",
+          "items": {
+            "$ref": "#/$defs/ClusterReference"
+          },
+          "type": "array"
+        },
+        "created_at": {
+          "description": "Timestamp when the curator action was recorded",
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique audit trail entry identifier",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "JSON metadata providing context (e.g., curator notes, reasoning).\n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selected_cluster": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ClusterReference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The cluster selected by the curator (if action was ACCEPT_TOP\nor ACCEPT_ALTERNATIVE). NULL if action was REJECT_ALL.\n"
+        }
+      },
+      "required": [
+        "id",
+        "about_entity_mention",
+        "candidates",
+        "action_type",
+        "actor",
+        "created_at"
+      ],
+      "title": "UserAction",
+      "type": "object"
+    },
+    "UserActionType": {
+      "description": "Types of curator actions on entity mention resolutions",
+      "enum": [
+        "ACCEPT_TOP",
+        "ACCEPT_ALTERNATIVE",
+        "REJECT_ALL"
+      ],
+      "title": "UserActionType",
+      "type": "string"
+    }
+  },
+  "$id": "https://data.europa.eu/ers/schema/ere",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": true,
+  "metamodel_version": "1.7.0",
+  "title": "ereServiceSchema",
+  "type": "object",
+  "version": "1.0.0"
+}
+

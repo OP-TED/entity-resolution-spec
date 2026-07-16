@@ -1,0 +1,26 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu a org:Organization ;
+    epo:hasLegalName "TRIBUNAL ADMINISTRATIVO CENTRAL DE RECURSOS CONTRACTUALES"@es ;
+    epo:hasPrimaryContactPoint epd:id_2023-S-210-664822_ReviewProcedureInformationProviderContactPoint_ZnF5jqqFzMTi9WKPqMm8gu ;
+    cccev:registeredAddress epd:id_2023-S-210-664822_ReviewProcedureInformationProviderAddress_ZnF5jqqFzMTi9WKPqMm8gu ;
+    owl:sameAs <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2023-S-028-080162/53dcddfe-05e0-31c2-ab22-d770b015238d>,
+        <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-082951/bdZjimbzCaRXbeYeBmF94j>,
+        epd:id_2023-S-138-439460_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProviderAddress_ZnF5jqqFzMTi9WKPqMm8gu
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  locn:postCode "28020";
+  locn:postName "Madrid";
+  locn:thoroughfare "C/ General Perón, 38 - 8º" .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProviderContactPoint_ZnF5jqqFzMTi9WKPqMm8gu
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.acuaes.com"^^xsd:anyURI .
