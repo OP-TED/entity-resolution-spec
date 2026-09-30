@@ -1,0 +1,226 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-146-467822_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-146-467822_NoticeIdentifier_K8q5v8TTWyR48h9DKNno8n .
+
+epd:id_2023-S-146-467822_NoticeIdentifier_K8q5v8TTWyR48h9DKNno8n a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 146-467822" .
+
+epd:id_2023-S-210-664246_Buyer_LTC4ztdQQn6ue8NBpQv4rF a epo:Buyer;
+  epo:hasContactPointInRole epd:id_2023-S-210-664246_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
+  epo:playedBy epd:id_2023-S-210-664246_Organisation_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-664246_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoint;
+  epo:hasContactName "Napau Aura"@ro;
+  epo:hasInternetAddress "www.protectiasocialaalba.ro"^^xsd:anyURI;
+  cccev:email "auranapau@yahoo.com";
+  cccev:telephone "+40 258818266" .
+
+epd:id_2023-S-210-664246_ContractIdentifier_iP5YHWaLv3CouwnA2K8zxA a epo:Identifier;
+  epo:hasIdentifierValue "40148" .
+
+epd:id_2023-S-210-664246_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 a locn:Address;
+  locn:fullAddress "Zona Alba Iulia și localitățile limitrofe(Alba Iulia,Sîntimbru,Ciugud,Ighiu)- infrastructura pusa la dispozitie de către autoritatea contractanta cu titlu gratuit în municipiul Alba Iulia- Oarda de Jo"@ro .
+
+epd:id_2023-S-210-664246_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO121>;
+  locn:address epd:id_2023-S-210-664246_ContractTermLotLocationAddress_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-664246_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-664246_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-664246_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+epd:id_2023-S-210-664246_Contract_LvgukoMCPwmGzMjz7RFuwt a epo:Contract;
+  epo:hasContractConclusionDate "2023-09-08"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-664246_ContractIdentifier_iP5YHWaLv3CouwnA2K8zxA;
+  epo:hasTitle "Acord cadru prestare Servicii sociale rezidențiale pentru un număr de 12 copii si tineri-zona Alba Iulia și localitățile limitrofe(Alba Iulia, Sîntimbru, Ciugud, Ighiu)-jud. Alba"@ro;
+  epo:includesLot epd:id_2023-S-210-664246_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-664246_LotAwardOutcome_LvgukoMCPwmGzMjz7RFuwt .
+
+epd:id_2023-S-210-664246_ContractorContactPoint_StL6e6sPDdUgHDYkFGr3SV a cccev:ContactPoint;
+  epo:hasFax "+40 258817766";
+  epo:hasInternetAddress "www.filantropiaortodoxa.ro"^^xsd:anyURI;
+  cccev:email "filantropiaortodoxa@yahoo.com";
+  cccev:telephone "+40 258817766" .
+
+epd:id_2023-S-210-664246_ContractorOrganisationAddress_StL6e6sPDdUgHDYkFGr3SV a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO121>;
+  locn:postCode "510010";
+  locn:postName "Alba Iulia";
+  locn:thoroughfare "Str. M. Viteazu, Nr.16" .
+
+epd:id_2023-S-210-664246_ContractorOrganisationIdentifier_StL6e6sPDdUgHDYkFGr3SV a
+    epo:Identifier;
+  epo:hasIdentifierValue "14188746" .
+
+epd:id_2023-S-210-664246_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV a org:Organization;
+  epo:hasID epd:id_2023-S-210-664246_ContractorOrganisationIdentifier_StL6e6sPDdUgHDYkFGr3SV;
+  epo:hasLegalName "Asociatia Filantropia Ortodoxa Alba Iulia "@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-664246_ContractorContactPoint_StL6e6sPDdUgHDYkFGr3SV;
+  cccev:registeredAddress epd:id_2023-S-210-664246_ContractorOrganisationAddress_StL6e6sPDdUgHDYkFGr3SV .
+
+epd:id_2023-S-210-664246_FrameworkAgreementTechniqueUsage_K8q5v8TTWyR48h9DKNno8n a
+    epo:FrameworkAgreementTechniqueUsage .
+
+epd:id_2023-S-210-664246_FrameworkAgreementTerm_K8q5v8TTWyR48h9DKNno8n a epo:FrameworkAgreementTerm .
+
+epd:id_2023-S-210-664246_LotAwardOutcome_LvgukoMCPwmGzMjz7RFuwt a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-664246_TenderAwardOutcome_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:describesLot epd:id_2023-S-210-664246_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
+
+epd:id_2023-S-210-664246_LotPurpose_9kJZhTgye29otV72ZHovp4 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/85311300> .
+
+epd:id_2023-S-210-664246_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664246_ContractTermLot_9kJZhTgye29otV72ZHovp4;
+  epo:hasAdditionalInformation "Garantia de participare in suma fixa de 2.772 Ron se constituie in Contul RO08TREZ0025006XXX000178 deschis la Trezoreria Alba Iulia. Conform Legii 98/2016 si Hotararii 419/2018 -Garantia de buna executie se constituie in cuantum de 1% din valoarea fiecarui contract subsecvent atribuit. Contestatiile pot fi depuse in baza Legii 101/2016."@ro;
+  epo:hasDescription "Prestarea de servicii sociale de tip rezidential pentru un număr maxim de 12 copii și tineri pentru care Comisia de Protecție a Copilului Alba sau instanța de judecată a hotărât/dispus plasamentul conform Legii nr.272/2004- privind respectarea și promovarea drepturilor copilului pe zona Alba Iulia, prin care să se asigure găzduire, îngrijire, educație nonformală și informală, dezvoltarea autonomiei personale, consiliere în vederea integrării socio-familiale și profesionale conform prevederilor standardelor de calitate în domeniu pentru serviciile de tip rezidențial pentru copii, respectiv Ordinul 25/2019- Anexa nr.1. Pentru prestarea serviciilor sociale infrastructura va fi pusa la dispozitie de către autoritatea  contractantă cu titlu gratuit în municipiul Alba Iulia-Oarda de Jos, str Garoafelor, Nr.64. Imobilul corespunde numărului de beneficiari estimați precum și recomandărilor cuprinse în standardele minime de calitate pentru serviciile sociale de tip rezidențial destinate copiilor din sistemul de protecție socială.Descrierea detaliata in conformitate cu caietul de sarcini."@ro;
+  epo:hasPurpose epd:id_2023-S-210-664246_LotPurpose_9kJZhTgye29otV72ZHovp4;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-664246_MonetaryValueLot_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-664246_MonetaryValueLot_EpbdEkZb9pTmNCJJtMiXLm a epo:MonetaryValue;
+  epo:hasAmountValue 1663596.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-664246_MonetaryValueSubmissionHighest_EpbdEkZb9pTmNCJJtMiXLm a epo:MonetaryValue;
+  epo:hasAmountValue 1663200.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-664246_MonetaryValueSubmissionLowest_EpbdEkZb9pTmNCJJtMiXLm a epo:MonetaryValue;
+  epo:hasAmountValue 277200.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-664246_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-210-664246_Contract_LvgukoMCPwmGzMjz7RFuwt;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-210-664246_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ;
+  epo:announcesRole epd:id_2023-S-210-664246_Buyer_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2023-S-210-664246_Reviewer_cbWuhNnCxDFGewidLQWHhz,
+    epd:id_2023-S-210-664246_Winner_StL6e6sPDdUgHDYkFGr3SV;
+  epo:announcesTender epd:id_2023-S-210-664246_Tender_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-664246_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-664246_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:refersToPrevious epd:id_2023-S-146-467822_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-664246_Procedure_aCmfT72mHtfxPh7XQjZApJ .
+
+epd:id_2023-S-210-664246_NoticeAwardInformation_aCmfT72mHtfxPh7XQjZApJ a epo:NoticeAwardInformation;
+  epo:hasProcurementHighestReceivedTenderValue epd:id_2023-S-210-664246_ProcurementHighestReceivedTenderValue_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasProcurementLowestReceivedTenderValue epd:id_2023-S-210-664246_ProcurementLowestReceivedTenderValue_aCmfT72mHtfxPh7XQjZApJ .
+
+epd:id_2023-S-210-664246_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-664246" .
+
+epd:id_2023-S-210-664246_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO121>;
+  locn:postCode "510207";
+  locn:postName "Alba Iulia";
+  locn:thoroughfare "B-dul 1 Decembrie 1918, nr.68" .
+
+epd:id_2023-S-210-664246_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8 a epo:Identifier;
+  epo:hasIdentifierValue "01256" .
+
+epd:id_2023-S-210-664246_Organisation_7D5VmvEvVafBz7JQr2uuS8 a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/rl-aut>;
+  epo:hasID epd:id_2023-S-210-664246_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8;
+  epo:hasLegalName "Directia Generala de Asistenta Sociala si Protectia Copilului Alba"@ro;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/soc-pro>;
+  cccev:registeredAddress epd:id_2023-S-210-664246_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-664246_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "10" .
+
+epd:id_2023-S-210-664246_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85311300> .
+
+epd:id_2023-S-210-664246_ProcedureTerm_aCmfT72mHtfxPh7XQjZApJ a epo:ProcedureTerm;
+  epo:hasNationalProcedureRules "www.protectiasocialaalba.ro"^^xsd:anyURI .
+
+epd:id_2023-S-210-664246_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664246_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n;
+  epo:hasAdditionalInformation "Ofertantul va elabora propunerea tehnica, astfel incat aceasta sa respecte in totalitate cerintele prevazute in Caietul de sarcini. Nerespectarea caracteristicilor tehnice, cerute în caietul de sarcini, presupune considerarea ofertei ca neconformă cu documentaţia de atribuire. Propunerea tehnică – conf. Formular nr.1, va cuprinde în mod obligatoriu o descriere a modului de îndeplinire a contractului de către ofertant.Se va completa Formularul de oferta- Formular nr. 2, din Secţiunea Formulare anexata documentatiei de atribuire.Ofertantul va elabora propunerea financiara, astfel incat aceasta sa furnizeze toate informatiile solicitate cu privire la pret. Pretul va fi exprimat  in lei, fară T.V.A. pentru serviciile ofertate.Termenul de solicitare a clarificarilor: cu 5 zile inainte de data limita de depunere a ofertelor. Autoritatea contractanta va raspunde cu 3 zile inainte de termenul limita de depunere a ofertelor.Ofertele vor fi depuse in plic inchis la sediul autoritatii contractante: B-dul 1 Decembrie1918, nr. 68, loc. Alba Iulia, jud. Alba până la data de 25.08.2023,ora 12.00,însoțit de Scrisoarea de înaintare în dublu exemplar, conform Formular 8 din Pachetul Formulare.Pe pachet va fi scris:DIRECŢIA GENERALĂ DE ASISTENŢĂ SOCIALĂ ŞI PROTECŢIA COPILULUI ALBA Jud. Alba, B-dul. 1 Decembrie 1918, nr. 68-Servicii sociale rezidențiale pentru un număr de 12 de copii si tineri zona Alba Iulia si localitatile limitrofe (Alba Iulia, Sintimbru, Ciugud, Ighiu) - județul Alba. Invitatia de participare si documentatia de atribuire vor putea fi accesate pe site-ul www.protectiasocialaalba.ro-sectiunea Licitatii."@ro;
+  epo:hasDescription """	Prestarea de servicii sociale de tip rezidential pentru un număr maxim de 12 copii și tineri pentru care Comisia de Protecție a Copilului Alba sau instanța de judecată a hotărât/dispus plasamentul conform Legii nr.272/2004- privind respectarea și promovarea drepturilor copilului pe zona Alba Iulia, prin care să se asigure găzduire, îngrijire, educație nonformală și informală, dezvoltarea autonomiei personale, consiliere în vederea integrării socio-familiale și profesionale conform prevederilor standardelor de calitate în domeniu pentru serviciile de tip rezidențial pentru copii, respectiv Ordinul 25/2019- Anexa nr.1- privind standardele minime de calitate pentru serviciile sociale de tip rezidential destinate copiilor din sistemul de protecție socială."""@ro;
+  epo:hasID epd:id_2023-S-210-664246_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasMainFeature "Procedura de atribuire: procedura proprie aplicabilă în cazul serviciilor sociale și al altor servicii specifice prevazute în anexa nr. 2 la Legea 98/2016, conf. O.U.G. 114/2020.Criteriul de atribuire este cel mai bun raport calitate-preț.La stabilirea ofertei câştigătoare, preţul reprezentând 40% din ponderea total si calitatea 60%. Descrierea modului de aplicare a criteriilor se regaseste in Caietul de sarcini.";
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-664246_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:hasPurpose epd:id_2023-S-210-664246_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasTitle "Servicii sociale rezidențiale pentru un număr de 12 copii si tineri-zona Alba Iulia și localitățile limitrofe(Alba Iulia, Sîntimbru, Ciugud, Ighiu)-jud. Alba"@ro;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-210-664246_FrameworkAgreementTerm_K8q5v8TTWyR48h9DKNno8n,
+    epd:id_2023-S-210-664246_ProcedureTerm_aCmfT72mHtfxPh7XQjZApJ, epd:id_2023-S-210-664246_ReviewTerm_NSFfxkJJtMT6t22w9hPSVZ;
+  epo:usesTechnique epd:id_2023-S-210-664246_FrameworkAgreementTechniqueUsage_K8q5v8TTWyR48h9DKNno8n .
+
+epd:id_2023-S-210-664246_ProcurementHighestReceivedTenderValue_aCmfT72mHtfxPh7XQjZApJ
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1663200.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-664246_ProcurementLowestReceivedTenderValue_aCmfT72mHtfxPh7XQjZApJ
+  a epo:MonetaryValue;
+  epo:hasAmountValue 277200.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-664246_ReviewTerm_NSFfxkJJtMT6t22w9hPSVZ a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "LEGE Nr. 101/2016 din 19 mai 2016 privind remediile şi căile de atac în materie de atribuire a contractelor de achiziţie publică, a contractelor sectoriale şi a contractelor de concesiune de lucrări şi concesiune de servicii, precum şi pentru organizarea şi funcţionarea Consiliului Naţional de Soluţionare a Contestaţiilor." .
+
+epd:id_2023-S-210-664246_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz a cccev:ContactPoint;
+  cccev:telephone "+40 213104641" .
+
+epd:id_2023-S-210-664246_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  locn:postCode "030084";
+  locn:postName "Bucuresti";
+  locn:thoroughfare "Str. Stavropoleos nr. 6, sector 3" .
+
+epd:id_2023-S-210-664246_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organization;
+  epo:hasLegalName "Consiliul National de Solutionare a Contestatiilor "@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-664246_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz;
+  cccev:registeredAddress epd:id_2023-S-210-664246_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-664246_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-664246_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-664246_SubmissionStatisticalInformation_EpbdEkZb9pTmNCJJtMiXLm a
+    epo:SubmissionStatisticalInformation;
+  epo:hasHighestReceivedTenderValue epd:id_2023-S-210-664246_MonetaryValueSubmissionHighest_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:hasLowestReceivedTenderValue epd:id_2023-S-210-664246_MonetaryValueSubmissionLowest_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-664246_LotAwardOutcome_LvgukoMCPwmGzMjz7RFuwt .
+
+epd:id_2023-S-210-664246_TenderAwardOutcome_EpbdEkZb9pTmNCJJtMiXLm a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-664246_Tender_EpbdEkZb9pTmNCJJtMiXLm;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-664246_Winner_StL6e6sPDdUgHDYkFGr3SV .
+
+epd:id_2023-S-210-664246_Tender_EpbdEkZb9pTmNCJJtMiXLm a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-664246_Lot_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-664246_Winner_StL6e6sPDdUgHDYkFGr3SV a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-664246_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664246_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664246_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664246_Organisation_7D5VmvEvVafBz7JQr2uuS8> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664246_Organisation_7D5VmvEvVafBz7JQr2uuS8> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664246_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664246_ContractorOrganisation_StL6e6sPDdUgHDYkFGr3SV> .

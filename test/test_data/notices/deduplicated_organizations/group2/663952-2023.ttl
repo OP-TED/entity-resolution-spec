@@ -1,0 +1,239 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-097-305129_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-097-305129_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-097-305129_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 097-305129" .
+
+epd:id_2023-S-210-663952_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "30"@fr .
+
+epd:id_2023-S-210-663952_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Valeur technique de l'offre"@fr;
+  cccev:weight "70"@fr .
+
+epd:id_2023-S-210-663952_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasBuyerProfile "https://agence-numerique-sante.e-marchespublics.com"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-663952_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2023-S-210-663952_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-663952_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasInternetAddress "https://esante.gouv.fr/"^^xsd:anyURI;
+  cccev:email "ans-marches@esante.gouv.fr";
+  cccev:telephone "+33 158453331" .
+
+epd:id_2023-S-210-663952_ContractIdentifier_SrkE8h6CjHnKyMaK5b22QV a epo:Identifier;
+  epo:hasIdentifierValue "2023-04" .
+
+epd:id_2023-S-210-663952_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR> .
+
+epd:id_2023-S-210-663952_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663952_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-663952_Contract_KaeDJ6cSC7UaS6sXtDUnvf a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-17"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663952_ContractIdentifier_SrkE8h6CjHnKyMaK5b22QV;
+  epo:hasTitle "prestations de conseil en accompagnement des collaborateurs de l'ans"@fr;
+  epo:includesLot epd:id_2023-S-210-663952_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663952_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-663952_ContractorOrganisationAddress_5DskZUnCcVusgjQoBuZAqa a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR107>;
+  locn:postCode "94210";
+  locn:postName "La Varenne St Hilaire";
+  locn:thoroughfare "30, Quai de Champignol" .
+
+epd:id_2023-S-210-663952_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR101>;
+  locn:postCode "75008";
+  locn:postName "Paris";
+  locn:thoroughfare "10, rue Cambacérès" .
+
+epd:id_2023-S-210-663952_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa a org:Organization;
+  epo:hasLegalName "koan coaching"@fr;
+  cccev:registeredAddress epd:id_2023-S-210-663952_ContractorOrganisationAddress_5DskZUnCcVusgjQoBuZAqa .
+
+epd:id_2023-S-210-663952_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasLegalName "oasys mobilisation"@fr;
+  cccev:registeredAddress epd:id_2023-S-210-663952_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-210-663952_FrameworkAgreementTechniqueUsage_C5nS5y4XErvUqzRNMARW8r a
+    epo:FrameworkAgreementTechniqueUsage .
+
+epd:id_2023-S-210-663952_FrameworkAgreementTerm_C5nS5y4XErvUqzRNMARW8r a epo:FrameworkAgreementTerm .
+
+epd:id_2023-S-210-663952_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf
+  a epo:MonetaryValue;
+  epo:hasAmountValue 2000000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663952_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663952_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v;
+  epo:describesLot epd:id_2023-S-210-663952_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663952_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-663952_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/79998000> .
+
+epd:id_2023-S-210-663952_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663952_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasDescription "prestations de conseil en accompagnement des collaborateurs de l'ans"@fr;
+  epo:hasPurpose epd:id_2023-S-210-663952_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:isSubjectToLotSpecificTerm epd:id_2023-S-210-663952_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-663952_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9,
+    epd:id_2023-S-210-663952_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP .
+
+epd:id_2023-S-210-663952_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-210-663952_Contract_KaeDJ6cSC7UaS6sXtDUnvf;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-210-663952_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:announcesRole epd:id_2023-S-210-663952_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2023-S-210-663952_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ,
+    epd:id_2023-S-210-663952_Reviewer_bdZjimbzCaRXbeYeBmF94j, epd:id_2023-S-210-663952_Winner_5DskZUnCcVusgjQoBuZAqa,
+    epd:id_2023-S-210-663952_Winner_WFzZGbdirSo5EBhCMeQqCo;
+  epo:announcesTender epd:id_2023-S-210-663952_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:hasDispatchDate "2023-10-27"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663952_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-663952_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:refersToPrevious epd:id_2023-S-097-305129_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-663952_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-663952_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2023-S-210-663952_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-663952_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-663952" .
+
+epd:id_2023-S-210-663952_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/FR>;
+  locn:postCode "75015";
+  locn:postName "Paris";
+  locn:thoroughfare "2-10, rue d'oradour sur Glane" .
+
+epd:id_2023-S-210-663952_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasLegalName "agence du Numérique en Santé"@fr;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress epd:id_2023-S-210-663952_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-663952_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023-04" .
+
+epd:id_2023-S-210-663952_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79998000> .
+
+epd:id_2023-S-210-663952_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasDescription "le présent accord-cadre a pour objet des prestations de conseil d'accompagnement des collaborateurs de l'ans"@fr;
+  epo:hasID epd:id_2023-S-210-663952_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-663952_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2023-S-210-663952_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle "prestations de conseil en accompagnement des collaborateurs de l'ans"@fr;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-210-663952_FrameworkAgreementTerm_C5nS5y4XErvUqzRNMARW8r;
+  epo:usesTechnique epd:id_2023-S-210-663952_FrameworkAgreementTechniqueUsage_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-210-663952_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 a epo:MonetaryValue;
+  epo:hasAmountValue 2000000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-663952_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  locn:postCode "75181";
+  locn:postName "Paris";
+  locn:thoroughfare "7 rue de Jouy" .
+
+epd:id_2023-S-210-663952_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ
+  a cccev:ContactPoint;
+  cccev:email "greffe.ta-paris@juradm.fr";
+  cccev:telephone "+33 144594400" .
+
+epd:id_2023-S-210-663952_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ
+  a org:Organization;
+  epo:hasLegalName "greffe du Tribunal administratif de Paris"@fr;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663952_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ;
+  cccev:registeredAddress epd:id_2023-S-210-663952_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ .
+
+epd:id_2023-S-210-663952_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ
+  a epo:ReviewProcedureInformationProvider;
+  epo:playedBy epd:id_2023-S-210-663952_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ .
+
+epd:id_2023-S-210-663952_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "recours susceptibles d'être formés contre le présent marché public : -référé précontractuel, depuis le début de la passation jusqu'à la signature du contrat (CJA, article L. 551-1); -référé contractuel, après la signature du contrat (cja, l 551-13); -recours en contestation de validité, pouvant être exercé par les tiers au contrat, dans un délai de deux mois à compter des mesures de publicité appropriés" .
+
+epd:id_2023-S-210-663952_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j a cccev:ContactPoint;
+  cccev:email "greffe.ta-paris@juradm.fr";
+  cccev:telephone "+33 144594400" .
+
+epd:id_2023-S-210-663952_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
+  locn:postCode "75181";
+  locn:postName "Paris";
+  locn:thoroughfare "7 rue de Jouy" .
+
+epd:id_2023-S-210-663952_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "tribunal administratif de Paris"@fr;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663952_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j;
+  cccev:registeredAddress epd:id_2023-S-210-663952_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-663952_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-663952_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-663952_SubmissionStatisticalInformation_SM6UbUtHRXNqgrskZtVN8v a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedTenders 9;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663952_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-663952_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663952_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663952_Winner_5DskZUnCcVusgjQoBuZAqa,
+    epd:id_2023-S-210-663952_Winner_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-210-663952_Tender_SM6UbUtHRXNqgrskZtVN8v a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663952_Lot_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-210-663952_Winner_5DskZUnCcVusgjQoBuZAqa a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663952_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa .
+
+epd:id_2023-S-210-663952_Winner_WFzZGbdirSo5EBhCMeQqCo a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663952_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2023-S-036-105505/eP5uWDhd4iYABCZbaj8dzQ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663952_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663952_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663952_Organisation_UU5jeWb9wCr2uQLNME2nwM> .

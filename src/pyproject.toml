@@ -1,0 +1,37 @@
+[project]
+name = "ers-spec"
+version = "1.1.0"
+description = """
+  The core components for the Entity Resolution System (ERS) components.
+
+  The ERS is a pluggable entity resolution system for data transformation pipelines.
+"""
+
+authors = [
+    {name = "Publications Office of the European Union"}
+]
+
+readme = "../README.md"
+requires-python = ">=3.12"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+pydantic = ">=2.10.6,<3.0.0"
+
+[dependency-groups]
+dev = [
+    "linkml (>=1.9.2,<2.0.0)",
+    "ruff (>=0.9.0,<1.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+  { include = "erspec" }
+]
+
+[tool.ruff]
+target-version = "py312"

@@ -1,0 +1,261 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-210-662860_Buyer_EDZAnT7HXvHuLqeZYHEzVQ a epo:Buyer;
+  epo:contextualisedBy epd:id_2023-S-210-662860_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasBuyerProfile "https://app.eop.bg/buyer/2378"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-662860_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:playedBy epd:id_2023-S-210-662860_Organisation_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-662860_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN a cccev:ContactPoint;
+  epo:hasContactName "Иглика Борисова"@bg;
+  epo:hasInternetAddress "http://www.mbalgabrovo.com/"^^xsd:anyURI;
+  cccev:email "targovembalgabrovo@gmail.com";
+  cccev:telephone "+359 066800638" .
+
+epd:id_2023-S-210-662860_ContractIdentifier_UJQ3Xqm7asTMjyAA9WKL42 a epo:Identifier;
+  epo:hasIdentifierValue "105327" .
+
+epd:id_2023-S-210-662860_ContractModification_NUqDzwkVVVUgZ2MjF797AY a epo:ContractModification;
+  epo:describesNotice epd:id_2023-S-210-662860_Notice;
+  epo:hasElementModification epd:id_2023-S-210-662860_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY .
+
+epd:id_2023-S-210-662860_ContractTermLotLocationAddressModification_AKLYjQuv54nZUBKnyu7AP7
+  a locn:Address;
+  locn:fullAddress "МБАЛ Габрово"@bg .
+
+epd:id_2023-S-210-662860_ContractTermLotLocationAddress_mtBaW8k5EC8G5zB7LwJPww a locn:Address;
+  locn:fullAddress "МБАЛ Габрово"@bg .
+
+epd:id_2023-S-210-662860_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG322>;
+  locn:address epd:id_2023-S-210-662860_ContractTermLotLocationAddressModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-662860_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG322>;
+  locn:address epd:id_2023-S-210-662860_ContractTermLotLocationAddress_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-662860_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-662860_DurationModification_ZT6JBnmAkpPL5qmogL5tjp;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662860_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-662860_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-662860_Duration_AssvfddL5WkoAdKCpqdccz;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662860_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-662860_Contract_csNjfsBkdGQvJWHAcwuHPA a epo:Contract;
+  epo:hasContractConclusionDate "2023-07-28"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662860_ContractIdentifier_UJQ3Xqm7asTMjyAA9WKL42;
+  epo:hasTitle "ДОСТАВКА НА МЕДИЦИНСКИ ИЗДЕЛИЯ ЗА НУЖДИТЕ НА МБАЛ \"Д-Р ТОТА ВЕНКОВА\" АД – ГАБРОВО – 2 ЧАСТ, Обособена позиция 14,15,16,17,21,22,24,28,29,30,35,39,40,41,42,43,53,54,55,57,58,59,64,68,73,74"@bg;
+  epo:includesLot epd:id_2023-S-210-662860_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-662860_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-662860_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG421>;
+  locn:postCode "4000";
+  locn:postName "гр. Пловдив";
+  locn:thoroughfare "бул.Шести септември\"№87" .
+
+epd:id_2023-S-210-662860_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG421>;
+  locn:postCode "4000";
+  locn:postName "гр. Пловдив";
+  locn:thoroughfare "бул.Шести септември\"№87" .
+
+epd:id_2023-S-210-662860_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk
+  a epo:Identifier;
+  epo:hasIdentifierValue "115573932" .
+
+epd:id_2023-S-210-662860_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP a
+    epo:Identifier;
+  epo:hasIdentifierValue "115573932" .
+
+epd:id_2023-S-210-662860_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk
+  a epo:Business, org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-662860_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk;
+  epo:hasLegalName "ИСТЛИНК БЪЛГАРИЯ ООД"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-662860_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-662860_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP a epo:Business,
+    org:Organization;
+  epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/sme>;
+  epo:hasID epd:id_2023-S-210-662860_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP;
+  epo:hasLegalName "ИСТЛИНК БЪЛГАРИЯ ООД"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-662860_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-662860_DurationModification_ZT6JBnmAkpPL5qmogL5tjp a epo:SpecificDuration;
+  time:numericDuration 12.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-662860_Duration_AssvfddL5WkoAdKCpqdccz a epo:SpecificDuration;
+  time:numericDuration 12.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-662860_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY a epo:ElementModificationDescription;
+  epo:hasModificationDescription """На основание чл.116, ал.1, т.3 от ЗОП С писмено уведомление изх. № 57/ 16.10.2023г. с Вх. № СБ09-2802/ 17.10.2023г. лечебното заведение е било уведомено от ИЗПЪЛНИТЕЛЯ, че иска замяна на данните за производител, съдържащи се в чл.1, Приложение №1, неразделна част от договора, поради спиране на производството от страна на фирмите производители. Възникналите обстоятелства налагат работа с нови доставчици.  Страните, след, като се увериха, че предлаганата промяна на стоката отговаря на техническите характеристики заложени в спецификацията на възложителя и не следва да се прави промяна на доставната цена, постигнаха съгласие за изменение на Приложение №1. В дух на взаимни отстъпки и преговори страните се договориха да направят промяна в настоящия договор, като следва:В раздел „I. ПРЕДМЕТ НА ДОГОВОРА\" се правят следните изменения:Член. 1, ПРИЛОЖЕНИЕ №1 се изменя, както следва:1.	Позиция ОП № 55 КОНТЕЙНЕР за урина и хистологичен материал 75-120 мл; нестерилен, изработен от твърда пластмаса, стабилна основа и надеждно затваряща се винтова капачка с производител  „СИТОТЕСТ ЛАБУЕЪР МАНИФАКТУР ИНГ  КО.  ЛТД“ да се чете с производител „DELTALAB. S. L.“;"""@bg;
+  epo:hasModificationJustification <http://publications.europa.eu/resource/authority/modification-justification/mod-cir>;
+  epo:hasModificationReasonDescription "На основание чл.116, ал.1, т.3 от ЗОП С писмено уведомление изх. № 57/ 16.10.2023г. с Вх. № СБ09-2802/ 17.10.2023г. лечебното заведение е било уведомено от ИЗПЪЛНИТЕЛЯ, че иска замяна на данните за производител, съдържащи се в чл.1, Приложение №1, неразделна част от договора, поради спиране на производството от страна на фирмите производители. Възникналите обстоятелства налагат работа с нови доставчици.  Страните, след, като се увериха, че предлаганата промяна на стоката отговаря на техническите характеристики заложени в спецификацията на възложителя и не следва да се прави промяна на доставната цена, постигнаха съгласие за изменение на Приложение №1."@bg .
+
+epd:id_2023-S-210-662860_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL
+  a epo:MonetaryValue;
+  epo:hasAmountValue 18497.13;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/BGN> .
+
+epd:id_2023-S-210-662860_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA
+  a epo:MonetaryValue;
+  epo:hasAmountValue 18497.13;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/BGN> .
+
+epd:id_2023-S-210-662860_LotAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662860_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:describesLot epd:id_2023-S-210-662860_LotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasAwardedValue epd:id_2023-S-210-662860_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL .
+
+epd:id_2023-S-210-662860_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662860_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G;
+  epo:describesLot epd:id_2023-S-210-662860_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-662860_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-662860_LotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Lot;
+  epo:containsModificationsOf epd:id_2023-S-210-662860_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662860_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasDescription "„Доставка на медицински изделия за нуждите на МБАЛ \"Д-р Тота Венкова\" АД – Габрово- 2 част\" ОП 55 КОНТЕЙНЕР за урина и хистологичен материал 75-120 мл; нестерилен, изработен от твърда пластмаса, стабилна основа и надеждно затваряща се винтова капачка"@bg .
+
+epd:id_2023-S-210-662860_Lot_mtBaW8k5EC8G5zB7LwJPww a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662860_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasDescription "„Доставка на медицински изделия за нуждите на МБАЛ \"Д-р Тота Венкова\" АД – Габрово- 2 част\" ОП 55 КОНТЕЙНЕР за урина и хистологичен материал 75-120 мл; нестерилен, изработен от твърда пластмаса, стабилна основа и надеждно затваряща се винтова капачка"@bg;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-662860_Notice a epo:ContractModificationNotice, epo:Notice;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662860_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToContractToBeModified epd:id_2023-S-210-662860_Contract_csNjfsBkdGQvJWHAcwuHPA;
+  epo:refersToProcedure epd:id_2023-S-210-662860_Procedure_aE3iyMRsoF9Qvy4eFQRpLT .
+
+epd:id_2023-S-210-662860_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-662860" .
+
+epd:id_2023-S-210-662860_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG322>;
+  locn:postCode "5300";
+  locn:postName "гр. Габрово";
+  locn:thoroughfare "ул. Д-Р ИЛИЕВ ДЕТСКИЯТ №.1" .
+
+epd:id_2023-S-210-662860_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN a epo:Identifier;
+  epo:hasIdentifierValue "107507217" .
+
+epd:id_2023-S-210-662860_Organisation_iGF7ZaAiz9oMT8YWwHDjxN a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/def-cont>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/grp-p-aut>, <http://publications.europa.eu/resource/authority/buyer-legal-type/int-org>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/la>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-cga>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/spec-rights-entity>;
+  epo:hasID epd:id_2023-S-210-662860_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:hasLegalName "МНОГОПРОФИЛНА БОЛНИЦА ЗА АКТИВНО ЛЕЧЕНИЕ \"Д-Р ТОТА ВЕНКОВА\" АД"@bg;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>;
+  cccev:registeredAddress epd:id_2023-S-210-662860_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-662860_ProcedureModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Procedure;
+  epo:containsModificationsOf epd:id_2023-S-210-662860_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasPurpose epd:id_2023-S-210-662860_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-662860_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/33140000> .
+
+epd:id_2023-S-210-662860_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/33140000> .
+
+epd:id_2023-S-210-662860_Procedure_aE3iyMRsoF9Qvy4eFQRpLT a epo:Procedure;
+  epo:hasAdditionalInformation "С писмено уведомление изх. № 57/ 16.10.2023г. с Вх. № СБ09-2802/ 17.10.2023г. лечебното заведение е било уведомено от ИЗПЪЛНИТЕЛЯ, че иска замяна на данните за производител, съдържащи се в чл.1, Приложение №1, неразделна част от договора, поради спиране на производството от страна на фирмите производители. Възникналите обстоятелства налагат работа с нови доставчици.  Страните, след, като се увериха, че предлаганата промяна на стоката отговаря на техническите характеристики заложени в спецификацията на възложителя и не следва да се прави промяна на доставната цена, постигнаха съгласие за изменение на Приложение №1."@bg;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-662860_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasPurpose epd:id_2023-S-210-662860_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasTitle "ДОСТАВКА НА МЕДИЦИНСКИ ИЗДЕЛИЯ ЗА НУЖДИТЕ НА МБАЛ \"Д-Р ТОТА ВЕНКОВА\" АД – ГАБРОВО – 2 ЧАСТ"@bg;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-210-662860_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4 .
+
+epd:id_2023-S-210-662860_ReviewTerm_7TwSLEC9PvaDEEAmGcz5G4 a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "съгласно чл. 197 от ЗОП" .
+
+epd:id_2023-S-210-662860_ReviewerContactPoint_LLhJHMi9mby8ixbkfyGoWj a cccev:ContactPoint;
+  epo:hasFax "+359 29807315";
+  epo:hasInternetAddress "http://www.cpc.bg"^^xsd:anyURI;
+  cccev:email "delovodstvo@cpc.bg";
+  cccev:telephone "+359 29356113" .
+
+epd:id_2023-S-210-662860_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  locn:postCode "1000";
+  locn:postName "София";
+  locn:thoroughfare "бул. Витоша № 18" .
+
+epd:id_2023-S-210-662860_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj a org:Organization;
+  epo:hasLegalName "Комисия за защита на конкуренцията"@bg;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662860_ReviewerContactPoint_LLhJHMi9mby8ixbkfyGoWj;
+  cccev:registeredAddress epd:id_2023-S-210-662860_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-662860_Reviewer_LLhJHMi9mby8ixbkfyGoWj a epo:Reviewer;
+  epo:contextualisedBy epd:id_2023-S-210-662860_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-662860_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-662860_SubmissionStatisticalInformation_NBeHHAEunZ8nwh2wSSps9G a
+    epo:SubmissionStatisticalInformation;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-662860_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-662860_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:TenderAwardOutcome;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662860_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-662860_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-662860_Tender_NBeHHAEunZ8nwh2wSSps9G;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662860_Winner_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-662860_Tender_NBeHHAEunZ8nwh2wSSps9G a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-662860_Lot_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-662860_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-662860_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-662860_Winner_HZWpWHpbXutoMwFeMp6nUP a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-662860_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-662860_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-113-353030_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143077/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-050232/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-078-233767/bdZjimbzCaRXbeYeBmF94j> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662860_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662860_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .

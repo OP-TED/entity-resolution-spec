@@ -1,0 +1,159 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-210-664285_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=bXTwFoMbM3njHF5qKI4aaw%3D%3D"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false .
+
+epd:id_2023-S-210-664285_Buyer_LTC4ztdQQn6ue8NBpQv4rF a epo:Buyer;
+  epo:hasBuyerProfile "https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&idBp=UNoVP3GUQv%2BiEJrVRqloyA%3D%3D"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-664285_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
+  epo:playedBy epd:id_2023-S-210-664285_Organisation_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-664285_ContactPoint_7D5VmvEvVafBz7JQr2uuS8 a cccev:ContactPoint;
+  epo:hasContactName "Fundación Integra"@es;
+  epo:hasInternetAddress "http://www.f-integra.org"^^xsd:anyURI;
+  cccev:email "gestion@f-integra.org";
+  cccev:telephone "+34 968355161" .
+
+epd:id_2023-S-210-664285_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES620> .
+
+epd:id_2023-S-210-664285_ContractTermLot_9kJZhTgye29otV72ZHovp4 a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-664285_Duration_NrvbEmCZF6uD7i5tqyVJW5;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-664285_ContractTermLotLocation_9kJZhTgye29otV72ZHovp4 .
+
+epd:id_2023-S-210-664285_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasEOrdering true .
+
+epd:id_2023-S-210-664285_Duration_NrvbEmCZF6uD7i5tqyVJW5 a epo:SpecificDuration;
+  time:numericDuration 24.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-664285_Fund_9kJZhTgye29otV72ZHovp4 a epo:Fund;
+  epo:hasDescription "Mecanismo de Recuperación y Resiliencia"@es .
+
+epd:id_2023-S-210-664285_Lot_9kJZhTgye29otV72ZHovp4 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664285_ContractTermLot_9kJZhTgye29otV72ZHovp4;
+  epo:hasDescription "Procedimiento abierto de tramitación ordinaria, sujeto a regulación armonizada y no dividido en lotes."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-664285_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4;
+  epo:isFundedBy epd:id_2023-S-210-664285_Fund_9kJZhTgye29otV72ZHovp4;
+  epo:isUsingEUFunds true .
+
+epd:id_2023-S-210-664285_MainMonetaryValueLot_9kJZhTgye29otV72ZHovp4 a epo:MonetaryValue;
+  epo:hasAmountValue 4193017.74;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-664285_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ a epo:MonetaryValue;
+  epo:hasAmountValue 4193017.74;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-664285_Notice a epo:CompetitionNotice, epo:Notice;
+  epo:announcesRole epd:id_2023-S-210-664285_Buyer_LTC4ztdQQn6ue8NBpQv4rF, epd:id_2023-S-210-664285_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL,
+    epd:id_2023-S-210-664285_Reviewer_cbWuhNnCxDFGewidLQWHhz, epd:id_2023-S-210-664285_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-664285_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-664285_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:refersToProcedure epd:id_2023-S-210-664285_Procedure_aCmfT72mHtfxPh7XQjZApJ .
+
+epd:id_2023-S-210-664285_NoticeIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-664285" .
+
+epd:id_2023-S-210-664285_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES620>;
+  locn:postCode "30004";
+  locn:postName "MURCIA";
+  locn:thoroughfare "C/ Gran Vía, Nº1-entlo" .
+
+epd:id_2023-S-210-664285_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8 a epo:Identifier;
+  epo:hasIdentifierValue "G30583876" .
+
+epd:id_2023-S-210-664285_Organisation_7D5VmvEvVafBz7JQr2uuS8 a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/def-cont>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/grp-p-aut>, <http://publications.europa.eu/resource/authority/buyer-legal-type/int-org>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/la>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-cga>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/spec-rights-entity>;
+  epo:hasBuyerLegalTypeDescription "Otras Entidades del Sector Público";
+  epo:hasID epd:id_2023-S-210-664285_OrganisationIdentifier_7D5VmvEvVafBz7JQr2uuS8;
+  epo:hasLegalName "Fundación Integra"@es;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
+  cccev:registeredAddress epd:id_2023-S-210-664285_OrganisationAddress_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-664285_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ a epo:Identifier;
+  epo:hasIdentifierValue "CCDFI23" .
+
+epd:id_2023-S-210-664285_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/80000000> .
+
+epd:id_2023-S-210-664285_Procedure_aCmfT72mHtfxPh7XQjZApJ a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664285_ContractTermProcedure_K8q5v8TTWyR48h9DKNno8n;
+  epo:hasDescription "Procedimiento abierto de tramitación ordinaria, sujeto a regulación armonizada y no dividido en lotes."@es;
+  epo:hasEstimatedValue epd:id_2023-S-210-664285_MonetaryValueProcedure_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasID epd:id_2023-S-210-664285_ProcedureIdentifier_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-664285_Lot_9kJZhTgye29otV72ZHovp4;
+  epo:hasPurpose epd:id_2023-S-210-664285_ProcedurePurpose_aCmfT72mHtfxPh7XQjZApJ;
+  epo:hasTitle "Contratación de servicios de formación itinerante para la adquisición de competencias digitales por la Ciudadanía en La Región de Murcia - Financiado por la Unión Europea-NEXTGENERATIONEU, dentro del Mecanismo de Recuperación y Resiliencia."@es;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-210-664285_AccessTerm_LTC4ztdQQn6ue8NBpQv4rF,
+    epd:id_2023-S-210-664285_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n .
+
+epd:id_2023-S-210-664285_ProcurementProcedureInformationProvider_m3phG9hfUrufLBZkispGTL
+  a epo:ProcurementProcedureInformationProvider;
+  epo:hasContactPointInRole epd:id_2023-S-210-664285_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
+  epo:playedBy epd:id_2023-S-210-664285_Organisation_7D5VmvEvVafBz7JQr2uuS8 .
+
+epd:id_2023-S-210-664285_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz a cccev:ContactPoint;
+  cccev:email "tribunal_recursos.contratos@minhap.es" .
+
+epd:id_2023-S-210-664285_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  locn:postCode "28020";
+  locn:postName "Madrid";
+  locn:thoroughfare "Avenida General Perón, 38, planta 8" .
+
+epd:id_2023-S-210-664285_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz a org:Organization;
+  epo:hasLegalName "Tribunal Administrativo Central de Recursos Contractuales (TACRC)"@es;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-664285_ReviewerContactPoint_cbWuhNnCxDFGewidLQWHhz;
+  cccev:registeredAddress epd:id_2023-S-210-664285_ReviewerOrganisationAddress_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-664285_Reviewer_cbWuhNnCxDFGewidLQWHhz a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-664285_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz .
+
+epd:id_2023-S-210-664285_SubmissionTerm_K8q5v8TTWyR48h9DKNno8n a epo:SubmissionTerm;
+  epo:hasLanguage "ES";
+  epo:hasReceiptDeadline "2023-11-27T23:59" .
+
+epd:id_2023-S-210-664285_TenderReceiver_3dwpAcw6fYdd72eXB5Lq6b a epo:TenderReceiver;
+  epo:hasContactPointInRole epd:id_2023-S-210-664285_ContactPoint_7D5VmvEvVafBz7JQr2uuS8;
+  epo:playedBy epd:id_2023-S-210-664285_Organisation_7D5VmvEvVafBz7JQr2uuS8 .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664285_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664285_ReviewerOrganisation_cbWuhNnCxDFGewidLQWHhz> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664285_Organisation_7D5VmvEvVafBz7JQr2uuS8> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664285_Organisation_7D5VmvEvVafBz7JQr2uuS8> .

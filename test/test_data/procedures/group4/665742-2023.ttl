@@ -1,0 +1,17 @@
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-211-665742_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure ;
+    epo:hasDescription "Prestação de cuidados de enfermagem, para o serviço de nefrologia e transplantação renal - Unidade de hemodialise, do Centro Hospitalar Universitário Lisboa Norte, Epe."@pt ;
+    epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024> ;
+    epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> ;
+    epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv ;
+    epo:hasPurpose epd:id_2023-S-211-665742_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 ;
+    epo:hasTitle "Procedimento n.º 239X000323"@pt ;
+    epo:isCoveredByGPA false ;
+    epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-211-665742_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-211-665742_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85141200> .

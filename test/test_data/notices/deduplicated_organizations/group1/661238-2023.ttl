@@ -1,0 +1,365 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2022-S-002-004033_Notice a epo:Notice;
+  epo:hasID epd:id_2022-S-002-004033_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ .
+
+epd:id_2022-S-002-004033_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ a epo:Identifier;
+  epo:hasIdentifierValue "2022/S 002-004033" .
+
+epd:id_2023-S-210-661238_Buyer_EDZAnT7HXvHuLqeZYHEzVQ a epo:Buyer;
+  epo:contextualisedBy epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasBuyerProfile "https://app.eop.bg/buyer/1119"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-661238_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:playedBy epd:id_2023-S-210-661238_Organisation_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-661238_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN a cccev:ContactPoint;
+  epo:hasContactName "инж. Петя Събчева"@bg;
+  epo:hasInternetAddress "https://www.tpp2.com/"^^xsd:anyURI;
+  cccev:email "p.sabcheva@tpp2.com";
+  cccev:telephone "+359 42662544 / +359 884988806" .
+
+epd:id_2023-S-210-661238_ContractIdentifier_GxpvwxGoMf9nRvEg8fSQX7 a epo:Identifier;
+  epo:hasIdentifierValue "25498" .
+
+epd:id_2023-S-210-661238_ContractModification_NUqDzwkVVVUgZ2MjF797AY a epo:ContractModification;
+  epo:describesNotice epd:id_2023-S-210-661238_Notice;
+  epo:hasElementModification epd:id_2023-S-210-661238_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY .
+
+epd:id_2023-S-210-661238_ContractTermLotLocationAddressModification_AKLYjQuv54nZUBKnyu7AP7
+  a locn:Address;
+  locn:fullAddress "ТЕЦ „Марица изток 2“ ЕАД - цех СОИ"@bg .
+
+epd:id_2023-S-210-661238_ContractTermLotLocationAddress_mtBaW8k5EC8G5zB7LwJPww a locn:Address;
+  locn:fullAddress "ТЕЦ „Марица изток 2“ ЕАД - цех СОИ"@bg .
+
+epd:id_2023-S-210-661238_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:address epd:id_2023-S-210-661238_ContractTermLotLocationAddressModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-661238_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:address epd:id_2023-S-210-661238_ContractTermLotLocationAddress_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-661238_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-661238_DurationModification_ZT6JBnmAkpPL5qmogL5tjp;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-661238_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-661238_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-661238_Duration_AssvfddL5WkoAdKCpqdccz;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-661238_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-661238_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+epd:id_2023-S-210-661238_Contract_csNjfsBkdGQvJWHAcwuHPA a epo:Contract;
+  epo:hasContractConclusionDate "2021-12-17"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-661238_ContractIdentifier_GxpvwxGoMf9nRvEg8fSQX7;
+  epo:hasTitle "Повишаване степента на сяроочистване на СОИ 7"@bg;
+  epo:includesLot epd:id_2023-S-210-661238_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-661238_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-661238_ContractorOrganisationAddressModification_4jxq5KuyAaGTzG5CNj9Ycp
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6000";
+  locn:postName "гр. Стара Загора";
+  locn:thoroughfare "кв. ИНДУСТРИАЛЕН, адм. сграда Металик" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6000";
+  locn:postName "Стара Загора";
+  locn:thoroughfare "кв. Индустриален, адм. сграда на завод Металик АД" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationAddressModification_jJkR6qh26YxC8X3YEqvd4D
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6000";
+  locn:postName "гр. Стара Загора";
+  locn:thoroughfare "ИНДУСТРИАЛЕН бл.-- вх.-- ет.-- ап.--" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6000";
+  locn:postName "Стара Загора";
+  locn:thoroughfare "кв. Индустриален, адм. сграда на завод Металик АД" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationAddress_KoxN6kkynnWenCXubDp4jC a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6000";
+  locn:postName "гр. Стара Загора";
+  locn:thoroughfare "кв. ИНДУСТРИАЛЕН, адм. сграда Металик" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationAddress_nVctERDS8oxz6W3uETx4tv a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6000";
+  locn:postName "гр. Стара Загора";
+  locn:thoroughfare "ИНДУСТРИАЛЕН бл.-- вх.-- ет.-- ап.--" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationIdentifierModification_4jxq5KuyAaGTzG5CNj9Ycp
+  a epo:Identifier;
+  epo:hasIdentifierValue "203420775" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk
+  a epo:Identifier;
+  epo:hasIdentifierValue "176999423" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationIdentifierModification_jJkR6qh26YxC8X3YEqvd4D
+  a epo:Identifier;
+  epo:hasIdentifierValue "833067427" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP a
+    epo:Identifier;
+  epo:hasIdentifierValue "176999423" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationIdentifier_KoxN6kkynnWenCXubDp4jC a
+    epo:Identifier;
+  epo:hasIdentifierValue "203420775" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationIdentifier_nVctERDS8oxz6W3uETx4tv a
+    epo:Identifier;
+  epo:hasIdentifierValue "833067427" .
+
+epd:id_2023-S-210-661238_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp
+  a org:Organization;
+  epo:hasID epd:id_2023-S-210-661238_ContractorOrganisationIdentifierModification_4jxq5KuyAaGTzG5CNj9Ycp;
+  epo:hasLegalName "ДЖИ АР ПИ ТЕХ ЕООД"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ContractorOrganisationAddressModification_4jxq5KuyAaGTzG5CNj9Ycp .
+
+epd:id_2023-S-210-661238_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk
+  a org:Organization;
+  epo:hasID epd:id_2023-S-210-661238_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk;
+  epo:hasLegalName "М - ТЕХ ИДА"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-661238_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D
+  a org:Organization;
+  epo:hasID epd:id_2023-S-210-661238_ContractorOrganisationIdentifierModification_jJkR6qh26YxC8X3YEqvd4D;
+  epo:hasLegalName "МЕТАЛИК АД"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ContractorOrganisationAddressModification_jJkR6qh26YxC8X3YEqvd4D .
+
+epd:id_2023-S-210-661238_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP a org:Organization;
+  epo:hasID epd:id_2023-S-210-661238_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP;
+  epo:hasLegalName "М - ТЕХ ИДА"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-661238_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC a org:Organization;
+  epo:hasID epd:id_2023-S-210-661238_ContractorOrganisationIdentifier_KoxN6kkynnWenCXubDp4jC;
+  epo:hasLegalName "ДЖИ АР ПИ ТЕХ ЕООД"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ContractorOrganisationAddress_KoxN6kkynnWenCXubDp4jC .
+
+epd:id_2023-S-210-661238_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv a org:Organization;
+  epo:hasID epd:id_2023-S-210-661238_ContractorOrganisationIdentifier_nVctERDS8oxz6W3uETx4tv;
+  epo:hasLegalName "МЕТАЛИК АД"@bg;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ContractorOrganisationAddress_nVctERDS8oxz6W3uETx4tv .
+
+epd:id_2023-S-210-661238_DurationModification_ZT6JBnmAkpPL5qmogL5tjp a epo:SpecificDuration;
+  time:numericDuration 30.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-661238_Duration_AssvfddL5WkoAdKCpqdccz a epo:SpecificDuration;
+  time:numericDuration 24.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-661238_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY a epo:ElementModificationDescription;
+  epo:hasModificationDescription "1.Член 5, изречение първо от раздел II „Срок на договора. Място на изпълнение.“ на договора се изменя, както следва:„Чл. 5. Срокът за изпълнение на договора е 30 месеца от датата на сключване на договора или до изчерпване на стойността му, което от събитията настъпи по-рано, като:….“.2.В раздел IV Гаранция за изпълнение се правят следните промени:В чл. 14, ал. 1, т. 2 и чл. 15, ал. 1, т. 2 думите „37 месеца“ се заменят с „43 месеца“Има сключено Допълнително споразумение №1, което е публикувано в преписката и за което е публикувано обявление за изменение."@bg;
+  epo:hasModificationJustification <http://publications.europa.eu/resource/authority/modification-justification/mod-cir>;
+  epo:hasModificationReasonDescription "Подробно са описани в Допълнително споразумение №2 към договора."@bg .
+
+epd:id_2023-S-210-661238_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL
+  a epo:MonetaryValue;
+  epo:hasAmountValue 7277835.68;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/BGN> .
+
+epd:id_2023-S-210-661238_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA
+  a epo:MonetaryValue;
+  epo:hasAmountValue 7419955.68;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/BGN> .
+
+epd:id_2023-S-210-661238_LotAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-661238_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:describesLot epd:id_2023-S-210-661238_LotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasAwardedValue epd:id_2023-S-210-661238_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL .
+
+epd:id_2023-S-210-661238_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-661238_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G;
+  epo:describesLot epd:id_2023-S-210-661238_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-661238_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-661238_LotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Lot;
+  epo:containsModificationsOf epd:id_2023-S-210-661238_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-661238_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasDescription "Повишаване степента на сяроочистване на СОИ 7 със степен на сяроочистване над 97%  чрез проектиране, доставка на необходимите консумативи и части заложени в работния проект, демонтаж на съществуващите съоръжения и монтаж на новите с присъствие на супервайзор през целия период на монтажа и 72 часовите проби."@bg .
+
+epd:id_2023-S-210-661238_Lot_mtBaW8k5EC8G5zB7LwJPww a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-661238_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasDescription "Повишаване степента на сяроочистване на СОИ 7 със степен на сяроочистване над 97%  чрез проектиране, доставка на необходимите консумативи и части заложени в работния проект, демонтаж на съществуващите съоръжения и монтаж на новите с присъствие на супервайзор през целия период на монтажа и 72 часовите проби."@bg;
+  epo:hasTitle "Повишаване степента на сяроочистване на СОИ 7"@bg;
+  epo:isUsingEUFunds false .
+
+epd:id_2023-S-210-661238_Notice a epo:ContractModificationNotice, epo:Notice;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-661238_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToContractToBeModified epd:id_2023-S-210-661238_Contract_csNjfsBkdGQvJWHAcwuHPA;
+  epo:refersToPrevious epd:id_2022-S-002-004033_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT .
+
+epd:id_2023-S-210-661238_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-661238" .
+
+epd:id_2023-S-210-661238_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/BG344>;
+  locn:postCode "6265";
+  locn:postName "с. Ковачево";
+  locn:thoroughfare "област Стара Загора, община Раднево" .
+
+epd:id_2023-S-210-661238_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN a epo:Identifier;
+  epo:hasIdentifierValue "123531939" .
+
+epd:id_2023-S-210-661238_Organisation_iGF7ZaAiz9oMT8YWwHDjxN a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/def-cont>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/grp-p-aut>, <http://publications.europa.eu/resource/authority/buyer-legal-type/int-org>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/la>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-cga>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/spec-rights-entity>;
+  epo:hasID epd:id_2023-S-210-661238_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:hasLegalName "ТЕЦ МАРИЦА ИЗТОК 2 ЕАД"@bg;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>;
+  cccev:registeredAddress epd:id_2023-S-210-661238_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-661238_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "20200" .
+
+epd:id_2023-S-210-661238_ProcedureModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Procedure;
+  epo:containsModificationsOf epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasPurpose epd:id_2023-S-210-661238_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-661238_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/42924300> .
+
+epd:id_2023-S-210-661238_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/42924300> .
+
+epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-661238_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ;
+  epo:hasID epd:id_2023-S-210-661238_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-661238_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasPurpose epd:id_2023-S-210-661238_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasTitle "Повишаване степента на сяроочистване на СОИ 7"@bg .
+
+epd:id_2023-S-210-661238_ReviewerContactPoint_LLhJHMi9mby8ixbkfyGoWj a cccev:ContactPoint;
+  epo:hasFax "+359 29807315";
+  epo:hasInternetAddress "http://www.cpc.bg"^^xsd:anyURI;
+  cccev:email "delovodstvo@cpc.bg";
+  cccev:telephone "+359 29356113" .
+
+epd:id_2023-S-210-661238_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
+  locn:postCode "1000";
+  locn:postName "София";
+  locn:thoroughfare "бул. Витоша № 18" .
+
+epd:id_2023-S-210-661238_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj a org:Organization;
+  epo:hasLegalName "Комисия за защита на конкуренцията"@bg;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-661238_ReviewerContactPoint_LLhJHMi9mby8ixbkfyGoWj;
+  cccev:registeredAddress epd:id_2023-S-210-661238_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-661238_Reviewer_LLhJHMi9mby8ixbkfyGoWj a epo:Reviewer;
+  epo:contextualisedBy epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-661238_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-661238_SubmissionStatisticalInformation_NBeHHAEunZ8nwh2wSSps9G a
+    epo:SubmissionStatisticalInformation;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-661238_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-661238_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:TenderAwardOutcome;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-661238_WinnerModification_4jxq5KuyAaGTzG5CNj9Ycp,
+    epd:id_2023-S-210-661238_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk, epd:id_2023-S-210-661238_WinnerModification_jJkR6qh26YxC8X3YEqvd4D .
+
+epd:id_2023-S-210-661238_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-661238_Tender_NBeHHAEunZ8nwh2wSSps9G;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-661238_Winner_HZWpWHpbXutoMwFeMp6nUP,
+    epd:id_2023-S-210-661238_Winner_KoxN6kkynnWenCXubDp4jC, epd:id_2023-S-210-661238_Winner_nVctERDS8oxz6W3uETx4tv .
+
+epd:id_2023-S-210-661238_Tender_NBeHHAEunZ8nwh2wSSps9G a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-661238_Lot_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-661238_WinnerModification_4jxq5KuyAaGTzG5CNj9Ycp a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-661238_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp .
+
+epd:id_2023-S-210-661238_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-661238_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-661238_WinnerModification_jJkR6qh26YxC8X3YEqvd4D a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-661238_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D .
+
+epd:id_2023-S-210-661238_Winner_HZWpWHpbXutoMwFeMp6nUP a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-661238_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-661238_Winner_KoxN6kkynnWenCXubDp4jC a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-661238_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC .
+
+epd:id_2023-S-210-661238_Winner_nVctERDS8oxz6W3uETx4tv a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-661238_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-661238_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_4jxq5KuyAaGTzG5CNj9Ycp> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_KoxN6kkynnWenCXubDp4jC> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_jJkR6qh26YxC8X3YEqvd4D> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_nVctERDS8oxz6W3uETx4tv> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-113-353030_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143077/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-050232/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-661238_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-078-233767/bdZjimbzCaRXbeYeBmF94j> .

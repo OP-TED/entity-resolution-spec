@@ -1,0 +1,278 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2021-S-109-286436_Notice a epo:Notice;
+  epo:hasID epd:id_2021-S-109-286436_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ .
+
+epd:id_2021-S-109-286436_NoticeIdentifier_fqfw5hANKbaKT6uyGM9WEZ a epo:Identifier;
+  epo:hasIdentifierValue "2021/S 109-286436" .
+
+epd:id_2023-S-210-664822_Buyer_EDZAnT7HXvHuLqeZYHEzVQ a epo:Buyer;
+  epo:contextualisedBy epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasBuyerProfile "https://contrataciondelestado.es/wps/portal/!ut/p/b1/jY9LDoIwEEDP4glmaKG0yxYoYIzyUbTdGBbGYPhsjOcXiVuqs5vkvbwZsGA8GtKQi4AIuIAd21d3b5_dNLb9Z7fsKpuklLmgm"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-664822_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:playedBy epd:id_2023-S-210-664822_Organisation_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-664822_ContactPoint_iGF7ZaAiz9oMT8YWwHDjxN a cccev:ContactPoint;
+  epo:hasContactName "Contratación"@es;
+  epo:hasFax "+34 915350502";
+  epo:hasInternetAddress "www.acuaes.com"^^xsd:anyURI;
+  cccev:email "contratacion@acuaes.com";
+  cccev:telephone "+34 915986270" .
+
+epd:id_2023-S-210-664822_ContractIdentifier_Q9aBAWJynNBa3gAAtDw8bh a epo:Identifier;
+  epo:hasIdentifierValue "ACE/607.01/20/OBRA/01" .
+
+epd:id_2023-S-210-664822_ContractModification_NUqDzwkVVVUgZ2MjF797AY a epo:ContractModification;
+  epo:describesNotice epd:id_2023-S-210-664822_Notice;
+  epo:hasElementModification epd:id_2023-S-210-664822_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY .
+
+epd:id_2023-S-210-664822_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7
+  a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES417> .
+
+epd:id_2023-S-210-664822_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES417> .
+
+epd:id_2023-S-210-664822_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-664822_DurationModification_ZT6JBnmAkpPL5qmogL5tjp;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-664822_ContractTermLotLocationModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-664822_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww a epo:ContractTerm;
+  epo:definesContractDuration epd:id_2023-S-210-664822_Duration_AssvfddL5WkoAdKCpqdccz;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-664822_ContractTermLotLocation_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-664822_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+
+epd:id_2023-S-210-664822_Contract_csNjfsBkdGQvJWHAcwuHPA a epo:Contract;
+  epo:hasContractConclusionDate "2021-06-02"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-664822_ContractIdentifier_Q9aBAWJynNBa3gAAtDw8bh;
+  epo:hasTitle "Ejecución de obras y puesta en marcha del “Proyecto constructivo, ejecución de obras y puesta en marcha de la EDAR de Sinova (Soria)” cofinanciado por el Programa Operativo FEDER plurirregional (POPE)"@es;
+  epo:includesLot epd:id_2023-S-210-664822_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-664822_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-664822_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:postName "Madrid" .
+
+epd:id_2023-S-210-664822_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES300>;
+  locn:postName "Madrid" .
+
+epd:id_2023-S-210-664822_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk
+  a epo:Identifier;
+  epo:hasIdentifierValue "A48010573" .
+
+epd:id_2023-S-210-664822_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP a
+    epo:Identifier;
+  epo:hasIdentifierValue "A48010573" .
+
+epd:id_2023-S-210-664822_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk
+  a org:Organization;
+  epo:hasID epd:id_2023-S-210-664822_ContractorOrganisationIdentifierModification_dHGyGoL92Xtj4t55Pq2hmk;
+  epo:hasLegalName "OBRASCON HUARTE LAIN, S.A."@es;
+  cccev:registeredAddress epd:id_2023-S-210-664822_ContractorOrganisationAddressModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-664822_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP a org:Organization;
+  epo:hasID epd:id_2023-S-210-664822_ContractorOrganisationIdentifier_HZWpWHpbXutoMwFeMp6nUP;
+  epo:hasLegalName "OBRASCON HUARTE LAIN, S.A."@es;
+  cccev:registeredAddress epd:id_2023-S-210-664822_ContractorOrganisationAddress_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-664822_DurationModification_ZT6JBnmAkpPL5qmogL5tjp a epo:SpecificDuration;
+  time:numericDuration 40.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-664822_Duration_AssvfddL5WkoAdKCpqdccz a epo:SpecificDuration;
+  time:numericDuration 37.0;
+  time:unitType time:unitMonth .
+
+epd:id_2023-S-210-664822_ElementModificationDescription_NUqDzwkVVVUgZ2MjF797AY a epo:ElementModificationDescription;
+  epo:hasModificationDescription "Tras el comienzo de los trabajos, se han constatado una serie de deficiencias que han surgido básicamente por la antigüedad de la redacción del proyecto inicial que data del año 2013. En el informe del Responsable de Gestión de Proyectos y Obras se justifican las razones por las que se han retrasado las obras de ejecución tras la redacción del proyecto, razones no imputables a ACUAES ni al contratista, dado que derivan de la oposición de los usuarios a la firma del Convenio, lo que determinó una nueva negociación y adaptación del proyecto con su modificación, así como a los obstáculos que tuvo que superar el contratista tras la adjudicación del contrato de ejecución de obra"@es;
+  epo:hasModificationJustification <http://publications.europa.eu/resource/authority/modification-justification/mod-cir>;
+  epo:hasModificationReasonDescription "La modificación aprobada y autorizada por el Consejo de Administración de ACUAES en fecha 9 de febrero de 2023 se considera no sustancial, no altera las condiciones de licitación, no varía el equilibrio económico del contrato ni amplía de forma importante el ámbito del mismo, resulta necesaria para ejecutar las obras del Proyecto constructivo, ocasionando una variación, del presupuesto líquido de cobro de DOS MILLONES QUINIENTOS DIECISEIS MIL NOVECIENTOS OCHENTA Y CUATRO EUROS CON QUINCE CÉNTIMOS (2.516.984,15 €) (sin IVA), y una previsión del presupuesto de liquidación del contrato de DIECINUEVE MILLONES OCHOCIENTOS SESENTA Y OCHO MIL QUNIENTOS CINCUENTA Y SIETE EUROS CON QUINCECÉNTIMOS (19.868.557,15 €), representando un incremento del 14,51% respecto al presupuesto de adjudicación. Como consecuencia de la modificación acordada, el plazo del contrato inicialmente acordado de 37 MESES, se incrementa en 3 MESES, siendo el nuevo plazo de ejecución de 40 MESES"@es .
+
+epd:id_2023-S-210-664822_Fund_mtBaW8k5EC8G5zB7LwJPww a epo:Fund;
+  epo:hasDescription "Fondo operativo FEDER plurirregional de España (POPE) 2014-2020"@es .
+
+epd:id_2023-S-210-664822_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL
+  a epo:MonetaryValue;
+  epo:hasAmountValue 17351573.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-664822_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA
+  a epo:MonetaryValue;
+  epo:hasAmountValue 17351573.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-210-664822_LotAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-664822_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:describesLot epd:id_2023-S-210-664822_LotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasAwardedValue epd:id_2023-S-210-664822_LotAwardOutcomeAwardedMonetaryValueModification_MpnmDqEVk2292ibKg4KHnL .
+
+epd:id_2023-S-210-664822_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-664822_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G;
+  epo:describesLot epd:id_2023-S-210-664822_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-664822_LotAwardOutcomeAwardedMonetaryValue_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-664822_LotModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Lot;
+  epo:containsModificationsOf epd:id_2023-S-210-664822_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664822_ContractTermLotModification_AKLYjQuv54nZUBKnyu7AP7;
+  epo:hasDescription "Ejecución de las obras y puesta en marcha del “Proyecto constructivo, ejecución de las obras y puesta en marcha de la EDAR de Sinova (Soria)”, cofinanciado por el Programa Operativo FEDER plurirregional de España (POPE) 2014-2020"@es .
+
+epd:id_2023-S-210-664822_Lot_mtBaW8k5EC8G5zB7LwJPww a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664822_ContractTermLot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasDescription "Ejecución de las obras y puesta en marcha del “Proyecto constructivo, ejecución de las obras y puesta en marcha de la EDAR de Sinova (Soria)”, cofinanciado por el Programa Operativo FEDER plurirregional de España (POPE) 2014-2020"@es;
+  epo:isFundedBy epd:id_2023-S-210-664822_Fund_mtBaW8k5EC8G5zB7LwJPww;
+  epo:isUsingEUFunds true .
+
+epd:id_2023-S-210-664822_Notice a epo:ContractModificationNotice, epo:Notice;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-664822_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPublicationDate "20231031";
+  epo:refersToContractToBeModified epd:id_2023-S-210-664822_Contract_csNjfsBkdGQvJWHAcwuHPA;
+  epo:refersToPrevious epd:id_2021-S-109-286436_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT .
+
+epd:id_2023-S-210-664822_NoticeIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-664822" .
+
+epd:id_2023-S-210-664822_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES>;
+  locn:postCode "28003";
+  locn:postName "Madrid";
+  locn:thoroughfare "C/ Agustín de Betancourt, 25 - 4ª planta" .
+
+epd:id_2023-S-210-664822_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN a epo:Identifier;
+  epo:hasIdentifierValue "A50736784" .
+
+epd:id_2023-S-210-664822_Organisation_iGF7ZaAiz9oMT8YWwHDjxN a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/def-cont>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/eu-ins-bod-ag>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/grp-p-aut>, <http://publications.europa.eu/resource/authority/buyer-legal-type/int-org>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/la>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-cga>, <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/org-sub-ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-cga>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-la>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>,
+    <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>, <http://publications.europa.eu/resource/authority/buyer-legal-type/spec-rights-entity>;
+  epo:hasID epd:id_2023-S-210-664822_OrganisationIdentifier_iGF7ZaAiz9oMT8YWwHDjxN;
+  epo:hasLegalName "SOCIEDAD MERCANTIL ESTATAL AGUAS DE LAS CUENCAS DE ESPAÑA, S.A."@es;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>;
+  cccev:registeredAddress epd:id_2023-S-210-664822_OrganisationAddress_iGF7ZaAiz9oMT8YWwHDjxN .
+
+epd:id_2023-S-210-664822_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT a epo:Identifier;
+  epo:hasIdentifierValue "ACE/607.01/20/OBRA/01. Modificado nº 1" .
+
+epd:id_2023-S-210-664822_ProcedureModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Procedure;
+  epo:containsModificationsOf epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasPurpose epd:id_2023-S-210-664822_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 .
+
+epd:id_2023-S-210-664822_ProcedurePurposeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45232420> .
+
+epd:id_2023-S-210-664822_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45232420> .
+
+epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-664822_ContractTermProcedure_fqfw5hANKbaKT6uyGM9WEZ;
+  epo:hasID epd:id_2023-S-210-664822_ProcedureIdentifier_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-664822_Lot_mtBaW8k5EC8G5zB7LwJPww;
+  epo:hasPurpose epd:id_2023-S-210-664822_ProcedurePurpose_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:hasTitle "Ejecución de obras y puesta en marcha del “Proyecto constructivo, ejecución de obras y puesta en marcha de la EDAR de Sinova (Soria)” cofinanciado por el Programa Operativo FEDER plurirregional (POPE)"@es .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProviderAddress_ZnF5jqqFzMTi9WKPqMm8gu
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  locn:postCode "28020";
+  locn:postName "Madrid";
+  locn:thoroughfare "C/ General Perón, 38 - 8º" .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProviderContactPoint_ZnF5jqqFzMTi9WKPqMm8gu
+  a cccev:ContactPoint;
+  epo:hasInternetAddress "http://www.acuaes.com"^^xsd:anyURI .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu
+  a org:Organization;
+  epo:hasLegalName "TRIBUNAL ADMINISTRATIVO CENTRAL DE RECURSOS CONTRACTUALES"@es;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-664822_ReviewProcedureInformationProviderContactPoint_ZnF5jqqFzMTi9WKPqMm8gu;
+  cccev:registeredAddress epd:id_2023-S-210-664822_ReviewProcedureInformationProviderAddress_ZnF5jqqFzMTi9WKPqMm8gu .
+
+epd:id_2023-S-210-664822_ReviewProcedureInformationProvider_ZnF5jqqFzMTi9WKPqMm8gu
+  a epo:ReviewProcedureInformationProvider;
+  epo:contextualisedBy epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-664822_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu .
+
+epd:id_2023-S-210-664822_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  locn:postCode "28020";
+  locn:postName "Madrid";
+  locn:thoroughfare "C/ General Perón, 38 - 8º" .
+
+epd:id_2023-S-210-664822_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj a org:Organization;
+  epo:hasLegalName "TRIBUNAL ADMINISTRATIVO CENTRAL DE RECURSOS CONTRACTUALES"@es;
+  cccev:registeredAddress epd:id_2023-S-210-664822_ReviewerOrganisationAddress_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-664822_Reviewer_LLhJHMi9mby8ixbkfyGoWj a epo:Reviewer;
+  epo:contextualisedBy epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-664822_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj .
+
+epd:id_2023-S-210-664822_SubmissionStatisticalInformation_NBeHHAEunZ8nwh2wSSps9G a
+    epo:SubmissionStatisticalInformation;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-664822_LotAwardOutcome_csNjfsBkdGQvJWHAcwuHPA .
+
+epd:id_2023-S-210-664822_TenderAwardOutcomeModification_AKLYjQuv54nZUBKnyu7AP7 a epo:TenderAwardOutcome;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-664822_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-664822_TenderAwardOutcome_NBeHHAEunZ8nwh2wSSps9G a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-664822_Tender_NBeHHAEunZ8nwh2wSSps9G;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-664822_Winner_HZWpWHpbXutoMwFeMp6nUP .
+
+epd:id_2023-S-210-664822_Tender_NBeHHAEunZ8nwh2wSSps9G a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-664822_Lot_mtBaW8k5EC8G5zB7LwJPww .
+
+epd:id_2023-S-210-664822_WinnerModification_dHGyGoL92Xtj4t55Pq2hmk a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-664822_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk .
+
+epd:id_2023-S-210-664822_Winner_HZWpWHpbXutoMwFeMp6nUP a epo:Winner;
+  epo:contextualisedBy epd:id_2023-S-210-664822_Procedure_aE3iyMRsoF9Qvy4eFQRpLT;
+  epo:playedBy epd:id_2023-S-210-664822_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664822_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-082951/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2023-S-028-080162/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ReviewerOrganisation_LLhJHMi9mby8ixbkfyGoWj> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-138-439460_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2023-S-028-080162/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-138-439460_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ReviewProcedureInformationProviderOrganisation_ZnF5jqqFzMTi9WKPqMm8gu> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-082951/bdZjimbzCaRXbeYeBmF94j> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisation_HZWpWHpbXutoMwFeMp6nUP> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664822_ContractorOrganisationModification_dHGyGoL92Xtj4t55Pq2hmk> .

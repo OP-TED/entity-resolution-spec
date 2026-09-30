@@ -1,0 +1,829 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-050-148332_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-050-148332_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-050-148332_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 050-148332" .
+
+epd:id_2023-S-210-662459_AwardCriterionPrice_2LJWqTHnvXFMPQLv58tthV a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "70"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "70"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionPrice_FowJL4khGZR579pakhqkDn a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "70"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionPrice_HEBUjuJZaCtQvT7w4f9rGB a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "70"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionPrice_LhiKJPvRjNoTu7gx4AEwoF a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "70"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionPrice_ewZirA4QTmyLrLffbmoC4T a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "70"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_2w2vewGhVLivGvfhtCL429 a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Memorie RAM"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Garanția produselor"@ro;
+  cccev:weight "30"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_6HDFfAwmhSdPA4rDwtQonL a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Memorie RAM"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_9ba7oHVMbDnNRbjpRcjrBT a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Memorie RAM"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_AZv7F7mU7wdDVFMhNQHHmm a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Garantia produselor"@ro;
+  cccev:weight "20"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_AuNVNcxJTkHAc4JX95YF5k a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "SSD"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_CCTVeV67f6ftkF885TeVrr a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Garantia produselor"@ro;
+  cccev:weight "20"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_CkTKncz24NrZL6pvXfvJkc a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "SSD"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_DpARCr4nyywYVFHVZTN4gY a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Garanția produselor"@ro;
+  cccev:weight "20"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_HoEgP6zEV7GoJNtcJ7Rp33 a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Garantia produselor"@ro;
+  cccev:weight "20"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_JSWbXjBbpbXNXNBU9anccw a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "SSD"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_JanoevckwB6SvxZQNqvGXY a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Garanția produselor"@ro;
+  cccev:weight "20"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_K7Uefe8s74wa8GFhmBUNQM a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Memorie RAM"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_LnUqcmu6AyYLcUdb46b3gm a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "SSD"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_hT6U8Yfo8tLoUb3pWo8mRs a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "SSD"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_AwardCriterionQuality_m8vdQrfRSuGLJVjxXXrriQ a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Memorie RAM"@ro;
+  cccev:weight "5"@ro .
+
+epd:id_2023-S-210-662459_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasBuyerProfile "www.e-licitatie.ro"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-662459_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2023-S-210-662459_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-662459_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasContactName "IONEL GOGLEA"@ro;
+  epo:hasFax "+40 245217692";
+  epo:hasInternetAddress "http://www.valahia.ro"^^xsd:anyURI;
+  cccev:email "bap.valahia@gmail.com";
+  cccev:telephone "+40 245211078" .
+
+epd:id_2023-S-210-662459_ContractIdentifier_3TZ8xfaTnxF6eCgqdXbpAJ a epo:Identifier;
+  epo:hasIdentifierValue "633" .
+
+epd:id_2023-S-210-662459_ContractIdentifier_6mSQobUTpYQw2ApxrP2bkU a epo:Identifier;
+  epo:hasIdentifierValue "629" .
+
+epd:id_2023-S-210-662459_ContractIdentifier_QizvJFz2dudwxCKviFkBSY a epo:Identifier;
+  epo:hasIdentifierValue "631" .
+
+epd:id_2023-S-210-662459_ContractIdentifier_WKFRhSQkhQpvim6aVxYBfD a epo:Identifier;
+  epo:hasIdentifierValue "632" .
+
+epd:id_2023-S-210-662459_ContractIdentifier_am6tzUAwckhFtCTevjkivB a epo:Identifier;
+  epo:hasIdentifierValue "630" .
+
+epd:id_2023-S-210-662459_ContractTermLotLocationAddress_5ZLiMRkUgqFjmY8Likn4Ux a locn:Address;
+  locn:fullAddress "Universitatea Valahia din Targoviste, Campus Universitar, Aleea Sinaia, Nr.13"@ro .
+
+epd:id_2023-S-210-662459_ContractTermLotLocationAddress_892jPigYFVfQuuQEioV5g7 a locn:Address;
+  locn:fullAddress "Universitatea Valahia din Targoviste, Campus Universitar, Aleea Sinaia,Nr.13"@ro .
+
+epd:id_2023-S-210-662459_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
+  locn:fullAddress "Universitatea Valahia din Targoviste, Campus Universitar, Aleea Sinaia, Nr.13"@ro .
+
+epd:id_2023-S-210-662459_ContractTermLotLocationAddress_R9qSF8NjURavF277ftM5By a locn:Address;
+  locn:fullAddress "Universitatea Valahia din Targoviste, Campus Universitar, Aleea Sinaia, Nr.13"@ro .
+
+epd:id_2023-S-210-662459_ContractTermLotLocationAddress_ZqK4WZRgemPDn3Ysr8vzYE a locn:Address;
+  locn:fullAddress "Universitatea Valahia din Targoviste, Campus Universitar, Aleea Sinaia,Nr.13"@ro .
+
+epd:id_2023-S-210-662459_ContractTermLotLocationAddress_diPp46XcmeHRAMFFenhpzZ a locn:Address;
+  locn:fullAddress "Universitatea Valahia din Targoviste, Campus Universitar, Aleea Sinaia, Nr.13"@ro .
+
+epd:id_2023-S-210-662459_ContractTermLotLocation_5ZLiMRkUgqFjmY8Likn4Ux a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:address epd:id_2023-S-210-662459_ContractTermLotLocationAddress_5ZLiMRkUgqFjmY8Likn4Ux .
+
+epd:id_2023-S-210-662459_ContractTermLotLocation_892jPigYFVfQuuQEioV5g7 a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:address epd:id_2023-S-210-662459_ContractTermLotLocationAddress_892jPigYFVfQuuQEioV5g7 .
+
+epd:id_2023-S-210-662459_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:address epd:id_2023-S-210-662459_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-210-662459_ContractTermLotLocation_R9qSF8NjURavF277ftM5By a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:address epd:id_2023-S-210-662459_ContractTermLotLocationAddress_R9qSF8NjURavF277ftM5By .
+
+epd:id_2023-S-210-662459_ContractTermLotLocation_ZqK4WZRgemPDn3Ysr8vzYE a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:address epd:id_2023-S-210-662459_ContractTermLotLocationAddress_ZqK4WZRgemPDn3Ysr8vzYE .
+
+epd:id_2023-S-210-662459_ContractTermLotLocation_diPp46XcmeHRAMFFenhpzZ a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:address epd:id_2023-S-210-662459_ContractTermLotLocationAddress_diPp46XcmeHRAMFFenhpzZ .
+
+epd:id_2023-S-210-662459_ContractTermLot_5ZLiMRkUgqFjmY8Likn4Ux a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662459_ContractTermLotLocation_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-662459_ContractTermLot_892jPigYFVfQuuQEioV5g7 a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662459_ContractTermLotLocation_892jPigYFVfQuuQEioV5g7;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-662459_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662459_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-662459_ContractTermLot_R9qSF8NjURavF277ftM5By a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662459_ContractTermLotLocation_R9qSF8NjURavF277ftM5By;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-662459_ContractTermLot_ZqK4WZRgemPDn3Ysr8vzYE a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662459_ContractTermLotLocation_ZqK4WZRgemPDn3Ysr8vzYE;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-662459_ContractTermLot_diPp46XcmeHRAMFFenhpzZ a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-662459_ContractTermLotLocation_diPp46XcmeHRAMFFenhpzZ;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-662459_Contract_P2VSufQndGRkHvUySMbAhc a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-23"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662459_ContractIdentifier_6mSQobUTpYQw2ApxrP2bkU;
+  epo:hasTitle "Lot 1 Calculator all-in-one 16GB, 512SSD"@ro;
+  epo:includesLot epd:id_2023-S-210-662459_Lot_892jPigYFVfQuuQEioV5g7;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_P2VSufQndGRkHvUySMbAhc .
+
+epd:id_2023-S-210-662459_Contract_PQBPvqdyF5Muuezd58jcsm a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-23"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662459_ContractIdentifier_3TZ8xfaTnxF6eCgqdXbpAJ;
+  epo:hasTitle "Lot 6 - Monitor LED 28\" IPS 3840 x 2160 pixeli, 6ms"@ro;
+  epo:includesLot epd:id_2023-S-210-662459_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_PQBPvqdyF5Muuezd58jcsm .
+
+epd:id_2023-S-210-662459_Contract_gHYcXDJKswtE6xJJVXLgbH a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-23"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662459_ContractIdentifier_WKFRhSQkhQpvim6aVxYBfD;
+  epo:hasTitle "Lot 5 - Laptop RAM 16GB, SSD 512GB, placa video 8GB, business"@ro;
+  epo:includesLot epd:id_2023-S-210-662459_Lot_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_gHYcXDJKswtE6xJJVXLgbH .
+
+epd:id_2023-S-210-662459_Contract_hwdSKfuE7koKgmmsVyvbzV a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-23"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662459_ContractIdentifier_am6tzUAwckhFtCTevjkivB;
+  epo:hasTitle "Lot 2 - Calculator Desktop RAM, 16GB 512 SSD, placa videodedicata, fara monitor"@ro;
+  epo:includesLot epd:id_2023-S-210-662459_Lot_R9qSF8NjURavF277ftM5By;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_hwdSKfuE7koKgmmsVyvbzV .
+
+epd:id_2023-S-210-662459_Contract_imfonZ7oCLJB2ij7FfXKEA a epo:Contract;
+  epo:hasContractConclusionDate "2023-10-23"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662459_ContractIdentifier_QizvJFz2dudwxCKviFkBSY;
+  epo:hasTitle "Lot 3 - Laptop 15.6inch, RAM 16GB"@ro;
+  epo:includesLot epd:id_2023-S-210-662459_Lot_diPp46XcmeHRAMFFenhpzZ;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_imfonZ7oCLJB2ij7FfXKEA .
+
+epd:id_2023-S-210-662459_ContractorContactPoint_3wPdLbAG6nvmaE8euzWnmf a cccev:ContactPoint;
+  epo:hasFax "+40 264414617";
+  epo:hasInternetAddress "www.brinel.ro"^^xsd:anyURI;
+  cccev:email "cristina.mudura@brinel.ro";
+  cccev:telephone "+40 264414610" .
+
+epd:id_2023-S-210-662459_ContractorContactPoint_EUXcdcVJXv2EXsP83wEGRh a cccev:ContactPoint;
+  epo:hasFax "+40 264414617";
+  epo:hasInternetAddress "www.brinel.ro"^^xsd:anyURI;
+  cccev:email "cristina.mudura@brinel.ro";
+  cccev:telephone "+40 264414610" .
+
+epd:id_2023-S-210-662459_ContractorContactPoint_NB3g9kk9sxbNau7GmSwyYQ a cccev:ContactPoint;
+  epo:hasFax "+40 264414617";
+  epo:hasInternetAddress "www.brinel.ro"^^xsd:anyURI;
+  cccev:email "cristina.mudura@brinel.ro";
+  cccev:telephone "+40 264414610" .
+
+epd:id_2023-S-210-662459_ContractorContactPoint_bSGUi2Sn2YmvsonQFYE4qh a cccev:ContactPoint;
+  epo:hasFax "+40 264414617";
+  epo:hasInternetAddress "www.brinel.ro"^^xsd:anyURI;
+  cccev:email "cristina.mudura@brinel.ro";
+  cccev:telephone "+40 264414610" .
+
+epd:id_2023-S-210-662459_ContractorContactPoint_iNeZPiTJwMWfr7iAbQZ9WZ a cccev:ContactPoint;
+  epo:hasFax "+40 264414617";
+  epo:hasInternetAddress "www.brinel.ro"^^xsd:anyURI;
+  cccev:email "cristina.mudura@brinel.ro";
+  cccev:telephone "+40 264414610" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationAddress_3wPdLbAG6nvmaE8euzWnmf a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO113>;
+  locn:postCode "400420";
+  locn:postName "Cluj-Napoca";
+  locn:thoroughfare "Strada Titulescu Nicolae, Nr. 4" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationAddress_EUXcdcVJXv2EXsP83wEGRh a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO113>;
+  locn:postCode "400420";
+  locn:postName "Cluj-Napoca";
+  locn:thoroughfare "Strada Titulescu Nicolae, Nr. 4" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationAddress_NB3g9kk9sxbNau7GmSwyYQ a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO113>;
+  locn:postCode "400420";
+  locn:postName "Cluj-Napoca";
+  locn:thoroughfare "Strada Titulescu Nicolae, Nr. 4" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationAddress_bSGUi2Sn2YmvsonQFYE4qh a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO113>;
+  locn:postCode "400420";
+  locn:postName "Cluj-Napoca";
+  locn:thoroughfare "Strada Titulescu Nicolae, Nr. 4" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationAddress_iNeZPiTJwMWfr7iAbQZ9WZ a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO113>;
+  locn:postCode "400420";
+  locn:postName "Cluj-Napoca";
+  locn:thoroughfare "Strada Titulescu Nicolae, Nr. 4" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_3wPdLbAG6nvmaE8euzWnmf a
+    epo:Identifier;
+  epo:hasIdentifierValue "RO 5800900" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_EUXcdcVJXv2EXsP83wEGRh a
+    epo:Identifier;
+  epo:hasIdentifierValue "RO 5800900" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_NB3g9kk9sxbNau7GmSwyYQ a
+    epo:Identifier;
+  epo:hasIdentifierValue "RO 5800900" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_bSGUi2Sn2YmvsonQFYE4qh a
+    epo:Identifier;
+  epo:hasIdentifierValue "RO 5800900" .
+
+epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_iNeZPiTJwMWfr7iAbQZ9WZ a
+    epo:Identifier;
+  epo:hasIdentifierValue "RO 5800900" .
+
+epd:id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf a org:Organization;
+  epo:hasID epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_3wPdLbAG6nvmaE8euzWnmf;
+  epo:hasLegalName "Net Brinel"@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ContractorContactPoint_3wPdLbAG6nvmaE8euzWnmf;
+  cccev:registeredAddress epd:id_2023-S-210-662459_ContractorOrganisationAddress_3wPdLbAG6nvmaE8euzWnmf .
+
+epd:id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh a org:Organization;
+  epo:hasID epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_EUXcdcVJXv2EXsP83wEGRh;
+  epo:hasLegalName "Net Brinel"@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ContractorContactPoint_EUXcdcVJXv2EXsP83wEGRh;
+  cccev:registeredAddress epd:id_2023-S-210-662459_ContractorOrganisationAddress_EUXcdcVJXv2EXsP83wEGRh .
+
+epd:id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ a org:Organization;
+  epo:hasID epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_NB3g9kk9sxbNau7GmSwyYQ;
+  epo:hasLegalName "Net Brinel"@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ContractorContactPoint_NB3g9kk9sxbNau7GmSwyYQ;
+  cccev:registeredAddress epd:id_2023-S-210-662459_ContractorOrganisationAddress_NB3g9kk9sxbNau7GmSwyYQ .
+
+epd:id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh a org:Organization;
+  epo:hasID epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_bSGUi2Sn2YmvsonQFYE4qh;
+  epo:hasLegalName "Net Brinel"@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ContractorContactPoint_bSGUi2Sn2YmvsonQFYE4qh;
+  cccev:registeredAddress epd:id_2023-S-210-662459_ContractorOrganisationAddress_bSGUi2Sn2YmvsonQFYE4qh .
+
+epd:id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ a org:Organization;
+  epo:hasID epd:id_2023-S-210-662459_ContractorOrganisationIdentifier_iNeZPiTJwMWfr7iAbQZ9WZ;
+  epo:hasLegalName "Net Brinel"@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ContractorContactPoint_iNeZPiTJwMWfr7iAbQZ9WZ;
+  cccev:registeredAddress epd:id_2023-S-210-662459_ContractorOrganisationAddress_iNeZPiTJwMWfr7iAbQZ9WZ .
+
+epd:id_2023-S-210-662459_Fund_5ZLiMRkUgqFjmY8Likn4Ux a epo:Fund;
+  epo:hasDescription "Proiectul ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997"@ro .
+
+epd:id_2023-S-210-662459_Fund_892jPigYFVfQuuQEioV5g7 a epo:Fund;
+  epo:hasDescription "Proiectul  ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997"@ro .
+
+epd:id_2023-S-210-662459_Fund_DgNm7RuiSQ47VBTvdrHsRv a epo:Fund;
+  epo:hasDescription "Proiectul ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997"@ro .
+
+epd:id_2023-S-210-662459_Fund_R9qSF8NjURavF277ftM5By a epo:Fund;
+  epo:hasDescription "Proiectul cu titlul ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997"@ro .
+
+epd:id_2023-S-210-662459_Fund_ZqK4WZRgemPDn3Ysr8vzYE a epo:Fund;
+  epo:hasDescription "Proiectul  ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997"@ro .
+
+epd:id_2023-S-210-662459_Fund_diPp46XcmeHRAMFFenhpzZ a epo:Fund;
+  epo:hasDescription "Proiectul ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997"@ro .
+
+epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_P2VSufQndGRkHvUySMbAhc
+  a epo:MonetaryValue;
+  epo:hasAmountValue 2309092.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_PQBPvqdyF5Muuezd58jcsm
+  a epo:MonetaryValue;
+  epo:hasAmountValue 167076.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_gHYcXDJKswtE6xJJVXLgbH
+  a epo:MonetaryValue;
+  epo:hasAmountValue 196512.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_hwdSKfuE7koKgmmsVyvbzV
+  a epo:MonetaryValue;
+  epo:hasAmountValue 986748.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_imfonZ7oCLJB2ij7FfXKEA
+  a epo:MonetaryValue;
+  epo:hasAmountValue 237440.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:describesLot epd:id_2023-S-210-662459_Lot_ZqK4WZRgemPDn3Ysr8vzYE;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw>;
+  epo:hasNonAwardJustification <http://publications.europa.eu/resource/authority/non-award-justification/none-rej> .
+
+epd:id_2023-S-210-662459_LotAwardOutcome_P2VSufQndGRkHvUySMbAhc a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662459_TenderAwardOutcome_4ETGxbR3JDQi3WvsgLHQAB;
+  epo:describesLot epd:id_2023-S-210-662459_Lot_892jPigYFVfQuuQEioV5g7;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_P2VSufQndGRkHvUySMbAhc .
+
+epd:id_2023-S-210-662459_LotAwardOutcome_PQBPvqdyF5Muuezd58jcsm a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662459_TenderAwardOutcome_98ujS29f9UNPNZEevSG6LK;
+  epo:describesLot epd:id_2023-S-210-662459_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_PQBPvqdyF5Muuezd58jcsm .
+
+epd:id_2023-S-210-662459_LotAwardOutcome_gHYcXDJKswtE6xJJVXLgbH a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662459_TenderAwardOutcome_AtSp3ixVmRH2KS5Gmqw4yy;
+  epo:describesLot epd:id_2023-S-210-662459_Lot_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_gHYcXDJKswtE6xJJVXLgbH .
+
+epd:id_2023-S-210-662459_LotAwardOutcome_hwdSKfuE7koKgmmsVyvbzV a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662459_TenderAwardOutcome_KhAL6sLyxHqhfYAdHiAFA4;
+  epo:describesLot epd:id_2023-S-210-662459_Lot_R9qSF8NjURavF277ftM5By;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_hwdSKfuE7koKgmmsVyvbzV .
+
+epd:id_2023-S-210-662459_LotAwardOutcome_imfonZ7oCLJB2ij7FfXKEA a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-662459_TenderAwardOutcome_AGituKedevvtqBN4cSWJmc;
+  epo:describesLot epd:id_2023-S-210-662459_Lot_diPp46XcmeHRAMFFenhpzZ;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-662459_LotAwardOutcomeAwardedMonetaryValue_imfonZ7oCLJB2ij7FfXKEA .
+
+epd:id_2023-S-210-662459_LotIdentifier_5ZLiMRkUgqFjmY8Likn4Ux a epo:Identifier;
+  epo:hasIdentifierValue "5" .
+
+epd:id_2023-S-210-662459_LotIdentifier_892jPigYFVfQuuQEioV5g7 a epo:Identifier;
+  epo:hasIdentifierValue "1" .
+
+epd:id_2023-S-210-662459_LotIdentifier_DgNm7RuiSQ47VBTvdrHsRv a epo:Identifier;
+  epo:hasIdentifierValue "6" .
+
+epd:id_2023-S-210-662459_LotIdentifier_R9qSF8NjURavF277ftM5By a epo:Identifier;
+  epo:hasIdentifierValue "2" .
+
+epd:id_2023-S-210-662459_LotIdentifier_ZqK4WZRgemPDn3Ysr8vzYE a epo:Identifier;
+  epo:hasIdentifierValue "4" .
+
+epd:id_2023-S-210-662459_LotIdentifier_diPp46XcmeHRAMFFenhpzZ a epo:Identifier;
+  epo:hasIdentifierValue "3" .
+
+epd:id_2023-S-210-662459_LotPurpose_5ZLiMRkUgqFjmY8Likn4Ux a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/30213300> .
+
+epd:id_2023-S-210-662459_LotPurpose_892jPigYFVfQuuQEioV5g7 a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/30213300> .
+
+epd:id_2023-S-210-662459_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/33195100> .
+
+epd:id_2023-S-210-662459_LotPurpose_R9qSF8NjURavF277ftM5By a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/30213300> .
+
+epd:id_2023-S-210-662459_LotPurpose_ZqK4WZRgemPDn3Ysr8vzYE a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/30213100> .
+
+epd:id_2023-S-210-662459_LotPurpose_diPp46XcmeHRAMFFenhpzZ a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/30213300> .
+
+epd:id_2023-S-210-662459_Lot_5ZLiMRkUgqFjmY8Likn4Ux a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662459_ContractTermLot_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:hasAdditionalInformation "Autoritatea contractanta, Universitatea Valahia din Targoviste, este Beneficiar a finantarii acordate de catre Ministerul Educatiei, in calitate de coordonator de reforme si investitii, in cadrul apelului „Granturi pentru digitalizarea universitatilor” din Componenta 15 - Educatie, a Planului National de Redresare si Rezilienta al Romaniei (PNRR), Reforma 5: Adoptarea cadrului legislativ pentru digitalizarea educatiei, Investitia 16:Digitalizarea universitatilor si pregatirea acestora pentru profesiile digitale ale viitorului."@ro;
+  epo:hasDescription "Laptop RAM 16GB, SSD 512GB, placa video 8GB, business = 24 buc"@ro;
+  epo:hasID epd:id_2023-S-210-662459_LotIdentifier_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:hasPurpose epd:id_2023-S-210-662459_LotPurpose_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-662459_MonetaryValueLot_AtSp3ixVmRH2KS5Gmqw4yy;
+  epo:hasTitle "Lot 5 - Laptop RAM 16GB, SSD 512GB, placa video 8GB, business"@ro;
+  epo:isFundedBy epd:id_2023-S-210-662459_Fund_5ZLiMRkUgqFjmY8Likn4Ux;
+  epo:isUsingEUFunds true;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-662459_AwardCriterionPrice_HEBUjuJZaCtQvT7w4f9rGB,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_6HDFfAwmhSdPA4rDwtQonL, epd:id_2023-S-210-662459_AwardCriterionQuality_AuNVNcxJTkHAc4JX95YF5k,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_DpARCr4nyywYVFHVZTN4gY .
+
+epd:id_2023-S-210-662459_Lot_892jPigYFVfQuuQEioV5g7 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662459_ContractTermLot_892jPigYFVfQuuQEioV5g7;
+  epo:hasAdditionalInformation "Autoritatea contractanta, Universitatea Valahia din Targoviste, este Beneficiar a finantarii acordate de catre Ministerul Educatiei, in calitate de coordonator de reforme si investitii, in cadrul apelului „Granturi pentru digitalizarea universitatilor” din Componenta 15 - Educatie, a Planului National de Redresare si Rezilienta al Romaniei (PNRR), Reforma 5: Adoptarea cadrului legislativ pentru digitalizarea educatiei, Investitia 16:Digitalizarea universitatilor si pregatirea acestora pentru profesiile digitale ale viitorului."@ro;
+  epo:hasDescription "Calculator all-in-one 16GB, 512SSD = 604 buc"@ro;
+  epo:hasID epd:id_2023-S-210-662459_LotIdentifier_892jPigYFVfQuuQEioV5g7;
+  epo:hasPurpose epd:id_2023-S-210-662459_LotPurpose_892jPigYFVfQuuQEioV5g7;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-662459_MonetaryValueLot_4ETGxbR3JDQi3WvsgLHQAB;
+  epo:hasTitle "Lot 1 - Calculator all-in-one 16GB, 512SSD"@ro;
+  epo:isFundedBy epd:id_2023-S-210-662459_Fund_892jPigYFVfQuuQEioV5g7;
+  epo:isUsingEUFunds true;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-662459_AwardCriterionPrice_ewZirA4QTmyLrLffbmoC4T,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_9ba7oHVMbDnNRbjpRcjrBT, epd:id_2023-S-210-662459_AwardCriterionQuality_AZv7F7mU7wdDVFMhNQHHmm,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_CkTKncz24NrZL6pvXfvJkc .
+
+epd:id_2023-S-210-662459_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662459_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAdditionalInformation "Autoritatea contractanta, Universitatea Valahia din Targoviste, este Beneficiar a finantarii acordate de catre Ministerul Educatiei, in calitate de coordonator de reforme si investitii, in cadrul apelului „Granturi pentru digitalizarea universitatilor” din Componenta 15 - Educatie, a Planului National de Redresare si Rezilienta al Romaniei (PNRR), Reforma 5: Adoptarea cadrului legislativ pentru digitalizarea educatiei, Investitia 16:Digitalizarea universitatilor si pregatirea acestora pentru profesiile digitale ale viitorului."@ro;
+  epo:hasDescription "Monitor LED 28\" IPS 3840 x 2160 pixeli 6ms = 204 buc"@ro;
+  epo:hasID epd:id_2023-S-210-662459_LotIdentifier_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2023-S-210-662459_LotPurpose_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-662459_MonetaryValueLot_98ujS29f9UNPNZEevSG6LK;
+  epo:hasTitle "Lot 6 - Monitor LED 28\" IPS 3840 x 2160 pixeli 6ms"@ro;
+  epo:isFundedBy epd:id_2023-S-210-662459_Fund_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:isUsingEUFunds true;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-662459_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP .
+
+epd:id_2023-S-210-662459_Lot_R9qSF8NjURavF277ftM5By a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662459_ContractTermLot_R9qSF8NjURavF277ftM5By;
+  epo:hasAdditionalInformation "Autoritatea contractanta, Universitatea Valahia din Targoviste, este Beneficiar a finantarii acordate de catre Ministerul Educatiei, in calitate de coordonator de reforme si investitii, in cadrul apelului „Granturi pentru digitalizarea universitatilor” din Componenta 15 - Educatie, a Planului National de Redresare si Rezilienta al Romaniei (PNRR), Reforma 5: Adoptarea cadrului legislativ pentru digitalizarea educatiei, Investitia 16:Digitalizarea universitatilor si pregatirea acestora pentru profesiile digitale ale viitorului."@ro;
+  epo:hasDescription "Calculator Desktop RAM, 16GB 512 SSD, placa videodedicata, fara monitor = 204 buc"@ro;
+  epo:hasID epd:id_2023-S-210-662459_LotIdentifier_R9qSF8NjURavF277ftM5By;
+  epo:hasPurpose epd:id_2023-S-210-662459_LotPurpose_R9qSF8NjURavF277ftM5By;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-662459_MonetaryValueLot_KhAL6sLyxHqhfYAdHiAFA4;
+  epo:hasTitle "Lot 2 - Calculator Desktop RAM, 16GB 512 SSD, placa videodedicata, fara monitor"@ro;
+  epo:isFundedBy epd:id_2023-S-210-662459_Fund_R9qSF8NjURavF277ftM5By;
+  epo:isUsingEUFunds true;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-662459_AwardCriterionPrice_2LJWqTHnvXFMPQLv58tthV,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_HoEgP6zEV7GoJNtcJ7Rp33, epd:id_2023-S-210-662459_AwardCriterionQuality_K7Uefe8s74wa8GFhmBUNQM,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_hT6U8Yfo8tLoUb3pWo8mRs .
+
+epd:id_2023-S-210-662459_Lot_ZqK4WZRgemPDn3Ysr8vzYE a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662459_ContractTermLot_ZqK4WZRgemPDn3Ysr8vzYE;
+  epo:hasAdditionalInformation "Autoritatea contractanta, Universitatea Valahia din Targoviste, este Beneficiar a finantarii acordate de catre Ministerul Educatiei, in calitate de coordonator de reforme si investitii, in cadrul apelului „Granturi pentru digitalizarea universitatilor” din Componenta 15 - Educatie, a Planului National de Redresare si Rezilienta al Romaniei (PNRR), Reforma 5: Adoptarea cadrului legislativ pentru digitalizarea educatiei, Investitia 16:Digitalizarea universitatilor si pregatirea acestora pentru profesiile digitale ale viitorului."@ro;
+  epo:hasDescription "Laptop RAM 16GB, SSD 512GB, placa video 4GB = 89 buc"@ro;
+  epo:hasID epd:id_2023-S-210-662459_LotIdentifier_ZqK4WZRgemPDn3Ysr8vzYE;
+  epo:hasPurpose epd:id_2023-S-210-662459_LotPurpose_ZqK4WZRgemPDn3Ysr8vzYE;
+  epo:hasTitle "Lot 4 - Laptop RAM 16GB, SSD 512GB, placa video 4GB"@ro;
+  epo:isFundedBy epd:id_2023-S-210-662459_Fund_ZqK4WZRgemPDn3Ysr8vzYE;
+  epo:isUsingEUFunds true;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-662459_AwardCriterionPrice_LhiKJPvRjNoTu7gx4AEwoF,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_CCTVeV67f6ftkF885TeVrr, epd:id_2023-S-210-662459_AwardCriterionQuality_LnUqcmu6AyYLcUdb46b3gm,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_m8vdQrfRSuGLJVjxXXrriQ .
+
+epd:id_2023-S-210-662459_Lot_diPp46XcmeHRAMFFenhpzZ a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-662459_ContractTermLot_diPp46XcmeHRAMFFenhpzZ;
+  epo:hasAdditionalInformation "Autoritatea contractanta, Universitatea Valahia din Targoviste, este Beneficiar a finantarii acordate de catre Ministerul Educatiei, in calitate de coordonator de reforme si investitii, in cadrul apelului „Granturi pentru digitalizarea universitatilor” din Componenta 15 - Educatie, a Planului National de Redresare si Rezilienta al Romaniei (PNRR), Reforma 5: Adoptarea cadrului legislativ pentru digitalizarea educatiei, Investitia 16:Digitalizarea universitatilor si pregatirea acestora pentru profesiile digitale ale viitorului."@ro;
+  epo:hasDescription "Laptop 15.6inch, RAM 16GB = 70 buc"@ro;
+  epo:hasID epd:id_2023-S-210-662459_LotIdentifier_diPp46XcmeHRAMFFenhpzZ;
+  epo:hasPurpose epd:id_2023-S-210-662459_LotPurpose_diPp46XcmeHRAMFFenhpzZ;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-662459_MonetaryValueLot_AGituKedevvtqBN4cSWJmc;
+  epo:hasTitle "Lot 3 - Laptop 15.6inch, RAM 16GB"@ro;
+  epo:isFundedBy epd:id_2023-S-210-662459_Fund_diPp46XcmeHRAMFFenhpzZ;
+  epo:isUsingEUFunds true;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-662459_AwardCriterionPrice_FowJL4khGZR579pakhqkDn,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_2w2vewGhVLivGvfhtCL429, epd:id_2023-S-210-662459_AwardCriterionQuality_JSWbXjBbpbXNXNBU9anccw,
+    epd:id_2023-S-210-662459_AwardCriterionQuality_JanoevckwB6SvxZQNqvGXY .
+
+epd:id_2023-S-210-662459_MonetaryValueLot_4ETGxbR3JDQi3WvsgLHQAB a epo:MonetaryValue;
+  epo:hasAmountValue 3079303.66;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_MonetaryValueLot_98ujS29f9UNPNZEevSG6LK a epo:MonetaryValue;
+  epo:hasAmountValue 237428.57;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_MonetaryValueLot_AGituKedevvtqBN4cSWJmc a epo:MonetaryValue;
+  epo:hasAmountValue 296176.47;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_MonetaryValueLot_AtSp3ixVmRH2KS5Gmqw4yy a epo:MonetaryValue;
+  epo:hasAmountValue 274467.23;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_MonetaryValueLot_KhAL6sLyxHqhfYAdHiAFA4 a epo:MonetaryValue;
+  epo:hasAmountValue 1486971.43;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-210-662459_Contract_P2VSufQndGRkHvUySMbAhc, epd:id_2023-S-210-662459_Contract_PQBPvqdyF5Muuezd58jcsm,
+    epd:id_2023-S-210-662459_Contract_gHYcXDJKswtE6xJJVXLgbH, epd:id_2023-S-210-662459_Contract_hwdSKfuE7koKgmmsVyvbzV,
+    epd:id_2023-S-210-662459_Contract_imfonZ7oCLJB2ij7FfXKEA;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-210-662459_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:announcesRole epd:id_2023-S-210-662459_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2023-S-210-662459_Reviewer_bdZjimbzCaRXbeYeBmF94j,
+    epd:id_2023-S-210-662459_Winner_3wPdLbAG6nvmaE8euzWnmf, epd:id_2023-S-210-662459_Winner_EUXcdcVJXv2EXsP83wEGRh,
+    epd:id_2023-S-210-662459_Winner_NB3g9kk9sxbNau7GmSwyYQ, epd:id_2023-S-210-662459_Winner_bSGUi2Sn2YmvsonQFYE4qh,
+    epd:id_2023-S-210-662459_Winner_iNeZPiTJwMWfr7iAbQZ9WZ;
+  epo:announcesTender epd:id_2023-S-210-662459_Tender_4ETGxbR3JDQi3WvsgLHQAB, epd:id_2023-S-210-662459_Tender_98ujS29f9UNPNZEevSG6LK,
+    epd:id_2023-S-210-662459_Tender_AGituKedevvtqBN4cSWJmc, epd:id_2023-S-210-662459_Tender_AtSp3ixVmRH2KS5Gmqw4yy,
+    epd:id_2023-S-210-662459_Tender_KhAL6sLyxHqhfYAdHiAFA4;
+  epo:hasDispatchDate "2023-10-27"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-662459_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-662459_Lot_5ZLiMRkUgqFjmY8Likn4Ux, epd:id_2023-S-210-662459_Lot_892jPigYFVfQuuQEioV5g7,
+    epd:id_2023-S-210-662459_Lot_DgNm7RuiSQ47VBTvdrHsRv, epd:id_2023-S-210-662459_Lot_R9qSF8NjURavF277ftM5By,
+    epd:id_2023-S-210-662459_Lot_ZqK4WZRgemPDn3Ysr8vzYE, epd:id_2023-S-210-662459_Lot_diPp46XcmeHRAMFFenhpzZ;
+  epo:refersToPrevious epd:id_2023-S-050-148332_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-662459_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-662459_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2023-S-210-662459_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-662459_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-662459" .
+
+epd:id_2023-S-210-662459_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/RO313>;
+  locn:postCode "130024";
+  locn:postName "Targoviste";
+  locn:thoroughfare "Strada: Regele Carol I, nr. 2" .
+
+epd:id_2023-S-210-662459_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM a epo:Identifier;
+  epo:hasIdentifierValue "4279685" .
+
+epd:id_2023-S-210-662459_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
+  epo:hasID epd:id_2023-S-210-662459_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM;
+  epo:hasLegalName "UNIVERSITATEA VALAHIA DIN TARGOVISTE"@ro;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/education>;
+  cccev:registeredAddress epd:id_2023-S-210-662459_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-662459_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "4" .
+
+epd:id_2023-S-210-662459_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/30213300> .
+
+epd:id_2023-S-210-662459_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasAdditionalInformation "1.Cerintele tehnice definite la nivelul anuntului de participare, caietului de sarcini sau altor documente complementare, prin trimiterea standardelor, la un anumit producator, la marci, brevete, tipuri, la o origine sau la o productie/metoda specifica de fabricatie/prestare/executie, vor fi intelese ca fiind insotite de mentiunea ”sau echivalent”.2.Autoritatea contractanta se obliga se respecte prevederile Instructiunii MIPE nr.6, revizuita, la data de 02.02.2023, referitoare la obtinerea unor date si informatii privind verificarea ex-ante a beneficiarului real al destinatarului fondurilor din cadrul PNRR."@ro;
+  epo:hasDescription "Autoritatea contractanta isi propune sa achizitioneze echipamente IT prin Grantul acordat Universitatii Valahia din Targoviste in vederea implementarii Proiectului cu titlul ,,D-EDuc-Dezvoltarea durabila prin digitalizare in educatie\", cod 1333944997, aprobat prin Ordinul Ministrului Educatiei nr. 4168/30.06.2022-Termenul pentru solicitarea de clarificări: până în a 18-a zi înainte de termenul limită de depunere a ofertelor;-Termen în care autoritatea contractantă va răspunde la clarificări: a 11-a zi înainte de termenul limită de depunere a ofertelor."@ro;
+  epo:hasID epd:id_2023-S-210-662459_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-662459_Lot_5ZLiMRkUgqFjmY8Likn4Ux,
+    epd:id_2023-S-210-662459_Lot_892jPigYFVfQuuQEioV5g7, epd:id_2023-S-210-662459_Lot_DgNm7RuiSQ47VBTvdrHsRv,
+    epd:id_2023-S-210-662459_Lot_R9qSF8NjURavF277ftM5By, epd:id_2023-S-210-662459_Lot_ZqK4WZRgemPDn3Ysr8vzYE,
+    epd:id_2023-S-210-662459_Lot_diPp46XcmeHRAMFFenhpzZ;
+  epo:hasPurpose epd:id_2023-S-210-662459_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle "Echipamente IT – 1"@ro;
+  epo:isCoveredByGPA false .
+
+epd:id_2023-S-210-662459_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 a epo:MonetaryValue;
+  epo:hasAmountValue 3896868.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/RON> .
+
+epd:id_2023-S-210-662459_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j a cccev:ContactPoint;
+  epo:hasFax "+40 213104642 / +40 218900745";
+  epo:hasInternetAddress "http://www.cnsc.ro"^^xsd:anyURI;
+  cccev:email "office@cnsc.ro";
+  cccev:telephone "+40 213104641" .
+
+epd:id_2023-S-210-662459_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ROU>;
+  locn:postCode "030084";
+  locn:postName "Bucuresti";
+  locn:thoroughfare "Str. Stavropoleos nr. 6, sector 3" .
+
+epd:id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "Consiliul National de Solutionare a Contestatiilor"@ro;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-662459_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j;
+  cccev:registeredAddress epd:id_2023-S-210-662459_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-662459_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-662459_SubmissionStatisticalInformation_4ETGxbR3JDQi3WvsgLHQAB a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 3;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 1;
+  epo:hasReceivedTenders 3;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_P2VSufQndGRkHvUySMbAhc .
+
+epd:id_2023-S-210-662459_SubmissionStatisticalInformation_98ujS29f9UNPNZEevSG6LK a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 4;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 2;
+  epo:hasReceivedTenders 4;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_PQBPvqdyF5Muuezd58jcsm .
+
+epd:id_2023-S-210-662459_SubmissionStatisticalInformation_AGituKedevvtqBN4cSWJmc a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 4;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 2;
+  epo:hasReceivedTenders 4;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_imfonZ7oCLJB2ij7FfXKEA .
+
+epd:id_2023-S-210-662459_SubmissionStatisticalInformation_AtSp3ixVmRH2KS5Gmqw4yy a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 5;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 3;
+  epo:hasReceivedTenders 5;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_gHYcXDJKswtE6xJJVXLgbH .
+
+epd:id_2023-S-210-662459_SubmissionStatisticalInformation_KhAL6sLyxHqhfYAdHiAFA4 a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 4;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 2;
+  epo:hasReceivedTenders 4;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-662459_LotAwardOutcome_hwdSKfuE7koKgmmsVyvbzV .
+
+epd:id_2023-S-210-662459_TenderAwardOutcome_4ETGxbR3JDQi3WvsgLHQAB a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-662459_Tender_4ETGxbR3JDQi3WvsgLHQAB;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662459_Winner_iNeZPiTJwMWfr7iAbQZ9WZ .
+
+epd:id_2023-S-210-662459_TenderAwardOutcome_98ujS29f9UNPNZEevSG6LK a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-662459_Tender_98ujS29f9UNPNZEevSG6LK;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662459_Winner_3wPdLbAG6nvmaE8euzWnmf .
+
+epd:id_2023-S-210-662459_TenderAwardOutcome_AGituKedevvtqBN4cSWJmc a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-662459_Tender_AGituKedevvtqBN4cSWJmc;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662459_Winner_EUXcdcVJXv2EXsP83wEGRh .
+
+epd:id_2023-S-210-662459_TenderAwardOutcome_AtSp3ixVmRH2KS5Gmqw4yy a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-662459_Tender_AtSp3ixVmRH2KS5Gmqw4yy;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662459_Winner_bSGUi2Sn2YmvsonQFYE4qh .
+
+epd:id_2023-S-210-662459_TenderAwardOutcome_KhAL6sLyxHqhfYAdHiAFA4 a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-662459_Tender_KhAL6sLyxHqhfYAdHiAFA4;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-662459_Winner_NB3g9kk9sxbNau7GmSwyYQ .
+
+epd:id_2023-S-210-662459_Tender_4ETGxbR3JDQi3WvsgLHQAB a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-662459_Lot_diPp46XcmeHRAMFFenhpzZ .
+
+epd:id_2023-S-210-662459_Tender_98ujS29f9UNPNZEevSG6LK a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-662459_Lot_892jPigYFVfQuuQEioV5g7 .
+
+epd:id_2023-S-210-662459_Tender_AGituKedevvtqBN4cSWJmc a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-662459_Lot_5ZLiMRkUgqFjmY8Likn4Ux .
+
+epd:id_2023-S-210-662459_Tender_AtSp3ixVmRH2KS5Gmqw4yy a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-662459_Lot_R9qSF8NjURavF277ftM5By .
+
+epd:id_2023-S-210-662459_Tender_KhAL6sLyxHqhfYAdHiAFA4 a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-662459_Lot_ZqK4WZRgemPDn3Ysr8vzYE .
+
+epd:id_2023-S-210-662459_Winner_3wPdLbAG6nvmaE8euzWnmf a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf .
+
+epd:id_2023-S-210-662459_Winner_EUXcdcVJXv2EXsP83wEGRh a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh .
+
+epd:id_2023-S-210-662459_Winner_NB3g9kk9sxbNau7GmSwyYQ a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ .
+
+epd:id_2023-S-210-662459_Winner_bSGUi2Sn2YmvsonQFYE4qh a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh .
+
+epd:id_2023-S-210-662459_Winner_iNeZPiTJwMWfr7iAbQZ9WZ a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051635/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326088_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051612/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051645/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051549/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051631/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051632/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051503/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051654/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051633/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051489/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051574/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051510/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051497/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051545/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051506/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051507/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051652/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051629/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051651/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051527/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051594/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-050503/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051650/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051517/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051593/de2507f9-ae25-37c8-809c-0109efe10669> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_bSGUi2Sn2YmvsonQFYE4qh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_3wPdLbAG6nvmaE8euzWnmf> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_EUXcdcVJXv2EXsP83wEGRh> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_NB3g9kk9sxbNau7GmSwyYQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-662459_ContractorOrganisation_iNeZPiTJwMWfr7iAbQZ9WZ> .

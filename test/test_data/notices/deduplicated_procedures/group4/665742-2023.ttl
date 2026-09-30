@@ -1,0 +1,271 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-211-665742_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price> .
+
+epd:id_2023-S-211-665742_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasBuyerProfile "http://www.chln.min-saude.pt"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-211-665742_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-211-665742_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasContactName "Lúcia Azevedo"@pt;
+  epo:hasInternetAddress "http://www.chln.min-saude.pt"^^xsd:anyURI;
+  cccev:email "lucia.mota@chln.min-saude.pt" .
+
+epd:id_2023-S-211-665742_ContractIdentifier_2BfehRw4tKK3KGVWtNAKuZ a epo:Identifier;
+  epo:hasIdentifierValue "239x000323" .
+
+epd:id_2023-S-211-665742_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PT170> .
+
+epd:id_2023-S-211-665742_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-211-665742_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions false .
+
+epd:id_2023-S-211-665742_Contract_KaeDJ6cSC7UaS6sXtDUnvf a epo:Contract;
+  epo:hasContractConclusionDate "2023-07-06"^^xsd:date;
+  epo:hasID epd:id_2023-S-211-665742_ContractIdentifier_2BfehRw4tKK3KGVWtNAKuZ;
+  epo:hasTitle "Prestação de cuidados de enfermagem, para o serviço de nefrologia e transplantação renal - Unidade de hemodialise, do Centro Hospitalar Universitário Lisboa Norte, Epe."@pt;
+  epo:includesLot epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-211-665742_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-211-665742_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/PRT>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PT170>;
+  locn:postName "LISBOA" .
+
+epd:id_2023-S-211-665742_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo a org:Organization;
+  epo:hasLegalName "RUI JORGE GARCIA LOPES"@pt;
+  cccev:registeredAddress epd:id_2023-S-211-665742_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-211-665742_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r a epo:DirectAwardTerm;
+  epo:hasDirectAwardJustification <http://publications.europa.eu/resource/authority/direct-award-justification/technical>,
+    <http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable>;
+  epo:hasJustification "Cfr. artigo 6.º A do CCP"@pt;
+  epo:refersToPreviousProcedure epd:id_2023-S-211-665742_PreviousProcedure_HguM9DXcixuix2qCGM9wyj .
+
+epd:id_2023-S-211-665742_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf
+  a epo:MonetaryValue;
+  epo:hasAmountValue 14560.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-211-665742_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-211-665742_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v;
+  epo:describesLot epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-211-665742_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-211-665742_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasDescription "Prestação de cuidados de enfermagem, para o serviço de nefrologia e transplantação renal - Unidade de hemodialise, do Centro Hospitalar Universitário Lisboa Norte, Epe."@pt;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion epd:id_2023-S-211-665742_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 .
+
+epd:id_2023-S-211-665742_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-211-665742_Contract_KaeDJ6cSC7UaS6sXtDUnvf;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-211-665742_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:announcesRole epd:id_2023-S-211-665742_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2023-S-211-665742_Reviewer_bdZjimbzCaRXbeYeBmF94j,
+    epd:id_2023-S-211-665742_Winner_WFzZGbdirSo5EBhCMeQqCo;
+  epo:announcesTender epd:id_2023-S-211-665742_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:hasDispatchDate "2023-10-28"^^xsd:date;
+  epo:hasID epd:id_2023-S-211-665742_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20231102";
+  epo:refersToLot epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:refersToProcedure epd:id_2023-S-211-665742_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-211-665742_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2023-S-211-665742_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-211-665742_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 211-665742" .
+
+epd:id_2023-S-211-665742_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/PRT>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PT170>;
+  locn:postCode "1649-035";
+  locn:postName "Lisboa";
+  locn:thoroughfare "Lisboa" .
+
+epd:id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasLegalName "Centro Hospitalar Universitário de Lisboa Norte, E.P.E."@pt;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>,
+    <http://publications.europa.eu/resource/authority/main-activity/health>;
+  cccev:registeredAddress epd:id_2023-S-211-665742_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-211-665742_PreviousProcedure_HguM9DXcixuix2qCGM9wyj a epo:Procedure;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted> .
+
+epd:id_2023-S-211-665742_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85141200> .
+
+epd:id_2023-S-211-665742_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasDescription "Prestação de cuidados de enfermagem, para o serviço de nefrologia e transplantação renal - Unidade de hemodialise, do Centro Hospitalar Universitário Lisboa Norte, Epe."@pt;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2023-S-211-665742_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle "Procedimento n.º 239X000323"@pt;
+  epo:isCoveredByGPA false;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-211-665742_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-211-665742_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 a epo:MonetaryValue;
+  epo:hasAmountValue 14560.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+epd:id_2023-S-211-665742_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/PRT>;
+  locn:postName "Lisboa" .
+
+epd:id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "Serviço de Gestão de Compras"@pt;
+  cccev:registeredAddress epd:id_2023-S-211-665742_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-211-665742_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-211-665742_SubmissionStatisticalInformation_SM6UbUtHRXNqgrskZtVN8v a
+    epo:SubmissionStatisticalInformation;
+  epo:hasReceivedTenders 1;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-211-665742_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-211-665742_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-211-665742_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-211-665742_Winner_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-211-665742_Tender_SM6UbUtHRXNqgrskZtVN8v a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-211-665742_Lot_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-211-665742_Winner_WFzZGbdirSo5EBhCMeQqCo a epo:Winner;
+  epo:playedBy epd:id_2023-S-211-665742_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143152/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098234/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326079_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098248/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143092/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143123/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326121_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143124/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-019-051653/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143129/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143067/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143081/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326097_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143060/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326105_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143121/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-019-051534/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098239/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098282/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098232/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-019-051588/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143112/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098287/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098284/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098274/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-029-083013/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098268/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-109-340525_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143083/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-019-051567/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326078_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143075/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143098/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098286/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-029-083003/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098230/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-029-082978/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143071/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098257/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326152_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143153/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143069/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098265/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326149_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-029-082968/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326171_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143085/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326156_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098304/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143087/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143115/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143059/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-034-098256/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-049-143127/UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/Organisation/2023-S-019-051627/ab152979-15bf-30c3-b6f3-e0c554cfa9d0> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143067/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143129/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051567/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098234/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-083003/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326097_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143060/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143112/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098304/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-083013/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326156_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051653/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051627/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051534/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143115/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098268/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143098/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143083/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326078_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-019-051588/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326121_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143075/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143071/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143092/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326105_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143081/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098256/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-082968/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-109-340525_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098287/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098265/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098230/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143123/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143087/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326171_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098274/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143069/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143127/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098232/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143059/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326079_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098239/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326152_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326149_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098282/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098248/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143085/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-029-082978/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098284/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143121/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098286/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143124/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-034-098257/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143153/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-211-665742_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-049-143152/bdZjimbzCaRXbeYeBmF94j> .

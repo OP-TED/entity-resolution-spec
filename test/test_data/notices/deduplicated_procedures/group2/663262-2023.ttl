@@ -1,0 +1,296 @@
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_2023-S-005-009139_Notice a epo:Notice;
+  epo:hasID epd:id_2023-S-005-009139_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-005-009139_NoticeIdentifier_C5nS5y4XErvUqzRNMARW8r a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 005-009139" .
+
+epd:id_2023-S-210-663262_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9 a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/price>;
+  cccev:weight "60%"@cs .
+
+epd:id_2023-S-210-663262_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP a epo:AwardCriterion;
+  epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  cccev:name "Kvalifikace a zkušenosti osob zapojených do realizace veřejné zakázky"@cs;
+  cccev:weight "40%"@cs .
+
+epd:id_2023-S-210-663262_Buyer_2DfWDD3NHHwpMGiWwzLc5d a epo:Buyer;
+  epo:hasBuyerProfile "https://www.tenderarena.cz/profily/RSD"^^xsd:anyURI;
+  epo:hasContactPointInRole epd:id_2023-S-210-663262_ContactPoint_UU5jeWb9wCr2uQLNME2nwM;
+  epo:playedBy epd:id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-663262_ContactPoint_UU5jeWb9wCr2uQLNME2nwM a cccev:ContactPoint;
+  epo:hasContactName "Lenka Robovská"@cs;
+  epo:hasInternetAddress "https://www.rsd.cz"^^xsd:anyURI;
+  cccev:email "lenka.robovska@rsd.cz";
+  cccev:telephone "+420 954901715" .
+
+epd:id_2023-S-210-663262_ContractIdentifier_D9J6KmALGNq7nQtEuyBHVQ a epo:Identifier;
+  epo:hasIdentifierValue "04PT-000614" .
+
+epd:id_2023-S-210-663262_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv a locn:Address;
+  locn:fullAddress "Česká republika"@cs .
+
+epd:id_2023-S-210-663262_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv a dct:Location;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ0>;
+  locn:address epd:id_2023-S-210-663262_ContractTermLotLocationAddress_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-210-663262_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_2023-S-210-663262_ContractTermLotLocation_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasOptions false .
+
+epd:id_2023-S-210-663262_Contract_KaeDJ6cSC7UaS6sXtDUnvf a epo:Contract;
+  epo:hasContractConclusionDate "2023-09-27"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663262_ContractIdentifier_D9J6KmALGNq7nQtEuyBHVQ;
+  epo:hasTitle "I/12 II/101 u Úval - úprava křižovatky - TDI "@cs;
+  epo:includesLot epd:id_2023-S-210-663262_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:resultsFromLotAwardOutcome epd:id_2023-S-210-663262_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-663262_ContractorOrganisationAddress_5DskZUnCcVusgjQoBuZAqa a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010>;
+  locn:postCode "15500";
+  locn:postName "Praha";
+  locn:thoroughfare "K Hájům 1233/2" .
+
+epd:id_2023-S-210-663262_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010>;
+  locn:postCode "10000";
+  locn:postName "Praha";
+  locn:thoroughfare "V olšinách 2300/75" .
+
+epd:id_2023-S-210-663262_ContractorOrganisationIdentifier_5DskZUnCcVusgjQoBuZAqa a
+    epo:Identifier;
+  epo:hasIdentifierValue "48589241" .
+
+epd:id_2023-S-210-663262_ContractorOrganisationIdentifier_WFzZGbdirSo5EBhCMeQqCo a
+    epo:Identifier;
+  epo:hasIdentifierValue "17059071" .
+
+epd:id_2023-S-210-663262_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa a org:Organization;
+  epo:hasID epd:id_2023-S-210-663262_ContractorOrganisationIdentifier_5DskZUnCcVusgjQoBuZAqa;
+  epo:hasLegalName "SGS Czech Republic, s.r.o."@cs;
+  cccev:registeredAddress epd:id_2023-S-210-663262_ContractorOrganisationAddress_5DskZUnCcVusgjQoBuZAqa .
+
+epd:id_2023-S-210-663262_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo a org:Organization;
+  epo:hasID epd:id_2023-S-210-663262_ContractorOrganisationIdentifier_WFzZGbdirSo5EBhCMeQqCo;
+  epo:hasLegalName "TES Consulting s.r.o."@cs;
+  cccev:registeredAddress epd:id_2023-S-210-663262_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-210-663262_FrameworkAgreementTechniqueUsage_C5nS5y4XErvUqzRNMARW8r a
+    epo:FrameworkAgreementTechniqueUsage .
+
+epd:id_2023-S-210-663262_FrameworkAgreementTerm_C5nS5y4XErvUqzRNMARW8r a epo:FrameworkAgreementTerm .
+
+epd:id_2023-S-210-663262_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf
+  a epo:MonetaryValue;
+  epo:hasAmountValue 444000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/CZK> .
+
+epd:id_2023-S-210-663262_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf a epo:LotAwardOutcome;
+  epo:comprisesTenderAwardOutcome epd:id_2023-S-210-663262_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v;
+  epo:describesLot epd:id_2023-S-210-663262_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
+  epo:hasAwardedValue epd:id_2023-S-210-663262_LotAwardOutcomeAwardedMonetaryValue_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-663262_Lot_DgNm7RuiSQ47VBTvdrHsRv a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_2023-S-210-663262_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasDescription "Předmětem plnění veřejné zakázky na uzavření rámcové dohody, která bude v rámci zadávacího řízení uzavřena na dobu trvání 48 měsíců se šesti účastníky, je poskytování služeb dle zadávací dokumentace a jejích příloh. Na základě rámcové dohody bude zadavatel jejím účastníkům zadávat jednotlivé dílčí zakázky na služby spočívající v provádění stavebního dozoru na stavbách pozemních komunikací, včetně výkonu koordinátora BOZP, včetně související technické pomoci, a to dle aktuálních potřeb zadavatele."@cs;
+  epo:hasRestatedEstimatedValue epd:id_2023-S-210-663262_MonetaryValueLot_SM6UbUtHRXNqgrskZtVN8v;
+  epo:isSubjectToLotSpecificTerm epd:id_2023-S-210-663262_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G;
+  epo:isUsingEUFunds false;
+  epo:specifiesAwardCriterion epd:id_2023-S-210-663262_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9,
+    epd:id_2023-S-210-663262_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP .
+
+epd:id_2023-S-210-663262_MonetaryValueLot_SM6UbUtHRXNqgrskZtVN8v a epo:MonetaryValue;
+  epo:hasAmountValue 520000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/CZK> .
+
+epd:id_2023-S-210-663262_Notice a epo:Notice, epo:ResultNotice;
+  epo:announcesContract epd:id_2023-S-210-663262_Contract_KaeDJ6cSC7UaS6sXtDUnvf;
+  epo:announcesNoticeAwardInformation epd:id_2023-S-210-663262_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:announcesRole epd:id_2023-S-210-663262_Buyer_2DfWDD3NHHwpMGiWwzLc5d, epd:id_2023-S-210-663262_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ,
+    epd:id_2023-S-210-663262_Reviewer_bdZjimbzCaRXbeYeBmF94j, epd:id_2023-S-210-663262_Winner_5DskZUnCcVusgjQoBuZAqa,
+    epd:id_2023-S-210-663262_Winner_WFzZGbdirSo5EBhCMeQqCo;
+  epo:announcesTender epd:id_2023-S-210-663262_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:hasDispatchDate "2023-10-26"^^xsd:date;
+  epo:hasID epd:id_2023-S-210-663262_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasPublicationDate "20231031";
+  epo:refersToLot epd:id_2023-S-210-663262_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:refersToPrevious epd:id_2023-S-005-009139_Notice;
+  epo:refersToProcedure epd:id_2023-S-210-663262_Procedure_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-663262_NoticeAwardInformation_faF7Q5dyoGpXu3Ru4RGg73 a epo:NoticeAwardInformation;
+  epo:hasTotalAwardedValue epd:id_2023-S-210-663262_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 .
+
+epd:id_2023-S-210-663262_NoticeIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "2023/S 210-663262" .
+
+epd:id_2023-S-210-663262_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010>;
+  locn:postCode "14000";
+  locn:postName "Praha";
+  locn:thoroughfare "Na Pankráci 546" .
+
+epd:id_2023-S-210-663262_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM a epo:Identifier;
+  epo:hasIdentifierValue "65993390" .
+
+epd:id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM a org:Organization;
+  epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
+  epo:hasID epd:id_2023-S-210-663262_OrganisationIdentifier_UU5jeWb9wCr2uQLNME2nwM;
+  epo:hasLegalName "Ředitelství silnic a dálnic ČR"@cs;
+  epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/OP_DATPRO>;
+  epo:hasMainActivityDescription "Stavba silnic a dálnic";
+  cccev:registeredAddress epd:id_2023-S-210-663262_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM .
+
+epd:id_2023-S-210-663262_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73 a epo:Identifier;
+  epo:hasIdentifierValue "01PU-005734" .
+
+epd:id_2023-S-210-663262_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73 a epo:Purpose;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71315400> .
+
+epd:id_2023-S-210-663262_Procedure_faF7Q5dyoGpXu3Ru4RGg73 a epo:Procedure;
+  epo:hasAdditionalInformation "Zadavateli není známo, zda se jedná o malý či střední podnik."@cs;
+  epo:hasDescription "Předmětem plnění veřejné zakázky na uzavření rámcové dohody, která bude v rámci zadávacího řízení uzavřena na dobu trvání 48 měsíců se šesti účastníky, je poskytování služeb dle zadávací dokumentace a jejích příloh. Na základě rámcové dohody bude zadavatel jejím účastníkům zadávat jednotlivé dílčí zakázky na služby spočívající v provádění stavebního dozoru na stavbách pozemních komunikací, včetně výkonu koordinátora BOZP, včetně související technické pomoci, a to dle aktuálních potřeb zadavatele."@cs;
+  epo:hasID epd:id_2023-S-210-663262_ProcedureIdentifier_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_2023-S-210-663262_Lot_DgNm7RuiSQ47VBTvdrHsRv;
+  epo:hasPurpose epd:id_2023-S-210-663262_ProcedurePurpose_faF7Q5dyoGpXu3Ru4RGg73;
+  epo:hasTitle "Rámcová dohoda na výkon stavebního dozoru a koordinátora BOZP pro malé stavby-2022"@cs;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToProcedureSpecificTerm epd:id_2023-S-210-663262_FrameworkAgreementTerm_C5nS5y4XErvUqzRNMARW8r;
+  epo:usesTechnique epd:id_2023-S-210-663262_FrameworkAgreementTechniqueUsage_C5nS5y4XErvUqzRNMARW8r .
+
+epd:id_2023-S-210-663262_ProcurementMonetaryValue_faF7Q5dyoGpXu3Ru4RGg73 a epo:MonetaryValue;
+  epo:hasAmountValue 444000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/CZK> .
+
+epd:id_2023-S-210-663262_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  locn:postCode "604 55";
+  locn:postName "Brno";
+  locn:thoroughfare "tř. Kpt. Jaroše 7" .
+
+epd:id_2023-S-210-663262_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ
+  a cccev:ContactPoint;
+  epo:hasFax "+420 542167112";
+  epo:hasInternetAddress "https://www.uohs.cz/"^^xsd:anyURI;
+  cccev:email "posta@uohs.cz";
+  cccev:telephone "+420 542167111" .
+
+epd:id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ
+  a org:Organization;
+  epo:hasLegalName "Úřad pro ochranu hospodářské soutěže"@cs;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663262_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ;
+  cccev:registeredAddress epd:id_2023-S-210-663262_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ .
+
+epd:id_2023-S-210-663262_ReviewProcedureInformationProvider_eP5uWDhd4iYABCZbaj8dzQ
+  a epo:ReviewProcedureInformationProvider;
+  epo:playedBy epd:id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ .
+
+epd:id_2023-S-210-663262_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G a epo:ReviewTerm;
+  epo:hasReviewDeadlineInformation "Podmínkou pro podání návrhu k ÚOHS je podání námitek k Zadavateli, které je nutné doručit do 15 dnů ode dne, kdy se stěžovatel dozvěděl o domnělém porušení zákona Zadavatelem, nejpozději však do uzavření smlouvy nebo do chvíle, kdy se soutěž o návrh považuje po výběru návrhu za ukončenou.Námitky proti úkonům oznamovaným v dokumentech, které je Zadavatel povinen podle zákona uveřejnit či odeslat stěžovateli, musí být doručeny Zadavateli do 15 dnů od jejich uveřejnění či doručení stěžovateli.Pokud je v zadávacím řízení stanovena lhůta pro podání žádostí o účast, musí být námitky proti podmínkám vzta-hujícím se ke kvalifikaci dodavatele doručeny Zadavateli nejpozději do skončení této lhůty.Pokud je v zadávacím řízení stanovena lhůta pro podání nabídek, musí být námitky proti zadávací dokumentaci doručeny Zadavateli nejpozději do skončení této lhůty, v případě jednacího řízení s uveřejněním musí být námitky proti zadávací dokumentaci doručeny Zadavateli nejpozději do skončení lhůty pro podání předběžných nabídek.Námitky proti dobrovolnému oznámení o záměru uzavřít smlouvu podle § 212 odst. 2 zákona musí být doručeny Zadavateli do 30 dnů od uveřejnění tohoto oznámení.Zadavatel je povinen námitky vyřídit do 15 dnů. Návrh je nutné doručit ÚOHS i Zadavateli do 10 dnů ode dne, v němž stěžovatel obdržel rozhodnutí, kterým Zadavatel námitky odmítnul nebo do 25 dnů od odeslání námitek, pokud Zadavatel o námitkách nerozhodl.Po uzavření smlouvy na veřejnou zakázku či rámcové dohody lze podat pouze návrh na uložení zákazu plnění smlouvy, a to i bez předchozího podání námitek. Návrh na uložení zákazu plnění smlouvy doručí navrhovatel ÚOHS a ve stejnopisu Zadavateli do 1 měsíce ode dne, kdy Zadavatel uveřejnil oznámení o uzavření smlouvy způsobem podle § 212 odst. 2 zákona s uvedením důvodu pro zadání veřejné zakázky bez uveřejnění oznámení o zahájení zadávacího řízení, předběžného oznámení nebo výzvy k podání nabídek ve zjednodušeném podlimitním řízení, nejpozději však do 6 měsíců od uzavření této smlouvy. Návrh na uložení zákazu plnění smlouvy podle § 254 odstavce 1 písm. d) zákona doručí navrhovatel ÚOHS a ve stejnopisu Zadavateli do 1 měsíce ode dne, kdy Zadavatel uveřejnil oznámení o uzavření smlouvy na základě rámcové dohody podle § 137 zákona nebo oznámení o uzavření smlouvy v dynamickém nákupním systému podle § 142 zákona, nejpozději však do 6 měsíců od uzavření této smlouvy.Ve lhůtě pro doručení návrhu je navrhovatel povinen složit na účet ÚOHS kauci ve výši 1 % z nabídkové ceny navrhovatele za celou dobu plnění veřejné zakázky nebo za dobu prvních čtyř let plnění v případě smluv na dobu neurčitou, nejméně však ve výši 50 000 Kč, nejvýše ve výši 10 000 000 Kč. V případě, že navrhovatel nemůže stanovit celkovou nabídkovou cenu, je povinen složit kauci ve výši 100 000 Kč. V případě návrhu na uložení zákazu plnění smlouvy je navrhovatel povinen složit kauci ve výši 200 000 Kč. Jde-li o řízení o přezkoumání postupu pro zadávání koncesí, je navrhovatel povinen ve lhůtě pro doručení návrhu složit na účet ÚOHS kauci ve výši 1 % z předpokládané hodnoty koncese uveřejněné ve Věstníku veřejných zakázek nebo na profilu Zadavatele, nejméně však ve výši 50 000 Kč, nejvýše ve výši 10 000 000 Kč. V případě, že Zadavatel neuveřejní ve Věstníku veřejných zakázek nebo na profilu Zadavatele předpokládanou hodnotu koncese, je navrhovatel povinen složit kauci ve výši 100 000 Kč. V případě návrhu na uložení zákazu plnění koncesní smlouvy je navrhovatel povinen složit kauci ve výši 200 000 Kč." .
+
+epd:id_2023-S-210-663262_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j a cccev:ContactPoint;
+  epo:hasFax "+420 542167112";
+  epo:hasInternetAddress "https://www.uohs.cz/"^^xsd:anyURI;
+  cccev:email "posta@uohs.cz";
+  cccev:telephone "+420 542167111" .
+
+epd:id_2023-S-210-663262_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  locn:postCode "604 55";
+  locn:postName "Brno";
+  locn:thoroughfare "tř. Kpt. Jaroše 7" .
+
+epd:id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j a org:Organization;
+  epo:hasLegalName "Úřad pro ochranu hospodářské soutěže"@cs;
+  epo:hasPrimaryContactPoint epd:id_2023-S-210-663262_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j;
+  cccev:registeredAddress epd:id_2023-S-210-663262_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-663262_Reviewer_bdZjimbzCaRXbeYeBmF94j a epo:Reviewer;
+  epo:playedBy epd:id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j .
+
+epd:id_2023-S-210-663262_SubmissionStatisticalInformation_SM6UbUtHRXNqgrskZtVN8v a
+    epo:SubmissionStatisticalInformation;
+  epo:hasEUReceivedTenders 0;
+  epo:hasElectronicTenders 4;
+  epo:hasReceivedNonEUTenders 0;
+  epo:hasReceivedSMETenders 0;
+  epo:hasReceivedTenders 4;
+  epo:summarisesInformationForLotAwardOutcome epd:id_2023-S-210-663262_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf .
+
+epd:id_2023-S-210-663262_TenderAwardOutcome_SM6UbUtHRXNqgrskZtVN8v a epo:TenderAwardOutcome;
+  epo:describesTender epd:id_2023-S-210-663262_Tender_SM6UbUtHRXNqgrskZtVN8v;
+  epo:indicatesAwardOfLotToWinner epd:id_2023-S-210-663262_Winner_5DskZUnCcVusgjQoBuZAqa,
+    epd:id_2023-S-210-663262_Winner_WFzZGbdirSo5EBhCMeQqCo .
+
+epd:id_2023-S-210-663262_Tender_SM6UbUtHRXNqgrskZtVN8v a epo:Tender;
+  epo:isSubmittedForLot epd:id_2023-S-210-663262_Lot_DgNm7RuiSQ47VBTvdrHsRv .
+
+epd:id_2023-S-210-663262_Winner_5DskZUnCcVusgjQoBuZAqa a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663262_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa .
+
+epd:id_2023-S-210-663262_Winner_WFzZGbdirSo5EBhCMeQqCo a epo:Winner;
+  epo:playedBy epd:id_2023-S-210-663262_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-128-406212_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-004-003545/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2021-S-004-003545_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2021-S-004-003545/eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-004-003545/bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2021-S-004-003545_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-051138/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2021-S-004-003545/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326086_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-128-406212_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326086_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2021-S-004-003545_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2023-S-018-051138/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2021-S-004-003545/53dcddfe-05e0-31c2-ab22-d770b015238d> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326086_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-104-326086_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-128-406212_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-128-406212_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-004-003545/de2507f9-ae25-37c8-809c-0109efe10669> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2021-S-004-003545_ReviewerOrganisation_bdZjimbzCaRXbeYeBmF94j> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewProcedureInformationProviderOrganisation/2021-S-004-003545/eP5uWDhd4iYABCZbaj8dzQ> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ReviewProcedureInformationProviderOrganisation_eP5uWDhd4iYABCZbaj8dzQ> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/ReviewerOrganisation/2021-S-004-003545/bdZjimbzCaRXbeYeBmF94j> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-664862_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661628_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661290_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663613_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661318_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661271_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661196_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663226_Organisation_UU5jeWb9wCr2uQLNME2nwM> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663513_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_Organisation_UU5jeWb9wCr2uQLNME2nwM> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-661886_Organisation_iGF7ZaAiz9oMT8YWwHDjxN> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ContractorOrganisation_WFzZGbdirSo5EBhCMeQqCo> .
+
+<http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa> <http://www.w3.org/2002/07/owl#sameAs> <http://data.europa.eu/a4g/resource/id_2023-S-210-663262_ContractorOrganisation_5DskZUnCcVusgjQoBuZAqa> .
